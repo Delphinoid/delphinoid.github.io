@@ -9,7 +9,7 @@ Recently, I learned about a particular researcher named Dr. Robert Lanza. Dr. La
 
 Wait, what?
 
-It might not be too difficult to guess the blunder Dr. Lanza has made here. Of course, the theory is based entirely on the idea that the observer effect in quantum mechanics relies on a conscious observer: possibly the most pervasive misconception in modern science. Due to its great prolificacy, I'd actually like to clear it up. I'll proceed by giving a brief lecture on basic quantum mechanics, for anyone not familiar with the observer effec.
+It might not be too difficult to guess the blunder Dr. Lanza has made here. Of course, the theory is based entirely on the idea that the observer effect in quantum mechanics relies on a conscious observer: possibly the most pervasive misconception in modern science. Due to its great prolificacy, I'd actually like to clear it up. I'll proceed by giving a brief lecture on basic quantum mechanics, for anyone not familiar with the observer effect.
 
 In quantum mechanics, it is helpful to mathematically model the state of a system as a **wavefunction**: that is, a collection of all possible states that the system can be in, weighted by their probability. The concept of quantum superposition then follows from this, where we can add (superpose) these wavefunctions together to create new and completely valid states. When you measure part of a system, you typically gain more information on the allowable states that system can be in, so the wavefunction changes. When all but a single possibility remains, the wavefunction is said to have **collapsed** to a single state.
 
