@@ -1,0 +1,36 @@
+---
+layout: post
+title: "On Suicide Prevention"
+date: 2021-08-17
+tags: [philosophy, rambling]
+mathjax: on
+---
+Suicide is a tough issue to talk about. Many people seem to have their own very strong ideas on what's ethical and what's not with respect to suicide, and I'm no different. Because this is something I find myself thinking about often (especially now, during exams!!), I'd like to do my best to share my perspective.
+
+I think the best angle to communicate this from would be to first pose the following question: is suicide prevention ethical? I think the most common answer to this would just be a flat "yes". Some people might further clarify that it's unethical specifically in the case of, for instance, a terminal illness or some kind of physically painful, incurable condition. This, I think, is slightly better, as it offers a relatively uncontroversial counterexample to the idea that suicide prevention is strictly ethical: in my opinion, however, it is still not quite perfect.
+
+In my opinion, the truth is potentially a little more nuanced. Given the example above, I think it might be natural to rephrase our original question as follows: under what circumstances is suicide prevention ethical? Under this significantly less crude rephrasing, there's now some nice room for discussion. I would like to proceed by offering what I think might be the best answer we can form:
+
+> Suicide prevention is ethical when the individual planning to commit suicide has not reached this decision as a result of their own personal autonomy.
+
+I think this response is surprisingly involved, and quite naturally raises some questions of its own:
+
+1. What is personal autonomy, and why is it important?
+2. How can we tell if personal autonomy has been breached?
+3. What should we do if we are unsure on whether their decision was made autonomously?
+
+With the bookkeeping now, for the most part, behind us, we can move onto the "meat" of the discussion. I'll do my best to address the above questions in order.
+
+Personal autonomy is quite a difficult concept. We can loosely define it as one's ability to make their own decisions as a result of their own free will: that is, it is one's ability to practice free will. Rather troublingly, however, we have already made a strong assumption, being that free will itself is sensible to consider. Actually, the entire discussion on the ethics of suicide prevention relies on our treatment of free will; I think this is essentially what makes it so hard to talk about. While I do not necessarily agree with the existence of free will (which, combined with how such a lack of belief can augment one's understanding of ethics, is an interesting discussion for another time), for the sake of the argument we will assume that it exists.
+
+Personal autonomy is important here because it relates to nothing but the individual's perspective. Because suicide is a strictly personal decision, so whether it is right or wrong should be governed only by the will of the individual, and nothing else. In essence, I would argue that suicide prevention is ethical if and only if the suicidal individual's decision has been influenced by something that is infringing on their free will. Under this framework, how to judge whether or not personal autonomy has actually been infringed upon is possibly the most important question we can ask, as it is equivalent to asking our central question from before ("under what circumstances is suicide prevention ethical?"). Given the nature of free will, however, I don't think there is any one way to approach this. Some people take mental illnesses such as depression, for instance, as an indicator that free will has been circumvented. However, this is not true in general. There certainly exist people suffering long term depression, who know they will never be able to cure their depression: their decision to commit suicide is likely sourced from a logical argument made of their own free will. Whether or not we agree with the magnitude of their conclusion is irrelevant, as we have no right to reject the validity of their desires, sensibilities or standards. To do otherwise is to strip them of their autonomy.
+
+I'd like to take this opportunity to note a rather important aspect of our current framework: there is no mention of rationality. This is certainly by design. Outside of the realm of formal logic, what is considered rational is more a cultural phenomenon than any kind of universal truth, and so is not particularly helpful in this discussion. For instance, consider "honour suicide": under modern sensibilities, this might be seen as irrational, but I do not believe it is necessarily so.
+
+This labelling of suicide as irrational behaviour is, I think, particularly problematic, as it is the basis of our modern treatment of it. The general consensus on suicide appears to be that, outside of conditions inflicting excruciating physical pain, suicide is inherently wrong because it is inherently irrational. I believe this is because it is difficult for those who have never considered suicide to empathize with those who do, and so project their own feelings onto them with a false generalization argument ("life is great for me, so this must be a fundamental property of life in general: those who want to end their lives must clearly not be thinking straight, as their lives must surely be equally as great as mine").
+
+Unfortunately, this attitude is highly pervasive in the debate on suicide, including in professional circles. Suicide is typically seen as something with no justification, that should be prevented at all costs. Furthermore, the repercussions of intervening to prevent a suicide are much greater than I think people realize. With how suicide is currently handled, people who are seen as even possibly being suicidal will be locked away, stripping them of many of their essential freedoms indefinitely. This can not only have severe effects on their mental health, given the poor living conditions forced on such patients and the all too common mistreatment of them by medical staff; it can also interfere with school and their job, and can completely sabotage future career prospects.
+
+I find this extremely scary. People are able to not only further destroy the lives of others, but force them to live with it, while they remain free from any sort of accountability (in fact, this is considered a heroic thing to do). In theory, I think this lack of responsibility asked of preventers of suicide is not necessarily wrong: if you do not know better, it may often be best to be safe and assume that one's personal autonomy has been infringed upon, strictly because taking one's life is not something that can be undone. But I think it only holds up in practice if someone is sought to be understood following these preventative measures, and released immediately if they are not found to be acting without autonomy - even if they still plan to kill themselves. This, however, does not typically happen.
+
+I think with that I've more or less covered everything I wanted to say. Thank you very much for reading.

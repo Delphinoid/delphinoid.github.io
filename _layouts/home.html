@@ -10,7 +10,7 @@ layout: default
         <p class="post-info">
             <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
             {% for tag in post.tags %}
-             | <a href="{% include relative %}/tags/#{{ tag | downcase }}">#{{ tag }}</a>
+             | <a href="{% include relative %}/tags/{{ tag | downcase }}">{{ tag }}</a>
             {% endfor %}
         </p>
     </li>
