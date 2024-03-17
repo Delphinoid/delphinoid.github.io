@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="robots" content="noindex">
+		<script>const PAGE_TYPE = "art"; const ROOT = ".";</script>
+		<script src="./art/posts.js"></script>
+	</head>
+
+	<body>
+	
+		<div id="search_header">
+			<span class="search">
+				Results: <span id="search_results">1/1</span>&nbsp;
+				<select id="search_sort">
+					<option value=0>Newest</option>
+					<option value=1>Oldest</option>
+				</select>
+				<input id="search_terms" type="text" placeholder="Search">
+				<button id="search_submit" onclick="search_refresh()">&#x1F50E;&#xFE0E;</button>
+			</span>
+		</div>
+		<div id="post_container">
+		</div>
+		<div style="margin-top: 63px"></div>
+		<div id="search_footer">
+			<span class="search">
+				Page: <input id="search_page" type="number" onchange="search_display()" min=1 max=1 value=1>/<span id="search_page_max">1</span>
+			</span>
+		</div>
+		
+		<script src="./shared/scripts/template.js"></script>
+
+	</body>
+
+</html>
