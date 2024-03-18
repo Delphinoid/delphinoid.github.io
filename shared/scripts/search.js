@@ -27,9 +27,10 @@ function search_refresh(){
 		var push = 1;
 		var j = 0;
 		while(j < terms.length){
+			const post_tags_num = post_tags.length-1;
 			var match_found = 0;
 			var k = 0;
-			while(k < post_tags.length){
+			while(k < post_tags_num){
 				if(post_tags[k].includes(terms[j])){
 					match_found = 1;
 					break;
@@ -70,18 +71,18 @@ function search_display(){
 	var i = 0;
 	POST_CONTAINER.innerHTML = "";
 	if(sort == 0){
-		const offset = results_num-1-page*POSTS_PER_PAGE;
-		while(i < POSTS_PER_PAGE && offset-i >= 0){
-			const id = results[offset-i];
-			POST_CONTAINER.innerHTML += '<a id="' + POST_ID_PREFIX + id + '" class="post"></a>';
+		const offset = page*POSTS_PER_PAGE;
+		while(i < POSTS_PER_PAGE && offset+i < results_num){
+			const id = results[offset+i];
+			POST_CONTAINER.innerHTML += '<a id="' + POST_ID_PREFIX + POSTS[id].slice(-1) + '" class="post"></a>';
 			search_get_post_info(id);
 			++i;
 		}
 	}else if(sort == 1){
-		const offset = page*POSTS_PER_PAGE;
-		while(i < POSTS_PER_PAGE && offset+i < results_num){
-			const id = results[offset+i];
-			POST_CONTAINER.innerHTML += '<a id="' + POST_ID_PREFIX + id + '" class="post"></a>';
+		const offset = results_num-1-page*POSTS_PER_PAGE;
+		while(i < POSTS_PER_PAGE && offset-i >= 0){
+			const id = results[offset-i];
+			POST_CONTAINER.innerHTML += '<a id="' + POST_ID_PREFIX + POSTS[id].slice(-1) + '" class="post"></a>';
 			search_get_post_info(id);
 			++i;
 		}
@@ -90,16 +91,18 @@ function search_display(){
 }
 
 function search_get_post_info(id){
+	var tags = POSTS[id].slice();
+	const id_str = tags.pop();
 	var xhr = new XMLHttpRequest() || new window.ActiveXObject("Microsoft.XMLHTTP");
-	xhr.open("GET", POST_URL_PREFIX + id + "/info", true);
+	xhr.open("GET", POST_URL_PREFIX + id_str + "/info", true);
 	xhr.overrideMimeType("application/json");
 	xhr.onreadystatechange = function(){
 		if(this.status === 200 && this.readyState === 4){
-			const post = document.getElementById(POST_ID_PREFIX + id);
-			const response = xhr.responseText.replace(/POST_PATH/g, POST_URL_PREFIX + id);
+			const post = document.getElementById(POST_ID_PREFIX + id_str);
+			const response = xhr.responseText.replace(/POST_PATH/g, POST_URL_PREFIX + id_str);
 			const delimiter = response.indexOf("\n");
 			post.href = response.substring(0, delimiter);
-			post.innerHTML = response.substring(delimiter+1).replace(/POST_TAGS/g, POSTS[id].toString().replace(/,/g, ", "));
+			post.innerHTML = response.substring(delimiter+1).replace(/POST_TAGS/g, tags.toString().replace(/,/g, ", "));
 			MathJax.typeset();
 		}
 	};
