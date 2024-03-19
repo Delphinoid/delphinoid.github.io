@@ -1,7 +1,7 @@
 const POST_ID_PREFIX = "research_";
 const POST_URL_PREFIX = "./research/";
 
-// Array of tags for each post, stored from newest to oldest. The first tag is the post ID.
+// Array of tags for each post, stored from newest to oldest. The last tag is the post ID.
 const POSTS = [
 	["2023/11/16", "algebras", "arnaud", "brothier", "category", "conformal", "groups", "honours", "jones", "monoidal", "operad", "operator", "planar", "quantum", "richard", "subfactors", "thompson", "unsw", "vaughan", "3"],
 	["2023/11/14", "algebras", "arnaud", "brothier", "category", "conformal", "groups", "honours", "jones", "monoidal", "operad", "operator", "planar", "presentation", "quantum", "richard", "subfactors", "thompson", "unsw", "vaughan", "2"],
