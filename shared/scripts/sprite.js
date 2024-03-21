@@ -1,54 +1,46 @@
 const PARTICLE_MAX = 100;
 const PARTICLE_SPAWN_TIMER = 250.0;
 const PARTICLE_AVERAGE_SPEED = 20.0*100.0*60.0;
+const PARTICLE_BYTES = 24;
 
-function particle(_x, _y, _colour, _radius){
-	this.x = _x;
-	this.y = _y;
-	this.colour = _colour;
-	this.radius = _radius;
+const PARTICLE_PROPERTIES = 6;
+const PARTICLE_X_OFFSET = 0;
+const PARTICLE_Y_OFFSET = 1;
+const PARTICLE_RADIUS_OFFSET = 2;
+const PARTICLE_RED_OFFSET = 3;
+const PARTICLE_GREEN_OFFSET = 4;
+const PARTICLE_BLUE_OFFSET = 5;
+
+function particle_new(y){
+	const p = new Float32Array(particle_buffer, particle_buffer_length, PARTICLE_PROPERTIES);
+	p[PARTICLE_RED_OFFSET] = 0.5 - Math.random()*0.125;
+	p[PARTICLE_GREEN_OFFSET] = 0.0;
+	p[PARTICLE_BLUE_OFFSET] = 0.5 + Math.random()*0.125;
+	p[PARTICLE_RADIUS_OFFSET] = (20.0+Math.random()*80.0)/1920.0;
+	p[PARTICLE_X_OFFSET] = Math.random();
+	p[PARTICLE_Y_OFFSET] = y-p[PARTICLE_RADIUS_OFFSET];
+	particle_buffer_length += PARTICLE_BYTES;
 }
 
-function new_particle(y){
-	const r = 128 - Math.floor(Math.random()*32.0);
-	const g = 0;
-	const b = 128 + Math.floor(Math.random()*32.0);
-	const radius = (20.0+Math.random()*80.0)/1920.0;
-	return new particle(Math.random(), y-radius, "rgb("+r+","+g+","+b+")", radius);
-}
-
-particle.prototype.update = function(){
-	this.y += this.radius*100.0*60.0*dt/height; //this.y += 50;
-	if(this.y*height-this.radius*width > height){
+function particle_tick(p){
+	p[PARTICLE_Y_OFFSET] += p[PARTICLE_RADIUS_OFFSET]*100.0*60.0*dt/height; //this.y += 50;
+	if(p[PARTICLE_Y_OFFSET]*height-p[PARTICLE_RADIUS_OFFSET]*width > height){
 		return 0;
 	}
 	return 1;
 }
 
-particle.prototype.render = function(){
-	
-	// Scale particles based on window size.
-	const x = this.x*width;
-	const y = this.y*height;
-	const radius = this.radius*width;
-	
-	var gradient = CONTEXT.createRadialGradient(x, y, 1.0, x, y, radius);
-	gradient.addColorStop(0.0, this.colour);
-	gradient.addColorStop(1.0, "rgba(0,0,0,0)");
-	CONTEXT.fillStyle = gradient;
-	CONTEXT.fillRect(
-		Math.max(0.0, x-radius), Math.max(0.0, y-radius),
-		Math.min(x+radius, width), Math.min(y+radius, height)
-	);
-	
-	/*
-	// Rain particle.
-	CONTEXT.beginPath();
-	CONTEXT.moveTo(this.x, this.y);
-	CONTEXT.lineTo(this.x, this.y-this.radius);
-	CONTEXT.lineWidth = 1;
-	CONTEXT.strokeStyle = "#777777";
-	CONTEXT.stroke();
-	*/
-	
+function particle_delete(i){
+	// Delete the ith particle from the buffer by shifting everything over.
+	while(i < particle_buffer_length){
+		const p = new Float32Array(particle_buffer, i);
+		p[PARTICLE_X_OFFSET] = p[PARTICLE_PROPERTIES+PARTICLE_X_OFFSET];
+		p[PARTICLE_Y_OFFSET] = p[PARTICLE_PROPERTIES+PARTICLE_Y_OFFSET];
+		p[PARTICLE_RADIUS_OFFSET] = p[PARTICLE_PROPERTIES+PARTICLE_RADIUS_OFFSET];
+		p[PARTICLE_RED_OFFSET] = p[PARTICLE_PROPERTIES+PARTICLE_RED_OFFSET];
+		p[PARTICLE_GREEN_OFFSET] = p[PARTICLE_PROPERTIES+PARTICLE_GREEN_OFFSET];
+		p[PARTICLE_BLUE_OFFSET] = p[PARTICLE_PROPERTIES+PARTICLE_BLUE_OFFSET];
+		i += PARTICLE_BYTES;
+	}
+	particle_buffer_length -= PARTICLE_BYTES;
 }

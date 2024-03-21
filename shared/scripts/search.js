@@ -66,25 +66,27 @@ function search_display(){
 	}else if(SEARCH_PAGE.value > SEARCH_PAGE.max){
 		SEARCH_PAGE.value = SEARCH_PAGE.max;
 	}
-	const page = SEARCH_PAGE.value-1;
 	
-	var i = 0;
-	POST_CONTAINER.innerHTML = "";
-	if(sort == 0){
-		const offset = page*POSTS_PER_PAGE;
-		while(i < POSTS_PER_PAGE && offset+i < results_num){
-			const id = results[offset+i];
-			POST_CONTAINER.innerHTML += '<a id="' + POST_ID_PREFIX + POSTS[id].slice(-1) + '" class="post"></a>';
-			search_get_post_info(id);
-			++i;
-		}
-	}else if(sort == 1){
-		const offset = results_num-1-page*POSTS_PER_PAGE;
-		while(i < POSTS_PER_PAGE && offset-i >= 0){
-			const id = results[offset-i];
-			POST_CONTAINER.innerHTML += '<a id="' + POST_ID_PREFIX + POSTS[id].slice(-1) + '" class="post"></a>';
-			search_get_post_info(id);
-			++i;
+	{
+		const page = SEARCH_PAGE.value-1;
+		var i = 0;
+		POST_CONTAINER.innerHTML = "";
+		if(sort == 0){
+			const offset = page*POSTS_PER_PAGE;
+			while(i < POSTS_PER_PAGE && offset+i < results_num){
+				const id = results[offset+i];
+				POST_CONTAINER.innerHTML += '<a id="' + POST_ID_PREFIX + POSTS[id].slice(-1) + '" class="post"></a>';
+				search_get_post_info(id);
+				++i;
+			}
+		}else if(sort == 1){
+			const offset = results_num-1-page*POSTS_PER_PAGE;
+			while(i < POSTS_PER_PAGE && offset-i >= 0){
+				const id = results[offset-i];
+				POST_CONTAINER.innerHTML += '<a id="' + POST_ID_PREFIX + POSTS[id].slice(-1) + '" class="post"></a>';
+				search_get_post_info(id);
+				++i;
+			}
 		}
 	}
 	

@@ -1,4 +1,9 @@
-template_set_innerHTML(document.head,
+var CANVAS;
+var CONTEXT;
+var INSTANCING_EXTENSION;
+//var VAO_EXTENSION;
+
+document.head.innerHTML =
 template_sanitize(document.head.innerHTML) +
 '<title>Delphinoid\'s Blog</title> \
 <link rel="icon" type="image/png" sizes="16x16" href="' + ROOT + '/shared/favicon-16x16.png"> \
@@ -6,9 +11,10 @@ template_sanitize(document.head.innerHTML) +
 <link rel="stylesheet" href="' + ROOT + '/shared/styles.css"> \
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> \
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> \
-<script src="' + ROOT + '/shared/scripts/sprite.js"></script>');
+<script src="' + ROOT + '/shared/scripts/sprite.js"></script>';
+template_run_scripts(document.head);
 
-template_set_innerHTML(document.body,
+document.body.innerHTML =
 '<canvas id="canvas"></canvas> \
 	\
 	<div id="container"> \
@@ -77,16 +83,47 @@ template_set_innerHTML(document.body,
 	\
 </div> \
 \
-' + ((typeof POSTS !== "undefined") ? '<script src="' + ROOT + '/shared/scripts/search.js"></script>\n' : '') +
-'<script src="' + ROOT + '/shared/scripts/background.js"></script>');
+' + ((typeof POSTS !== "undefined") ? '<script src="' + ROOT + '/shared/scripts/search.js"></script>\n' : '');
+template_run_scripts(document.body);
+CANVAS = document.getElementById("canvas");
+
+{
+	// Check support for WebGL and its extensions.
+	var script = document.createElement("script");
+	const temp_canvas = document.getElementById("canvas");
+	CONTEXT = CANVAS.getContext("webgl");
+	if(
+		!CONTEXT ||
+		!CONTEXT.getExtension("ANGLE_instanced_arrays") //||
+		//CONTEXT.getExtension("OES_vertex_array_object")
+	){
+		CONTEXT = CANVAS.getContext("experimental-webgl");
+		if(
+			!CONTEXT ||
+			!CONTEXT.getExtension("ANGLE_instanced_arrays") //||
+			//CONTEXT.getExtension("OES_vertex_array_object")
+		){
+			CONTEXT = CANVAS.getContext("2d");
+			script.src = ROOT + "/shared/scripts/render.js";
+		}else{
+			INSTANCING_EXTENSION = CONTEXT.getExtension("ANGLE_instanced_arrays");
+			//VAO_EXTENSION = CONTEXT.getExtension("OES_vertex_array_object");
+			script.src = ROOT + "/shared/scripts/render_webgl.js";
+		}
+	}else{
+		
+		INSTANCING_EXTENSION = CONTEXT.getExtension("ANGLE_instanced_arrays");
+		//VAO_EXTENSION = CONTEXT.getExtension("OES_vertex_array_object");
+		script.src = ROOT + "/shared/scripts/render_webgl.js";
+	}
+	document.head.appendChild(script);
+}
 
 function template_sanitize(html){
 	return html.replace(/<script.*script>/g, '')
 }
 
-function template_set_innerHTML(element, html){
-	
-	element.innerHTML = html;
+function template_run_scripts(element){
 	
 	const scripts = Array.from(element.querySelectorAll("script"));
 	
