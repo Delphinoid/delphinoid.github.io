@@ -5,7 +5,8 @@ var INSTANCING_EXTENSION;
 
 document.head.innerHTML =
 template_sanitize(document.head.innerHTML) +
-'<title>Delphinoid\'s Blog</title> \
+'<meta name="viewport" content="width=device-width, initial-scale=1"> \
+<title>Delphinoid\'s Blog</title> \
 <link rel="icon" type="image/png" sizes="16x16" href="' + ROOT + '/shared/favicon-16x16.png"> \
 <link rel="icon" type="image/png" sizes="32x32" href="' + ROOT + '/shared/favicon-32x32.png"> \
 <link rel="stylesheet" href="' + ROOT + '/shared/styles.css"> \
