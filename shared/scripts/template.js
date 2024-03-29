@@ -58,7 +58,7 @@ document.body.innerHTML =
 		<div id="content_container">\n' +
 			((typeof POSTS !== "undefined") ?
 '			<div id="search_header"> \
-				<span class="search"> \
+				<div class="search"> \
 					Results: <span id="search_results">1/1</span>&nbsp; \
 					<select id="search_sort"> \
 						<option value=0>Newest</option> \
@@ -66,15 +66,15 @@ document.body.innerHTML =
 					</select> \
 					<input id="search_terms" type="text" placeholder="Search"> \
 					<button id="search_submit" onclick="search_refresh()">&#x1F50E;&#xFE0E;</button> \
-				</span> \
+				</div> \
 			</div> \
 			<div id="post_container"> \
 			</div> \
 			<div style="margin-top: 63px"></div> \
 			<div id="search_footer"> \
-				<span class="search"> \
+				<div class="search"> \
 					Page: <input id="search_page" type="number" onchange="search_display()" min=1 max=1 value=1>/<span id="search_page_max">1</span> \
-				</span> \
+				</div> \
 			</div>\n'
 			: '') +
 			template_sanitize(document.body.innerHTML) +

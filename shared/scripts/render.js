@@ -17,7 +17,7 @@ function r_update_page_dimensions(){
 	//
 	// The "192" here is the combined height of the 64px header,
 	// the 64px navigation bar and the 64px footer.
-	width = window.innerWidth;
+	width = window.innerWidth < 274.0 ? CONTENT_CONTAINER.offsetWidth : window.innerWidth;
 	height = Math.max(window.innerHeight, 192.0+CONTENT_CONTAINER.offsetHeight);
 }
 
