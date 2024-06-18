@@ -6,7 +6,6 @@ var INSTANCING_EXTENSION;
 document.head.innerHTML =
 template_sanitize(document.head.innerHTML) +
 '<meta name="viewport" content="width=device-width, initial-scale=1"> \
-<title>Delphinoid\'s Blog</title> \
 <link rel="icon" type="image/png" sizes="16x16" href="' + ROOT + '/shared/favicon-16x16.png"> \
 <link rel="icon" type="image/png" sizes="32x32" href="' + ROOT + '/shared/favicon-32x32.png"> \
 <link rel="stylesheet" href="' + ROOT + '/shared/styles.css"> \
@@ -21,7 +20,7 @@ document.body.innerHTML =
 	<div id="container"> \
 		\
 		<div id="header_container"> \
-			<span style="font-family:\'cmsy10\'; font-style:normal; line-height: 0px;">D</span><span style="margin-left:-0.1em; position: relative;">elphinoid\'s <span style="font-family:\'cmsy10\'; font-style:normal; line-height: 0px;">B</span>log</span> \
+			<span>delphinoid.github.io</span> \
 		</div> \
 		\
 		<div id="navigation_container"> \
@@ -30,27 +29,27 @@ document.body.innerHTML =
 			((PAGE_TYPE === "home") ?
 '			<div style="border-right-style:solid;">Home</div> \
 			<a href="' + ROOT + '/blog.html" style="border-right-style:solid;">Blog</a> \
-			<a href="' + ROOT + '/art.html" style="border-right-style:solid;">Art</a> \
+			<!-- <a href="' + ROOT + '/art.html" style="border-right-style:solid;">Art</a> --> \
 			<a href="' + ROOT + '/research.html">Research</a> \n' :
 			((PAGE_TYPE == "blog") ?
 '			<a href="' + ROOT + '/index.html" style="border-right-style:solid;">Home</a> \
 			<div style="border-right-style:solid;">Blog</div> \
-			<a href="' + ROOT + '/art.html" style="border-right-style:solid;">Art</a> \
+			<!-- <a href="' + ROOT + '/art.html" style="border-right-style:solid;">Art</a> --> \
 			<a href="' + ROOT + '/research.html">Research</a> \n' :
-			((PAGE_TYPE == "art") ?
+			/*((PAGE_TYPE == "art") ?
 '			<a href="' + ROOT + '/index.html" style="border-right-style:solid;">Home</a> \
 			<a href="' + ROOT + '/blog.html" style="border-right-style:solid;">Blog</a> \
 			<div style="border-right-style:solid;">Art</div> \
-			<a href="' + ROOT + '/research.html">Research</a> \n' :
+			<a href="' + ROOT + '/research.html">Research</a> \n' :*/
 			((PAGE_TYPE == "research") ?
 '			<a href="' + ROOT + '/index.html" style="border-right-style:solid;">Home</a> \
 			<a href="' + ROOT + '/blog.html" style="border-right-style:solid;">Blog</a> \
-			<a href="' + ROOT + '/art.html" style="border-right-style:solid;">Art</a> \
+			<!-- <a href="' + ROOT + '/art.html" style="border-right-style:solid;">Art</a> --> \
 			<div>Research</div> \n' : 
 '			<a href="' + ROOT + '/index.html" style="border-right-style:solid;">Home</a> \
 			<a href="' + ROOT + '/blog.html" style="border-right-style:solid;">Blog</a> \
-			<a href="' + ROOT + '/art.html" style="border-right-style:solid;">Art</a> \
-			<a href="' + ROOT + '/research.html">Research</a> \n')))) +
+			<!-- <a href="' + ROOT + '/art.html" style="border-right-style:solid;">Art</a> --> \
+			<a href="' + ROOT + '/research.html">Research</a> \n')/*)*/)) +
 '			</div> \
 			<div id="navigation_padding"></div> \
 		</div> \
@@ -80,7 +79,7 @@ document.body.innerHTML =
 			template_sanitize(document.body.innerHTML) +
 '		</div> \
 		\
-	<div id="footer_container"></div> \
+	<div id="footer_container">Last updated: 2024/06/18</div> \
 	\
 </div> \
 \

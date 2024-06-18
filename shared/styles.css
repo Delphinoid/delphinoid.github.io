@@ -81,7 +81,8 @@ a:visited {
 
 #navigation_grid {
 	display: grid;
-	grid-template-columns: auto auto auto auto;
+	/* grid-template-columns: auto auto auto auto; */
+	grid-template-columns: auto auto auto;
 	border-width: 1px;
 	border-top-style: solid;
 	border-left-style: solid;
@@ -240,7 +241,7 @@ a:visited {
 	text-align: right;
 	background-color: rgba(32, 32, 32, 0.5);
 	padding-left: 25px;
-	padding-right: 25px;
+	padding-right: calc(12.5% + 25px);
 	border-width: 1px;
 	border-top-style: solid;
 	line-height: 64px;
@@ -270,6 +271,10 @@ a:visited {
 		border-left-style: none;
 		border-right-style: none;
 		width: 100%;
+	}
+	
+	#footer_container {
+		padding-right: 25px;
 	}
 	
 }
@@ -306,6 +311,10 @@ a:visited {
 		justify-self: end;
 		overflow: hidden;
 		margin: 0px;
+	}
+	
+	#footer_container {
+		padding-right: 25px;
 	}
 	
 }
