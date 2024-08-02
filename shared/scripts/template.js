@@ -79,7 +79,7 @@ document.body.innerHTML =
 			template_sanitize(document.body.innerHTML) +
 '		</div> \
 		\
-	<div id="footer_container">Last updated: 2024/06/21</div> \
+	<div id="footer_container">Last updated: 2024/08/02</div> \
 	\
 </div> \
 \
