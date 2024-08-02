@@ -1,0 +1,6 @@
+POST_PATH/post.html
+<div><div class="post_title">Adventures in Music #1 - Arpeggios</div>
+<div class="post_description">Cool thing from music theory that I learned.</div>
+<div class="post_tags">Tags: POST_TAGS</div></div>
+<div class="post_separator"></div>
+<img class="post_image" src="POST_PATH/icon.png">
