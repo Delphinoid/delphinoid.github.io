@@ -30,13 +30,18 @@ function r_initialize(){
 function r_update_and_render(){
 	
 	var i = 0;
+	var particle_buffer_last_free = -1;
+	var total_bytes = particle_buffer_length;
 	
-	while(i < particle_buffer_length){
+	while(i < total_bytes){
 		
 		const p = new Float32Array(particle_buffer, i, PARTICLE_PROPERTIES);
 		
 		if(particle_tick(p) == 0){
-			particle_delete(i);
+			if(particle_buffer_last_free < 0){
+				particle_buffer_last_free = i;
+			}
+			particle_buffer_length -= PARTICLE_BYTES;
 		}else{
 			
 			const x = p[PARTICLE_X_OFFSET]*width;
@@ -62,9 +67,21 @@ function r_update_and_render(){
 			CONTEXT.stroke();
 			*/
 			
-			i += PARTICLE_BYTES;
+			if(particle_buffer_last_free >= 0){
+				// Overwrite a dead particle.
+				const free = new Float32Array(particle_buffer, particle_buffer_last_free, PARTICLE_PROPERTIES);
+				free[PARTICLE_X_OFFSET] = p[PARTICLE_X_OFFSET];
+				free[PARTICLE_Y_OFFSET] = p[PARTICLE_Y_OFFSET];
+				free[PARTICLE_RADIUS_OFFSET] = p[PARTICLE_RADIUS_OFFSET];
+				free[PARTICLE_RED_OFFSET] = p[PARTICLE_RED_OFFSET];
+				free[PARTICLE_GREEN_OFFSET] = p[PARTICLE_GREEN_OFFSET];
+				free[PARTICLE_BLUE_OFFSET] = p[PARTICLE_BLUE_OFFSET];
+				particle_buffer_last_free += PARTICLE_BYTES;
+			}
 			
 		}
+		
+		i += PARTICLE_BYTES;
 		
 	}
 	

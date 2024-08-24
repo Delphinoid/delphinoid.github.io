@@ -22,25 +22,10 @@ function particle_new(y){
 	particle_buffer_length += PARTICLE_BYTES;
 }
 
-function particle_tick(p){
+function particle_tick(p, overwrite){
 	p[PARTICLE_Y_OFFSET] += p[PARTICLE_RADIUS_OFFSET]*100.0*60.0*dt/height; //this.y += 50;
 	if(p[PARTICLE_Y_OFFSET]*height-p[PARTICLE_RADIUS_OFFSET]*width > height){
 		return 0;
 	}
 	return 1;
-}
-
-function particle_delete(i){
-	// Delete the ith particle from the buffer by shifting everything over.
-	while(i < particle_buffer_length){
-		const p = new Float32Array(particle_buffer, i);
-		p[PARTICLE_X_OFFSET] = p[PARTICLE_PROPERTIES+PARTICLE_X_OFFSET];
-		p[PARTICLE_Y_OFFSET] = p[PARTICLE_PROPERTIES+PARTICLE_Y_OFFSET];
-		p[PARTICLE_RADIUS_OFFSET] = p[PARTICLE_PROPERTIES+PARTICLE_RADIUS_OFFSET];
-		p[PARTICLE_RED_OFFSET] = p[PARTICLE_PROPERTIES+PARTICLE_RED_OFFSET];
-		p[PARTICLE_GREEN_OFFSET] = p[PARTICLE_PROPERTIES+PARTICLE_GREEN_OFFSET];
-		p[PARTICLE_BLUE_OFFSET] = p[PARTICLE_PROPERTIES+PARTICLE_BLUE_OFFSET];
-		i += PARTICLE_BYTES;
-	}
-	particle_buffer_length -= PARTICLE_BYTES;
 }
