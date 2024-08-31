@@ -716,7 +716,7 @@ G_\mathbb{R} \coloneqq G^\sigma\arrow[dr, "\theta"', no head] && K \coloneqq G^\
 Let's work through an example with $G \coloneqq \textnormal{SL}(2, \mathbb{C})$. Recall that $G$ admits two real forms: a compact form $\textnormal{SU}(2)$ and a split form $\textnormal{SL}(2, \mathbb{R})$. The former is the fixed-point subgroup of the antiholomorphic involution $\sigma_c : g \mapsto ((\overline{g})^T)^{-1}$, while the latter is the fixed-point subgroup of the antiholomorphic involution $\sigma_s : g \mapsto \overline{g}$. By \hyperref[CartanInvolution]{Remark \ref*{CartanInvolution}}, the Cartan involution of $\textnormal{SU}(2)$ will be trivial; this is a bit boring, so let's look at $\textnormal{SL}(2, \mathbb{R})$ instead. It admits the Cartan involution $\theta' : g \mapsto (g^T)^{-1}$ with fixed-point subgroup
 \begin{align*}
 \begin{split}
-G^{\theta'} = \textnormal{SO}(2, \mathbb{C}) \coloneqq \left\{\begin{pmatrix}\hphantom{-}a&b\\-b&a\end{pmatrix} : a, b \in \mathbb{C}, a^2 + b^2 = 1\right\}\!.
+G^{\theta'} = \textnormal{SO}(2, \mathbb{C}) \coloneqq \left\{\!\begin{pmatrix}\hphantom{-}a&b\\-b&a\end{pmatrix} : a, b \in \mathbb{C}, a^2 + b^2 = 1\right\}\!.
 \end{split}
 \end{align*}
 \noindent Note that this is homeomorphic to $\mathbb{C}^\times \coloneqq \mathbb{C}\!\setminus\!\{0\}$, which we observe is the complexification of $\textnormal{SO}(2) \cong S^1$, the maximal compact subgroup (and, when considering  $\textnormal{SL}(2, \mathbb{R})$ as a Lie group, the maximal torus) of $\textnormal{SL}(2, \mathbb{R})$. Since $G^{\theta'}$ is connected, the identity component is just the entire group. However, $G^{\theta'}$ is a little awkward to work with; therefore, instead of using $G^{\theta'}$, consider the following.\newpage
@@ -737,25 +737,23 @@ h \coloneqq \frac{1}{\csqrt{2}}\begin{pmatrix}1&i\\i&1\end{pmatrix}\! \in \textn
 \noindent This holomorphic involution admits the fixed-point subgroup
 \begin{align*}
 \begin{split}
-G^\theta = \left\{\begin{pmatrix}a&0\hphantom{{}^{-1}}\\0&a^{-1}\end{pmatrix} : a \in \mathbb{C}^\times\right\}\!,
+G^\theta = \left\{\!\begin{pmatrix}a&0\hphantom{{}^{-1}}\\0&a^{-1}\end{pmatrix} : a \in \mathbb{C}^\times\right\}\!,
 \end{split}
 \end{align*}
-\noindent which is of course homeomorphic to $\mathbb{C}^\times$. Once again, since $G^\theta$ is connected, the identity component is just the entire group, and hence we will take $K \coloneqq G^\theta$. The benefit of looking at this realization of $\mathbb{C}^\times$ is that $G^\theta$ is also a maximal torus given by the intersection of the pair of opposite Borel groups
+\noindent which is of course homeomorphic to $\mathbb{C}^\times$. Once again, since $G^\theta$ is connected, the identity component is just the entire group, and hence we will take $K \coloneqq G^\theta$. The benefit of looking at this realization of $\mathbb{C}^\times$ is that $G^\theta$ is also a maximal torus (when considering $\textnormal{SL}(2, \mathbb{C})$ as a complex algebraic group) given by the intersection of the pair of opposite Borel groups
 \begin{align*}
 \begin{split}
-B \coloneqq \left\{\begin{pmatrix}a&b\hphantom{{}^{-1}}\\0&a^{-1}\end{pmatrix} : a \in \mathbb{C}^\times, b \in \mathbb{C}\right\}\!\qquad\text{and}\qquad B' \coloneqq \left\{\begin{pmatrix}a&0\hphantom{{}^{-1}}\\b&a^{-1}\end{pmatrix} : a \in \mathbb{C}^\times, b \in \mathbb{C}\right\}\!.
+B \coloneqq \left\{\!\begin{pmatrix}a&b\hphantom{{}^{-1}}\\0&a^{-1}\end{pmatrix} : a \in \mathbb{C}^\times, b \in \mathbb{C}\right\}\!\qquad\text{and}\qquad B' \coloneqq \left\{\!\begin{pmatrix}a&0\hphantom{{}^{-1}}\\b&a^{-1}\end{pmatrix} : a \in \mathbb{C}^\times, b \in \mathbb{C}\right\}\!.
 \end{split}
 \end{align*}
-\noindent Therefore, let $T \coloneqq G^\theta$. The corresponding Weyl group is $W \coloneqq N_G(T)/T = \mathbb{Z}/2\mathbb{Z} = \{1, -1\}$, since
+\noindent Therefore, let $T \coloneqq G^\theta$. The corresponding Weyl group is $W \coloneqq N_G(T)/T = S_2 = \{1, -1\}$, since
 \begin{align*}
 \begin{split}
-N_G(T) = \{g \in G : gtg^{-1} \in T, \textnormal{for all $t \in T$}\} = T \sqcup \left\{\begin{pmatrix}0&1\\1&0\end{pmatrix}\right\}\!;
+N_G(T) = \{g \in G : gtg^{-1} \in T, \textnormal{for all $t \in T$}\} = T \sqcup \left\{\!\begin{pmatrix}0&b\\-b^{-1}&0\end{pmatrix} : b \in \mathbb{C}^\times\!\right\}\!;
 \end{split}
 \end{align*}
 \noindent similarly, $T_K \coloneqq T$ is obviously then a maximal torus in $K$, giving us $W_K \coloneqq N_K(T_K)/T_K = \{1\}$. The only choice of simple roots we can make is $S = \{-1\}$, whence $R = \mathbb{R}[\alpha_{-1}]$. The action of $W$ on $R$ is given by $0 : r \mapsto r$ and $1 : r \mapsto -r$, for $r \in R$, giving us $R^{W_K} = R$ and an easy $(R^{W_K}, R)$-bimodule structure for $R$. This gives us a very explicit module category over $\mathbb{S}\textcat{Bim}(W, S)$! A standard exercise we can now do is to compute the Jordan--H\"{o}lder filtrations of $\mathcal{M}_{LV}^0$.\\
 \end{example}
-
-\noindent\textcolor{red}{Why don't we just do right multiplication for the right action? Why do we look at $W/W_K$ instead of the smaller $W^\theta$? I think $W^\theta \cong W/W_K$ when $G^\theta = K$?}\\
 %In other words, we can (and usually will) start with a Lie group $G_\mathbb{R}$. As a first example, let's start with $G_\mathbb{R} \coloneqq \textnormal{SL}(2, \mathbb{R})$, which admits the maximal compact subgroup $K_\mathbb{R} \coloneqq \textnormal{SO}(2)$ (this is also its maximal torus). The complexification of $G_\mathbb{R}$ is of course $G \coloneqq \textnormal{SL}(2, \mathbb{C})$, while the complexification of $K_\mathbb{R}$ is homeomorphic to the subgroup $K$ of diagonal matrices in $G$. A maximal torus $T$ for $G$ is the subgroup of diagonal matrices in $\textnormal{SU}(2)$, whence the Weyl group of $G$ is $W \coloneqq N_G(T)/T = \mathbb{Z}/2\mathbb{Z}$, as
 %\begin{align*}
 %\begin{split}
