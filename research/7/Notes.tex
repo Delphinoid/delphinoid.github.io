@@ -684,10 +684,10 @@ Thus we also obtain a directed order coideal $Y_r \coloneqq X_r \cup \{r\}$, as 
 s(\alpha_t) = \alpha_t + 2\cos\!\left(\frac{\pi}{m_{st}}\right)\!\alpha_s.
 \end{split}
 \end{align*}
-\noindent\\[-0.6\linespacing] We define $R^{W_K}$ to be the polynomials in $R$ that are invariant under action by $W_K$. With this, given a generator $w$ representing a coset in $W/W_K$, we define the $w$-standard bimodule $R_w$ to be the $(R^{W_K}, R)$-bimdoule given by $R$ as a vector space with left action given by left multiplication and right action given by $s \cdot_w r \coloneqq s \cdot w(r)$, for all $s \in R_w$ and $r \in R$. Thus, just as before, the corresponding Lusztig--Vogan module category is
+\noindent\\[-0.6\linespacing] We define $R^{W_K}$ to be the polynomials in $R$ that are invariant under action by $W_K$. With this, given a generator $w$ representing a coset in $W/W_K$, we define the $w$-standard bimodule $R_w$ to be the $(R^{W_K}, R)$-bimdoule given by $R$ as a vector space with left action given by left multiplication and right action given by $s \cdot_w r \coloneqq s \cdot w(r)$, for all $s \in R_w$ and $r \in R$. Thus, just as before, the corresponding algebraic Lusztig--Vogan module category is
 \begin{align*}
 \begin{split}
-\mathcal{M}_{LV}^0 \coloneqq \langle R_w \otimes_R X : [w] \in W/W_K, X \in \obset(\mathbb{S}\textcat{Bim}(W, S))\rangle_{\oplus,\ominus,(1)}.
+\mathcal{M}_{LV}^0 = \langle R_w \otimes_R X : [w] \in W/W_K, X \in \obset(\mathbb{S}\textcat{Bim}(W, S))\rangle_{\oplus,\ominus,(1)}.
 \end{split}
 \end{align*}
 \newpage
@@ -719,7 +719,7 @@ Let's work through an example with $G \coloneqq \textnormal{SL}(2, \mathbb{C})$.
 G^{\theta'} = \textnormal{SO}(2, \mathbb{C}) \coloneqq \left\{\!\begin{pmatrix}\hphantom{-}a&b\\-b&a\end{pmatrix} : a, b \in \mathbb{C}, a^2 + b^2 = 1\right\}\!.
 \end{split}
 \end{align*}
-\noindent Note that this is homeomorphic to $\mathbb{C}^\times \coloneqq \mathbb{C}\!\setminus\!\{0\}$, which we observe is the complexification of $\textnormal{SO}(2) \cong S^1$, the maximal compact subgroup (and, when considering  $\textnormal{SL}(2, \mathbb{R})$ as a Lie group, the maximal torus) of $\textnormal{SL}(2, \mathbb{R})$. Since $G^{\theta'}$ is connected, the identity component is just the entire group. However, $G^{\theta'}$ is a little awkward to work with; therefore, instead of using $G^{\theta'}$, consider the following.\newpage
+\noindent Note that this is homeomorphic to $\mathbb{C}^\times \coloneqq \mathbb{C}\!\setminus\!\{0\}$ and is hence a maximal torus for $G$ as a complex algebraic group (that is, a subgroup that is maximal among subgroups homeomorphic to $(\mathbb{C}^\times)^{\oplus k}$), as there are no groups $H$ for which $G^{\theta'} \subset H \subset G$. In fact, it is the complexification of $\textnormal{SO}(2, \mathbb{R})$, the maximal torus of $\textnormal{SL}(2, \mathbb{R})$ as a real Lie group (that is, the subgroup that is maximal among subgroups homeomorphic to $(S^1)^{\oplus k}$). Since $G^{\theta'}$ is connected, the identity component is the entire group. However, $G^{\theta'}$ is awkward to work with; therefore, instead of using $G^{\theta'}$, consider the following.\newpage
 
 \noindent Suppose we conjugate $\theta'$ by the inner automorphism associated to the matrix
 \begin{align*}
@@ -740,7 +740,7 @@ h \coloneqq \frac{1}{\csqrt{2}}\begin{pmatrix}1&i\\i&1\end{pmatrix}\! \in \textn
 G^\theta = \left\{\!\begin{pmatrix}a&0\hphantom{{}^{-1}}\\0&a^{-1}\end{pmatrix} : a \in \mathbb{C}^\times\right\}\!,
 \end{split}
 \end{align*}
-\noindent which is of course homeomorphic to $\mathbb{C}^\times$. Once again, since $G^\theta$ is connected, the identity component is just the entire group, and hence we will take $K \coloneqq G^\theta$. The benefit of looking at this realization of $\mathbb{C}^\times$ is that $G^\theta$ is also a maximal torus (when considering $\textnormal{SL}(2, \mathbb{C})$ as a complex algebraic group) given by the intersection of the pair of opposite Borel groups
+\noindent which is of course homeomorphic to $\mathbb{C}^\times$. Once again, since $G^\theta$ is connected, the identity component is just the entire group, and hence we will take $K \coloneqq G^\theta$. Once again, $G^\theta$ is a maximal torus, and is given by the intersection of the pair of opposite Borel groups
 \begin{align*}
 \begin{split}
 B \coloneqq \left\{\!\begin{pmatrix}a&b\hphantom{{}^{-1}}\\0&a^{-1}\end{pmatrix} : a \in \mathbb{C}^\times, b \in \mathbb{C}\right\}\!\qquad\text{and}\qquad B' \coloneqq \left\{\!\begin{pmatrix}a&0\hphantom{{}^{-1}}\\b&a^{-1}\end{pmatrix} : a \in \mathbb{C}^\times, b \in \mathbb{C}\right\}\!.
@@ -752,10 +752,25 @@ B \coloneqq \left\{\!\begin{pmatrix}a&b\hphantom{{}^{-1}}\\0&a^{-1}\end{pmatrix}
 N_G(T) = \{g \in G : gtg^{-1} \in T, \textnormal{for all $t \in T$}\} = T \sqcup \left\{\!\begin{pmatrix}0&b\\-b^{-1}&0\end{pmatrix} : b \in \mathbb{C}^\times\!\right\}\!;
 \end{split}
 \end{align*}
-\noindent similarly, $T_K \coloneqq T$ is obviously then a maximal torus in $K$, giving us $W_K \coloneqq N_K(T_K)/T_K = \{1\}$. The only choice of simple roots we can make is $S = \{-1\}$, whence $R = \mathbb{R}[\alpha_{-1}]$. The action of $W$ on $R$ is given by $0 : r \mapsto r$ and $1 : r \mapsto -r$, for $r \in R$, giving us $R^{W_K} = R$ and an easy $(R^{W_K}, R)$-bimodule structure for $R$. This gives us a very explicit module category over $\mathbb{S}\textcat{Bim}(W, S)$! A standard exercise we can now do is to compute the Jordan--H\"{o}lder filtrations of $\mathcal{M}_{LV}^0$.\\
+\noindent similarly, $T_K \coloneqq T$ is obviously then a maximal torus in $K$, giving us $W_K \coloneqq N_K(T_K)/T_K = \{1\}$. The only choice of simple roots we can make is $S = \{-1\}$, whence $R = \mathbb{R}[\alpha_{-1}]$. The action of $W$ on $R$ is given by $1 : r \mapsto r$ and $-1 : r \mapsto -r$, for $r \in R$, giving us $R^{W_K} = R$ and an easy $(R^{W_K}, R)$-bimodule structure for $R$. This gives us a very explicit module category over $\mathbb{S}\textcat{Bim}(W, S)$! A standard exercise we can now do is to compute the Jordan--H\"{o}lder filtrations of $\mathcal{M}_{LV}^0$. \textcolor{red}{When $T = G^\theta$, don't we always have that $W^\theta = \{e\}$? Using $W/W_K$ makes much more sense, so why is $W^\theta$ written in the most general setting?}\\[-1.5\baselineskip]%; therefore it is easily seen to be multifinitary.\\[-1.5\baselineskip]
+\begin{center}
+\rule{0.5\linewidth}{1pt}
+\end{center}
+\noindent\\[-\baselineskip]
+\noindent Recall that the indecomposable objects in $\mathbb{S}\textcat{Bim}(W, S)$ are given by Bott--Samelson bimodules of the form $B_w \coloneqq R \otimes_{R^w} R(1)$, for $w \in W$. Because module products distribute over direct sums, it follows that the indecomposables of $\mathcal{M}_{LV}^0$ are of the form $R_{w_1} \otimes_R B_{w_2}$, for $[w_1] \in W/W_K$ and $w_2 \in W$; that is, products of generators of $\mathcal{M}_{LV}^0$ with indecomposable Soergel bimodules. In our case with $\textnormal{SL}(2, \mathbb{C})$, we have four candidates, which are evaluated as follows:
+\begin{alignat*}{2}
+R_1 \otimes_R B_1 \cong (R \otimes_R R) \otimes_R R(1) &\cong R,&\qquad R_1 \otimes_R B_{-1} \cong (R \otimes_R R) \otimes_{R^{-1}} R(1) &\cong B_{-1},\\
+R_{-1} \otimes_R B_1 \cong (R_{-1} \otimes_R R) \otimes_R R(1) &\cong R_{-1},&\qquad R_{-1} \otimes_R B_{-1} \cong (R_{-1} \otimes_R R) \otimes_{R^{-1}} R(1) &\cong B_{-1},
+\end{alignat*}
+\noindent where we note that $R_1 \cong R \cong B_1$. Thus our three indecomposables are $R$, $R_{-1}$ and $B_{-1}$. From this we obtain the two complete filtrations
+\begin{align*}
+\begin{split}
+\{B_{-1}\} \subset \{R_{-1}, B_{-1}\} \subset \{R, R_{-1}, B_{-1}\}\qquad\text{and}\qquad\{B_{-1}\} \subset \{R, B_{-1}\} \subset \{R, R_{-1}, B_{-1}\}.
+\end{split}
+\end{align*}
+\newpage
+\noindent ...
 \end{example}
-
-\noindent\textcolor{red}{When $T = G^\theta$, don't we always have that $W^\theta = \{e\}$? Using $W/W_K$ makes much more sense, so why is $W^\theta$ written in the most general setting?}\\
 %In other words, we can (and usually will) start with a Lie group $G_\mathbb{R}$. As a first example, let's start with $G_\mathbb{R} \coloneqq \textnormal{SL}(2, \mathbb{R})$, which admits the maximal compact subgroup $K_\mathbb{R} \coloneqq \textnormal{SO}(2)$ (this is also its maximal torus). The complexification of $G_\mathbb{R}$ is of course $G \coloneqq \textnormal{SL}(2, \mathbb{C})$, while the complexification of $K_\mathbb{R}$ is homeomorphic to the subgroup $K$ of diagonal matrices in $G$. A maximal torus $T$ for $G$ is the subgroup of diagonal matrices in $\textnormal{SU}(2)$, whence the Weyl group of $G$ is $W \coloneqq N_G(T)/T = \mathbb{Z}/2\mathbb{Z}$, as
 %\begin{align*}
 %\begin{split}
