@@ -700,7 +700,7 @@ is known as a {\em Coxeter group}.\\
 \noindent\begin{definition}\textnormal{(Expression).} Let $(W, S)$ be a Coxeter system with $w \in W$. An {\em expression for $w$ of length $k$} is any sequence $\underline{w} := (s_1, \dots, s_k)$, for some not necessarily unique choice of $s_1, \dots, s_k \in S$, such that $w = s_1 s_2 \cdots s_k$. The {\em length} of $w$, denoted $\ell(w)$, is the length of its shortest expression, and any expression for $w$ of length $\ell(w)$ is said to be {\em reduced}. Moreover, $\ell(w) = 0$ if and only if $w = 1$.\\
 \end{definition}
 
-\noindent\begin{definition}\textnormal{(Bruhat Order).} Let $(W, S)$ be a Coxeter system and $\Phi \coloneqq \{wsw^{-1} : s \in S, w \in W\}$ the set of simple reflections in $W$. For $x, y \in W$, we write $x \leq y$ if and only if there exists a chain $x = x_0, x_1, \dots, x_k = y$ such that $\ell(x_i) < \ell(x_{i+1})$ and $x_i^{-1}x_{i+1} \in \Phi$ for all $0 \leq i < k$. This defines a partial order on $W$, known as the {\em Bruhat order}.\\
+\noindent\begin{definition}\textnormal{(Bruhat Order).} Let $(W, S)$ be a Coxeter system and $\Phi \coloneqq \{wsw^{-1} : s \in S, w \in W\}$ the set of conjugates of simple reflections in $W$. For $x, y \in W$, we write $x \leq y$ if and only if there exists a chain $x = x_0, x_1, \dots, x_k = y$ such that $\ell(x_i) < \ell(x_{i+1})$ and $x_i^{-1}x_{i+1} \in \Phi$ for all $0 \leq i < k$. This defines a partial order on $W$, known as the {\em Bruhat order}.\\
 \end{definition}
 
 \noindent\begin{theorem}\label{Matsumoto}\textnormal{(Matsumoto's Theorem).} For any two reduced expressions of an element of a Coxeter group, the first can always be transformed into the second by repeatedly applying the braid relation.\\
