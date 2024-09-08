@@ -265,7 +265,7 @@ f = \sum_{j=1}^n{\sum_{i=1}^m{(\iota_{Y_j} \circ f_{i,j} \circ \pi_{X_i})}}
 \noindent\begin{remark}\label{FreydMitchellEquivalence} This result tells us that a small category is multifinitary if and only if it is equivalent\linebreak to a full subcategory of the category of finitely generated, projective modules over some\linebreak finite-dimensional, associative $\mathbbm{k}$-algebra (\cite{MMMTZ23}). It may also be worth noting that we can replace ``projective'' with ``injective'' in this alternative definition, as these two notions are dual in the sense that being projective is of course the same as being injective in the opposite category.\\
 \end{remark}
 
-%\noindent\begin{remark}\label{FreydMitchell} Some authors write that a category is finitary if it is equivalent to a category of finitely generated, projective modules over some finite-dimensional, associative $\mathbbm{k}$-algebra (\cite{MMMTZ23}). Such a category is certainly Karoubi by our previous remarks, and it also has both finitely many isomorphism classes of indecomposable objects and finite-dimensional $\mathbbm{k}$-vector spaces of morphisms. The converse direction follows from a folklorish modification of the Freyd-Mitchell embedding\linebreak theorem. It may also be worth noting that we can replace ``projective'' with ``injective'' in this alternative definition, as these two notions are dual in the sense that being projective is the same as being injective in the opposite category.\\
+%\noindent\begin{remark}\label{FreydMitchell} Some authors write that a category is finitary if it is equivalent to a category of finitely generated, projective modules over some finite-dimensional, associative $\mathbbm{k}$-algebra (\cite{MMMTZ23}). Such a category is certainly Karoubi by our previous remarks, and it also has both finitely many isomorphism classes of indecomposable objects and finite-dimensional $\mathbbm{k}$-vector spaces of morphisms. The converse direction follows from a folklorish modification of the Freyd--Mitchell embedding\linebreak theorem. It may also be worth noting that we can replace ``projective'' with ``injective'' in this alternative definition, as these two notions are dual in the sense that being projective is the same as being injective in the opposite category.\\
 %\end{remark}
 
 \noindent\begin{theorem}\label{KrullSchmidt}\textnormal{(\cite[Theorem 6.1]{Sha23}).} Let $\mathcal{C}$ be an additive, $\mathbbm{k}$-linear category with finite-\linebreak dimensional $\mathbbm{k}$-vector spaces of morphisms. Then the following are equivalent.
@@ -613,7 +613,7 @@ multifinitary bicategory $\mathscr{C}$ is simple if and only if the unique maxim
 \noindent Choose $r \in \textnormal{Ind}(\textnormal{M})/\!\sim$ and let $X_r$ be the maximal directed order coideal in $\textnormal{Ind}(\textnormal{M})/\!\sim$ that does not contain $r$. In other words, $(\textnormal{Ind}(\textnormal{M})/\!\sim)\setminus X_r$ -- the complement of $X_r$ -- has maximal element $r$. %\textcolor{red}{Why do they also say $r$ is {\em minimal} in the complement of $X_r$ despite their order being backwards to mine?}
 Thus we also obtain a directed order coideal $Y_r \coloneqq X_r \cup \{r\}$, as $r$ being maximal in the complement means $Y_r$ will be an upper set, whence the associated quotient $\textnormal{M}_{Y_r/X_r}$ is transitive by \hyperref[Transitive2]{Proposition \ref*{Transitive2}}. We henceforth let $\underline{\textnormal{M}}_r$ denote the simple quotient $\underline{\textnormal{M}}_{Y_r/X_r}$.\newpage
 
-%\noindent Before stating the main theorem of this section, we recall the classical Jordan-H\"{o}lder theorem for modules over rings. Let $M$ be an $R$-module admitting the two composition series
+%\noindent Before stating the main theorem of this section, we recall the classical Jordan--H\"{o}lder theorem for modules over rings. Let $M$ be an $R$-module admitting the two composition series
 %\begin{align*}
 %\begin{split}
 %\{0\} = M_0 \subset M_1 \subset \cdots \subset M_n = M,%
@@ -625,7 +625,7 @@ Thus we also obtain a directed order coideal $Y_r \coloneqq X_r \cup \{r\}$, as 
 %\{0\} = M_0' \subset M_1' \subset \cdots \subset M_m' = M,
 %\end{split}
 %\end{align*}
-%\noindent where by {\em composition series} we mean that these are filtrations of submodules where the {\em composition factors} $L_i \coloneqq M_i/M_{i-1}$ and $L_i' \coloneqq M_j'/M_{j-1}'$ are simple for all $i \in \{1, \dots, n\}$ and $j \in \{1, \dots, m\}$. The {\em Jordan-H\"{o}lder theorem} tells us that the {\em composition lengths} are equal -- that is, $n = m$ -- and moreover that there exists a permutation $\sigma \in S_n$ such that $L_i \cong L_{\sigma(i)}'$ for all $i \in \{1, \dots, n\}$.\\
+%\noindent where by {\em composition series} we mean that these are filtrations of submodules where the {\em composition factors} $L_i \coloneqq M_i/M_{i-1}$ and $L_i' \coloneqq M_j'/M_{j-1}'$ are simple for all $i \in \{1, \dots, n\}$ and $j \in \{1, \dots, m\}$. The {\em Jordan--H\"{o}lder theorem} tells us that the {\em composition lengths} are equal -- that is, $n = m$ -- and moreover that there exists a permutation $\sigma \in S_n$ such that $L_i \cong L_{\sigma(i)}'$ for all $i \in \{1, \dots, n\}$.\\
 
 \noindent Consider a filtration of directed order coideals
 \begin{align*}
@@ -633,7 +633,7 @@ Thus we also obtain a directed order coideal $Y_r \coloneqq X_r \cup \{r\}$, as 
 \varnothing = Q_0 \subset Q_1 \subset \cdots \subset Q_n = \textnormal{Ind}(\textnormal{M})/\!\sim
 \end{split}
 \end{align*}
-\noindent such that $\abs{Q_i \setminus Q_{i-1}} = 1$ for all $i \in \{1, \dots, n\}$. We call this a {\em complete filtration}. As shown previously, from such a filtration we have a corresponding {\em weak Jordan-H\"{o}lder series}
+\noindent such that $\abs{Q_i \setminus Q_{i-1}} = 1$ for all $i \in \{1, \dots, n\}$. We call this a {\em complete filtration}. As shown previously, from such a filtration we have a corresponding {\em weak Jordan--H\"{o}lder series}
 \begin{align*}
 \begin{split}
 \{0\} = \textnormal{M}_{Q_0} \subset \textnormal{M}_{Q_1} \subset \cdots \subset \textnormal{M}_{Q_n} = \textnormal{M}
@@ -664,7 +664,7 @@ Thus we also obtain a directed order coideal $Y_r \coloneqq X_r \cup \{r\}$, as 
 \noindent Let $\textnormal{I}_{X_r}$ be the $\mathscr{C}$-stable ideal in $\textnormal{M}_{Y_r}$ for which $\textnormal{M}_{Y_r/X_r} = \textnormal{M}_{Y_r}/\textnormal{I}_{X_r}$ and $\textnormal{I}_{Q_{i-1}}$ the $\mathscr{C}$-stable ideal in $\textnormal{M}_{Q_i}$ for which $\textnormal{M}_{Q_i/Q_{i-1}} = \textnormal{M}_{Q_i}/\textnormal{I}_{Q_{i-1}}$. Since $\{r\} = Q_i\setminus Q_{i-1}$, we know by construction that $Q_{i-1} \subseteq X_r$, as $X_r$ is by definition the maximal directed order coideal not containing $r$; similarly, $Q_i \subseteq Y_r$. This second inclusion induces a pseudonatural isomorphism from $\textnormal{M}_{Q_i}$ to $\textnormal{M}_{Y_r}$ (a collection of natural isomorphisms from functors between Hom-categories to functors between Hom-subcategories), whence the first inclusion induces a pseudonatural isomorphism $\sigma : \textnormal{M}_{Q_i} \Rightarrow \textnormal{M}_{Y_r/X_r}$ by taking the quotient. Now, $\textnormal{M}_{Q_i}/\textnormal{I}_{Q_{i-1}}$ contains only the objects generated by indecomposables in the equivalence class $r$. But for any such pair of indecomposable objects $X, Y \in \obset(\textnormal{M}(\textobj{j}))$ lying in the equivalence class $r$, we have that $\textnormal{I}_{X_r}(X, Y) \subseteq \textnormal{I}_{Q_{i-1}}(X, Y)$ by the aforementioned inequalities. Thus the pseudonatural isomorphism $\sigma$ factors through $\textnormal{M}_{Q_i/Q_{i-1}}$, in the sense that there exist pseudonatural transformations $\sigma_1 : \textnormal{M}_{Q_i} \Rightarrow \textnormal{M}_{Q_i/Q_{i-1}}$ and $\sigma_2 : \textnormal{M}_{Q_i/Q_{i-1}} \Rightarrow \textnormal{M}_{Y_r/X_r}$ such that $\sigma = \sigma_2 \circ \sigma_1$. In particular, this gives us a pseudonatural transformation $\sigma_2 : \textnormal{M}_{Q_i/Q_{i-1}} \Rightarrow \textnormal{M}_{Y_r/X_r}$ that is obviously surjective on morphisms by fullness; therefore, because $\textnormal{M}_{Q_i/Q_{i-1}}$ and $\textnormal{M}_{Y_r/X_r}$ are both transitive, taking their simple quotients via \hyperref[SimpleQuotient]{proposition \ref*{SimpleQuotient}} induces an equivalence between $\textnormal{L}_i$ and $\underline{\textnormal{M}}_r$ as desired, whence the result follows. This completes the proof.
 \end{proof}\\
 
-\noindent\textcolor{red}{This proof feels kind of handwavey, need to double-check it slowly. Also, in what sense is this weak Jordan-H\"{o}lder theorem ``weak''? The decategorifications of these simple quotients are ``transitive $\mathbb{N}$-modules'' and usually not simple. Should also do some examples here.}\\
+\noindent\textcolor{red}{This proof feels kind of handwavey, need to double-check it slowly. Also, in what sense is this weak Jordan--H\"{o}lder theorem ``weak''? The decategorifications of these simple quotients are ``transitive $\mathbb{N}$-modules'' and usually not simple. Should also do some examples here.}\\
 \newpage
 
 \ruledsection{Categories of Soergel Bimodules}{3}
@@ -928,7 +928,7 @@ R_{s} \otimes_R B_1 \cong (R_{s} \otimes_R R) \otimes_R R(1) &\cong R_{s},&\qqua
 
 \noindent\textbf{Plan}
 \begin{enumerate}[label=$\bullet$, leftmargin=1\parindent]
-\item Today I'd like to introduce one of the main theorems of birepresentation theory: the ``weak Jordan- H\"{o}lder theorem''. This theorem is a nice (abstract) motivation for the classification of simple birepresentations.
+\item Today I'd like to introduce one of the main theorems of birepresentation theory: the ``weak Jordan-- H\"{o}lder theorem''. This theorem is a nice (abstract) motivation for the classification of simple birepresentations.
 \item In principle I'm not sure how helpful this talk will be. It will mostly be walking you through what I've been thinking about over the past couple of weeks. The main theorem is, I think, quite nice, but getting there will likely be dry. Next time I'd like to focus more on examples (especially Soergel bimodules and their classification) if I'm capable enough.
 \item Addressing a question: why am I talking about birepresentations? The people were promised $2$-representations! In classifying $2$-representations of Soergel bimodules, it was quickly found that the language of $2$-representations was too restrictive. Later on in this series I will probably transition to $2$-representations, but at least in this talk I'd like to state things as generally as possible to avoid issues later on.
 \item As a reminder to myself, I'd like to maintain a little definition bank so you guys can keep track of definitions.\\
@@ -970,7 +970,7 @@ R_{s} \otimes_R B_1 \cong (R_{s} \otimes_R R) \otimes_R R(1) &\cong R_{s},&\qqua
 \item Define $\textnormal{Ind}(\textnormal{M})$, note that it is finite. Define preorder, outline the proof. Recall: preorder means $X \geq X$ and $X \geq Y, Y \geq Z \implies X \geq Z$. Quotienting by $X \sim Y \iff X \geq Y, Y \geq X$ gives us an honest partial order (pretty much by definition).
 \item Proposition: $\textnormal{M}$ is transitive if and only if $\abs{\textnormal{Ind}(\textnormal{M})/\!\sim} = 1$..
 \item Define poset ideal and coideal.
-\item Maybe now would be a good time to remind everyone of the classical Jordan-H\"{o}lder theorem. Given a representation $\textnormal{M}$, we would like a sensible notion of composition series.
+\item Maybe now would be a good time to remind everyone of the classical Jordan--H\"{o}lder theorem. Given a representation $\textnormal{M}$, we would like a sensible notion of composition series.
 \item How do coideals induce sub-birepresentations?
 \item How do pairs of coideals induce transitive birepresentations?
 \item How can we make these birepresentations simple?
