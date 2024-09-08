@@ -668,7 +668,8 @@ Thus we also obtain a directed order coideal $Y_r \coloneqq X_r \cup \{r\}$, as 
 \newpage
 
 \ruledsection{Categories of Soergel Bimodules}{3}
-\noindent\\ Throughout this chapter and the next, we will explore one of the main examples that has motivated the theory from the previous chapter: namely, categories of Soergel bimodules. The upshot is as follows. Given a Coxeter system $(W, S)$, we may define a corresponding Iwahori--Hecke algebra. These algebras appear all over mathematics, playing important roles in areas such as the representation theory of Lie groups and quantum groups, knot theory and statistical mechanics, among others. From this same Coxeter system, we may also construct a category of so-called Soergel bimodules, which is an algebraic categorification of the corresponding Iwahori--Hecke algebra. These categories were fundamental to the recent, purely algebraic proof of the {\em Kazhdan-Lusztig conjecture} (\cite[Conjecture 1.5]{KL79}) by Elias and Williamson (\cite{EW14}), and have since become an indispensable tool in Lie theory.\\
+\noindent\\ Throughout this chapter and the next, we will explore one of the main examples that has motivated the theory from the previous chapter: namely, categories of Soergel bimodules. %The upshot is as follows.
+Given a Coxeter system $(W, S)$, we may define a corresponding Iwahori--Hecke algebra. These algebras appear all over mathematics, playing important roles in areas such as the representation theory of Lie groups and quantum groups, knot theory and statistical mechanics, among others. From this same Coxeter system, we may also construct a category of so-called Soergel bimodules, which is an algebraic categorification of the corresponding Iwahori--Hecke algebra. These categories were fundamental to the recent, purely algebraic proofs of the Kazhdan-Lusztig conjecture (\cite[Conjecture 1.5]{KL79}) and Kazhdan-Lusztig positivity conjecture (\cite[p.\ 166]{KL79}) by Elias and Williamson (\cite[Theorem 1.1 and Corollary 1.2, respectively]{EW14}), and have since become an indispensable tool in Lie theory.\\
 %First, however, we should provide some historical context. Our story starts in 1979, when Kazhdan and Lusztig introduced a family of polynomials arising from the Coxeter system corresponding to an Iwahori--Hecke algebra, now known as {\em Kazhdan--Lusztig polynomials}. They proposed that the algebraic characters of Verma modules -- certain representations of semisimple Lie algebras -- were related to the values of their associated Kazhdan--Lusztig polynomials at $1$ (\cite[Conjecture 1.5]{KL79}), hoping to address a\linebreak longstanding problem in representation theory. This conjecture came to be known as the\linebreak {\em Kazhdan--Lusztig conjecture}.\\
 
 \noindent Before introducing categories of Soergel bimodules, we will briefly give definitions of Coxeter systems and Iwahori--Hecke algebras. We will not give much insight into these objects; for a more detailed survey, please see the wonderful book of Elias, Makisumi, Thiel and Williamson (\cite{EMTW20}).\\
@@ -690,12 +691,16 @@ W &= \langle s \in S : \text{$(st)^{m_{st}} = 1$ for all $s, t \in S$ with $m_{s
 % &= \langle s \in S : \text{$s^2 = 1$, $(st)^{m_{st}} = (ts)^{m_{st}}$ for all $s, t \in S$ with $m_{st} < \infty$}\rangle.
 \end{split}
 \end{align*}
-\noindent The pair $(W, S)$ is known as a {\em Coxeter system}, and any group $W$ admitting a Coxeter system is known as a {\em Coxeter group}.\\
+\noindent The pair $(W, S)$ is known as a {\em Coxeter system}, while $W$ %and any group $W$ admitting a Coxeter system
+is known as a {\em Coxeter group}.\\
 \end{definition}
 
 \noindent We call the generating set $S$ the set of {\em simple reflections} and $(m_{st})_{s,t \in S}$ a {\em Coxeter matrix}. Because $s^2 = 1$ for all $s \in S$, the relation $(st)^{m_{st}} = 1$ is equivalent to the braid relation $sts\cdots = tst\cdots$ for all $s, t \in S$ with $m_{st} < \infty$, where both sides are the product of $m_{st}$ simple reflections.\\
 
 \noindent\begin{definition}\textnormal{(Expression).} Let $(W, S)$ be a Coxeter system with $w \in W$. An {\em expression for $w$ of length $k$} is any sequence $\underline{w} := (s_1, \dots, s_k)$, for some not necessarily unique choice of $s_1, \dots, s_k \in S$, such that $w = s_1 s_2 \cdots s_k$. The {\em length} of $w$, denoted $\ell(w)$, is the length of its shortest expression, and any expression for $w$ of length $\ell(w)$ is said to be {\em reduced}. Moreover, $\ell(w) = 0$ if and only if $w = 1$.\\
+\end{definition}
+
+\noindent\begin{definition}\textnormal{(Bruhat Order).} Let $(W, S)$ be a Coxeter system and $\Phi \coloneqq \{wsw^{-1} : s \in S, w \in W\}$ the set of simple reflections in $W$. For $x, y \in W$, we write $x \leq y$ if and only if there exists a chain $x = x_0, x_1, \dots, x_k = y$ such that $\ell(x_i) < \ell(x_{i+1})$ and $x_i^{-1}x_{i+1} \in \Phi$ for all $0 \leq i < k$. This defines a partial order on $W$, known as the {\em Bruhat order}.\\
 \end{definition}
 
 \noindent\begin{theorem}\label{Matsumoto}\textnormal{(Matsumoto's Theorem).} For any two reduced expressions of an element of a Coxeter group, the first can always be transformed into the second by repeatedly applying the braid relation.\\
@@ -710,17 +715,45 @@ W &= \langle s \in S : \text{$(st)^{m_{st}} = 1$ for all $s, t \in S$ with $m_{s
 \end{enumerate}
 \end{definition}
 
+\noindent Note that we can expand and rearrange the quadratic relation as $1 = T_s^2 + (q - q^{-1})T_s$, whence by multiplying through by $T_s^{-1}$ we obtain $T_s^{-1} = T_s + (q - q^{-1})$.\\
+
 \noindent\begin{remark} If we identify our parameter $q$ with $1$, the Iwahori--Hecke algebra reduces to the group algebra $\mathbb{Z}W$. In other words, it is a deformation of the group algebra of its associated Coxeter group.\\
 \end{remark}
 
-\noindent\begin{remark} The one-parameter Iwahori--Hecke algebra is opposed to the more general\linebreak {\em multiparameter Iwahori--Hecke algebra}, where instead of taking $\mathscr{H}(W, S)$ to be over the ring of one-parameter Laurent polynomials $\mathbb{Z}[q, q^{-1}]$, we consider a {\em family} of units $\{q_s : s \in S\}$ and take $\mathscr{H}(W, S)$ to be over the ring $\mathbb{Z}[q_s^{\pm 1} : s \in S]$.\\
+\noindent\begin{remark} We have defined above the {\em one-parameter} Iwahori--Hecke algebra, as opposed to the more general {\em multiparameter} Iwahori--Hecke algebra, where instead of taking $\mathscr{H}(W, S)$ to be over the ring of one-parameter Laurent polynomials $\mathbb{Z}[q, q^{-1}]$ we consider a family of units $\{q_s : s \in S\}$ and take $\mathscr{H}(W, S)$ to be over the ring $\mathbb{Z}[q_s^{\pm 1} : s \in S]$.\\
 \end{remark}
 
 \noindent Let $(W, S)$ be a Coxeter system, and take $(s_1, \dots, s_\ell)$ and $(t_1, \dots, t_\ell)$ to be two reduced expressions for $w \in W$. Then $T_{s_1}T_{s_2}\cdots T_{s_\ell} = T_{t_1}T_{t_2} \cdots T_{t_\ell} \eqqcolon T_w$ by \hyperref[Matsumoto]{Theorem \ref*{Matsumoto}} and the braid relation. In particular, by \cite[Theorem 3.5]{EMTW20}, the set $\{T_w : w \in W\}$ forms a $\mathbb{Z}[q, q^{-1}]$-basis for $\mathscr{H}(W, S)$ known as the {\em standard basis}. Another important basis is the Kazhdan--Lusztig basis.\\
 
-\noindent\textcolor{red}{Kazhdan--Lusztig basis, change of basis from KL basis to standard basis is given by KL polynomials.}\\
+\noindent\begin{definition}\textnormal{(Kazhdan--Lusztig Involution).} Let $\mathscr{H}(W, S)$ be an Iwahori--Hecke algebra. The {\em Kazhdan--Lusztig involution} is the $\mathbb{Z}$-linear automorphism $h \mapsto \overline{h}$ on $\mathscr{H}(W, S)$, defined by
+\begin{align*}
+\begin{split}
+\overline{T_s} \coloneqq T_s^{-1} = T_s + (q - q^{-1})
+\end{split}
+\end{align*}
+\noindent on generators and by $\overline{q} = q^{-1}$ on Laurent polynomials. The {\em Kazhdan--Lusztig anti-involution} is the $\mathbb{Z}$-linear anti-automorphism $h \mapsto \omega(h)$ defined similarly on generators and Laurent polynomials.\\
+\end{definition}
 
-\noindent\begin{definition}\textnormal{(Geometric Representation).} Let $(W, S)$ be a Coxeter system and $V$ the real vector space with basis $\{\alpha_s : s \in S\}$. Define a symmetric, bilinear form on $V$ by% = \textnormal{span}_\mathbb{R}(\{\alpha_s : s \in S\})$ by
+\noindent \noindent Given $w \in W$ admitting a reduced expression $(s_1, \dots, s_\ell)$, we find that
+\begin{align*}
+\begin{split}
+\overline{T_w} &= \overline{T_{s_1}}\cdots\overline{T_{s_\ell}} = T_{s_1}^{-1}\cdots T_{s_\ell}^{-1} = (T_{w^{-1}})^{-1},\\
+\omega(T_w) &= \overline{T_{s_\ell}}\cdots\overline{T_{s_1}} = T_{s_\ell}^{-1}\cdots T_{s_1}^{-1} = T_w^{-1}.\\
+\end{split}
+\end{align*}
+\noindent With this, we are ready to define the Kazhdan--Lusztig basis.\\
+
+\noindent\begin{theoremdefinition}\textnormal{(Kazhdan--Lusztig Basis).} Let $\mathscr{H}(W, S)$ be an Iwahori--Hecke algebra. Then it admits a unique $\mathbb{Z}[q, q^{-1}]$-basis $\{b_w : w \in W\}$ such that each $b_w$ satisfies
+\begin{enumerate}[label=$\bullet$, leftmargin=4\parindent]
+\item (self-duality) $\overline{b_w} = b_w$,
+\item (degree bound) $b_w = T_w + \sum_{y \leq w}{P_{y,w} T_y}$,
+\end{enumerate}
+\noindent for some $P_{y,w} \in \mathbb{Z}_{\geq 0}[q]$ with $P_{w,w} \coloneqq 1$ and $P_{y,w} \coloneqq 0$ whenever $y \nleq w$. Note that $\leq$ denotes the Bruhat order. This basis is known as the {\em Kazhdan--Lusztig basis}, and the coefficients $P_{y,w}$ are called {\em Kazhdan--Lusztig polynomials}.\\
+\end{theoremdefinition}
+
+\noindent A proof for existence can be found in \cite[Theorem 3.25]{EMTW20}, while a proof for uniqueness can be found in \cite[Lemma 3.10]{EMTW20}. A helpful example for $W = S_3$ is given in \cite[\S 3.3.1]{EMTW20}. Note that all coefficients of Kazhdan--Lusztig polynomials are non-negative; this is the aforementioned {\em Kazhdan--Lusztig positivity conjecture}, which was first proven for general Coxeter systems by Elias and Williamson in \cite[Corollary 1.2]{EW14}. Note also that these Kazhdan--Lusztig polynomials provide us with a change of basis from the standard basis to the Kazhdan--Lusztig basis.\\
+
+\noindent\begin{definition}\label{GeometricRepresentation}\textnormal{(Geometric Representation).} Let $(W, S)$ be a Coxeter system and $V$ the real vector space with basis $\{\alpha_s : s \in S\}$. Define a symmetric, bilinear form on $V$ by% = \textnormal{span}_\mathbb{R}(\{\alpha_s : s \in S\})$ by
 \begin{align*}
 \begin{split}
 (\alpha_s, \alpha_t) = \begin{cases}-\cos\!\left(\frac{\pi}{m_{st}}\right)\!,&m_{s,t} \neq \infty;\\-1,&m_{s,t} = \infty.\end{cases}
@@ -745,7 +778,7 @@ s(\alpha_t) \coloneqq \alpha_t - 2(\alpha_s, \alpha_t)\alpha_s,
 \ruledsection{Lusztig--Vogan Module Categories}{4}
 \noindent\\ This chapter will aim to summarize the recent work of Larson and Romanov in their Soergel bimodule approach for algebraically categorifying the trivial block of the Lusztig--Vogan module (\cite{LR22}), which provides interesting examples of module categories over the category of Soergel bimodules. In the most general setting, the construction of a Lusztig--Vogan module category takes as ingredients a connected, complex, reductive algebraic group $G$, a Borel subgroup $B$ of $G$, a holomorphic involution $\theta$ of $G$ and a finite-index subgroup $K$ of the fixed-point subgroup $G^\theta \coloneqq \{g \in G : \theta(g) = g\}$.\\
 
-\noindent With the additional assumption that $K$ is the identity component of $G^\theta$ (see \cite{LR22} for details), we can proceed as follows. Let $P \coloneqq \textnormal{Sym}(\textnormal{span}_\mathbb{R}(X_*(T_K)))$ be the symmetric algebra on the $\mathbb{R}$-span of the cocharacter lattice of a maximal torus $T_K$ of $K$ contained in $B_K \coloneqq B \cap K$, graded such that $\textnormal{span}_\mathbb{R}(X_*(T_K))$ has degree $2$, and similarly let $R \coloneqq \textnormal{Sym}(\textnormal{span}_\mathbb{R}(X_*(T)))$ be the symmetric algebra on the $\mathbb{R}$-span of the cocharacter lattice of a maximal torus $T$ of $G$ contained in $B$, graded such that $\textnormal{span}_\mathbb{R}(X_*(T))$ has degree $2$. Denote by $W \coloneqq N_G(T)/T$ the Weyl group of $G$ corresponding to $T$, by $W^\theta$ the set of elements of $W$ fixed under the involution induced by $\theta$ and by $W_K \coloneqq N_K(T_K)/T_K$ the Weyl group of $K$ corresponding to $T_K$, where we write $P^{W_K} \coloneqq \{p \in P : wp = p\text{ for all }w \in W_K\}$. Note that $W_K \subseteq W^\theta \subseteq W$, and by choosing a set of simple roots in $W$ (using the positive roots corresponding to $B$) we obtain a Coxeter system $(W, S)$. Finally, let $\phi : R \to P$ be the algebra homomorphism extending the restriction map $X(T) \to X(T_K)$. For each $w \in W$, we define the {\em $w$-standard bimodule} $P_w$ to be the $(P_{W_K}, R)$-bimodule given by $P$ as a vector space with left action given by left multiplication and right action given by $s\cdot_w r \coloneqq s\phi(wr)$, for all $s \in P$ and $r \in R$. Define\\[-1.1\linespacing]
+\noindent With the additional assumption that $K$ is the identity component of $G^\theta$ (see \cite{LR22} for details), we can proceed as follows. Let $P \coloneqq \textnormal{Sym}(\textnormal{span}_\mathbb{R}(X_*(T_K)))$ be the symmetric algebra on the $\mathbb{R}$-span of the cocharacter lattice of a maximal torus $T_K$ of $K$ contained in $B_K \coloneqq B \cap K$, graded such that $\textnormal{span}_\mathbb{R}(X_*(T_K))$ has degree $2$, and similarly let $R \coloneqq \textnormal{Sym}(\textnormal{span}_\mathbb{R}(X_*(T)))$ be the symmetric algebra on the $\mathbb{R}$-span of the cocharacter lattice of a maximal torus $T$ of $G$ contained in $B$, graded such that $\textnormal{span}_\mathbb{R}(X_*(T))$ has degree $2$. Denote by $W \coloneqq N_G(T)/T$ the Weyl group of $G$ corresponding to $T$, by $W^\theta$ the set of elements of $W$ fixed under the involution induced by $\theta$ and by $W_K \coloneqq N_K(T_K)/T_K$ the Weyl group of $K$ corresponding to $T_K$, where we write $P^{W_K} \coloneqq \{p \in P : wp = p\text{ for all }w \in W_K\}$. Note that $W_K \subseteq W^\theta \subseteq W$, and by choosing a set of simple roots in $W$ (using the positive roots corresponding to $B$) we obtain a Coxeter system $(W, S)$. Finally, let $\phi : R \to P$ be the algebra homomorphism extending the restriction map $X(T) \to X(T_K)$. For each $w \in W$, we define the {\em $w$-standard bimodule} $P_w$ to be the $(P_{W_K}, R)$-bimodule given by $P$ as a vector space with left action given by left multiplication and right action given by $s\cdot_w r \coloneqq s\phi(w(r))$ for all $s \in P$ and $r \in R$, where $w(r)$ denotes $w$ acting on $r$ via the reflection action given in \hyperref[GeometricRepresentation]{Definition \ref*{GeometricRepresentation}}. We now define\\[-1.1\linespacing]
 \begin{align*}
 \begin{split}
 \mathcal{N}_{LV}^0 \coloneqq \langle P_w \otimes_R X : w \in W^\theta, X \in \obset(\mathbb{S}\textcat{Bim}(W, S))\rangle_{\oplus,\ominus,(1)}
@@ -753,13 +786,13 @@ s(\alpha_t) \coloneqq \alpha_t - 2(\alpha_s, \alpha_t)\alpha_s,
 \end{align*}
 \noindent to be the category of $(P^{W_K}, R)$-bimodules generated by standard bimodules under the right action of Soergel bimodules and closed under direct sums, direct summands and gradning shifts. By \cite[Theorem 1.3.1]{LR22}, this categorifies the trivial block of the associated module of Lusztig and Vogan.\\
 
-\noindent To study this in full generality involves some deep results from Lie theory; thus for the time being we will restrict our attention to the case where the tori $T_K$ and $T$ are of equal rank (that is, where $T_K = T$ and hence $P = R$). In this situation the picture is much simpler. Let $(W, S)$ be a Coxeter system with finite index subgroup $W_K \subseteq W$. Given the collection $\{\alpha_s : s \in S\}$ of simple roots, we define a polynomial algebra $R \coloneqq \mathbb{R}[\alpha_1, \dots, \alpha_n]$, which we recall is isomorphic to the symmetric algebra of the vector space associated with the geometric representation of $(W, S)$. We therefore have an action of $W$ on $R$ induced by linearly extending the reflection action, given on generators $s \in W$ and simple roots $\alpha_t \in R$ by\\[-1.1\linespacing]
+\noindent To study this in full generality involves some deep results from Lie theory; thus for the time being we will restrict our attention to the case where the tori $T_K$ and $T$ are of equal rank (that is, where $T_K = T$ and hence $P = R$). In this situation the picture is much simpler. Let $(W, S)$ be a Coxeter system with finite index subgroup $W_K \subseteq W$. Given the collection $\{\alpha_s : s \in S\}$ of simple roots, we define a polynomial algebra $R \coloneqq \mathbb{R}[\alpha_1, \dots, \alpha_n]$, which we recall is isomorphic to the symmetric algebra of the vector space associated with the geometric representation of $(W, S)$ given in \hyperref[GeometricRepresentation]{Definition \ref*{GeometricRepresentation}}. We therefore have an action of $W$ on $R$, given on generators $s \in S$ and simple roots $\alpha_t \in R$ by\\[-1.1\linespacing]
 \begin{align*}
 \begin{split}
 s(\alpha_t) = \alpha_t + 2\cos\!\left(\frac{\pi}{m_{st}}\right)\!\alpha_s.
 \end{split}
 \end{align*}
-\noindent\\[-0.6\linespacing] We define $R^{W_K}$ to be the polynomials in $R$ that are invariant under action by $W_K$. With this, given a generator $w$ representing a coset in $W/W_K$, we define the $w$-standard bimodule $R_w$ to be the $(R^{W_K}, R)$-bimdoule given by $R$ as a vector space with left action given by left multiplication and right action given by $s \cdot_w r \coloneqq s \cdot w(r)$, for all $s \in R_w$ and $r \in R$. Thus, just as before, the corresponding algebraic Lusztig--Vogan module category is
+\noindent\\[-0.6\linespacing] We define $R^{W_K}$ to be the polynomials in $R$ that are invariant under action by $W_K$. With this, given a generator $w$ representing a coset in $W/W_K$, we define the $w$-standard bimodule $R_w$ to be the $(R^{W_K}, R)$-bimdoule given by $R$ as a vector space with left action given by left multiplication and right action given by $s \cdot_w r \coloneqq s w(r)$, for all $s \in R_w$ and $r \in R$. Thus, just as before, the corresponding algebraic Lusztig--Vogan module category is
 \begin{align*}
 \begin{split}
 \mathcal{M}_{LV}^0 = \langle R_w \otimes_R X : [w] \in W/W_K, X \in \obset(\mathbb{S}\textcat{Bim}(W, S))\rangle_{\oplus,\ominus,(1)}.
