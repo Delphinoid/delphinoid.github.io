@@ -857,6 +857,9 @@ b_s^2 &= T_s^2 + 2qT_s + q^2\\
 \end{proof}
 \newpage
 
+\noindent\begin{remark}\label{GradedMultifinitary} Note that this means that we have infinitely many isomorphism classes of\linebreak indecomposable objects, and hence $\mathbb{S}\textsf{Bim}(W, S)$ is {\em not} multifinitary! However, we {\em can} say that it is {\em graded multifinitary}, as it is Krull--Schmidt and has finitely many indecomposables up to isomorphisms and grading shifts.\\
+\end{remark}
+
 \noindent\begin{theorem}\textnormal{(Soergel's Conjecture).} The character function $\textnormal{ch} : \mathbb{S}\textcat{Bim}(W, S) \to \mathscr{H}(W, S)$ sends $B_w$ to the isomorphism class $b_w$, for each $w \in W$. Thus the isomorphism given in \hyperref[SoergelCategorification]{Theorem \ref*{SoergelCategorification}} maps $b_w$ to the isomorphism class $[B_w]$, for each $w \in W$.\\
 \end{theorem}
 
@@ -887,7 +890,7 @@ G/B = \bigsqcup_{w \in W} X_w.
 P_{y,w}(q) = \sum_{i \geq 0} q^i \textnormal{dim}_\mathbb{C}(IH^{2i}_{X_y}(\overline{X_w}, \mathbb{C})),
 \end{split}
 \end{align*}
-\noindent where $P_{y,w}$ is a Kazhdan--Lusztig polynomial for the Kazhdan--Lusztig basis of $\mathscr{H}(W, S)$. The term $IH^{2i}_{X_y}(X_w)$ is the stalk of the $i$th hypercohomology of $\textnormal{IC}_w$ at a (equivalently, any) point of $X_y$, where $\textnormal{IC}_w$ denotes the intersection cohomology sheaves of $\overline{X_w}$ (\cite[13.13]{EMTW20}). This result was first shown in the appendix to \cite{KL79} (see Remark A11). One thing we may observe here is that we only sum over even graded pieces of the local intersection cohomology; the reason for this is that the odd graded pieces are all zero. \textcolor{red}{In fact, because we have a left action of $B$ on $G/B$, we can consider the equivariant cohomology $H_B^*(G/B)$, which we will find is a ring that is also graded in degree $2$. This is exactly where our ring $R$ comes from, and why we grade it the way that we do!}\\
+\noindent where $P_{y,w}$ is a Kazhdan--Lusztig polynomial for the Kazhdan--Lusztig basis of $\mathscr{H}(W, S)$. The term $IH^{2i}_{X_y}(X_w)$ is the stalk of the $i$th hypercohomology of $\textnormal{IC}_w$ at a (equivalently, any) point of $X_y$, where $\textnormal{IC}_w$ denotes the intersection cohomology sheaves of $\overline{X_w}$ (\cite[13.13]{EMTW20}). This result was first shown in the appendix to \cite{KL79} (see Remark A11). One thing we may observe here is that we only sum over even graded pieces of the local intersection cohomology; the reason for this is that the odd graded pieces are all zero. \textcolor{red}{In fact, because we have a left action of $B$ on $G/B$, we can consider the equivariant cohomology $H_B^*(G/B)$, which we will find is a ring that is also graded in degree $2$. This is exactly where our ring $R$ comes from, and why we grade it the way that we do!}\newpage
 \end{remark}
 
 \noindent\textcolor{red}{Mention properties of Soergel bimodules (Krull--Schmidt, etc.). Maybe try doing an example to put everything together, it'd be good to see an example of the Kazhdan--Lusztig basis of a Hecke algebra and compare it to the indecomposables in the corresponding category of Soergel bimodules. Finish with comment on grading. I should also start typing up Lie theory notes.}
@@ -994,13 +997,14 @@ N_G(T) = \{g \in G : gtg^{-1} \in T,\ \textnormal{for all $t \in T$}\} = T \sqcu
 R_1 \otimes_R B_1 \cong (R\hphantom{{}_{s}} \otimes_R R) \otimes_R R(1) &\cong R,&\qquad R_1 \otimes_R B_{s} \cong (R\hphantom{{}_{s}} \otimes_R R) \otimes_{R^{s}} R(1) &\cong B_{s},\\
 R_{s} \otimes_R B_1 \cong (R_{s} \otimes_R R) \otimes_R R(1) &\cong R_{s},&\qquad R_{s} \otimes_R B_{s} \cong (R_{s} \otimes_R R) \otimes_{R^{s}} R(1) &\cong B_{s},
 \end{alignat*}
-\noindent where we note that $R_1 \cong R \cong B_1$. Our three indecomposables are therefore $R$, $R_{s}$ and $B_{s}$. Of course, $B_{s} \geq R, R_{s}$, since $B_{s}$ is isomorphic to both $[\textnormal{M}(B_{s})](R) = R \otimes_R B_{s}$ and $[\textnormal{M}(B_{s})](R_{s}) = R_{s} \otimes_R B_{s}$; thus we obtain the two complete filtrations
+\noindent where we note that $R_1 \cong R \cong B_1$. We therefore have, up to grading shifts and isomorphisms, three indecomposables: $R$, $R_{s}$ and $B_{s}$. Just like categories of Soergel bimodules, our Lusztig--Vogan module categories are not multifinitary, but they {\em are} graded multifinitary. If we look back at our results in birepresentation theory, we actually don't even really need to ask that we have finitely many isomorphism classes of indecomposable objects, only that $\textnormal{Ind}(\textnormal{M})/\!\sim$ is finite.\newpage
+
+\noindent As it happens, this is true for our Lusztig--Vogan module categories; for example, our comment from the previous chapter tells us that $B_{s} \otimes_R B_{s}(k) \cong B_{s}(k+1) \oplus B_{s}(k-1)$, whence it can be shown that $B_{s} \sim B_{s}(k)$ for all $k \in \mathbb{Z}$. Of course, we also know that $B_{s} \geq R, R_{s}$, since $B_{s}$ is isomorphic to both $[\textnormal{M}(B_{s})](R) = R \otimes_R B_{s}$ and $[\textnormal{M}(B_{s})](R_{s}) = R_{s} \otimes_R B_{s}$; thus we obtain the two complete filtrations
 \begin{align*}
 \begin{split}
 \{B_{s}\} \subset \{R_{s}, B_{s}\} \subset \{R, R_{s}, B_{s}\}\qquad\text{and}\qquad\{B_{s}\} \subset \{R, B_{s}\} \subset \{R, R_{s}, B_{s}\}.
 \end{split}
 \end{align*}
-\newpage
 \noindent It is immediately obvious that the corresponding weak composition quotients will be equivalent, so we will just compute them for the filtration given by $Q_1 \coloneqq \{B_{s}\}$, $Q_2 \coloneqq \{R_{s}, B_{s}\}$ and $Q_3 \coloneqq \{R, R_{s}, B_{s}\}$. Defining subcategories $\mathcal{M}_{Q_i} \coloneqq \langle q \otimes_R X : q \in Q_i, X \in \obset(\mathbb{S}\textcat{Bim}(W, S))\rangle_{\oplus,\ominus,(1)}$ and two-sided ideals $\mathcal{I}_{Q_i}$ of $\mathcal{M}_{LV}^0$, we are able to define the quotient subcategories
 \begin{align*}
 \begin{split}
