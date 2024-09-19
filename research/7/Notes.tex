@@ -268,17 +268,34 @@ f = \sum_{j=1}^n{\sum_{i=1}^m{(\iota_{Y_j} \circ f_{i,j} \circ \pi_{X_i})}}
 %\noindent\begin{remark}\label{FreydMitchell} Some authors write that a category is finitary if it is equivalent to a category of finitely generated, projective modules over some finite-dimensional, associative $\mathbbm{k}$-algebra (\cite{MMMTZ23}). Such a category is certainly Karoubi by our previous remarks, and it also has both finitely many isomorphism classes of indecomposable objects and finite-dimensional $\mathbbm{k}$-vector spaces of morphisms. The converse direction follows from a folklorish modification of the Freyd--Mitchell embedding\linebreak theorem. It may also be worth noting that we can replace ``projective'' with ``injective'' in this alternative definition, as these two notions are dual in the sense that being projective is the same as being injective in the opposite category.\\
 %\end{remark}
 
-\noindent\begin{theorem}\label{KrullSchmidt}\textnormal{(\cite[Theorem 6.1]{Sha23}).} Let $\mathcal{C}$ be an additive, $\mathbbm{k}$-linear category with finite-\linebreak dimensional $\mathbbm{k}$-vector spaces of morphisms. Then the following are equivalent.
+\noindent\begin{theorem}\label{KrullSchmidt1}\textnormal{(\cite[Theorem 11.53]{EMTW20}).} Let $\mathcal{C}$ be an additive category. Then the following are equivalent.
 \begin{enumerate}[label=\textnormal{(\roman*).}, leftmargin=4\parindent]
 \item $\mathcal{C}$ is Krull--Schmidt.
-\item $\mathcal{C}$ is idempotent complete.
-\item An object $X \in \obset(\mathcal{C})$ is indecomposable if and only if the ring $\textnormal{End}_\mathcal{C}(X)$ is local.\\
+\item\label{KrullSchmidtii} $\mathcal{C}$ is idempotent complete and all endomorphism rings are semiperfect.\\
 \end{enumerate}
 \end{theorem}
 
-\noindent See \cite[Theorem 6.1]{Sha23} for the proof. There is alternatively a proof for (ii)$\implies$(iii) given in \cite[Lecture 1, Theorem 2]{Ela20}. This theorem tells us that a multifinitary category is precisely a Krull--Schmidt category with finitely many isomorphism classes of indecomposable objects!\\
+\noindent By \hyperref[KrullSchmidtii]{(ii)}, we mean that for all $X \in \obset(\mathcal{C})$, the ring $R \coloneqq \textnormal{End}_\mathcal{C}(X)$ admits a complete, orthogonal set of idempotents $p_1, \dots, p_n$ such that each $p_iRp_i$ is a local ring. This in fact implies that $X$ is indecomposable if and only if its endomorphism ring is local. In the setting where $\mathcal{C}$ is $\mathbbm{k}$-linear with finite-dimensional $\mathbbm{k}$-vector spaces of morphisms, its endomorphism rings will just be matrix rings, which are always semiperfect (as is any finite-dimensional, associative $\mathbbm{k}$-algebra); for such categories, being Krull--Schmidt is equivalent to being idempotent complete.\\
 
-\noindent\begin{definition} Let $\mathfrak{A}_\mathbbm{k}^f$ denote the $2$-category whose objects are multifinitary categories, whose $1$-morphisms are $\mathbbm{k}$-linear functors and whose $2$-morphisms are natural transformations.\newpage
+%\noindent\begin{theorem}\label{KrullSchmidt2}\textnormal{(\cite[Theorem 6.1]{Sha23}).} Let $\mathcal{C}$ be an additive, $\mathbbm{k}$-linear category with finite-\linebreak dimensional $\mathbbm{k}$-vector spaces of morphisms. Then the following are equivalent.
+%\begin{enumerate}[label=\textnormal{(\roman*).}, leftmargin=4\parindent]
+%\item $\mathcal{C}$ is Krull--Schmidt.
+%\item $\mathcal{C}$ is idempotent complete.
+%\item An object $X \in \obset(\mathcal{C})$ is indecomposable if and only if the ring $\textnormal{End}_\mathcal{C}(X)$ is local.\\
+%\end{enumerate}
+%\end{theorem}
+
+%\noindent\begin{theorem}\label{KrullSchmidt}\textnormal{(\cite[Theorem 6.1]{Sha23}).} Let $\mathcal{C}$ be an additive, $\mathbbm{k}$-linear category with finite-\linebreak dimensional $\mathbbm{k}$-vector spaces of morphisms. Then the following are equivalent.
+%\begin{enumerate}[label=\textnormal{(\roman*).}, leftmargin=4\parindent]
+%\item $\mathcal{C}$ is Krull--Schmidt.
+%\item $\mathcal{C}$ is idempotent complete.
+%\item An object $X \in \obset(\mathcal{C})$ is indecomposable if and only if the ring $\textnormal{End}_\mathcal{C}(X)$ is local.\\
+%\end{enumerate}
+%\end{theorem}
+
+%\noindent See \cite[Theorem 6.1]{Sha23} for the proof. There is alternatively a proof for (ii)$\implies$(iii) given in \cite[Lecture 1, Theorem 2]{Ela20}. This theorem tells us that a multifinitary category is precisely a Krull--Schmidt category with finitely many isomorphism classes of indecomposable objects!\\
+
+\noindent\begin{definition} Let $\mathfrak{A}_\mathbbm{k}^f$ denote the $2$-category whose objects are multifinitary categories, whose $1$-morphisms are $\mathbbm{k}$-linear functors and whose $2$-morphisms are natural transformations.\\
 \end{definition}
 
 \noindent We briefly remind the reader that any $\mathbbm{k}$-linear functor between additive, $\mathbbm{k}$-linear categories is automatically additive!\\
@@ -669,7 +686,7 @@ Thus we also obtain a directed order coideal $Y_r \coloneqq X_r \cup \{r\}$, as 
 
 \ruledsection{Categories of Soergel Bimodules}{3}
 \noindent\\ Throughout this chapter and the next, we will explore one of the main examples that has motivated the theory from the previous chapter: namely, categories of Soergel bimodules. %The upshot is as follows.
-Given a Coxeter system $(W, S)$, we may define a corresponding Iwahori--Hecke algebra. These algebras appear all over mathematics, playing important roles in areas such as the representation theory of Lie groups and quantum groups, knot theory and statistical mechanics, among others. From this same Coxeter system, we may also construct a category of so-called Soergel bimodules, which is an algebraic categorification of the corresponding Iwahori--Hecke algebra. These categories were fundamental to the recent, purely algebraic proofs of the Kazhdan--Lusztig conjecture (\cite[Conjecture 1.5]{KL79}) and Kazhdan--Lusztig positivity conjecture (\cite[p.\ 166]{KL79}) by Elias and Williamson (\cite[Theorem 1.1 and Corollary 1.2, respectively]{EW14}), and have since become an indispensable tool in Lie theory.\\
+Given a Coxeter system $(W, S)$, we may define a corresponding Iwahori--Hecke algebra. These algebras appear all over mathematics, playing important roles in areas such as the representation theory of Lie groups and quantum groups, knot theory and statistical mechanics, among others. From this same Coxeter system, we may also construct a category of so-called Soergel bimodules, which is an algebraic categorification of the corresponding Iwahori--Hecke algebra. These categories were fundamental to the recent, purely algebraic proofs of the Kazhdan--Lusztig Conjecture (\cite[Conjecture 1.5]{KL79}) and Kazhdan--Lusztig Positivity Conjecture (\cite[p.\ 166]{KL79}) by Elias and Williamson (\cite[Theorem 1.1 and Corollary 1.2, respectively]{EW14}), and have since become an indispensable tool in Lie theory.\\
 %First, however, we should provide some historical context. Our story starts in 1979, when Kazhdan and Lusztig introduced a family of polynomials arising from the Coxeter system corresponding to an Iwahori--Hecke algebra, now known as {\em Kazhdan--Lusztig polynomials}. They proposed that the algebraic characters of Verma modules -- certain representations of semisimple Lie algebras -- were related to the values of their associated Kazhdan--Lusztig polynomials at $1$ (\cite[Conjecture 1.5]{KL79}), hoping to address a\linebreak longstanding problem in representation theory. This conjecture came to be known as the\linebreak {\em Kazhdan--Lusztig conjecture}.\\
 
 \noindent Before introducing categories of Soergel bimodules, we will briefly give definitions of Coxeter systems and Iwahori--Hecke algebras. We will not give much insight into these objects; for a more detailed survey, please see the wonderful book of Elias, Makisumi, Thiel and Williamson (\cite{EMTW20}).\\
@@ -723,7 +740,7 @@ is known as a {\em Coxeter group}.\\
 \noindent\begin{remark} We have defined above the {\em one-parameter} Iwahori--Hecke algebra, as opposed to the more general {\em multiparameter} Iwahori--Hecke algebra, where instead of taking $\mathscr{H}(W, S)$ to be over the ring of one-parameter Laurent polynomials $\mathbb{Z}[q, q^{-1}]$ we consider a family of units $\{q_s : s \in S\}$ and take $\mathscr{H}(W, S)$ to be over the ring $\mathbb{Z}[q_s^{\pm 1} : s \in S]$.\\
 \end{remark}
 
-\noindent Let $(W, S)$ be a Coxeter system, and take $(s_1, \dots, s_\ell)$ and $(t_1, \dots, t_\ell)$ to be two reduced expressions for $w \in W$. Then $T_{s_1}T_{s_2}\cdots T_{s_\ell} = T_{t_1}T_{t_2} \cdots T_{t_\ell} \eqqcolon T_w$ by \hyperref[Matsumoto]{Theorem \ref*{Matsumoto}} and the braid relation. In particular, by \cite[Theorem 3.5]{EMTW20}, the set $\{T_w : w \in W\}$ forms a $\mathbb{Z}[q, q^{-1}]$-basis for $\mathscr{H}(W, S)$ known as the {\em standard basis}. Another important basis is the Kazhdan--Lusztig basis.\\
+\noindent Let $(W, S)$ be a Coxeter system, and take $(s_1, \dots, s_\ell)$ and $(t_1, \dots, t_\ell)$ to be two reduced expressions for $w \in W$. Then $T_{s_1}T_{s_2}\cdots T_{s_\ell} = T_{t_1}T_{t_2} \cdots T_{t_\ell} \eqqcolon T_w$ by \hyperref[Matsumoto]{Matsumoto's Theorem} and the braid relation. In particular, by \cite[Theorem 3.5]{EMTW20}, the set $\{T_w : w \in W\}$ forms a $\mathbb{Z}[q, q^{-1}]$-basis for $\mathscr{H}(W, S)$ with $T_\textnormal{id} = 1$, known as the {\em standard basis}. Another important basis is the Kazhdan--Lusztig basis.\\
 
 \noindent\begin{definition}\textnormal{(Kazhdan--Lusztig Involution).} Let $\mathscr{H}(W, S)$ be an Iwahori--Hecke algebra. The {\em Kazhdan--Lusztig involution} is the $\mathbb{Z}$-linear automorphism $h \mapsto \overline{h}$ on $\mathscr{H}(W, S)$, defined by
 \begin{align*}
@@ -751,7 +768,7 @@ is known as a {\em Coxeter group}.\\
 \noindent for some $P_{y,w} \in \mathbb{Z}_{\geq 0}[q]$ with $P_{w,w} \coloneqq 1$ and $P_{y,w} \coloneqq 0$ whenever $y \nleq w$ under the Bruhat order. This basis is known as the {\em Kazhdan--Lusztig basis}, and the coefficients $P_{y,w}$ are called {\em Kazhdan--Lusztig polynomials}.\\
 \end{theoremdefinition}
 
-\noindent A proof for existence can be found in \cite[Theorem 3.25]{EMTW20}, while a proof for uniqueness can be found in \cite[Lemma 3.10]{EMTW20}. A helpful example for $W = S_3$ is given in \cite[\S 3.3.1]{EMTW20}. Note that all coefficients of Kazhdan--Lusztig polynomials are non-negative; this is the aforementioned {\em Kazhdan--Lusztig positivity conjecture}, which was first proven for general Coxeter systems by Elias and Williamson in \cite[Corollary 1.2]{EW14}. Observe also that {\em any} set $\{b_w : w \in W\}$ satisfying the degree bound condition will be a basis; in particular, the Kazhdan--Lusztig polynomials induce a triangular change of basis matrix with $1$'s along the diagonal that maps the standard basis to $\{b_w : w \in W\}$, giving an isomorphism between the two sets.\\
+\noindent A proof for existence can be found in \cite[Theorem 3.25]{EMTW20}, while a proof for uniqueness can be found in \cite[Lemma 3.10]{EMTW20}. A helpful example for $W = S_3$ is given in \cite[\S 3.3.1]{EMTW20}. Note that all coefficients of Kazhdan--Lusztig polynomials are non-negative; this is the aforementioned {\em Kazhdan--Lusztig Positivity Conjecture}, which was first proven for general Coxeter systems by Elias and Williamson in \cite[Corollary 1.2]{EW14}. Observe also that {\em any} set $\{b_w : w \in W\}$ satisfying the degree bound condition will be a basis; in particular, the Kazhdan--Lusztig polynomials induce a triangular change of basis matrix with $1$'s along the diagonal that maps the standard basis to $\{b_w : w \in W\}$, giving an isomorphism between the two sets.\\
 
 \noindent\begin{definition}\label{GeometricRepresentation}\textnormal{(Geometric Representation).} Let $(W, S)$ be a Coxeter system and $V$ the real vector space with basis $\{\alpha_s : s \in S\}$. Define a symmetric, bilinear form on $V$ by% = \textnormal{span}_\mathbb{R}(\{\alpha_s : s \in S\})$ by
 \begin{align*}
@@ -842,28 +859,35 @@ b_s^2 &= T_s^2 + 2qT_s + q^2\\
 \noindent\begin{definition}\textnormal{(Soergel Bimodule).} Let $(W, S)$ be a Coxeter system. A {\em Soergel bimodule} is a direct summand of a finite direct sum of grading shifts of Bott--Samelson bimodules corresponding to expressions in $(W, S)$. Denote by $\mathbb{S}\textsf{Bim}(W, S)$ the {\em category of Soergel bimodules corresponding to $(W, S)$}, which we define as the ``graded closure'' of the Karoubian envelope of $\mathbb{BS}\textcat{Bim}(W, S)$; in other words, it is the closure of the category of Bott--Samelson bimodules corresponding to $(W, S)$ under isomorphisms, direct summands, finite direct sums and grading shifts.\\
 \end{definition}
 
-\noindent\begin{theorem}\textnormal{(Soergel's Categorification Theorem I).}\label{SoergelCategorification} There is a unique $\mathbb{Z}[q, q^{-1}]$-algebra\linebreak homomorphism $c : \mathscr{H}(W, S) \to \textnormal{Gr}(\mathbb{S}\textcat{Bim}(W, S))$ sending $b_s$ to the isomorphism class $[B_s]$, for each $s \in S$. Moreover, the character function $\textnormal{ch} : \mathbb{S}\textcat{Bim}(W, S) \to \mathscr{H}(W, S)$ descends to an inverse to $c$, making it an isomorphism.\\
+\noindent\begin{theorem}\textnormal{(Soergel's Categorification Theorem I).}\label{SoergelCategorification} There is a unique $\mathbb{Z}[q, q^{-1}]$-algebra\linebreak homomorphism $c : \mathscr{H}(W, S) \to \textnormal{Gr}(\mathbb{S}\textcat{Bim}(W, S))$ sending $q^k b_s$ to the isomorphism class $[B_s(k)]$, for each $s \in S$. Moreover, the $\Delta$-character function $\textnormal{ch}_\Delta : \mathbb{S}\textcat{Bim}(W, S) \to \mathscr{H}(W, S)$ descends to a homomorphism $\textnormal{ch} : \textnormal{Gr}(\mathbb{S}\textcat{Bim}(W, S)) \to \mathscr{H}(W, S)$ that is inverse to $c$, making these isomorphisms.\\
 \end{theorem}
 
 \noindent\begin{theorem}\textnormal{(Soergel's Categorification Theorem II).}\label{SBimIndecomposables} Let $(W, S)$ be a Coxeter system and $\underline{w}$ a reduced expression for $w \in W$. Then $BS(\underline{w})$ contains, up to isomorphism, a unique indecomposable summand $B_w$, which does not appear in $BS(\underline{x})$ for any $x < w$ and depends only on $w$, not the reduced expression. Moreover, all other direct summands are grading shifts of $B_x$, for $x < w$.\\
 \end{theorem}
 
-\noindent A statement of and reference for these results can be found in \cite[Theorem 5.24]{EMTW20}, as well as an algorithm for finding the indecomposables $B_w$. A precise definition for $\textnormal{ch}$ is also given in \cite[Definition 5.15]{EMTW20}, for those who are curious.\\
+\noindent A statement of and reference for these results can be found in \cite[Theorem 5.24]{EMTW20}, as well as an algorithm for finding the indecomposables $B_w$. The precise definition of the $\Delta$-character function is $\textnormal{ch}_\Delta : B \mapsto \sum_{y \in W} q^{\ell(y)} P_y(B) T_y$, where $P_y(B) \in \mathbb{Z}_{\geq 0}[q, q^{-1}]$ is some kind of graded multiplicity (this is slightly technical, see \cite[Theorem 5.10]{EMTW20} for details). For any indecomposable Soergel bimodule $B_w$, the graded multiplicities satisfy $P_y(B_w(k)) = q^k P_{y, w}$ by Soergel's Conjecture.\\
 
-\noindent\begin{corollary} The isomorphism classes of indecomposables of $\mathbb{S}\textcat{Bim}(W, S)$ are in bijection with $W \times \mathbb{Z}$.\\
+\noindent\begin{corollary}\label{SBimIndecomposablesCardinality} The isomorphism classes of indecomposables of $\mathbb{S}\textcat{Bim}(W, S)$ are in bijection with $W \times \mathbb{Z}$.\\
 \end{corollary}
 
 \noindent\begin{proof} This follows from \hyperref[SBimIndecomposables]{Theorem \ref*{SBimIndecomposables}}, together with the fact that grading shifts preserve\linebreak indecomposability. In particular, the indecomposable objects are, up to isomorphism, grading shifts of $B_w$, for $w \in W$. This completes the proof.
 \end{proof}
 \newpage
 
-\noindent\begin{remark}\label{GradedMultifinitary} Note that this means that we have infinitely many isomorphism classes of\linebreak indecomposable objects, and hence $\mathbb{S}\textsf{Bim}(W, S)$ is {\em not} multifinitary! However, we {\em can} say that it is {\em graded multifinitary}, as it is Krull--Schmidt and has finitely many indecomposables up to isomorphisms and grading shifts.\\
-\end{remark}
+%\noindent\begin{remark}\label{GradedMultifinitary} Note that this means that we have infinitely many isomorphism classes of\linebreak indecomposable objects, and hence $\mathbb{S}\textsf{Bim}(W, S)$ is {\em not} multifinitary! However, we {\em can} say that it is {\em graded multifinitary}, as it is Krull--Schmidt and has finitely many indecomposables up to isomorphisms and grading shifts.\\
+%\end{remark}
 
-\noindent\begin{theorem}\textnormal{(Soergel's Conjecture).} The character function $\textnormal{ch} : \mathbb{S}\textcat{Bim}(W, S) \to \mathscr{H}(W, S)$ sends $B_w$ to the isomorphism class $b_w$, for each $w \in W$. Thus the isomorphism given in \hyperref[SoergelCategorification]{Theorem \ref*{SoergelCategorification}} maps $b_w$ to the isomorphism class $[B_w]$, for each $w \in W$.\\
+\noindent We remark that for any category $\mathcal{C}$ with $\mathbb{Z}$-graded objects, $\morset_\mathcal{C}(X(j), Y(i)) = \morset_\mathcal{C}(X, Y(i-j))$. We define the corresponding {\em graded Hom-space} by $\morset^\bullet_\mathcal{C}(X, Y) \coloneqq \bigoplus_{i\in\mathbb{Z}} \morset_\mathcal{C}(X, Y(i))$.\\
+
+\noindent\begin{theorem}\textnormal{(Soergel Hom Formula).} For any two Soergel bimodules $B, B' \in \mathbb{S}\textcat{Bim}(W, S)$, %the graded vector space
+$\morset^\bullet_{\mathbb{S}\textcat{Bim}}(B, B')$ %\coloneqq \bigoplus_{i\in\mathbb{Z}} \morset_{\mathbb{S}\textcat{Bim}}(B, B'(i))$
+is free as a left graded $R$-module and as a right graded $R$-module, both with graded rank $\underline{\textnormal{rk}}(\morset_{\mathbb{S}\textcat{Bim}}(B, B')) = (\textnormal{ch}_\Delta(B), \textnormal{ch}_\Delta(B'))$, where $(-, -)$ denotes the standard form on $\mathscr{H}(W, S)$.\\
 \end{theorem}
 
-\noindent This result, which was first proven by Elias and Williamson (\cite[Theorem 1.1]{EW14}), both generalizes the Kazhdan--Lusztig conjecture and finally gives us an algebraic categorification of the Hecke algebra.\\
+\noindent\begin{theorem}\textnormal{(Soergel's Conjecture).} The isomorphism $\textnormal{ch} : \textnormal{Gr}(\mathbb{S}\textcat{Bim}(W, S)) \to \mathscr{H}(W, S)$ from \hyperref[SoergelCategorification]{Theorem \ref*{SoergelCategorification}} sends $B_w(k)$ to the isomorphism class $q^k b_w$, for each $w \in W$.\\
+\end{theorem}
+
+\noindent This result, which was first proven by Elias and Williamson (\cite[Theorem 1.1]{EW14}), generalizes the Kazhdan--Lusztig Conjecture and finally gives us an algebraic categorification of the Hecke algebra.\\
 
 \noindent\begin{remark}\label{2Grading} In the following chapters, we will typically have a sequence of subgroups $T \subset B \subset G$, where $G$ is a connected, complex, reductive algebraic group, $B$ is a Borel subgroup and $T$ is a maximal torus. These inclusions induce a Weyl group $W \coloneqq N_G(T)/T$, where
 \begin{align*}
@@ -884,16 +908,32 @@ G = \bigsqcup_{w \in W} C_w.
 G/B = \bigsqcup_{w \in W} X_w.
 \end{split}
 \end{align*}
-\noindent The cells $X_w$ are locally closed subvarieties of $G/B$. We refer to the Zariski closure $\overline{X_w}$ as the {\em Schubert variety of $w$}, and remark that $\overline{X_y} \subseteq \overline{X_w}$ if and only if $y \leq w$. As an aside, we have that
+\noindent The cells $X_w$ are locally closed subvarieties of $G/B$. We refer to the Zariski closure $\overline{X_w}$ as the {\em Schubert variety of $w$}, and remark that $\overline{X_y} \subseteq \overline{X_w}$ if and only if $y \leq w$. As an aside, we have that\\[-\linespacing]
 \begin{align*}
 \begin{split}
 P_{y,w}(q) = \sum_{i \geq 0} q^i \textnormal{dim}_\mathbb{C}(IH^{2i}_{X_y}(\overline{X_w}, \mathbb{C})),
 \end{split}
 \end{align*}
-\noindent where $P_{y,w}$ is a Kazhdan--Lusztig polynomial for the Kazhdan--Lusztig basis of $\mathscr{H}(W, S)$. The term $IH^{2i}_{X_y}(X_w)$ is the stalk of the $i$th hypercohomology of $\textnormal{IC}_w$ at a (equivalently, any) point of $X_y$, where $\textnormal{IC}_w$ denotes the intersection cohomology sheaves of $\overline{X_w}$ (\cite[13.13]{EMTW20}). This result was first shown in the appendix to \cite{KL79} (see Remark A11). One thing we may observe here is that we only sum over even graded pieces of the local intersection cohomology; the reason for this is that the odd graded pieces are all zero. \textcolor{red}{In fact, because we have a left action of $B$ on $G/B$, we can consider the equivariant cohomology $H_B^*(G/B)$, which we will find is a ring that is also graded in degree $2$. This is exactly where our ring $R$ comes from, and why we grade it the way that we do!}\newpage
+\noindent\\[-0.7\linespacing] where $P_{y,w}$ is a Kazhdan--Lusztig polynomial for the Kazhdan--Lusztig basis of $\mathscr{H}(W, S)$. The term $IH^{2i}_{X_y}(X_w)$ is the stalk of the $i$th hypercohomology of $\textnormal{IC}_w$ at a (equivalently, any) point of $X_y$, where $\textnormal{IC}_w$ denotes the intersection cohomology sheaves of $\overline{X_w}$ (\cite[13.13]{EMTW20}). This result was first shown in the appendix to \cite{KL79} (see Remark A11). One thing we may observe here is that we only sum over even graded pieces of the local intersection cohomology; the reason for this is that the odd graded pieces are all zero. \textcolor{red}{In fact, because we have a left action of $B$ on $G/B$, we can consider the equivariant cohomology $H_B^*(G/B)$, which we will find is a ring that is also graded in degree $2$. This is exactly where our ring $R$ comes from, and why we grade it the way that we do! (more detail?)}\newpage
 \end{remark}
 
-\noindent\textcolor{red}{Mention properties of Soergel bimodules (Krull--Schmidt, etc.). Maybe try doing an example to put everything together, it'd be good to see an example of the Kazhdan--Lusztig basis of a Hecke algebra and compare it to the indecomposables in the corresponding category of Soergel bimodules. Finish with comment on grading. I should also start typing up Lie theory notes.}
+\noindent As it happens (by the \hyperref[FreydMitchell]{Freyd--Mitchell Embedding Theorem}, for instance), any category of Soergel bimodules has finite-dimensional vector spaces of morphisms and is therefore Krull--Schmidt by \hyperref[KrullSchmidt1]{Theorem \ref*{KrullSchmidt1}}. Unfortunately, however, by \hyperref[SBimIndecomposablesCardinality]{Corollary \ref*{SBimIndecomposablesCardinality}} it will only be {\em graded multifinitary}, as we only have finitely many indecomposable objects under both isomorphisms and grading shifts. Luckily for us, we can obtain an honestly multifinitary category by somehow moving the grading into the morphisms. Let's look at how this applies to $\mathbb{S}\textcat{Bim}(W, S)$.\\
+
+\noindent We henceforth denote by $\mathbb{S}\textcat{Bim}_{(1)}(W, S)$ the category of Soergel bimodules that we have discussed up until now, and define a new category $\mathbb{S}\textcat{Bim}_\mathbb{Z}(W, S)$ as follows. We take the objects of $\mathbb{S}\textcat{Bim}_\mathbb{Z}(W, S)$ to be the ungraded objects of $\mathbb{S}\textcat{Bim}_{(1)}(W, S)$, and for any $B, B' \in \obset(\mathbb{S}\textcat{Bim}_\mathbb{Z}(W, S))$ we take the morphisms between them to be the graded Hom-space
+\begin{align*}
+\begin{split}
+\morset_{\mathbb{S}\textcat{Bim}_\mathbb{Z}}(B, B') \coloneqq \morset^\bullet_{\mathbb{S}\textcat{Bim}_{(1)}}(B, B') = \bigoplus_{i\in\mathbb{Z}} \morset_{\mathbb{S}\textcat{Bim}_{(1)}}(B, B'(i)).
+\end{split}
+\end{align*}
+\noindent Although there is certainly not an equivalence of categories between $\mathbb{S}\textcat{Bim}_{(1)}(W, S)$ and $\mathbb{S}\textcat{Bim}_\mathbb{Z}(W, S)$, they somehow encode precisely the same information. In particular, if we are given some $\mathbb{S}\textcat{Bim}_\mathbb{Z}(W, S)$, we can reconstruct $\mathbb{S}\textcat{Bim}_{(1)}(W, S)$ by taking its objects to be $\obset(\mathbb{S}\textcat{Bim}_\mathbb{Z}(W, S)) \times \mathbb{Z}$ and by defining
+\begin{align*}
+\begin{split}
+\morset_{\mathbb{S}\textcat{Bim}_{(1)}}((B, j), (B', i)) \coloneqq \morset^{i-j}_{\mathbb{S}\textcat{Bim}_\mathbb{Z}}(B, B'),
+\end{split}
+\end{align*}
+\noindent where $\morset^{i-j}_{\mathbb{S}\textcat{Bim}_\mathbb{Z}}(B, B')$ is the $i-j$th graded piece of $\morset_{\mathbb{S}\textcat{Bim}_\mathbb{Z}}(B, B')$. It's important to note, however, that this does not categorify the Hecke algebra (as we no longer have enough objects to have an isomorphism between $\textnormal{Gr}(\morset_{\mathbb{S}\textcat{Bim}_\mathbb{Z}}(B, B'))$ and $\mathscr{H}(W, S)$)! \textcolor{red}{Supposedly this is meant to categorify the Hecke algebra. I don't really understand. If we look at $B_s \otimes_R B_s$, this seems to be isomorphic to $B_s \oplus B_s$, which is kind of weird too. Somehow it seems like we only have the group algebra.}\\ %Moreover, note that $\mathbb{Z}[q, q^{-1}]$ is trivially a $\mathbb{Z}_+$-ring with $\mathbb{Z}_+$-basis $\{q^k : k \in \mathbb{Z}\}$. Define for each $k \in \mathbb{Z}$ an endofunctor $Q_k$ on $\mathbb{S}\textcat{Bim}_\mathbb{Z}(W, S)$ that takes objects $B$ to\\
+
+\noindent\textcolor{red}{Go through the $SL_2$ and $SL_3$ examples in detail to put everything together, it'd be good to see an example of the Kazhdan--Lusztig basis of a Hecke algebra and compare it to the indecomposables in the corresponding category of Soergel bimodules. I should also start typing up Lie theory notes.}
 \newpage
 
 \noindent 
@@ -1015,7 +1055,7 @@ R_{s} \otimes_R B_1 \cong (R_{s} \otimes_R R) \otimes_R R(1) &\cong R_{s},&\qqua
 \mathcal{M}_{Q_1/Q_0} \coloneqq \mathcal{M}_{Q_1}/\mathcal{I}_{Q_0} = \langle B_{s} \otimes_R X : X \in \obset(\mathbb{S}\textcat{Bim}(W, S))\rangle_{\oplus,\ominus,(1)}.
 \end{split}
 \end{align*}
-\noindent In order to compute the weak composition quotients, we must quotient our sub-birepresentations of the form $\textnormal{M}_{Q_i/Q_{i-1}} : \bullet \mapsto \mathcal{M}_{Q_i/Q_{i-1}}$ by the unique maximal $\mathbb{S}\textcat{Bim}(W, S)$-stable ideals given by \hyperref[UniqueMaximalIdeal]{Proposition \ref*{UniqueMaximalIdeal}}. \textcolor{red}{It would be nice to understand explicitly the weak composition quotients (i.e. what the maximal stable ideals look like as vector spaces, but this might be hard).}
+\noindent In order to compute the weak composition quotients, we must quotient our sub-birepresentations of the form $\textnormal{M}_{Q_i/Q_{i-1}} : \bullet \mapsto \mathcal{M}_{Q_i/Q_{i-1}}$ by the unique maximal $\mathbb{S}\textcat{Bim}(W, S)$-stable ideals given by \hyperref[UniqueMaximalIdeal]{Proposition \ref*{UniqueMaximalIdeal}}. So far, we haven't really learned anything new. 
 \end{example}
 %In other words, we can (and usually will) start with a Lie group $G_\mathbb{R}$. As a first example, let's start with $G_\mathbb{R} \coloneqq \textnormal{SL}(2, \mathbb{R})$, which admits the maximal compact subgroup $K_\mathbb{R} \coloneqq \textnormal{SO}(2)$ (this is also its maximal torus). The complexification of $G_\mathbb{R}$ is of course $G \coloneqq \textnormal{SL}(2, \mathbb{C})$, while the complexification of $K_\mathbb{R}$ is homeomorphic to the subgroup $K$ of diagonal matrices in $G$. A maximal torus $T$ for $G$ is the subgroup of diagonal matrices in $\textnormal{SU}(2)$, whence the Weyl group of $G$ is $W \coloneqq N_G(T)/T = \mathbb{Z}/2\mathbb{Z}$, as
 %\begin{align*}
