@@ -658,7 +658,7 @@ Thus we also obtain a directed order coideal $Y_r \coloneqq X_r \cup \{r\}$, as 
 \end{align*}
 \noindent consisting of sub-birepresentations whose {\em weak composition quotients} $\textnormal{L}_i \coloneqq \underline{\textnormal{M}}_{Q_i/Q_{i-1}}$ are simple birepresentations for all $i \in \{1, \dots, n\}$. With this, we have the following result.\\
 
-\noindent\begin{theorem}\textnormal{(Weak Jordan--H\"{o}lder Theorem).} Let $\textnormal{M}$ be a multifinitary birepresentation of a\linebreak multifinitary bicategory $\mathscr{C}$ admitting the two complete filtrations
+\noindent\begin{theorem}\label{JordanHolder}\textnormal{(Weak Jordan--H\"{o}lder Theorem).} Let $\textnormal{M}$ be a multifinitary birepresentation of a\linebreak multifinitary bicategory $\mathscr{C}$ admitting the two complete filtrations
 \begin{align*}
 \begin{split}
 \varnothing = Q_0 \subset Q_1 \subset \cdots \subset Q_n = \textnormal{Ind}(\textnormal{M})/\!\sim,%
@@ -917,23 +917,10 @@ P_{y,w}(q) = \sum_{i \geq 0} q^i \textnormal{dim}_\mathbb{C}(IH^{2i}_{X_y}(\over
 \noindent\\[-0.7\linespacing] where $P_{y,w}$ is a Kazhdan--Lusztig polynomial for the Kazhdan--Lusztig basis of $\mathscr{H}(W, S)$. The term $IH^{2i}_{X_y}(X_w)$ is the stalk of the $i$th hypercohomology of $\textnormal{IC}_w$ at a (equivalently, any) point of $X_y$, where $\textnormal{IC}_w$ denotes the intersection cohomology sheaves of $\overline{X_w}$ (\cite[13.13]{EMTW20}). This result was first shown in the appendix to \cite{KL79} (see Remark A11). One thing we may observe here is that we only sum over even graded pieces of the local intersection cohomology; the reason for this is that the odd graded pieces are all zero. \textcolor{red}{In fact, because we have a left action of $B$ on $G/B$, we can consider the equivariant cohomology $H_B^*(G/B)$, which we will find is a ring that is also graded in degree $2$. This is exactly where our ring $R$ comes from, and why we grade it the way that we do! (more detail?)}\newpage
 \end{remark}
 
-\noindent As it happens (by the \hyperref[FreydMitchell]{Freyd--Mitchell Embedding Theorem}, for instance), any category of Soergel bimodules has finite-dimensional vector spaces of morphisms and is therefore Krull--Schmidt by \hyperref[KrullSchmidt1]{Theorem \ref*{KrullSchmidt1}}. Unfortunately, however, by \hyperref[SBimIndecomposablesCardinality]{Corollary \ref*{SBimIndecomposablesCardinality}} it will only be {\em graded multifinitary}, as we only have finitely many indecomposable objects under both isomorphisms and grading shifts. Luckily for us, we can obtain an honestly multifinitary category by somehow moving the grading into the morphisms. Let's look at how this applies to $\mathbb{S}\textcat{Bim}(W, S)$.\\
+\noindent\textcolor{red}{Go through the $SL_2$ and $SL_3$ examples in detail to put everything together, it'd be good to see an example of the Kazhdan--Lusztig basis of a Hecke algebra and compare it to the indecomposables in the corresponding category of Soergel bimodules. I should also start typing up Lie theory notes.}\\
 
-\noindent We henceforth denote by $\mathbb{S}\textcat{Bim}_{(1)}(W, S)$ the category of Soergel bimodules that we have discussed up until now, and define a new category $\mathbb{S}\textcat{Bim}_\mathbb{Z}(W, S)$ as follows. We take the objects of $\mathbb{S}\textcat{Bim}_\mathbb{Z}(W, S)$ to be the ungraded objects of $\mathbb{S}\textcat{Bim}_{(1)}(W, S)$, and for any $B, B' \in \obset(\mathbb{S}\textcat{Bim}_\mathbb{Z}(W, S))$ we take the morphisms between them to be the graded Hom-space
-\begin{align*}
-\begin{split}
-\morset_{\mathbb{S}\textcat{Bim}_\mathbb{Z}}(B, B') \coloneqq \morset^\bullet_{\mathbb{S}\textcat{Bim}_{(1)}}(B, B') = \bigoplus_{i\in\mathbb{Z}} \morset_{\mathbb{S}\textcat{Bim}_{(1)}}(B, B'(i)).
-\end{split}
-\end{align*}
-\noindent Although there is certainly not an equivalence of categories between $\mathbb{S}\textcat{Bim}_{(1)}(W, S)$ and $\mathbb{S}\textcat{Bim}_\mathbb{Z}(W, S)$, they somehow encode precisely the same information. In particular, if we are given some $\mathbb{S}\textcat{Bim}_\mathbb{Z}(W, S)$, we can reconstruct $\mathbb{S}\textcat{Bim}_{(1)}(W, S)$ by taking its objects to be $\obset(\mathbb{S}\textcat{Bim}_\mathbb{Z}(W, S)) \times \mathbb{Z}$ and by defining
-\begin{align*}
-\begin{split}
-\morset_{\mathbb{S}\textcat{Bim}_{(1)}}((B, j), (B', i)) \coloneqq \morset^{i-j}_{\mathbb{S}\textcat{Bim}_\mathbb{Z}}(B, B'),
-\end{split}
-\end{align*}
-\noindent where $\morset^{i-j}_{\mathbb{S}\textcat{Bim}_\mathbb{Z}}(B, B')$ is the $i-j$th graded piece of $\morset_{\mathbb{S}\textcat{Bim}_\mathbb{Z}}(B, B')$. It's important to note, however, that this does not categorify the Hecke algebra (as we no longer have enough objects to have an isomorphism between $\textnormal{Gr}(\morset_{\mathbb{S}\textcat{Bim}_\mathbb{Z}}(B, B'))$ and $\mathscr{H}(W, S)$)! \textcolor{red}{Supposedly this is meant to categorify the Hecke algebra. I don't really understand. If we look at $B_s \otimes_R B_s$, this seems to be isomorphic to $B_s \oplus B_s$, which is kind of weird too. Somehow it seems like we only have the group algebra.}\\ %Moreover, note that $\mathbb{Z}[q, q^{-1}]$ is trivially a $\mathbb{Z}_+$-ring with $\mathbb{Z}_+$-basis $\{q^k : k \in \mathbb{Z}\}$. Define for each $k \in \mathbb{Z}$ an endofunctor $Q_k$ on $\mathbb{S}\textcat{Bim}_\mathbb{Z}(W, S)$ that takes objects $B$ to\\
-
-\noindent\textcolor{red}{Go through the $SL_2$ and $SL_3$ examples in detail to put everything together, it'd be good to see an example of the Kazhdan--Lusztig basis of a Hecke algebra and compare it to the indecomposables in the corresponding category of Soergel bimodules. I should also start typing up Lie theory notes.}
+\noindent\begin{remark}\label{SBimFiniteInd} As it happens (by the \hyperref[FreydMitchell]{Freyd--Mitchell Embedding Theorem}, for instance), any category of Soergel bimodules has finite-dimensional vector spaces of morphisms and is therefore Krull--Schmidt by \hyperref[KrullSchmidt1]{Theorem \ref*{KrullSchmidt1}}. Unfortunately, however, by \hyperref[SBimIndecomposablesCardinality]{Corollary \ref*{SBimIndecomposablesCardinality}} it will only be {\em graded multifinitary}, as we only have finitely many indecomposable objects under both isomorphisms and grading shifts. Fortunately, the only time having finitely many isomorphism classes of indecomposable objects comes into play is with the \hyperref[JordanHolder]{weak Jordan--H\"{o}lder Theorem}, and in the case of $\mathbb{S}\textcat{Bim}(W, S)$ we have that $\textnormal{Ind}(\textnormal{M})/\!\sim$ is finite for any module category $\textnormal{M}$, since $B(i) \otimes \mathbbm{1}(j) = B(i+j) \otimes \mathbbm{1} \cong B(i+j)$ for all $B \in \obset(\mathbb{S}\textcat{Bim}(W, S))$ and $i, j \in \mathbb{Z}$, and hence $B \sim B(k)$ for all $k \in \mathbb{Z}$.
+\end{remark}
 \newpage
 
 \noindent 
@@ -1039,9 +1026,9 @@ The only choice of simple roots we can make is $S = \{s\}$, whence $R = \mathbb{
 R_1 \otimes_R B_1 \cong (R\hphantom{{}_{s}} \otimes_R R) \otimes_R R(1) &\cong R,&\qquad R_1 \otimes_R B_{s} \cong (R\hphantom{{}_{s}} \otimes_R R) \otimes_{R^{s}} R(1) &\cong B_{s},\\
 R_{s} \otimes_R B_1 \cong (R_{s} \otimes_R R) \otimes_R R(1) &\cong R_{s},&\qquad R_{s} \otimes_R B_{s} \cong (R_{s} \otimes_R R) \otimes_{R^{s}} R(1) &\cong B_{s},
 \end{alignat*}
-\noindent where we note that $R_1 \cong R \cong B_1$. We therefore have, up to grading shifts and isomorphisms, three indecomposables: $R$, $R_{s}$ and $B_{s}$. Just like categories of Soergel bimodules, our Lusztig--Vogan module categories are not multifinitary, but they {\em are} graded multifinitary. If we look back at our results in birepresentation theory, we actually don't even really need to ask that we have finitely many isomorphism classes of indecomposable objects, only that $\textnormal{Ind}(\textnormal{M})/\!\sim$ is finite.\newpage
+\noindent where we note that $R_1 \cong R \cong B_1$. We therefore have, up to grading shifts and isomorphisms, three indecomposables: $R$, $R_{s}$ and $B_{s}$. Just like categories of Soergel bimodules, our Lusztig--Vogan module categories are not multifinitary, as they have infinitely many isomorphism classes of indecomposable objects. Luckily, don't quite need this and instead only need $\textnormal{Ind}(\textnormal{M})/\!\sim$ to be finite, which is true by \hyperref[SBimFiniteInd]{Remark \ref*{SBimFiniteInd}}. So we are free to continue.\newpage
 
-\noindent As it happens, this is true for our Lusztig--Vogan module categories; for example, our comment from the previous chapter tells us that $B_{s} \otimes_R B_{s}(k) \cong B_{s}(k+1) \oplus B_{s}(k-1)$, whence it can be shown that $B_{s} \sim B_{s}(k)$ for all $k \in \mathbb{Z}$. Of course, we also know that $B_{s} \geq R, R_{s}$, since $B_{s}$ is isomorphic to both $[\textnormal{M}(B_{s})](R) = R \otimes_R B_{s}$ and $[\textnormal{M}(B_{s})](R_{s}) = R_{s} \otimes_R B_{s}$; thus we obtain the two complete filtrations
+\noindent Of course, we also know that $B_{s} \geq R, R_{s}$, since $B_{s}$ is isomorphic to both $[\textnormal{M}(B_{s})](R) = R \otimes_R B_{s}$ and $[\textnormal{M}(B_{s})](R_{s}) = R_{s} \otimes_R B_{s}$; thus we obtain the two complete filtrations
 \begin{align*}
 \begin{split}
 \{B_{s}\} \subset \{R_{s}, B_{s}\} \subset \{R, R_{s}, B_{s}\}\qquad\text{and}\qquad\{B_{s}\} \subset \{R, B_{s}\} \subset \{R, R_{s}, B_{s}\}.
