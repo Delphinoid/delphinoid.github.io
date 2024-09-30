@@ -564,7 +564,7 @@ Because $\textnormal{I}$ is maximal with respect to $\mathscr{C}$-stable ideals 
 multifinitary bicategory $\mathscr{C}$ is simple if and only if the unique maximal $\mathscr{C}$-stable ideal $\textnormal{I}$ from \hyperref[UniqueMaximalIdeal]{Proposition \ref*{UniqueMaximalIdeal}} is the zero ideal. The simple sub-birepresentation $\underline{\textnormal{M}}$ of $\textnormal{M}$ that sends each object $\textobj{i} \in \obset(\mathscr{C})$ to the quotient subcategory $\textnormal{M}(\textobj{i})/\textnormal{I}(\textobj{i})$ is known as the {\em simple quotient} of $\textnormal{M}$.\\
 \end{propositiondefinition}
 
-\noindent\begin{proof} Naturally if $\textnormal{I}$ -- the sum of all $\mathscr{C}$-stable ideals without non-zero identity morphisms -- is the zero ideal, then $\textnormal{M}$ must contain no proper, non-zero $\mathscr{C}$-stable ideals. Conversely, if $\textnormal{M}$ is simple, then because $\textnormal{I}$ is the sum of proper $\mathscr{C}$-stable ideals, they must all be zero. Finally, because $\textnormal{I}$ is maximal, every morphism $f \in \morset(\textnormal{M}(\textobj{i})/\textnormal{I}(\textobj{i}))$ must generate either $\{0\}$ or $\textnormal{M}(\textobj{i})/\textnormal{I}(\textobj{i})$ under multiplication by $\mathscr{C}$, whence it follows that $\underline{\textnormal{M}}$ is simple. This completes the proof.
+\noindent\begin{proof} Naturally if $\textnormal{I}$ -- the sum of all $\mathscr{C}$-stable ideals without non-zero identity morphisms -- is the zero ideal, then $\textnormal{M}$ must contain no proper, non-zero $\mathscr{C}$-stable ideals. Conversely, if $\textnormal{M}$ is simple, then because $\textnormal{I}$ is the sum of proper $\mathscr{C}$-stable ideals, they must all be zero. Finally, because $\textnormal{I}$ is maximal, every morphism $f \in \morset(\textnormal{M}(\textobj{i})/\textnormal{I}(\textobj{i}))$ must generate either $\{0\}$ or $\textnormal{M}(\textobj{i})/\textnormal{I}(\textobj{i})$ under composition with morphisms in $\mathscr{C}$, whence it follows that $\underline{\textnormal{M}}$ is simple. This completes the proof.
 \end{proof}\\
 
 \noindent Let $\textnormal{M}$ be a multifinitary birepresentation of $\mathscr{C}$. We denote by $\textnormal{Ind}(\textnormal{M})$ the set of isomorphism classes of indecomposable objects in every $\textnormal{M}(\textobj{i})$, for $\textobj{i} \in \obset(\mathscr{C})$; that is,
@@ -955,7 +955,7 @@ s(\alpha_t) = \alpha_t + 2\cos\!\left(\frac{\pi}{m_{st}}\right)\!\alpha_s.
 \noindent\\[-0.6\linespacing] We define $R^{W_K}$ to be the polynomials in $R$ that are invariant under action by $W_K$. With this, given a generator $w$ representing a coset in $W/W_K$, we define the $w$-standard bimodule $R_w$ to be the $(R^{W_K}, R)$-bimdoule given by $R$ as a vector space with left action given by left multiplication and right action given by $s \cdot_w r \coloneqq s w(r)$, for all $s \in R_w$ and $r \in R$. Thus, just as before, the corresponding algebraic Lusztig--Vogan module category is
 \begin{align*}
 \begin{split}
-\mathcal{M}_{LV}^0 = \langle R_w \otimes_R X : [w] \in W/W_K, X \in \obset(\mathbb{S}\textcat{Bim}(W, S))\rangle_{\oplus,\ominus,(1)}.
+\mathcal{N}_{LV}^0 = \langle R_w \otimes_R X : [w] \in W/W_K, X \in \obset(\mathbb{S}\textcat{Bim}(W, S))\rangle_{\oplus,\ominus,(1)}.
 \end{split}
 \end{align*}
 \newpage
@@ -1021,12 +1021,12 @@ N_G(T) = \{g \in G : gtg^{-1} \in T,\ \textnormal{for all $t \in T$}\} = T \sqcu
 \end{split}
 \end{align*}
 \noindent %similarly, $T_K$ is obviously then a maximal torus in $K$, giving us $W_K \coloneqq N_K(T_K)/T_K = \{1\}$.
-The only choice of simple roots we can make is $S = \{s\}$, whence $R = \mathbb{R}[\alpha_{s}]$. The action of $W$ on $R$ is given by $1 : r \mapsto r$ and $s : r \mapsto -r$, for $r \in R$, giving us $R^{W_K} = R$ and an easy $(R^{W_K}, R)$-bimodule structure for $R$. Note that $W^\theta = W$, since for all $g \in N_G(T)$ we have that $\theta(g) \in gT$. This gives us a very explicit right module category $\mathcal{M}_{LV}^0$ over $\mathbb{S}\textcat{Bim}(W, S)$! A standard exercise we can now do is to compute the Jordan--H\"{o}lder filtrations of the corresponding birepresentation $\textnormal{M}$ that maps $\bullet$ to $\mathcal{M}_{LV}^0$ and $X \in \obset(\mathbb{S}\textcat{Bim}(W, S))$ to functors $- \otimes_R X$.\\[-1.5\baselineskip]%; therefore it is easily seen to be multifinitary.\\[-1.5\baselineskip]
+The only choice of simple roots we can make is $S = \{s\}$, whence $R = \mathbb{R}[\alpha_{s}]$. The action of $W$ on $R$ is given by $1 : r \mapsto r$ and $s : r \mapsto -r$, for $r \in R$, giving us $R^{W_K} = R$ and an easy $(R^{W_K}, R)$-bimodule structure for $R$. Note that $W^\theta = W$, since for all $g \in N_G(T)$ we have that $\theta(g) \in gT$. This gives us a very explicit right module category $\mathcal{N}_{LV}^0$ over $\mathbb{S}\textcat{Bim}(W, S)$! A standard exercise we can now do is to compute the Jordan--H\"{o}lder filtrations of the corresponding birepresentation $\textnormal{M}$ that maps $\bullet$ to $\mathcal{N}_{LV}^0$ and $X \in \obset(\mathbb{S}\textcat{Bim}(W, S))$ to functors $- \otimes_R X$.\\[-1.5\baselineskip]%; therefore it is easily seen to be multifinitary.\\[-1.5\baselineskip]
 \begin{center}
 \rule{0.5\linewidth}{1pt}
 \end{center}
 \noindent\\[-\baselineskip]
-\noindent Recall that the indecomposable objects in $\mathbb{S}\textcat{Bim}(W, S)$ are, up to grading shifts and isomorphisms, given by Bott--Samelson bimodules of the form $B_w \coloneqq R \otimes_{R^w} R(1)$, for $w \in W$. Because module products distribute over direct sums, the indecomposables of $\mathcal{M}_{LV}^0$ are of the form $R_{w_1} \otimes_R B_{w_2}$, for $[w_1] \in W/W_K$ and $w_2 \in W$; that is, products of generators of $\mathcal{M}_{LV}^0$ with indecomposable Soergel bimodules. In our case with $\textnormal{SL}(2, \mathbb{C})$, we have four candidates, which are evaluated as follows:
+\noindent Recall that the indecomposable objects in $\mathbb{S}\textcat{Bim}(W, S)$ are, up to grading shifts and isomorphisms, given by Bott--Samelson bimodules of the form $B_w \coloneqq R \otimes_{R^w} R(1)$, for $w \in W$. Because module products distribute over direct sums, the indecomposables of $\mathcal{N}_{LV}^0$ are of the form $R_{w_1} \otimes_R B_{w_2}$, for $[w_1] \in W/W_K$ and $w_2 \in W$; that is, products of generators of $\mathcal{N}_{LV}^0$ with indecomposable Soergel bimodules. In our case with $\textnormal{SL}(2, \mathbb{C})$, we have four candidates, which are evaluated as follows:
 \begin{alignat*}{2}
 R_1 \otimes_R B_1 \cong (R\hphantom{{}_{s}} \otimes_R R) \otimes_R R(1) &\cong R,&\qquad R_1 \otimes_R B_{s} \cong (R\hphantom{{}_{s}} \otimes_R R) \otimes_{R^{s}} R(1) &\cong B_{s},\\
 R_{s} \otimes_R B_1 \cong (R_{s} \otimes_R R) \otimes_R R(1) &\cong R_{s},&\qquad R_{s} \otimes_R B_{s} \cong (R_{s} \otimes_R R) \otimes_{R^{s}} R(1) &\cong B_{s},
@@ -1039,13 +1039,25 @@ R_{s} \otimes_R B_1 \cong (R_{s} \otimes_R R) \otimes_R R(1) &\cong R_{s},&\qqua
 \{[B_{s}]\} \subset \{[R_{s}], [B_{s}]\} \subset \{[R], [R_{s}], [B_{s}]\}\qquad\text{and}\qquad\{[B_{s}]\} \subset \{[R], [B_{s}]\} \subset \{[R], [R_{s}], [B_{s}]\}.
 \end{split}
 \end{align*}
-\noindent The corresponding weak composition quotients of these two complete filtrations will of course be equivalent, so we will just compute them for the filtration given by ${Q_1 \coloneqq \{[B_{s}]\}}$, ${Q_2 \coloneqq \{[R_{s}], [B_{s}]\}}$ and ${Q_3 \coloneqq \{[R], [R_{s}], [B_{s}]\}}$. These give rise to the additive $\mathcal{M}_{LV}^0$ subcategories
+\noindent The corresponding weak composition quotients of these two complete filtrations will of course be equivalent, so we will just compute them for the filtration given by ${Q_1 \coloneqq \{[B_{s}]\}}$, ${Q_2 \coloneqq \{[R_{s}], [B_{s}]\}}$ and ${Q_3 \coloneqq \{[R], [R_{s}], [B_{s}]\}}$. These give rise to the additive $\mathbb{S}\textcat{Bim}(W, S)$-module subcategories
 \begin{align*}
 \begin{split}
-\mathcal{M}_{Q_1} = \langle B_{s} \rangle_{\oplus,(1)},\qquad\mathcal{M}_{Q_2} = \langle R_{s}, B_{s}\rangle_{\oplus,(1)},\qquad\mathcal{M}_{Q_3} = \langle R, R_{s}, B_{s}\rangle_{\oplus,(1)} \simeq \mathcal{M}_{LV}^0,
+\mathcal{M}_{Q_1} = \langle B_{s} \rangle_{\oplus,(1)},\qquad\mathcal{M}_{Q_2} = \langle R_{s}, B_{s}\rangle_{\oplus,(1)},\qquad\mathcal{M}_{Q_3} = \langle R, R_{s}, B_{s}\rangle_{\oplus,(1)} \simeq \mathcal{N}_{LV}^0,
 \end{split}
 \end{align*}
-\noindent as well as two-sided ideals $\mathcal{I}_{Q_i}$ of $\mathcal{M}_{LV}^0$ generated by the identity morphisms in $Q_i$. Of course, one of the resulting quotients is trivial, so the subcategory $\mathcal{M}_{Q_1/Q_0} = \mathcal{M}_{Q_1}$ is already transitive. For the remaining transitive quotient subcategories, we observe that $\mathcal{I}_{Q_i}$ consists of all morphisms in $\mathcal{M}_{LV}^0$ that factor through objects in $Q_i$ (with all other $\mathcal{I}_{Q_i}(X, Y)$ containing, by definition, only the unique zero morphism). The idea here is that the quotient functor from $\mathcal{M}_{Q_2}$ to $\mathcal{M}_{Q_2/Q_1}$ sends $B_s$ to $0$, while the quotient functor from $\mathcal{M}_{Q_3}$ to $\mathcal{M}_{Q_3/Q_2}$ sends both $R_s$ and $B_s$ to $0$. As it happens, the functor sending $R_s$ to $R$ defines an equivalence of module categories $\mathcal{M}_{Q_2/Q_1} \simeq \mathcal{M}_{Q_3/Q_2}$. It is easy to be fooled by the fact that $R_s \otimes_R R_s = R$, but one must remember that our Lusztig--Vogan module categories are {\em not} monoidal, and thus we cannot tensor by $R_s$, since it doesn't live in $\mathbb{S}\textcat{Bim}(W, S)$!\\
+\noindent as well as two-sided ideals $\mathcal{I}_{Q_i}$ of $\mathcal{N}_{LV}^0$ generated by the identity morphisms in $Q_i$. Of course, one of the resulting quotients is trivial, so the subcategory $\mathcal{M}_{Q_1/Q_0} = \mathcal{M}_{Q_1}$ is already transitive. For the remaining transitive quotient subcategories, we observe that $\mathcal{I}_{Q_i}$ consists of all morphisms in $\mathcal{N}_{LV}^0$ that factor through objects in $Q_i$ (with all other $\mathcal{I}_{Q_i}(X, Y)$ containing, by definition, only the unique zero morphism). The idea here is that the quotient functor from $\mathcal{M}_{Q_2}$ to $\mathcal{M}_{Q_2/Q_1}$ sends $B_s$ to $0$, while the quotient functor from $\mathcal{M}_{Q_3}$ to $\mathcal{M}_{Q_3/Q_2}$ sends both $R_s$ and $B_s$ to $0$. As it happens, the functor sending $R_s$ to $R$ defines an equivalence of module categories $\mathcal{M}_{Q_2/Q_1} \simeq \mathcal{M}_{Q_3/Q_2}$. It is easy to be fooled by the fact that $R_s \otimes_R R_s \cong R \sim 0$, but one must remember that our Lusztig--Vogan module categories are {\em not} monoidal, and thus we cannot tensor by $R_s$, since it doesn't live in $\mathbb{S}\textcat{Bim}(W, S)$! Let's now finally compute the weak composition quotients. %Well, for $\textnormal{L}_1$, observe that
+%\begin{align*}
+%\begin{split}
+%(\textnormal{ch}_\Delta(B_s), \textnormal{ch}_\Delta(B_s)) = \tau(\omega(b_s)b_s) = \tau((q + q^{-1})T_s + q^2 + 1) = q^2 + 1.
+%\end{split}
+%\end{align*}
+%\noindent The \hyperref[SoergelHom]{Soergel Hom Formula} therefore implies that $\dim(\morset(B_s, B_s)) = 1$. In particular,
+%\begin{align*}
+%\begin{split}
+%\dim(\morset(B_s^{\oplus m}, B_s^{\oplus n})) = mn.
+%\end{split}
+%\end{align*}
+\\
 %\begin{align*}
 %\begin{split}
 %\mathcal{M}_{Q_3/Q_2} \coloneqq \mathcal{M}_{Q_3}/\mathcal{I}_{Q_2} = \langle R\hphantom{{}_{s}}\rangle_{\oplus,(1)},\\
