@@ -727,52 +727,52 @@ is known as a {\em Coxeter group}.\\
 
 \noindent This result was first shown in \cite{Mat64}. A sketch is given in \cite[Theorem 2.20]{EMTW20}, and the full proof can be found in \cite[Theorem 1.2.2]{GP00}.\newpage
 
-\noindent\begin{definition}\textnormal{(Iwahori--Hecke Algebra).} Let $(W, S)$ be a Coxeter system and $q$ a formal variable. The {\em (one-parameter) Iwahori--Hecke algebra} corresponding to $(W, S)$ is the unital, associative\linebreak $\mathbb{Z}[q, q^{-1}]$-algebra $\mathscr{H}(W, S)$ with generators $\{T_s : s \in S\}$ and relations
+\noindent\begin{definition}\textnormal{(Iwahori--Hecke Algebra).} Let $(W, S)$ be a Coxeter system and $v$ a formal variable. The {\em (one-parameter) Iwahori--Hecke algebra} corresponding to $(W, S)$ is the unital, associative\linebreak $\mathbb{Z}[v, v^{-1}]$-algebra $\mathscr{H}(W, S)$ with generators $\{\delta_s : s \in S\}$ and relations
 \begin{enumerate}[label=$\bullet$, leftmargin=4\parindent]
-\item (braid relation) $T_sT_tT_s\cdots = T_tT_sT_t\cdots$ for all $s, t \in S$ with $m_{s,t} < \infty$, where both sides are the product of $m_{s,t}$ generators;
-\item (quadratic relation) $(T_s - q^{-1})(T_s + q) = 0$, for all $s \in S$.\\
+\item (braid relation) $\delta_s\delta_t\delta_s\cdots = \delta_t\delta_s\delta_t\cdots$ for all $s, t \in S$ with $m_{s,t} < \infty$, where both sides are the product of $m_{s,t}$ generators;
+\item (quadratic relation) $(\delta_s - v^{-1})(\delta_s + v) = 0$, for all $s \in S$.\\
 \end{enumerate}
 \end{definition}
 
-\noindent Note that we can expand and rearrange the quadratic relation as $1 = T_s^2 + (q - q^{-1})T_s$, whence by multiplying through by $T_s^{-1}$ we obtain $T_s^{-1} = T_s + (q - q^{-1})$.\\
+\noindent Note that we can expand and rearrange the quadratic relation as $1 = \delta_s^2 + (v - v^{-1})\delta_s$, whence by multiplying through by $\delta_s^{-1}$ we obtain $\delta_s^{-1} = \delta_s + (v - v^{-1})$.\\
 
-\noindent\begin{remark} If we identify our parameter $q$ with $1$, the Iwahori--Hecke algebra reduces to the group algebra $\mathbb{Z}W$. In other words, it is a deformation of the group algebra of its associated Coxeter group.\\
+\noindent\begin{remark} If we identify our parameter $v$ with $1$, the Iwahori--Hecke algebra reduces to the group algebra $\mathbb{Z}W$. In other words, it is a deformation of the group algebra of its associated Coxeter group.\\
 \end{remark}
 
-\noindent\begin{remark} We have defined above the {\em one-parameter} Iwahori--Hecke algebra, as opposed to the more general {\em multiparameter} Iwahori--Hecke algebra, where instead of taking $\mathscr{H}(W, S)$ to be over the ring of one-parameter Laurent polynomials $\mathbb{Z}[q, q^{-1}]$ we consider a family of units $\{q_s : s \in S\}$ and take $\mathscr{H}(W, S)$ to be over the ring $\mathbb{Z}[q_s^{\pm 1} : s \in S]$.\\
+\noindent\begin{remark} We have defined above the {\em one-parameter} Iwahori--Hecke algebra, as opposed to the more general {\em multiparameter} Iwahori--Hecke algebra, where instead of taking $\mathscr{H}(W, S)$ to be over the ring of one-parameter Laurent polynomials $\mathbb{Z}[v, v^{-1}]$ we consider a family of units $\{v_s : s \in S\}$ and take $\mathscr{H}(W, S)$ to be over the ring $\mathbb{Z}[v_s^{\pm 1} : s \in S]$.\\
 \end{remark}
 
-\noindent Let $(W, S)$ be a Coxeter system, and take $(s_1, \dots, s_\ell)$ and $(t_1, \dots, t_\ell)$ to be two reduced expressions for $w \in W$. Then $T_{s_1}T_{s_2}\cdots T_{s_\ell} = T_{t_1}T_{t_2} \cdots T_{t_\ell} \eqqcolon T_w$ by \hyperref[Matsumoto]{Matsumoto's Theorem} and the braid relation. In particular, by \cite[Theorem 3.5]{EMTW20}, the set $\{T_w : w \in W\}$ forms a $\mathbb{Z}[q, q^{-1}]$-basis for $\mathscr{H}(W, S)$ with $T_\textnormal{id} = 1$, known as the {\em standard basis}. Another important basis is the Kazhdan--Lusztig basis.\\
+\noindent Let $(W, S)$ be a Coxeter system, and take $(s_1, \dots, s_\ell)$ and $(t_1, \dots, t_\ell)$ to be two reduced expressions for $w \in W$. Then $\delta_{s_1}\delta_{s_2}\cdots \delta_{s_\ell} = \delta_{t_1}\delta_{t_2} \cdots \delta_{t_\ell} \eqqcolon \delta_w$ by \hyperref[Matsumoto]{Matsumoto's Theorem} and the braid relation. In particular, by \cite[Theorem 3.5]{EMTW20}, the set $\{\delta_w : w \in W\}$ forms a $\mathbb{Z}[v, v^{-1}]$-basis for $\mathscr{H}(W, S)$ with $\delta_\textnormal{id} = 1$, known as the {\em standard basis}. Another important basis is the Kazhdan--Lusztig basis.\\
 
 \noindent\begin{definition}\textnormal{(Kazhdan--Lusztig Involution).} Let $\mathscr{H}(W, S)$ be an Iwahori--Hecke algebra. The {\em Kazhdan--Lusztig involution} is the $\mathbb{Z}$-linear automorphism $h \mapsto \overline{h}$ on $\mathscr{H}(W, S)$, defined by
 \begin{align*}
 \begin{split}
-\overline{T_s} \coloneqq T_s^{-1} = T_s + (q - q^{-1})
+\overline{\delta_s} \coloneqq \delta_s^{-1} = \delta_s + (v - v^{-1})
 \end{split}
 \end{align*}
-\noindent on generators and by $\overline{q} = q^{-1}$ on Laurent polynomials. The {\em Kazhdan--Lusztig anti-involution} is the $\mathbb{Z}$-linear anti-automorphism $h \mapsto \omega(h)$ defined similarly on generators and Laurent polynomials.\\
+\noindent on generators and by $\overline{v} = v^{-1}$ on Laurent polynomials. The {\em Kazhdan--Lusztig anti-involution} is the $\mathbb{Z}$-linear anti-automorphism $h \mapsto \omega(h)$ defined similarly on generators and Laurent polynomials.\\
 \end{definition}
 
 \noindent \noindent Given $w \in W$ admitting a reduced expression $(s_1, \dots, s_\ell)$, we find that
 \begin{align*}
 \begin{split}
-\overline{T_w} &= \overline{T_{s_1}}\cdots\overline{T_{s_\ell}} = T_{s_1}^{-1}\cdots T_{s_\ell}^{-1} = (T_{w^{-1}})^{-1},\\
-\omega(T_w) &= \overline{T_{s_\ell}}\cdots\overline{T_{s_1}} = T_{s_\ell}^{-1}\cdots T_{s_1}^{-1} = T_w^{-1}.\\
+\overline{\delta_w} &= \overline{\delta_{s_1}}\cdots\overline{\delta_{s_\ell}} = \delta_{s_1}^{-1}\cdots \delta_{s_\ell}^{-1} = (\delta_{w^{-1}})^{-1},\\
+\omega(\delta_w) &= \overline{\delta_{s_\ell}}\cdots\overline{\delta_{s_1}} = \delta_{s_\ell}^{-1}\cdots \delta_{s_1}^{-1} = \delta_w^{-1}.\\
 \end{split}
 \end{align*}
 \noindent With this, we are ready to define the Kazhdan--Lusztig basis.\\
 
-\noindent\begin{theoremdefinition}\textnormal{(Kazhdan--Lusztig Basis).} Let $\mathscr{H}(W, S)$ be an Iwahori--Hecke algebra. Then it admits a unique $\mathbb{Z}[q, q^{-1}]$-basis $\{b_w : w \in W\}$ such that each $b_w$ satisfies
+\noindent\begin{theoremdefinition}\textnormal{(Kazhdan--Lusztig Basis).} Let $\mathscr{H}(W, S)$ be an Iwahori--Hecke algebra. Then it admits a unique $\mathbb{Z}[v, v^{-1}]$-basis $\{b_w : w \in W\}$ such that each $b_w$ satisfies
 \begin{enumerate}[label=$\bullet$, leftmargin=4\parindent]
 \item (self-duality) $\overline{b_w} = b_w$,
-\item (degree bound) $b_w = \sum_{y \in W}{P_{y,w} T_y}$,
+\item (degree bound) $b_w = \sum_{y \in W}{h_{y,w} \delta_y}$,
 \end{enumerate}
-\noindent for some $P_{y,w} \in \mathbb{Z}_{\geq 0}[q]$ with $P_{w,w} \coloneqq 1$ and $P_{y,w} \coloneqq 0$ whenever $y \nleq w$ under the Bruhat order. This basis is known as the {\em Kazhdan--Lusztig basis}, and the coefficients $P_{y,w}$ are called {\em Kazhdan--Lusztig polynomials}.\\
+\noindent for some $h_{y,w} \in v\mathbb{Z}_{\geq 0}[v]$ with $h_{w,w} \coloneqq 1$ and $h_{y,w} \coloneqq 0$ whenever $y \nleq w$ under the Bruhat order. This basis is known as the {\em Kazhdan--Lusztig basis}, and the coefficients $h_{y,w}$ are called {\em Kazhdan--Lusztig polynomials}.\\
 \end{theoremdefinition}
 
 \noindent A proof for existence can be found in \cite[Theorem 3.25]{EMTW20}, while a proof for uniqueness can be found in \cite[Lemma 3.10]{EMTW20}. A helpful example for $W = S_3$ is given in \cite[\S 3.3.1]{EMTW20}. Note that all coefficients of Kazhdan--Lusztig polynomials are non-negative; this is the aforementioned {\em Kazhdan--Lusztig Positivity Conjecture}, which was first proven for general Coxeter systems by Elias and Williamson in \cite[Corollary 1.2]{EW14}. Observe also that {\em any} set $\{b_w : w \in W\}$ satisfying the degree bound condition will be a basis; in particular, the Kazhdan--Lusztig polynomials induce a triangular change of basis matrix with $1$'s along the diagonal that maps the standard basis to $\{b_w : w \in W\}$, giving an isomorphism between the two sets.\\
 
-\noindent\begin{definition}\textnormal{(Standard Form).} Let $\mathscr{H}(W, S)$ be an Iwahori--Hecke algebra. The {\em standard trace} $\tau : \mathscr{H}(W, S) \to \mathbb{Z}[q, q^{-1}]$ is the map that extracts the coefficient of $T_\textnormal{id}$; that is, it is the $\mathbb{Z}[q, q^{-1}]$-linear map for which $\tau(T_\textnormal{id}) = 1$ and $\tau(T_w) = 0$ for all $w \neq \textnormal{id}$. We then define the {\em standard form} on $\mathscr{H}(W, S)$ to be the sesquilinear form given by $(a, b) \coloneqq \tau(\omega(a)b)$, for all $a, b \in \mathscr{H}(W, S)$\\
+\noindent\begin{definition}\textnormal{(Standard Form).} Let $\mathscr{H}(W, S)$ be an Iwahori--Hecke algebra. The {\em standard trace} $\tau : \mathscr{H}(W, S) \to \mathbb{Z}[v, v^{-1}]$ is the map that extracts the coefficient of $\delta_\textnormal{id}$; that is, it is the $\mathbb{Z}[v, v^{-1}]$-linear map for which $\tau(\delta_\textnormal{id}) = 1$ and $\tau(\delta_w) = 0$ for all $w \neq \textnormal{id}$. We then define the {\em standard form} on $\mathscr{H}(W, S)$ to be the sesquilinear form given by $(a, b) \coloneqq \tau(\omega(a)b)$, for all $a, b \in \mathscr{H}(W, S)$\\
 \end{definition}
 
 \noindent\begin{definition}\label{GeometricRepresentation}\textnormal{(Geometric Representation).} Let $(W, S)$ be a Coxeter system and $V$ the $\mathbbm{k}$-vector space with basis $\{\alpha_s : s \in S\}$, where $\textnormal{char}(\mathbbm{k}) = 0$. Define a symmetric, bilinear form on $V$ by% = \textnormal{span}_\mathbb{R}(\{\alpha_s : s \in S\})$ by
@@ -837,17 +837,17 @@ B_s \otimes_R B_s &= (R \otimes_{R^s} R(1)) \otimes_R (R \otimes_{R^s} R(1))\\
 &= B_s(1) \oplus B_s(-1).\\
 \end{split}
 \end{align*}
-\noindent If we now look at the Kazhdan--Lusztig basis element $b_s$, it follows from uniqueness that $b_s = T_s + q$, as this is certainly a self-dual element satisfying the degree bound conditions for $s$. Thus
+\noindent If we now look at the Kazhdan--Lusztig basis element $b_s$, it follows from uniqueness that $b_s = \delta_s + v$, as this is certainly a self-dual element satisfying the degree bound conditions for $s$. Thus
 \begin{align*}
 \begin{split}
-b_s^2 &= T_s^2 + 2qT_s + q^2\\
-&= (1 + (q^{-1} - q)T_s) + 2qT_s + q^2\\
-&= 1 + q^{-1}T_s + qT_s + q^2\\
-&= q(T_s + q) + q^{-1}(T_s + q)\\
-&= qb_s + q^{-1}b_s.
+b_s^2 &= \delta_s^2 + 2v\delta_s + v^2\\
+&= (1 + (v^{-1} - v)\delta_s) + 2v\delta_s + v^2\\
+&= 1 + v^{-1}\delta_s + v\delta_s + v^2\\
+&= v(\delta_s + v) + v^{-1}(\delta_s + v)\\
+&= vb_s + v^{-1}b_s.
 \end{split}
 \end{align*}
-\noindent Comparing the expressions for $B_s$ and $b_s$, we see some striking similarities! This Bott--Samelson bimodule arising from the generator $s$ happens to behave just like an element of the Kazhdan--Lusztig basis, with grading shifts corresponding to multiplication by powers of our formal variable $q$. But what about the basis elements corresponding $w \in W\setminus S$? For these, Bott--Samelsons alone are insufficient. We therefore introduce Soergel bimodules.\\
+\noindent Comparing the expressions for $B_s$ and $b_s$, we see some striking similarities! This Bott--Samelson bimodule arising from the generator $s$ happens to behave just like an element of the Kazhdan--Lusztig basis, with grading shifts corresponding to multiplication by powers of our formal variable $v$. But what about the basis elements corresponding $w \in W\setminus S$? For these, Bott--Samelsons alone are insufficient. We therefore introduce Soergel bimodules.\\
 
 \noindent\begin{definition}\textnormal{(Soergel Bimodule).} Let $(W, S)$ be a Coxeter system. A {\em Soergel bimodule} is a direct summand of a finite direct sum of grading shifts of Bott--Samelson bimodules corresponding to expressions in $(W, S)$. Denote by $\mathbb{S}\textsf{Bim}(W, S)$ the {\em category of Soergel bimodules corresponding to $(W, S)$}, which we define as the ``graded closure'' of the Karoubian envelope of $\mathbb{BS}\textcat{Bim}(W, S)$; in other words, it is the closure of the category of Bott--Samelson bimodules corresponding to $(W, S)$ under isomorphisms, direct summands, finite direct sums and grading shifts.\\
 \end{definition}
@@ -856,13 +856,13 @@ b_s^2 &= T_s^2 + 2qT_s + q^2\\
 , whence $R = \textnormal{Sym}(\mathfrak{h}) = \mathbb{C}[\alpha_s^\vee : s \in S]$ for coroots $\alpha_s^\vee \in \mathfrak{h}$ and $\mathfrak{h}^* = \textnormal{spec}(R)$. In this case, it is a result of Serre's theorem for quasicoherent sheaves that we can view $\mathbb{S}\textsf{Bim}(W, S)$ as a subcategory of the category of $\mathbb{C}^\times$-equivariant coherent sheaves of $\mathscr{O}_X$-modules on $X$, where $\mathscr{O}_X$ is the sheaf of regular functions on the pullback ${X \coloneqq \mathfrak{h}^* \times_{\mathfrak{h}^*/W} \mathfrak{h}^* = \textnormal{spec}(R \otimes_{R^W} R)}$.\\
 \end{remark}
 
-\noindent\begin{theorem}\textnormal{(Soergel's Categorification Theorem I).}\label{SoergelCategorification} There is a unique $\mathbb{Z}[q, q^{-1}]$-algebra\linebreak homomorphism $c : \mathscr{H}(W, S) \to \textnormal{Gr}(\mathbb{S}\textcat{Bim}(W, S))$ sending $q^k b_s$ to the isomorphism class $[B_s(k)]$, for each $s \in S$. Moreover, the $\Delta$-character function $\textnormal{ch}_\Delta : \mathbb{S}\textcat{Bim}(W, S) \to \mathscr{H}(W, S)$ descends to a homomorphism $\textnormal{ch} : \textnormal{Gr}(\mathbb{S}\textcat{Bim}(W, S)) \to \mathscr{H}(W, S)$ that is inverse to $c$, making these isomorphisms.\\
+\noindent\begin{theorem}\textnormal{(Soergel's Categorification Theorem I).}\label{SoergelCategorification} There is a unique $\mathbb{Z}[v, v^{-1}]$-algebra\linebreak homomorphism $c : \mathscr{H}(W, S) \to \textnormal{Gr}(\mathbb{S}\textcat{Bim}(W, S))$ sending $v^k b_s$ to the isomorphism class $[B_s(k)]$, for each $s \in S$. Moreover, the $\Delta$-character function $\textnormal{ch}_\Delta : \mathbb{S}\textcat{Bim}(W, S) \to \mathscr{H}(W, S)$ descends to a homomorphism $\textnormal{ch} : \textnormal{Gr}(\mathbb{S}\textcat{Bim}(W, S)) \to \mathscr{H}(W, S)$ that is inverse to $c$, making these isomorphisms.\\
 \end{theorem}
 
 \noindent\begin{theorem}\textnormal{(Soergel's Categorification Theorem II).}\label{SBimIndecomposables} Let $(W, S)$ be a Coxeter system and $\underline{w}$ a reduced expression for $w \in W$. Then $BS(\underline{w})$ contains, up to isomorphism, a unique indecomposable summand $B_w$, which does not appear in $BS(\underline{x})$ for any $x < w$ and depends only on $w$, not the reduced expression. Moreover, all other direct summands are grading shifts of $B_x$, for $x < w$.\newpage
 \end{theorem}
 
-\noindent A statement of and reference for these results can be found in \cite[Theorem 5.24]{EMTW20}, as well as an algorithm for finding the indecomposables $B_w$. The precise definition of the $\Delta$-character function is $\textnormal{ch}_\Delta : B \mapsto \sum_{y \in W} q^{\ell(y)} P_y(B) T_y$, where $P_y(B) \in \mathbb{Z}_{\geq 0}[q, q^{-1}]$ is some kind of graded multiplicity (this is slightly technical, see \cite[Theorem 5.10]{EMTW20} for details). For any indecomposable Soergel bimodule $B_w$, the graded multiplicities satisfy $P_y(B_w(k)) = q^k P_{y, w}$ by Soergel's Conjecture.\\
+\noindent A statement of and reference for these results can be found in \cite[Theorem 5.24]{EMTW20}, as well as an algorithm for finding the indecomposables $B_w$. The precise definition of the $\Delta$-character function is $\textnormal{ch}_\Delta : B \mapsto \sum_{y \in W} v^{\ell(y)} h_y(B) \delta_y$, where $h_y(B) \in v\mathbb{Z}_{\geq 0}[v, v^{-1}]$ is some kind of graded multiplicity (this is slightly technical, see \cite[Theorem 5.10]{EMTW20} for details). For any indecomposable Soergel bimodule $B_w$, the graded multiplicities satisfy $h_y(B_w(k)) = v^k h_{y, w}$ by Soergel's Conjecture.\\
 
 \noindent\begin{corollary}\label{SBimIndecomposablesCardinality} The isomorphism classes of indecomposables of $\mathbb{S}\textcat{Bim}(W, S)$ are in bijection with $W \times \mathbb{Z}$.\\
 \end{corollary}
@@ -881,17 +881,17 @@ b_s^2 &= T_s^2 + 2qT_s + q^2\\
 \end{center}
 \noindent In other words, we can always think of the Hom-spaces of $\mathbb{S}\textcat{Bim}$ as being graded!\\
 
-\noindent Now, given a finite-dimensional $\mathbb{Z}$-graded $\mathbbm{k}$-vector space $V = \oplus V^i$, we define its {\em graded dimension} to be the Hilbert--Poincar\'{e} series $\textnormal{gdim}(V) \coloneqq \sum_{i \in \mathbb{Z}}{\textnormal{dim}(V^i)q^i}$. Then given a free, finitely-generated left (respectively, right) graded $R$-module $M$, we define its {\em graded rank} to be $\textnormal{grk}(M) \coloneqq \textnormal{gdim}(\mathbbm{k} \otimes_R M)$ (respectively, $\textnormal{grk}(M) \coloneqq \textnormal{gdim}(M \otimes_R \mathbbm{k})$). Note that the purpose of tensoring with the underlying field here is to promote $M$ to a finite-dimensional $\mathbbm{k}$-vector space; since $M$ is finitely-generated, it admits a finite generating set $\{m_1, \dots, m_n\}$, whence $\{1 \otimes m_1, \dots, 1 \otimes m_n\}$ is a $\mathbbm{k}$-basis for $\mathbbm{k} \otimes_R M$.\\
+\noindent Now, given a finite-dimensional $\mathbb{Z}$-graded $\mathbbm{k}$-vector space $V = \oplus V^i$, we define its {\em graded dimension} to be the Hilbert--Poincar\'{e} series $\textnormal{gdim}(V) \coloneqq \sum_{i \in \mathbb{Z}}{\textnormal{dim}(V^i)v^i}$. Then given a free, finitely-generated left (respectively, right) graded $R$-module $M$, we define its {\em graded rank} to be $\textnormal{grk}(M) \coloneqq \textnormal{gdim}(\mathbbm{k} \otimes_R M)$ (respectively, $\textnormal{grk}(M) \coloneqq \textnormal{gdim}(M \otimes_R \mathbbm{k})$). Note that the purpose of tensoring with the underlying field here is to promote $M$ to a finite-dimensional $\mathbbm{k}$-vector space; since $M$ is finitely-generated, it admits a finite generating set $\{m_1, \dots, m_n\}$, whence $\{1 \otimes m_1, \dots, 1 \otimes m_n\}$ is a $\mathbbm{k}$-basis for $\mathbbm{k} \otimes_R M$.\\
 
 \noindent\begin{theorem}\textnormal{(Soergel Hom Formula).}\label{SoergelHom} For any two Soergel bimodules $B, B' \in \mathbb{S}\textcat{Bim}(W, S)$, %the graded vector space
 $\morset^\bullet_{\mathbb{S}\textcat{Bim}}(B, B')$ %\coloneqq \bigoplus_{i\in\mathbb{Z}} \morset_{\mathbb{S}\textcat{Bim}}(B, B'(i))$
-is free as a left graded $R$-module and as a right graded $R$-module, both with\linebreak $\textnormal{grk}(\morset^\bullet_{\mathbb{S}\textcat{Bim}}(B, B')) = (\textnormal{ch}_\Delta(B), \textnormal{ch}_\Delta(B'))$, where $(-, -)$ denotes the standard form on $\mathscr{H}(W, S)$. In particular, the dimension of $\morset_{\mathbb{S}\textcat{Bim}}(B, B'(i))$ is given by the coefficient of $q^i$ in $(\textnormal{ch}_\Delta(B), \textnormal{ch}_\Delta(B'))$.\newpage
+is free as a left graded $R$-module and as a right graded $R$-module, both with\linebreak $\textnormal{grk}(\morset^\bullet_{\mathbb{S}\textcat{Bim}}(B, B')) = (\textnormal{ch}_\Delta(B), \textnormal{ch}_\Delta(B'))$, where $(-, -)$ denotes the standard form on $\mathscr{H}(W, S)$. In particular, the dimension of $\morset_{\mathbb{S}\textcat{Bim}}(B, B'(i))$ is given by the coefficient of $v^i$ in $(\textnormal{ch}_\Delta(B), \textnormal{ch}_\Delta(B'))$.\newpage
 \end{theorem}
 
-\noindent\begin{remark}\label{SBimFiniteInd} Any category of Soergel bimodules is naturally a strict monoidal category. Although they are not Abelian, they have finite-dimensional vector spaces of morphisms by the \hyperref[SoergelHom]{Soergel Hom Formula} and are therefore Krull--Schmidt by \hyperref[KrullSchmidt1]{Theorem \ref*{KrullSchmidt1}}. Unfortunately, however, by \hyperref[SBimIndecomposablesCardinality]{Corollary \ref*{SBimIndecomposablesCardinality}} it will only be {\em graded multifinitary}, as we only have finitely many indecomposable objects under both isomorphisms and grading shifts. Fortunately, the only time having finitely many isomorphism classes of indecomposable objects comes into play is with the \hyperref[JordanHolder]{weak Jordan--H\"{o}lder Theorem}, and in the case of $\mathbb{S}\textcat{Bim}(W, S)$ we have that $\textnormal{Ind}(\textnormal{M})/\!\sim$ is finite for any module category $\textnormal{M}$, since $B(i) \otimes \mathbbm{1}(j) = B(i+j) \otimes \mathbbm{1} \cong B(i+j)$ for all $B \in \obset(\mathbb{S}\textcat{Bim}(W, S))$ and $i, j \in \mathbb{Z}$, and hence $B \sim B(k)$ for all $k \in \mathbb{Z}$.\\
+\noindent\begin{remark}\label{SBimFiniteInd} Any category of Soergel bimodules is naturally a strict monoidal category. Although they are not Abelian, by the \hyperref[SoergelHom]{Soergel Hom Formula} we can view their classes of morphisms as finite-dimensional $\mathbbm{k}$-vector spaces by tensoring with $\mathbbm{k}$, and in fact one can show using \hyperref[KrullSchmidt1]{Theorem \ref*{KrullSchmidt1}} that they are Krull--Schmidt. Unfortunately, however, by \hyperref[SBimIndecomposablesCardinality]{Corollary \ref*{SBimIndecomposablesCardinality}} it will only be {\em graded multifinitary}, as we only have finitely many indecomposable objects under both isomorphisms and grading shifts. Fortunately, the only time having finitely many isomorphism classes of indecomposable objects comes into play is with the \hyperref[JordanHolder]{weak Jordan--H\"{o}lder Theorem}, and in the case of $\mathbb{S}\textcat{Bim}(W, S)$ we have that $\textnormal{Ind}(\textnormal{M})/\!\sim$ is finite for any module category $\textnormal{M}$, since $B(i) \otimes \mathbbm{1}(j) = B(i+j) \otimes \mathbbm{1} \cong B(i+j)$ for all $B \in \obset(\mathbb{S}\textcat{Bim}(W, S))$ and $i, j \in \mathbb{Z}$, and hence $B \sim B(k)$ for all $k \in \mathbb{Z}$.\\
 \end{remark}
 
-\noindent\begin{theorem}\textnormal{(Soergel's Conjecture).} The isomorphism $\textnormal{ch} : \textnormal{Gr}(\mathbb{S}\textcat{Bim}(W, S)) \to \mathscr{H}(W, S)$ from \hyperref[SoergelCategorification]{Theorem \ref*{SoergelCategorification}} sends $B_w(k)$ to the isomorphism class $q^k b_w$, for each $w \in W$.\\
+\noindent\begin{theorem}\textnormal{(Soergel's Conjecture).} The isomorphism $\textnormal{ch} : \textnormal{Gr}(\mathbb{S}\textcat{Bim}(W, S)) \to \mathscr{H}(W, S)$ from \hyperref[SoergelCategorification]{Theorem \ref*{SoergelCategorification}} sends $B_w(k)$ to the isomorphism class $v^k b_w$, for each $w \in W$.\\
 \end{theorem}
 
 \noindent This result, which was first proven by Elias and Williamson (\cite[Theorem 1.1]{EW14}), generalizes the Kazhdan--Lusztig Conjecture and finally gives us an algebraic categorification of the Iwahori--Hecke algebra. This also means that our categories of Soergel bimodules are actually deceptively easy to work with; up to isomorphism, we can manipulate the objects by viewing them not as bimodules but as elements in the corresponding Iwahori--Hecke algebra. That said, Soergel bimodules also give us a collection of morphisms to look at. In fact, from the categorical perspective, the morphisms are really the items of interest -- compared to the Iwahori--Hecke algebra, they provide us with genuinely new information! As it turns out, even these morphisms are nice to work with, thanks to \hyperref[SoergelHom]{Theorem \ref*{SoergelHom}} and the fact that they admit a graphical calculus.
@@ -919,10 +919,10 @@ G/B = \bigsqcup_{w \in W} X_w.
 \noindent The cells $X_w$ are locally closed subvarieties of $G/B$. We refer to the Zariski closure $\overline{X_w}$ as the {\em Schubert variety of $w$}, and remark that $\overline{X_y} \subseteq \overline{X_w}$ if and only if $y \leq w$. As an aside, we have that\\[-\linespacing]
 \begin{align*}
 \begin{split}
-P_{y,w}(q) = \sum_{i \geq 0} q^i \textnormal{dim}_\mathbb{C}(IH^{2i}_{X_y}(\overline{X_w}, \mathbb{C})),
+v^{\ell(w) - \ell(y)} h_{y,w}(v^{-1}) = \sum_{i \geq 0} v^i \textnormal{dim}_\mathbb{C}(IH^{2i}_{X_y}(\overline{X_w}, \mathbb{C})),
 \end{split}
 \end{align*}
-\noindent\\[-0.7\linespacing] where $P_{y,w}$ is a Kazhdan--Lusztig polynomial for the Kazhdan--Lusztig basis of $\mathscr{H}(W, S)$. The term $IH^{2i}_{X_y}(X_w)$ is the stalk of the $i$th hypercohomology of $\textnormal{IC}_w$ at a (equivalently, any) point of $X_y$, where $\textnormal{IC}_w$ denotes the intersection cohomology sheaves of $\overline{X_w}$ (\cite[13.13]{EMTW20}). This result was first shown in the appendix to \cite{KL79} (see Remark A11). One thing we may observe here is that we only sum over even graded pieces of the local intersection cohomology; the reason for this is that the odd graded pieces are all zero. In fact, because we have a left action of $B$ on $G/B$, we can consider the $B$-equivariant cohomology $H_B^*(G/B)$, which we will find is a ring that is also graded in degree $2$. As it turns out, $H_B^*(G/B) \cong R \otimes_{R^W} R$, which is exactly why we grade $R$ the way that we do!\newpage
+\noindent\\[-0.7\linespacing] where $h_{y,w}$ is a Kazhdan--Lusztig polynomial for the Kazhdan--Lusztig basis of $\mathscr{H}(W, S)$. The term $IH^{2i}_{X_y}(X_w)$ is the stalk of the $i$th hypercohomology of $\textnormal{IC}_w$ at a (equivalently, any) point of $X_y$, where $\textnormal{IC}_w$ denotes the intersection cohomology sheaves of $\overline{X_w}$ (\cite[Theorem 13.13]{EMTW20}). This result was first shown in the appendix to \cite{KL79} (see Remark A11). One thing we may observe here is that we only sum over even graded pieces of the local intersection cohomology; the reason for this is that the odd graded pieces are all zero. In fact, because we have a left action of $B$ on $G/B$, we can consider the $B$-equivariant cohomology $H_B^*(G/B)$, which we will find is a ring that is also graded in degree $2$. As it turns out, $H_B^*(G/B) \cong R \otimes_{R^W} R$, which is why we grade $R$ the way that we do!\newpage
 \end{remark}
 
 \noindent\textcolor{red}{Go through the $SL_2$ and $SL_3$ examples in detail to put everything together, it'd be good to see an example of the Kazhdan--Lusztig basis of a Iwahori--Hecke algebra and compare it to the indecomposables in the corresponding category of Soergel bimodules. I should also start typing up Lie theory notes.}\\
