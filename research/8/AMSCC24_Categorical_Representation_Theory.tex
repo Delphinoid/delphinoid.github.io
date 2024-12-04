@@ -1,0 +1,863 @@
+%%%%%%%%%
+% SETUP %
+%%%%%%%%%
+
+\documentclass{beamer}
+\mode<presentation> {
+	\usetheme{Madrid}
+}
+\setbeamertemplate{frametitle continuation}[from second][]
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\usepackage{tikz}
+\usetikzlibrary{knots}
+\usetikzlibrary{arrows.meta} 
+
+% Title.
+\title[Categorical Representation Theory]{Contextualizing Categorical Representation Theory}
+\author{Daniel Dunmore}
+\institute[UNSW]{
+	University of New South Wales \\
+	\medskip
+	\textit{d.dunmore@unsw.edu.au}
+}
+\date{December 5, 2024}
+
+% Bibliography.
+\usepackage[%
+	backend = biber,
+	% BibLaTeX-Math package: https://github.com/konn/biblatex-math
+	style = math-alphabetic,
+	giveninits = true,
+	dashed = false,
+	url = false,
+	doi = false,
+	sorting = none,
+	minalphanames = 3,
+	maxalphanames = 4
+]{biblatex}
+% Use the default font size for the bibliography.
+\renewcommand*{\bibfont}{\normalsize}
+% Use title case rather than sentence case for references.
+\DeclareFieldFormat{titlecase}{#1}
+% Put last names before first names.
+\DeclareNameAlias{default}{family-given}
+% Used for articles with appendices written by other authors.
+\NewBibliographyString{bywithappendix}
+\DefineBibliographyStrings{english}{
+	bywithappendix = {with an appendix by}
+}
+% Specify the bibliography data file to use.
+\addbibresource{References.bib}
+% Sort by order present in .bib file.
+\nocite{*}
+
+
+%%%%%%%%%%%%
+% NOTATION %
+%%%%%%%%%%%%
+
+\usepackage{mathrsfs}
+
+% Adds integral notation like \oiint.
+\usepackage{esint}
+% Blackboard bold symbols.
+\usepackage{bbm}
+
+\usepackage{accents}
+% Tilde notation for vectors.
+\newcommand{\ut}[1]{\underaccent{\tilde}{#1}}
+% Arrow notation for vectors.
+\usepackage{harpoon}
+% Dirac bra-ket notation for quantum states.
+\usepackage{braket}
+
+% Differential formatting.
+\usepackage{ifthen}
+\usepackage{etoolbox}
+\newcommand*{\ndiff}[1]{\mathrm{d}#1}
+\newcommand*{\sdiff}[1]{\mathop{}\!\ndiff{#1}}
+\newcommand{\rdiff}[3][]{
+	\ifthenelse{\equal{#1}{}}
+	{\frac{\mathrm{d}#2}{\mathrm{d}#3}}
+	{\frac{\mathrm{d}^{#1}#2}{\forcsvlist\ndiff{#3}}}
+}
+\newcommand*{\npiff}[1]{\mathrm{\partial}#1}
+\newcommand*{\spiff}[1]{\mathop{}\!\npiff{#1}}
+\newcommand{\rpiff}[3][]{
+	\ifthenelse{\equal{#1}{}}
+	{\frac{\mathrm{\partial}#2}{\mathrm{\partial}#3}}
+	{\frac{\mathrm{\partial}^{#1}#2}{\forcsvlist\npiff{#3}}}
+}
+% Inexact differential for physics.
+\newcommand*{\dbar}[1]{\mathop{}\!\mathrm{\dj}#1}
+
+% Metrics, inner products and norms.
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\inprod}{\langle}{\rangle}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+% This is used if we want an empty norm. 
+\newcommand{\blank}{{}\cdot{}}
+
+% Function notation.
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\coker}{\mathrm{Coker}}
+\newcommand{\im}{\mathrm{Im}}
+\newcommand{\ev}{\mathrm{ev}}
+\newcommand{\coev}{\mathrm{coev}}
+
+% Category theory notation.
+%\newcommand{\obset}{\textnormal{Ob}_{#1}\!\left(#2\right)}
+%\newcommand{\morset}[2][]{\textnormal{Mor}_{#1}\!\left(#2\right)}
+%\newcommand{\homset}[2][]{\textnormal{Hom}_{#1}\!\left(#2\right)}
+%\newcommand{\End}[2][]{\textnormal{End}_{#1}\!\left(#2\right)}
+%\newcommand{\opp}[1]{{#1}^{\textnormal{op}}}
+%\newcommand{\textcat}[1]{\textnormal{\textsf{#1}}}
+\newcommand{\obset}{\mathrm{Ob}}
+\newcommand{\morset}{\mathrm{Mor}}
+\newcommand{\homset}{\mathrm{Hom}}
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\opp}{\mathrm{op}}
+\newcommand{\textcat}[1]{\mathrm{\textsf{#1}}}
+\newcommand{\textobj}[1]{\mathrm{\texttt{#1}}}
+
+% Special notation.
+%\newcommand{\chr}{\textnormal{char}}
+%\newcommand{\Tr}{\textnormal{Tr}}
+%\newcommand{\trv}{\textnormal{tr}}
+%\newcommand{\Dim}{\textnormal{Dim}}
+%\newcommand{\FPdim}{\textnormal{FPdim}}
+\newcommand{\chr}{\mathrm{char}}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\trv}{\mathrm{tr}}
+\newcommand{\Dim}{\mathrm{Dim}}
+\newcommand{\FPdim}{\mathrm{FPdim}}
+
+% Hiragana "yo" for the Yoneda embeddings.
+\newcommand{\yo}{\text{\usefont{U}{min}{m}{n}\symbol{'210}}}
+\DeclareFontFamily{U}{min}{}
+\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
+
+% Representation theory notation.
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\Alt}{\mathrm{Alt}}
+
+\usepackage{calc}
+
+\newcommand*{\emphasis}[1]{\textcolor{structure}{\em #1}}
+
+\usefonttheme[onlymath]{serif}
+
+\DeclareCiteCommand{\aycite}
+{\boolfalse{citetracker}\boolfalse{pagetracker}}
+{\printtext[bibhyperref]{\printnames{labelname}\addcomma\addspace\printfield{year}}}
+{\multicitedelim}
+{}
+
+% Negative horizontal phantom.
+\newcommand{\nhphantom}[1]{\sbox0{#1}\hspace{-\the\wd0}}
+
+\newtheorem{theoremdefinition}{Theorem-Definition}
+
+\usepackage{stmaryrd}
+
+\renewcommand*{\bibfont}{\normalfont\small}
+
+
+%%%%%%%%%%%%
+% DOCUMENT %
+%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%
+% Prelude %
+%%%%%%%%%%%
+
+\begin{frame}
+\titlepage
+\noindent\\[-15pt]
+\begin{figure}[!ht]
+\includegraphics[width=2cm]{unsw-crest}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Roadmap}
+\begin{center}
+\begin{minipage}{\widthof{(4) Representation Theory:\ Categorified}}
+\setlength{\parskip}{4ex}
+\tableofcontents
+\end{minipage}
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%
+% A Brief History %
+%%%%%%%%%%%%%%%%%%%
+
+\section{A Brief History}
+
+\begin{frame}
+\centerline{\huge\textcolor{structure}{\underline{A Brief History}}}
+\end{frame}
+
+\begin{frame}
+\frametitle{A Brief History}
+Our story begins in the 1980s with Jones' surprising discovery of a polynomial invariant for oriented links (\textcolor{structure}{\cite{Jon85}}).
+\begin{center}
+\begin{tikzpicture}[baseline={(0,-0.25)}]
+\begin{knot}[clip width=7, flip crossing={2}]
+\strand[thick, black] (0.5,0) circle (1.0);
+\strand[thick, black] (-0.5,0) circle (1.0);
+\end{knot}
+\draw [-{Stealth[scale=1.5]}] (-0.5,-0.15) -- (-0.5,-0.15001);
+\draw [-{Stealth[scale=1.5]}] (0.5,-0.15) -- (0.5,-0.15001);
+\end{tikzpicture}\quad{\Large $\rightsquigarrow$}\quad $-t^{1/2}(1 + t^2)$
+\end{center}
+This created a link (no pun intended!) between operator algebras and low dimensional topology, initiated the field of quantum topology and lead to an explosion of new knot polynomials. 
+\end{frame}
+
+\begin{frame}
+\frametitle{A Brief History}
+In the 1990s, Reshetikhin and Turaev explained how these invariants could be obtained from the representation theory of quantum groups (\textcolor{structure}{\cite{RT91}}).\\[2ex]
+Following this was a categorification of the Jones polynomial due to Khovanov that is strictly stronger as a knot invariant (\textcolor{structure}{\cite{Kho00}}).\\[2ex]
+If the Jones polynomial may be obtained from the representation theory of quantum groups, what about its categorification? Spoiler: \textcolor{structure}{\cite{Web13a}}, \textcolor{structure}{\cite{Web13b}}.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% What Is Categorification? %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{What Is Categorification?}
+
+\begin{frame}
+\centerline{\huge\textcolor{structure}{\underline{What Is Categorification?}}}
+\end{frame}
+
+\begin{frame}
+\frametitle{What Is Categorification?}
+Well... it's complicated. There are many flavours of categorification.\\[2ex]
+The most precise (and unhelpful) definition of categorification is that it's a right inverse to decategorification.\\[2ex]
+Roughly speaking, categorification is the process of endowing an algebraic object with \emphasis{higher algebraic structure}.\\[2ex]
+%Often this can mean promoting an $n$-category to an $(n+1)$-category (vertical categorification).\\[2ex]
+%It also sometimes means taking a one-object category and adding multiple objects to it (horizontal categorification).\\[2ex]
+%{\scriptsize It can also mean delooping an algebraic structure.}\\[2ex]
+%{\tiny It can also mean...}
+%There are different notions of categorification that are difficult to unify in a single, precise definition.\\[2ex]
+%In my opinion, the original definition stated by Crane says it best.\\[2ex]
+%\begin{quote}
+%The categorification of any type of algebraic structure is a type of structure with analogous operations one categorical level higher. A categorification of a particular algebraic structure is an example of the categorified type of the structure which when ``traced down'' gives us back the original structure.
+%\hspace*{\fill}{\normalfont \scriptsize (\cite[p.\ 13]{Cra95})}
+%\end{quote}\noindent\\[2ex]  %https://arxiv.org/abs/gr-qc/9504038
+%Let's see some examples.
+\end{frame}
+
+\begin{frame}
+\frametitle{What Is Categorification? Examples}
+The canonical example of categorification is $\textsf{Vect}^\text{f.d.}_\mathbbm{k}$, the category of finite-dimensional $\mathbbm{k}$-vector spaces, which categorifies the natural numbers.\\[2ex]
+We can decategorify by taking the dimension.\\[2ex]
+The direct sum $\oplus$ categorifies addition:
+\begin{center}$\dim(U \oplus V) = \dim(U) + \dim(V)$.\end{center}
+The tensor product $\otimes_\mathbbm{k}$ categorifies multiplication:
+\begin{center}$\dim(U \otimes_\mathbbm{k} V) = \dim(U) \cdot \dim(V)$.\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{What Is Categorification? Examples}
+The additive and multiplicative identities are categorified by $0$ and $\mathbbm{k}$:
+\begin{center}$0 \oplus V \cong V \cong V \oplus 0$,\end{center}
+\begin{center}$\mathbbm{k} \otimes_\mathbbm{k} V \cong V \cong V \otimes_\mathbbm{k} \mathbbm{k}$.\end{center}
+Injections and surjections categorify the order relation:
+\begin{center}$\exists f : U \hookrightarrow V \iff \dim(U) \leq \dim(V)$,\end{center}
+\begin{center}$\exists g : U \twoheadrightarrow V \iff \dim(U) \geq \dim(V)$.\end{center}
+The category of finite-dimensional vector spaces contains all the structure of the natural numbers in addition to \emphasis{higher, linear algebraic structure}!\\[2ex]
+We can also recover the entirety of $\mathbb{N}$ by looking at isomorphism classes of objects (this is known as the \emphasis{Grothendieck group} of $\textsf{Vect}^\text{f.d.}_\mathbbm{k}$).
+\end{frame}
+
+\begin{frame}
+\frametitle{What Is Categorification? Examples}
+In a similar vein, the category of finite-dimensional, $\mathbb{Z}$-graded vector spaces categorifies the quantum numbers $\mathbb{N}[q, q^{-1}]$.\\[2ex] Decategorification is done via the graded dimension:
+\begin{align*}
+\begin{split}
+\mathrm{qdim}\!\left(V = \bigoplus_{j \in \mathbb{Z}}{V^j}\right) \coloneqq \sum_{j \in \mathbb{Z}}{q^j\dim(V^j)}.
+\end{split}
+\end{align*}
+Grading shifts correspond to division by the formal variable $q$:
+\begin{align*}
+\begin{split}
+\mathrm{qdim}\!\left(V(n)\right) = \sum_{j \in \mathbb{Z}}{\dim(V^{j+n})q^j} = q^{-n}\mathrm{qdim}\!\left(V\right).
+\end{split}
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\frametitle{What Is Categorification? Examples}
+Already there are some nice applications of this.\\[2ex]
+Suppose we have an Abelian category $\mathcal{C}$. In the world of algebraic topology, we often look at $\mathbb{Z}$-graded complexes $C \coloneqq (C_*(X), \partial_*)$ of the form
+\begin{align*}
+\begin{split}
+\cdots \stackrel{\partial_{3}}{\to} C_2 \stackrel{\partial_{2}}{\to} C_1 \stackrel{\partial_{1}}{\to} C_0 \stackrel{\partial_{0}}{\to} C_{-1} \stackrel{\partial_{-1}}{\to} C_{-2} \stackrel{\partial_{-2}}{\to} \cdots,
+\end{split}
+\end{align*}
+where the $C_i$ are objects in $\mathcal{C}$ and the $\partial_i$ are morphisms.\\[2ex]
+Given two complexes $A \coloneqq (A_*, a_*)$ and $B \coloneqq (B_*, b_*)$ with a morphism $d : A \to B$, we may also define a complex via the mapping cone $\mathrm{Cone}(d)$:
+\begin{align*}
+\begin{split}
+\cdots \to A_n \oplus B_{n-1} \xrightarrow{\begin{pmatrix}a_n&0\\d_n&-b_n\end{pmatrix}} A_{n+1} \oplus B_n \to \cdots.
+\end{split}
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\frametitle{What Is Categorification? Examples}
+This is a bit abstract, so let's be more concrete. Consider $\textcat{Ab}$, the category of Abelian groups.\\[2ex]
+Given any topological space $X$, we can always define an ($\mathbb{N}$-graded) singular chain complex $S(X)$, where $S_n(X)$ is the free Abelian group with basis given by all singular $n$-simplices in $X$ and $\partial_n : S_n \to S_{n-1}$ is the boundary homomorphism.
+%Given a topological space $X$, we may define a singular chain complex $S(X) \coloneqq (S_*(X), \partial_*)$ of the form
+%\begin{align*}
+%\begin{split}
+%\cdots \stackrel{\partial_{n+1}}{\to} S_n(X) \stackrel{\partial_{n}}{\to} S_{n-1}(X) \stackrel{\partial_{n-1}}{\to} \cdots \stackrel{\partial_{2}}{\to} S_1(X) \stackrel{\partial_{1}}{\to} S_0(X) \to 0,
+%\end{split}
+%\end{align*}
+%where each $S_n(X)$ is the free Abelian group with basis given by all singular $n$-simplexes in $X$ and $\partial_n : S_n \to S_{n-1}$ is the boundary homomorphism.\\[2ex]
+%Given two complexes $(S_*(X), \partial_*)$ and $(S'_*(X), \partial'_*)$ with a chain morphism $\phi : S \to S'$, we may define a new complex via the mapping cone $\mathrm{Cone}(\phi)$:
+%\begin{align*}
+%\begin{split}
+%\cdots \to S_n(X) \oplus S'_{n-1}(X) \xrightarrow{\begin{pmatrix}\partial_n&0\\\phi_n&-\partial'_n\end{pmatrix}} S_{n+1}(X) \oplus S'_n(X) \to \cdots.
+%\end{split}
+%\end{align*}
+\end{frame}
+
+\begin{frame}
+\frametitle{What Is Categorification? Examples}
+If the (co)homology groups $H_n(X) \coloneqq \mathrm{Ker}(\partial_n)/\mathrm{Im}(\partial_{n-1})$ are finite rank,
+\begin{align*}
+\begin{split}
+\mathrm{rk}(H_n(X)) = \mathrm{dim}(H_n(X) \otimes_\mathbb{Z} \mathbb{Q}) = b_n.
+\end{split}
+\end{align*}
+In other words, \emphasis{finite (co)homology categorifies Betti numbers}.\\[2ex]
+If there are a finite number of non-zero Betti numbers (e.g., you have a finite C.W.\ complex), we may define the \emphasis{graded Euler characteristic},
+\begin{align*}
+\begin{split}
+\widehat{\chi}_q(X) \coloneqq \mathrm{qdim}(S(X)) = \sum_{i \in \mathbb{N}}{q^i\dim(H_i(X) \otimes_\mathbb{Z} \mathbb{Q})},
+\end{split}
+\end{align*}
+whence we find that $\widehat{\chi}_{-1}(X) = \chi(X)$. In other words, \emphasis{bounded (co)chain complexes of finite (co)homology categorify Euler--Poincar\'{e} characteristics}.\\[2ex]
+With this in mind, let's try to understand how exactly Khovanov homology categorifies the Jones polynomial.
+%These are much stronger invariants of $X$!
+\end{frame}
+
+%\begin{frame}
+%\frametitle{What Is Categorification? Examples}
+%Consider the bicategory of von Neumann algebras whose objects are von Neumann algebras, whose $1$-morphisms are von Neumann algebra bimodules and whose $2$-morphisms.are bimodule intertwiners.\\[2ex]
+
+%In the world of operator algebras, looping a von Neumann algebra gives you a Hilbert space, and looping a Hilbert space gives you the complex numbers.\\[2ex]
+%In other words, von Neumann algebras horizontally categorify Hilbert spaces which categorify the complex numbers.\\[2ex]
+%In a categorical language, \emphasis{looping} means taking the endomorphisms of the monoidal unit.
+%\end{frame}
+
+\begin{frame}
+\frametitle{What Is Categorification? Examples}
+%With this in mind, let's try to understand how exactly Khovanov homology categorifies the Jones polynomial.\\ %What exactly does this mean?\\[2ex]
+%Let's first try to understand the Jones polynomial.\\[1ex]
+%\begin{definition}[\aycite{Jon85} and \aycite{Kau87}] The \emphasis{Kauffman bracket polynomial} $\langle D\rangle \in \mathbb{Z}[A, A^{-1}]$ of an unoriented link diagram $D$ is defined recursively via the following local rules.
+%\begin{itemize}
+%\item $\langle\varnothing\rangle = 1$.
+%\item $\langle$\begin{tikzpicture}[baseline={(0,-0.125)}]\draw (-0.15,0.15) -- (0.15,-0.15);\draw (0.15,0.15) -- (0.05,0.05);\draw (-0.05,-0.05) -- (-0.15,-0.15);\end{tikzpicture}$\rangle = A\langle$\begin{tikzpicture}[baseline={(0,-0.125)}]\draw (-0.15,-0.15) arc (-45:45:0.2125);\draw (0.15,-0.15) arc (225:135:0.2125);\end{tikzpicture}$\rangle + A^{-1}\langle$\begin{tikzpicture}[baseline={(0,-0.125)}]\draw (-0.15,-0.15) arc (135:45:0.2125);\draw (-0.15,0.15) arc (225:315:0.2125);\end{tikzpicture}$\rangle$.
+%\item $\langle$\begin{tikzpicture}[baseline={(0,-0.125)}]\draw (0,0) circle (0.15);\end{tikzpicture}$\ \sqcup\ D'\rangle = -(A^2 + A^{-2})\langle D'\rangle$, for any unoriented link diagram $D'$.
+%\end{itemize}
+%The \emphasis{Jones polynomial} $V_q(L)$ of an oriented link $L$ is then the invariant\\[-2ex]
+%\begin{center}$V_q(L) = \frac{A^{-3w(L)}}{-(A^2 + A^{-2})}\langle D\rangle\big\vert_{-A^2=q} \in \mathbb{Z}[q, q^{-1}]$,\end{center}
+%where $D$ is the associated unoriented diagram and $w(L)$ is the \emphasis{writhe}, the number of positive crossings \begin{tikzpicture}[baseline={(0,-0.125)}]\draw [-{Stealth[scale=0.6]}] (0.15,0.15) -- (-0.15,-0.15);\draw (-0.15,0.15) -- (-0.05,0.05);\draw [-{Stealth[scale=0.6]}] (0.05,-0.05) -- (0.15,-0.15);\end{tikzpicture} minus the number of negative crossings \begin{tikzpicture}[baseline={(0,-0.125)}]\draw [-{Stealth[scale=0.6]}] (-0.15,0.15) -- (0.15,-0.15);\draw (0.15,0.15) -- (0.05,0.05);\draw [-{Stealth[scale=0.6]}] (-0.05,-0.05) -- (-0.15,-0.15);\end{tikzpicture}.
+%\end{definition}
+\begin{definition}[\aycite{Jon85} and \aycite{Kau87}] The \emphasis{Kauffman bracket polynomial} $\langle D\rangle \in \mathbb{Z}[q, q^{-1}]$ of an unoriented link diagram $D$ is defined recursively via the local rules
+\begin{itemize}
+\item $\langle\varnothing\rangle = 1$;
+%\item $\langle$\begin{tikzpicture}[baseline={(0,-0.125)}]\draw (-0.15,0.15) -- (0.15,-0.15);\draw (0.15,0.15) -- (0.05,0.05);\draw (-0.05,-0.05) -- (-0.15,-0.15);\end{tikzpicture}$\rangle = \langle$\begin{tikzpicture}[baseline={(0,-0.125)}]\draw (-0.15,-0.15) arc (135:45:0.2125);\draw (-0.15,0.15) arc (225:315:0.2125);\end{tikzpicture}$\rangle - q\langle$\begin{tikzpicture}[baseline={(0,-0.125)}]\draw (-0.15,-0.15) arc (-45:45:0.2125);\draw (0.15,-0.15) arc (225:135:0.2125);\end{tikzpicture}$\rangle$;
+\item $\langle$\begin{tikzpicture}[baseline={(0,-0.125)}]\draw (0.15,0.15) -- (-0.15,-0.15);\draw (-0.15,0.15) -- (-0.05,0.05);\draw (0.05,-0.05) -- (0.15,-0.15);\end{tikzpicture}$\rangle = \langle$\begin{tikzpicture}[baseline={(0,-0.125)}]\draw (-0.15,-0.15) arc (-45:45:0.2125);\draw (0.15,-0.15) arc (225:135:0.2125);\end{tikzpicture}$\rangle - q\langle$\begin{tikzpicture}[baseline={(0,-0.125)}]\draw (-0.15,-0.15) arc (135:45:0.2125);\draw (-0.15,0.15) arc (225:315:0.2125);\end{tikzpicture}$\rangle$;
+\item $\langle$\begin{tikzpicture}[baseline={(0,-0.125)}]\draw (0,0) circle (0.15);\end{tikzpicture}$\ \sqcup\ D'\rangle = (q + q^{-1})\langle D'\rangle$, for any unoriented link diagram $D'$.
+\end{itemize}
+The \emphasis{Jones polynomial} $V_q(L)$ of an oriented link $L$ is then the invariant\\[-2ex]
+\begin{center}$V_q(L) = \frac{(-1)^{n_-}q^{n_+ - 2n_-}}{q + q^{-1}}\langle D\rangle \in \mathbb{Z}[q, q^{-1}]$,\end{center}
+where $D$ is the associated unoriented diagram, $n_+$ is the number of positive crossings \begin{tikzpicture}[baseline={(0,-0.125)}]\draw [-{Stealth[scale=0.6]}] (0.15,0.15) -- (-0.15,-0.15);\draw (-0.15,0.15) -- (-0.05,0.05);\draw [-{Stealth[scale=0.6]}] (0.05,-0.05) -- (0.15,-0.15);\end{tikzpicture} and $n_-$ is the number of negative crossings \begin{tikzpicture}[baseline={(0,-0.125)}]\draw [-{Stealth[scale=0.6]}] (-0.15,0.15) -- (0.15,-0.15);\draw (0.15,0.15) -- (0.05,0.05);\draw [-{Stealth[scale=0.6]}] (-0.05,-0.05) -- (-0.15,-0.15);\end{tikzpicture}.
+\end{definition}
+\end{frame}
+
+\begin{frame}
+\frametitle{What Is Categorification? Examples}
+\begin{center}
+$\Bigg\langle$\begin{tikzpicture}[baseline={(0,-0.125)}, scale=0.8]
+\draw[thick, white] ({0.5+cos(-102)},{sin(-102)}) arc (-102:102:1);
+\draw[thick, white] ({0.5+cos(138)},{sin(138)}) arc (138:222:1);
+\draw[thick, white] ({-0.5+cos(78)},{sin(78)}) arc (78:282:1);
+\draw[thick, white] ({-0.5+cos(-42)},{sin(-42)}) arc (-42:42:1);
+\begin{knot}[clip width=7, flip crossing={2}]
+\strand[thick, black] (0.5,0) circle (1.0);
+\strand[thick, black] (-0.5,0) circle (1.0);
+\end{knot}
+\draw [-{Stealth[scale=1.5]}] (-0.5,-0.15) -- (-0.5,-0.15001);
+\draw [-{Stealth[scale=1.5]}] (0.5,-0.15) -- (0.5,-0.15001);
+\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{sin(60)}) circle (0.3);
+\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{-sin(60)}) circle (0.3);
+\end{tikzpicture}$\Bigg\rangle = \Bigg\langle$\begin{tikzpicture}[baseline={(0,-0.125)}, scale=0.8]
+\draw[thick] ({0.5+cos(-102)},{sin(-102)}) arc (-102:102:1);
+\draw[thick] ({0.5+cos(138)},{sin(138)}) arc (138:222:1);
+\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:282:1);
+\draw[thick] ({-0.5+cos(-42)},{sin(-42)}) arc (-42:42:1);
+%
+\draw[thick] ({0.5+cos(102)},{sin(102)}) arc (102:222:0.165);
+\draw[thick] ({-0.5+cos(42)}, {sin(42)}) -- ({-0.5+cos(42)-0.05}, {sin(42)+0.05});
+\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:-42:0.165);
+\draw[thick] ({0.5-cos(42)}, {sin(42)}) -- ({0.5-cos(42)+0.05}, {sin(42)+0.05});
+\draw[thick, knot gap=7, knot=black] ({0.5+cos(222)},{sin(222)}) arc (222:258:1);
+\draw[thick, knot gap=7, knot=black] ({-0.5+cos(282)},{sin(282)}) arc (282:318:1);
+%
+\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{sin(60)}) circle (0.3);
+\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{-sin(60)}) circle (0.3);
+\end{tikzpicture}$\Bigg\rangle\ -\ q\Bigg\langle$\begin{tikzpicture}[baseline={(0,-0.125)}, scale=0.8]
+\draw[thick] ({0.5+cos(-102)},{sin(-102)}) arc (-102:102:1);
+\draw[thick] ({0.5+cos(138)},{sin(138)}) arc (138:222:1);
+\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:282:1);
+\draw[thick] ({-0.5+cos(-42)},{sin(-42)}) arc (-42:42:1);
+%
+\draw[thick] ({0.5+cos(102)},{sin(102)}) arc (282:258:1.41);
+\draw[thick] ({-0.5+cos(42)},{sin(42)}) arc (42:138:0.329);
+\draw[thick, knot gap=7, knot=black] ({0.5+cos(222)},{sin(222)}) arc (222:258:1);
+\draw[thick, knot gap=7, knot=black] ({-0.5+cos(282)},{sin(282)}) arc (282:318:1);
+%
+\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{sin(60)}) circle (0.3);
+\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{-sin(60)}) circle (0.3);
+\end{tikzpicture}$\Bigg\rangle$,\\
+
+$\Bigg\langle$\begin{tikzpicture}[baseline={(0,-0.125)}, scale=0.8]
+\draw[thick] ({0.5+cos(-102)},{sin(-102)}) arc (-102:102:1);
+\draw[thick] ({0.5+cos(138)},{sin(138)}) arc (138:222:1);
+\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:282:1);
+\draw[thick] ({-0.5+cos(-42)},{sin(-42)}) arc (-42:42:1);
+%
+\draw[thick] ({0.5+cos(102)},{sin(102)}) arc (102:222:0.165);
+\draw[thick] ({-0.5+cos(42)}, {sin(42)}) -- ({-0.5+cos(42)-0.05}, {sin(42)+0.05});
+\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:-42:0.165);
+\draw[thick] ({0.5-cos(42)}, {sin(42)}) -- ({0.5-cos(42)+0.05}, {sin(42)+0.05});
+\draw[thick, knot gap=7, knot=black] ({0.5+cos(222)},{sin(222)}) arc (222:258:1);
+\draw[thick, knot gap=7, knot=black] ({-0.5+cos(282)},{sin(282)}) arc (282:318:1);
+%
+\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{sin(60)}) circle (0.3);
+\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{-sin(60)}) circle (0.3);
+\end{tikzpicture}$\Bigg\rangle = \Bigg\langle$\begin{tikzpicture}[baseline={(0,-0.125)}, scale=0.8]
+\draw[thick] ({0.5+cos(-102)},{sin(-102)}) arc (-102:102:1);
+\draw[thick] ({0.5+cos(138)},{sin(138)}) arc (138:222:1);
+\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:282:1);
+\draw[thick] ({-0.5+cos(-42)},{sin(-42)}) arc (-42:42:1);
+%
+\draw[thick] ({0.5+cos(102)},{sin(102)}) arc (102:222:0.165);
+\draw[thick] ({-0.5+cos(42)}, {sin(42)}) -- ({-0.5+cos(42)-0.05}, {sin(42)+0.05});
+\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:-42:0.165);
+\draw[thick] ({0.5-cos(42)}, {sin(42)}) -- ({0.5-cos(42)+0.05}, {sin(42)+0.05});
+%
+\draw[thick] ({0.5+cos(102)},{-sin(102)}) arc (-102:-222:0.165);
+\draw[thick] ({-0.5+cos(42)}, {-sin(42)}) -- ({-0.5+cos(42)-0.05}, {-sin(42)-0.05});
+\draw[thick] ({-0.5+cos(78)},{-sin(78)}) arc (-78:42:0.165);
+\draw[thick] ({0.5-cos(42)}, {-sin(42)}) -- ({0.5-cos(42)+0.05}, {-sin(42)-0.05});
+%
+\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{sin(60)}) circle (0.3);
+\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{-sin(60)}) circle (0.3);
+\end{tikzpicture}$\Bigg\rangle\ -\ q\Bigg\langle$\begin{tikzpicture}[baseline={(0,-0.125)}, scale=0.8]
+\draw[thick] ({0.5+cos(-102)},{sin(-102)}) arc (-102:102:1);
+\draw[thick] ({0.5+cos(138)},{sin(138)}) arc (138:222:1);
+\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:282:1);
+\draw[thick] ({-0.5+cos(-42)},{sin(-42)}) arc (-42:42:1);
+%
+\draw[thick] ({0.5+cos(102)},{sin(102)}) arc (102:222:0.165);
+\draw[thick] ({-0.5+cos(42)}, {sin(42)}) -- ({-0.5+cos(42)-0.05}, {sin(42)+0.05});
+\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:-42:0.165);
+\draw[thick] ({0.5-cos(42)}, {sin(42)}) -- ({0.5-cos(42)+0.05}, {sin(42)+0.05});
+\draw[thick] ({0.5+cos(102)},{-sin(102)}) arc (-282:-258:1.41);
+\draw[thick] ({-0.5+cos(42)},{-sin(42)}) arc (-42:-138:0.329);
+%
+\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{sin(60)}) circle (0.3);
+\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{-sin(60)}) circle (0.3);
+\end{tikzpicture}$\Bigg\rangle$,\\[1ex]
+
+$\Bigg\langle$\begin{tikzpicture}[baseline={(0,-0.125)}, scale=0.8]
+\draw[thick] ({0.5+cos(-102)},{sin(-102)}) arc (-102:102:1);
+\draw[thick] ({0.5+cos(138)},{sin(138)}) arc (138:222:1);
+\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:282:1);
+\draw[thick] ({-0.5+cos(-42)},{sin(-42)}) arc (-42:42:1);
+%
+\draw[thick] ({0.5+cos(102)},{sin(102)}) arc (282:258:1.41);
+\draw[thick] ({-0.5+cos(42)},{sin(42)}) arc (42:138:0.329);
+\draw[thick, knot gap=7, knot=black] ({0.5+cos(222)},{sin(222)}) arc (222:258:1);
+\draw[thick, knot gap=7, knot=black] ({-0.5+cos(282)},{sin(282)}) arc (282:318:1);
+%
+\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{sin(60)}) circle (0.3);
+\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{-sin(60)}) circle (0.3);
+\end{tikzpicture}$\Bigg\rangle = \Bigg\langle$\begin{tikzpicture}[baseline={(0,-0.125)}, scale=0.8]
+\draw[thick] ({0.5+cos(-102)},{sin(-102)}) arc (-102:102:1);
+\draw[thick] ({0.5+cos(138)},{sin(138)}) arc (138:222:1);
+\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:282:1);
+\draw[thick] ({-0.5+cos(-42)},{sin(-42)}) arc (-42:42:1);
+%
+\draw[thick] ({0.5+cos(102)},{sin(102)}) arc (282:258:1.41);
+\draw[thick] ({-0.5+cos(42)},{sin(42)}) arc (42:138:0.329);
+%
+\draw[thick] ({0.5+cos(102)},{-sin(102)}) arc (-102:-222:0.165);
+\draw[thick] ({-0.5+cos(42)}, {-sin(42)}) -- ({-0.5+cos(42)-0.05}, {-sin(42)-0.05});
+\draw[thick] ({-0.5+cos(78)},{-sin(78)}) arc (-78:42:0.165);
+\draw[thick] ({0.5-cos(42)}, {-sin(42)}) -- ({0.5-cos(42)+0.05}, {-sin(42)-0.05});
+%
+\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{sin(60)}) circle (0.3);
+\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{-sin(60)}) circle (0.3);
+\end{tikzpicture}$\Bigg\rangle\ -\ q\Bigg\langle$\begin{tikzpicture}[baseline={(0,-0.125)}, scale=0.8]
+\draw[thick] ({0.5+cos(-102)},{sin(-102)}) arc (-102:102:1);
+\draw[thick] ({0.5+cos(138)},{sin(138)}) arc (138:222:1);
+\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:282:1);
+\draw[thick] ({-0.5+cos(-42)},{sin(-42)}) arc (-42:42:1);
+%
+\draw[thick] ({0.5+cos(102)},{sin(102)}) arc (282:258:1.41);
+\draw[thick] ({-0.5+cos(42)},{sin(42)}) arc (42:138:0.329);
+\draw[thick] ({0.5+cos(102)},{-sin(102)}) arc (-282:-258:1.41);
+\draw[thick] ({-0.5+cos(42)},{-sin(42)}) arc (-42:-138:0.329);
+%
+\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{sin(60)}) circle (0.3);
+\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{-sin(60)}) circle (0.3);
+\end{tikzpicture}$\Bigg\rangle$,\\[2ex]
+$\implies V_q(\text{Hopf}) = \frac{q^2}{q+q^{-1}}(q + q^{-1})(q^3 + q^{-1}) = q^5 + q$.
+\end{center}
+%\begin{center}
+%$\Bigg\langle$\begin{tikzpicture}[baseline={(0,-0.125)}, scale=0.8]
+%\draw[thick, white] ({0.5+cos(-102)},{sin(-102)}) arc (-102:102:1);
+%\draw[thick, white] ({0.5+cos(138)},{sin(138)}) arc (138:222:1);
+%\draw[thick, white] ({-0.5+cos(78)},{sin(78)}) arc (78:282:1);
+%\draw[thick, white] ({-0.5+cos(-42)},{sin(-42)}) arc (-42:42:1);
+%\begin{knot}[clip width=7, flip crossing={2}]
+%\strand[thick, black] (-0.5,0) circle (1.0);
+%\strand[thick, black] (0.5,0) circle (1.0);
+%\end{knot}
+%\draw [-{Stealth[scale=1.5]}] (-0.5,-0.15) -- (-0.5,-0.15001);
+%\draw [-{Stealth[scale=1.5]}] (0.5,-0.15) -- (0.5,-0.15001);
+%\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{sin(60)}) circle (0.3);
+%\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{-sin(60)}) circle (0.3);
+%\end{tikzpicture}$\Bigg\rangle = A\Bigg\langle$\begin{tikzpicture}[baseline={(0,-0.125)}, scale=0.8]
+%\draw[thick] ({0.5+cos(-102)},{sin(-102)}) arc (-102:102:1);
+%\draw[thick] ({0.5+cos(138)},{sin(138)}) arc (138:222:1);
+%\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:282:1);
+%\draw[thick] ({-0.5+cos(-42)},{sin(-42)}) arc (-42:42:1);
+%
+%\draw[thick] ({0.5+cos(102)},{sin(102)}) arc (102:222:0.165);
+%\draw[thick] ({-0.5+cos(42)}, {sin(42)}) -- ({-0.5+cos(42)-0.05}, {sin(42)+0.05});
+%\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:-42:0.165);
+%\draw[thick] ({0.5-cos(42)}, {sin(42)}) -- ({0.5-cos(42)+0.05}, {sin(42)+0.05});
+%\draw[thick, knot gap=7, knot=black] ({-0.5+cos(282)},{sin(282)}) arc (282:318:1);
+%\draw[thick, knot gap=7, knot=black] ({0.5+cos(222)},{sin(222)}) arc (222:258:1);
+%
+%\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{sin(60)}) circle (0.3);
+%\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{-sin(60)}) circle (0.3);
+%\end{tikzpicture}$\Bigg\rangle\ +\ A^{-1}\Bigg\langle$\begin{tikzpicture}[baseline={(0,-0.125)}, scale=0.8]
+%\draw[thick] ({0.5+cos(-102)},{sin(-102)}) arc (-102:102:1);
+%\draw[thick] ({0.5+cos(138)},{sin(138)}) arc (138:222:1);
+%\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:282:1);
+%\draw[thick] ({-0.5+cos(-42)},{sin(-42)}) arc (-42:42:1);
+%
+%\draw[thick] ({0.5+cos(102)},{sin(102)}) arc (282:258:1.41);
+%\draw[thick] ({-0.5+cos(42)},{sin(42)}) arc (42:138:0.329);
+%\draw[thick, knot gap=7, knot=black] ({-0.5+cos(282)},{sin(282)}) arc (282:318:1);
+%\draw[thick, knot gap=7, knot=black] ({0.5+cos(222)},{sin(222)}) arc (222:258:1);
+%
+%\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{sin(60)}) circle (0.3);
+%\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{-sin(60)}) circle (0.3);
+%\end{tikzpicture}$\Bigg\rangle$,\\
+
+%$\Bigg\langle$\begin{tikzpicture}[baseline={(0,-0.125)}, scale=0.8]
+%\draw[thick] ({0.5+cos(-102)},{sin(-102)}) arc (-102:102:1);
+%\draw[thick] ({0.5+cos(138)},{sin(138)}) arc (138:222:1);
+%\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:282:1);
+%\draw[thick] ({-0.5+cos(-42)},{sin(-42)}) arc (-42:42:1);
+%
+%\draw[thick] ({0.5+cos(102)},{sin(102)}) arc (102:222:0.165);
+%\draw[thick] ({-0.5+cos(42)}, {sin(42)}) -- ({-0.5+cos(42)-0.05}, {sin(42)+0.05});
+%\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:-42:0.165);
+%\draw[thick] ({0.5-cos(42)}, {sin(42)}) -- ({0.5-cos(42)+0.05}, {sin(42)+0.05});
+%\draw[thick, knot gap=7, knot=black] ({-0.5+cos(282)},{sin(282)}) arc (282:318:1);
+%\draw[thick, knot gap=7, knot=black] ({0.5+cos(222)},{sin(222)}) arc (222:258:1);
+%
+%\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{sin(60)}) circle (0.3);
+%\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{-sin(60)}) circle (0.3);
+%\end{tikzpicture}$\Bigg\rangle = A\Bigg\langle$\begin{tikzpicture}[baseline={(0,-0.125)}, scale=0.8]
+%\draw[thick] ({0.5+cos(-102)},{sin(-102)}) arc (-102:102:1);
+%\draw[thick] ({0.5+cos(138)},{sin(138)}) arc (138:222:1);
+%\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:282:1);
+%\draw[thick] ({-0.5+cos(-42)},{sin(-42)}) arc (-42:42:1);
+%
+%\draw[thick] ({0.5+cos(102)},{sin(102)}) arc (102:222:0.165);
+%\draw[thick] ({-0.5+cos(42)}, {sin(42)}) -- ({-0.5+cos(42)-0.05}, {sin(42)+0.05});
+%\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:-42:0.165);
+%\draw[thick] ({0.5-cos(42)}, {sin(42)}) -- ({0.5-cos(42)+0.05}, {sin(42)+0.05});
+%
+%\draw[thick] ({0.5+cos(102)},{-sin(102)}) arc (-102:-222:0.165);
+%\draw[thick] ({-0.5+cos(42)}, {-sin(42)}) -- ({-0.5+cos(42)-0.05}, {-sin(42)-0.05});
+%\draw[thick] ({-0.5+cos(78)},{-sin(78)}) arc (-78:42:0.165);
+%\draw[thick] ({0.5-cos(42)}, {-sin(42)}) -- ({0.5-cos(42)+0.05}, {-sin(42)-0.05});
+%
+%\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{sin(60)}) circle (0.3);
+%\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{-sin(60)}) circle (0.3);
+%\end{tikzpicture}$\Bigg\rangle\ +\ A^{-1}\Bigg\langle$\begin{tikzpicture}[baseline={(0,-0.125)}, scale=0.8]
+%\draw[thick] ({0.5+cos(-102)},{sin(-102)}) arc (-102:102:1);
+%\draw[thick] ({0.5+cos(138)},{sin(138)}) arc (138:222:1);
+%\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:282:1);
+%\draw[thick] ({-0.5+cos(-42)},{sin(-42)}) arc (-42:42:1);
+%
+%\draw[thick] ({0.5+cos(102)},{sin(102)}) arc (102:222:0.165);
+%\draw[thick] ({-0.5+cos(42)}, {sin(42)}) -- ({-0.5+cos(42)-0.05}, {sin(42)+0.05});
+%\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:-42:0.165);
+%\draw[thick] ({0.5-cos(42)}, {sin(42)}) -- ({0.5-cos(42)+0.05}, {sin(42)+0.05});
+%\draw[thick] ({0.5+cos(102)},{-sin(102)}) arc (-282:-258:1.41);
+%\draw[thick] ({-0.5+cos(42)},{-sin(42)}) arc (-42:-138:0.329);
+%
+%\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{sin(60)}) circle (0.3);
+%\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{-sin(60)}) circle (0.3);
+%\end{tikzpicture}$\Bigg\rangle$,\\[1ex]
+
+%$\Bigg\langle$\begin{tikzpicture}[baseline={(0,-0.125)}, scale=0.8]
+%\draw[thick] ({0.5+cos(-102)},{sin(-102)}) arc (-102:102:1);
+%\draw[thick] ({0.5+cos(138)},{sin(138)}) arc (138:222:1);
+%\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:282:1);
+%\draw[thick] ({-0.5+cos(-42)},{sin(-42)}) arc (-42:42:1);
+%
+%\draw[thick] ({0.5+cos(102)},{sin(102)}) arc (282:258:1.41);
+%\draw[thick] ({-0.5+cos(42)},{sin(42)}) arc (42:138:0.329);
+%\draw[thick, knot gap=7, knot=black] ({-0.5+cos(282)},{sin(282)}) arc (282:318:1);
+%\draw[thick, knot gap=7, knot=black] ({0.5+cos(222)},{sin(222)}) arc (222:258:1);
+%
+%\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{sin(60)}) circle (0.3);
+%\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{-sin(60)}) circle (0.3);
+%\end{tikzpicture}$\Bigg\rangle = A\Bigg\langle$\begin{tikzpicture}[baseline={(0,-0.125)}, scale=0.8]
+%\draw[thick] ({0.5+cos(-102)},{sin(-102)}) arc (-102:102:1);
+%\draw[thick] ({0.5+cos(138)},{sin(138)}) arc (138:222:1);
+%\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:282:1);
+%\draw[thick] ({-0.5+cos(-42)},{sin(-42)}) arc (-42:42:1);
+%
+%\draw[thick] ({0.5+cos(102)},{sin(102)}) arc (282:258:1.41);
+%\draw[thick] ({-0.5+cos(42)},{sin(42)}) arc (42:138:0.329);
+%
+%\draw[thick] ({0.5+cos(102)},{-sin(102)}) arc (-102:-222:0.165);
+%\draw[thick] ({-0.5+cos(42)}, {-sin(42)}) -- ({-0.5+cos(42)-0.05}, {-sin(42)-0.05});
+%\draw[thick] ({-0.5+cos(78)},{-sin(78)}) arc (-78:42:0.165);
+%\draw[thick] ({0.5-cos(42)}, {-sin(42)}) -- ({0.5-cos(42)+0.05}, {-sin(42)-0.05});
+%
+%\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{sin(60)}) circle (0.3);
+%\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{-sin(60)}) circle (0.3);
+%\end{tikzpicture}$\Bigg\rangle\ +\ A^{-1}\Bigg\langle$\begin{tikzpicture}[baseline={(0,-0.125)}, scale=0.8]
+%\draw[thick] ({0.5+cos(-102)},{sin(-102)}) arc (-102:102:1);
+%\draw[thick] ({0.5+cos(138)},{sin(138)}) arc (138:222:1);
+%\draw[thick] ({-0.5+cos(78)},{sin(78)}) arc (78:282:1);
+%\draw[thick] ({-0.5+cos(-42)},{sin(-42)}) arc (-42:42:1);
+%
+%\draw[thick] ({0.5+cos(102)},{sin(102)}) arc (282:258:1.41);
+%\draw[thick] ({-0.5+cos(42)},{sin(42)}) arc (42:138:0.329);
+%\draw[thick] ({0.5+cos(102)},{-sin(102)}) arc (-282:-258:1.41);
+%\draw[thick] ({-0.5+cos(42)},{-sin(42)}) arc (-42:-138:0.329);
+%
+%\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{sin(60)}) circle (0.3);
+%\draw[line width=1.1pt, red, line cap=round, dash pattern=on 0pt off 3\pgflinewidth] (0,{-sin(60)}) circle (0.3);
+%\end{tikzpicture}$\Bigg\rangle$,\\[2ex]
+%$\implies V_q(\text{Hopf}) = \frac{A^{6}}{-(A^2 + A^{-2})}(A^2 + A^{-2})(A^4 + A^{-4}) = q^5 + q$.
+%\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{What Is Categorification? Examples}
+Suppose that we associate for each link $L$ with diagram $D$ a $\mathbb{Z}$-graded complex $C(L) \coloneqq (C_*(D), \partial_*)$ of $\mathbb{Z}$-graded Abelian groups. That is,
+\begin{align*}
+\begin{split}
+C_i(D) = \bigoplus_{j \in \mathbb{Z}}{C_i^j(D)}.
+\end{split}
+\end{align*}
+Denoting by $H_i(D)$ the $i$th cohomology group of $C(D)$ and by $H_i^j(D)$ its $j$th graded summand, we may define
+\begin{align*}
+\begin{split}
+\widehat{\vphantom{\rule{1pt}{6.5pt}}\smash{\widehat{\!\chi}}}(C(L)) \coloneqq \sum_{i,j \in \mathbb{Z}}{(-1)^iq^j\dim(H_i^j(D) \otimes_\mathbb{Z} \mathbb{Q})}.
+\end{split}
+\end{align*}
+What Khovanov did was find a way of building complexes $C(L)$ such that $\widehat{\vphantom{\rule{1pt}{6.5pt}}\smash{\widehat{\!\chi}}}(C(L)) = (q + q^{-1})V_q(L)$.
+\end{frame}
+
+\begin{frame}
+\frametitle{What Is Categorification? Examples}
+For suitable morphisms $d_*$ (the \emphasis{differentials}), you can in fact construct a \emphasis{Khovanov bracket} $\llbracket D\rrbracket$ as a higher analogue to the Kauffman bracket, giving a similar recursive process for computing the Khovanov homology.
+\begin{table}[]
+\begin{tabular}{lcr}
+$\langle\varnothing\rangle = 1$ & $\rightsquigarrow$ & $\llbracket\varnothing\rrbracket = 0 \to \mathbb{Q} \to 0$,\\
+$\langle$\begin{tikzpicture}[baseline={(0,-0.125)}]\draw (0.15,0.15) -- (-0.15,-0.15);\draw (-0.15,0.15) -- (-0.05,0.05);\draw (0.05,-0.05) -- (0.15,-0.15);\end{tikzpicture}$\rangle = \langle$\begin{tikzpicture}[baseline={(0,-0.125)}]\draw (-0.15,-0.15) arc (-45:45:0.2125);\draw (0.15,-0.15) arc (225:135:0.2125);\end{tikzpicture}$\rangle - q\langle$\begin{tikzpicture}[baseline={(0,-0.125)}]\draw (-0.15,-0.15) arc (135:45:0.2125);\draw (-0.15,0.15) arc (225:315:0.2125);\end{tikzpicture}$\rangle$ & $\rightsquigarrow$ & $\llbracket$\begin{tikzpicture}[baseline={(0,-0.125)}]\draw (0.15,0.15) -- (-0.15,-0.15);\draw (-0.15,0.15) -- (-0.05,0.05);\draw (0.05,-0.05) -- (0.15,-0.15);\end{tikzpicture}$\rrbracket = \mathrm{Cone}(d_* : \llbracket$\begin{tikzpicture}[baseline={(0,-0.125)}]\draw (-0.15,-0.15) arc (-45:45:0.2125);\draw (0.15,-0.15) arc (225:135:0.2125);\end{tikzpicture}$\rrbracket \to \llbracket$\begin{tikzpicture}[baseline={(0,-0.125)}]\draw (-0.15,-0.15) arc (135:45:0.2125);\draw (-0.15,0.15) arc (225:315:0.2125);\end{tikzpicture}$\rrbracket(1))$,\\
+$\langle$\begin{tikzpicture}[baseline={(0,-0.125)}]\draw (0,0) circle (0.15);\end{tikzpicture}$\ \sqcup\ D'\rangle = (q + q^{-1})\langle D'\rangle$ & $\rightsquigarrow$ & $\llbracket$\begin{tikzpicture}[baseline={(0,-0.125)}]\draw (0,0) circle (0.15);\end{tikzpicture}$\ \sqcup\ D'\rrbracket = A \otimes \llbracket D'\rrbracket$,\\
+$(-1)^{n_-}q^{n_+ - 2n_-}\langle D\rangle$ & $\rightsquigarrow$ & $\llbracket D\rrbracket\{-n_-\}(n_+ - 2n_-)$.
+\end{tabular}
+\end{table}
+Note that $\{-\}$ denotes grading shifts on the level of the complex, while $(-)$ denotes grading shifts of the Abelian groups. Here $A \coloneqq \mathbb{Q}[x]/\langle x^2\rangle$ are the dual numbers, with $\mathrm{qdim}(A) = q + q^{-1}$.
+\end{frame}
+
+\begin{frame}
+\frametitle{What Is Categorification? Examples}
+One more nice example is $\mathbb{S}\textsf{Bim}$, the $\mathbb{Z}$-graded category of Soergel bimodules. It categorifies the Iwahori--Hecke $\mathbb{Z}[v, v^{-1}]$-algebra.\\[2ex]
+Irreducible Soergel bimodules correspond bijectively to elements of the so-called \emphasis{Kazhdan--Lusztig basis} of the Iwahori--Hecke algebra.\\[2ex]
+Direct sums and tensor products of Soergel bimodules correspond to sums and products of elements of the Iwahori--Hecke algebra:
+\begin{center}$B \oplus B' \rightsquigarrow b + b'$\quad and\quad $B \otimes B' \rightsquigarrow bb'$.\end{center}
+Grading shifts correspond to multiplication by the formal variable $v$:
+\begin{center}$B(n) \rightsquigarrow v^nb$.\end{center}
+The graded rank of Hom-spaces corresponds to the standard form:
+\begin{center}$\mathrm{grk}(\mathrm{Hom}^\bullet_{\mathbb{S}\textcat{Bim}}(B, B')) = (b, b')$.\end{center}
+%An example of categorification that I've been working with is $\textsf{SBim}(W, S)$, the category of Soergel bimodules corresponding to a Coxeter system $(W, S)$. It categorifies the Iwahori--Hecke algebra $\mathscr{H}(W, S)$.\\[2ex]
+%The Iwahori--Hecke algebra is the $\mathbb{Z}[v, v^{-1}]$-algebra with generators $\{\delta_s : s \in S\}$ and relations
+%\begin{enumerate}
+%\item (braid relation) $\delta_s\delta_t\delta_s\cdots = \delta_t\delta_s\delta_t\cdots$ for all $s, t \in S$ such that $st$ has finite order $m_{st}$, where both sides are the product of $m_{st}$ generators;
+%\item (quadratic relation) $(\delta_s - v^{-1})(\delta_s + v) = 0$, for all $s \in S$.\\
+%\end{enumerate}
+%This admits a unique self-dual $\mathbb{Z}[v, v^{-1}]$-basis $\{b_w : w \in W\}$ known as the \emphasis{Kazhdan--Lusztig basis}.
+\end{frame}
+
+\begin{frame}
+\frametitle{What Is Categorification? Examples}
+That Soergel bimodules categorify the Iwahori--Hecke algebra was only recently proven by Elias and Williamson in 2014 (\textcolor{structure}{\cite{EW14}}).\\[2ex]
+This concluded with fully algebraic proofs of an important pair of conjectures in Lie theory posed by Kazhdan and Lusztig (\textcolor{structure}{\cite{KL79}}), which had been highly sought after for a few decades.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Classical Representation Theory %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Classical Representation Theory}
+
+\begin{frame}
+\centerline{\huge\textcolor{structure}{\underline{Classical Representation Theory}}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Classical Representation Theory}
+First of all, what are representations? Well, we can model them nicely using the categorical language.\\[2ex]
+\begin{enumerate}
+\item Start with a finite group $G$.
+\item Deloop it: $\obset(\textcat{B}G) \coloneqq \{\bullet\}$, $\homset(\textcat{B}G) \coloneqq G$.
+\item Take a functor from $\textcat{B}G$ to $\textsf{Vect}^\text{f.d.}_\mathbbm{k}$.
+\item This is exactly a finite-dimensional representation of $G$ over $\mathbbm{k}$ (or, if you prefer, a finitely-generated $\mathbbm{k}[G]$-module)!\\[2ex]
+\end{enumerate}
+In general, we can think of representations as functors from one category to another.
+\end{frame}
+
+\begin{frame}
+\frametitle{Classical Representation Theory}
+Representations enjoy a very rich and beautiful theory.\\[2ex]
+Let $\mathbbm{k}$ be an algebraically closed field with $\mathrm{char}(\mathbbm{k}) \nmid \abs{G}$.\\[2ex]
+\begin{itemize}
+\item All finitely-generated $\mathbbm{k}[G]$-modules are built from extensions of their simple submodules.
+\item Two simple $\mathbbm{k}[G]$-modules are isomorphic if and only if they have the same character.
+\item There is a bijective correspondence between isomorphism classes of simple $\mathbbm{k}[G]$-modules and conjugacy classes of $G$.
+\item The regular $\mathbbm{k}[G]$-module contains every simple $\mathbbm{k}[G]$-module as a summand.\\[2ex]
+\end{itemize}
+We want to categorify this theory!
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Representation Theory: Categorified %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Representation Theory:\ Categorified}
+
+\begin{frame}
+\centerline{\huge\textcolor{structure}{\underline{Representation Theory:\ Categorified}}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Representation Theory:\ Categorified}
+Before, we started with a finite group $G$. Now let's start with a category.\\[2ex]
+\begin{enumerate}
+\item Start with a \emphasis{$\mathbbm{k}$-finitary} monoidal category $\mathcal{C}$.
+\item Deloop it: $\obset(\textcat{B}\mathcal{C}) \coloneqq \{\bullet\}$, $\homset^1(\textcat{B}\mathcal{C}) \coloneqq \obset(\mathcal{C})$, \hphantom{Deloop it: $\obset(\textcat{B}\mathcal{C}) \coloneqq \{\bullet\}$,\ }$\homset^2(\textcat{B}\mathcal{C}) \coloneqq \homset(\mathcal{C})$.
+\item Take a pseudofunctor from $\textcat{B}\mathcal{C}$ to $\mathfrak{A}_\mathbbm{k}^f$, the bicategory of $\mathbbm{k}$-finitary categories.
+\item This is a $\mathbbm{k}$-finitary birepresentation of $\textcat{B}\mathcal{C}$ (or, if you prefer, a $\mathbbm{k}$-finitary $\mathcal{C}$-module category)!\\[2ex]
+\end{enumerate}
+To be more precise, birepresentations are horizontal categorifications of module categories, or vertical categorifications of monoidal categories.\\[2ex]
+In general, we can think of birepresentations as pseudofunctors from a category to $\textcat{Cat}$, the bicategory of categories (that's a mouthful).\\[2ex]
+\end{frame}
+
+\begin{frame}
+\frametitle{Representation Theory:\ Categorified}
+The prototypical example is the \emphasis{Yoneda birepresentation}.\\[2ex]
+Let $\mathscr{C}$ be the monoidal delooping of a $\mathbbm{k}$-finitary monoidal category $\mathcal{C}$. We define a pseudofunctor $\mathbb{P} : \mathscr{C} \to \mathfrak{A}_\mathbbm{k}^f$ as follows.\\[2ex]
+\begin{enumerate}
+\item $\mathbb{P}$ maps the ``dummy'' object $\bullet$ to $\mathcal{C}$.
+\item $\mathbb{P}$ maps $1$-morphisms $X \in \obset(\mathcal{C})$ to functors given by $Y \mapsto X \otimes Y$ and $(f : Y \to Y') \mapsto \id_X \otimes f$.
+\item $\mathbb{P}$ maps $2$-morphisms $f : X \to X'$ to natural transformations given by $Y \mapsto f \otimes \id_Y$.\\[2ex]
+\end{enumerate}
+\emphasis{This Yoneda birepresentation categorifies the regular representation!}
+\end{frame}
+
+\begin{frame}
+\frametitle{Representation Theory:\ Categorified}
+How do we define simplicity for birepresentations? We have two layers: a ``discrete'' layer of objects and a ``continuous'' layer of morphisms.\\[2ex]
+A birepresentation $\mathrm{M}$ of $\mathscr{C}$ is said to be \emphasis{transitive} if
+\begin{align*}
+\begin{split}
+\mathrm{M}(\textobj{j}) = \textsf{Add}(\{[\mathrm{M}(F)](X) : F \in \morset_\mathscr{C}^1(\textobj{i}, \textobj{j})\})
+\end{split}
+\end{align*}
+for all $X \in \obset(\mathrm{M}(\textobj{i}))$ and $\textobj{j} \in \obset(\mathscr{C})$ \emphasis{(recall that $M$ is simple iff every cyclic submodule generated by a non-zero element of $M$ is equal to $M$)}.\\[2ex]
+It is said to be \emphasis{simple} if it admits no proper, non-zero $\mathscr{C}$-stable ideals \emphasis{(recall that $M$ is simple iff it contains no proper, non-zero ideals)}.\\[2ex]
+Simple $\implies$ transitive. Every transitive birepresentation admits a unique maximal $\mathscr{C}$-stable ideal that can be quotiented out to make it simple, and a birepresentation is simple if and only if this maximal ideal is zero \emphasis{(recall that $M$ is simple iff it is isomorphic to a quotient by a maximal ideal)}.
+\end{frame}
+
+\begin{frame}
+\frametitle{Representation Theory:\ Categorified}
+As it turns out, we have (to some degree) a mirroring of some of the results from classical representation theory.\\[2ex]
+\begin{itemize}
+\item All ``sufficiently nice'' birepresentations are built from extensions of their simple sub-representations (\textcolor{structure}{\cite{MM16}}).
+\item In this case, simple birepresentations are determined by the matrices describing the actions of the $\mathrm{M}(F)$'s on the Grothendieck group (these matrices play an analogous role to the characters of Frobenius).
+\item There is a bijective correspondence between equivalence classes of simple birepresentations and Morita equivalence classes of certain (co)algebra $1$-morphisms (\textcolor{structure}{\cite{MMMT19}}).
+\item We have the Yoneda birepresentation, although even in nice cases there are simple birepresentations that are not contained in it.\\[2ex]
+\end{itemize}
+There's still a lot of work to do!
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Where Do I Fit In? %
+%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Where Do I Fit In?}
+
+\begin{frame}
+\centerline{\huge\textcolor{structure}{\underline{Where Do I Fit In?}}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Where Do I Fit In?}
+Right now, I'm looking at certain module categories over the (monoidal delooping of the) category of Soergel bimodules.\\[2ex]
+In the type $A$ case, simple module categories over $\mathbb{S}\textcat{Bim}$ are identical to the decategorified case, recovering the Kazhdan--Luztig cell structure of the Iwahori--Hecke algebra. For other types, we see non-cell simple birepresentations.\\[2ex]
+I'm looking at \emphasis{Lusztig--Vogan module categories}, which categorify the Lusztig--Vogan modules over the Iwahori--Hecke algebra (Victor will tell us more about these tomorrow).\\[2ex]
+In particular, I'm using the \emphasis{weak Jordan--H\"{o}lder theorem} of Mazorchuk and Miemietz  to look at their simple module subcategories in the hopes that they contain new information compared to their decategorifications. I'd also like to see if any interesting new categories can be built via extensions.
+\end{frame}
+
+%%%%%%%%%%%%%%
+% References %
+%%%%%%%%%%%%%%
+
+\section*{References}
+
+\begin{frame}[allowframebreaks]
+\frametitle{References}
+\printbibliography[heading = none]
+\end{frame}
+
+%%%%%%%%%%%%%
+% Thank you %
+%%%%%%%%%%%%%
+
+\begin{frame}
+\centerline{\Huge\textcolor{structure}{\underline{Thank you for your attention!}}}
+%\vspace*{2em}
+%\centerline{\LARGE Any questions?}
+\end{frame}
+
+\end{document}
