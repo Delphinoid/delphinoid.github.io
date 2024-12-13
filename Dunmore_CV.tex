@@ -1,0 +1,271 @@
+\documentclass[12pt, reqno]{amsart}
+\usepackage[a4paper, total={18cm, 24cm}, centering]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[hidelinks]{hyperref}
+\usepackage{changepage}
+\usepackage[none]{hyphenat}
+\usepackage{multicol}
+
+\newcommand{\fakesection}[1]{%
+	\refstepcounter{section}%
+	\addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}%
+}
+\newcommand{\fakesubsection}[1]{%
+	\refstepcounter{subsection}%
+	\addcontentsline{toc}{subsection}{\protect\numberline{\thesubsection}#1}%
+}
+\newcommand{\cvsection}[1]{
+	\noindent\rule{\linewidth}{.75pt}\\[0.125\baselineskip]
+	\textbf{\large #1}\\[-0.5\baselineskip]
+	\fakesection{#1}\rule{\linewidth}{.75pt}\\[-0.5\baselineskip]
+}
+\newcommand{\specialcell}[2][c]{
+    \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}
+}
+\newcommand{\specialcells}[2][c]{
+    \begin{tabular}[#1]{@{}ll@{}}#2\end{tabular}
+}
+
+\author{Daniel Dunmore}
+
+\raggedbottom
+
+\begin{document}
+
+\sloppy
+
+\begin{multicols}{2}
+\begin{flushleft}
+\LARGE\textbf{Daniel Dunmore}\\
+\Large\textit{Curriculum Vitae}
+\end{flushleft}
+\columnbreak
+\begin{flushright}
+\normalsize N.S.W., Australia\\
+\normalsize 0468 326 683\\
+\normalsize \href{mailto:d.dunmore@unsw.edu.au}{d.dunmore@unsw.edu.au}\\
+\normalsize \href{https://delphinoid.github.io}{delphinoid.github.io}
+%\normalsize danieldm7249@gmail.com
+\end{flushright}
+\end{multicols}
+\vspace{\baselineskip}
+
+\thispagestyle{empty}
+\cvsection{Education}
+\begin{adjustwidth}{2.5em}{0pt}
+\begin{tabular}[t]{@{}p{2.5cm}|l@{}}
+\specialcell{\Small 2024 -- present} & \specialcell{{\bfseries\boldmath Ph.D.\ Student in Pure Mathematics} {\Small (University of New South Wales)}}\\
+{} & \specialcells{Supervisors: & Dr.\ Anna Romanov, Assoc.\ Prof.\ Pinhas Grossman,\\ & Dr.\ Arnaud Brothier\\
+Topic: & Module Categories over Soergel Bimodules}
+\end{tabular}\\[0.75\baselineskip]
+\begin{tabular}[t]{@{}p{2.5cm}|l@{}}
+\specialcell{\Small 2019 -- 2023} & \specialcell{{\bfseries\boldmath Bachelor of Advanced Science (Honours)} {\Small (University of New South Wales)}}\\
+& \specialcells{Majors: & Pure Mathematics, Advanced Physics\\
+Cumulative WAM: & 80\\%79.5\\
+Honours Supervisor: & Dr.\ Arnaud Brothier\\
+Honours Topic: & From Subfactors to Richard Thompson's\\
+& Groups and their Generalizations\\
+Honours WAM: & 85 (First Class Honours)}
+\end{tabular}%\\[0.75\baselineskip]
+%\begin{tabular}[t]{@{}p{2.25cm}|l@{}}
+%\specialcell{2016 -- 2018} & \specialcell{\textbf{Bachelor of Information Technology} (Open Universities Australia)}\\
+% & \specialcells{Minor: & Internet Communications\\
+%Cumulative GPA: & 3.3/4.0}
+%\end{tabular}
+\\[0.5\baselineskip]
+\end{adjustwidth}
+
+\thispagestyle{empty}
+\cvsection{Research Interests}
+\begin{adjustwidth}{2.5em}{0pt}
+\noindent My current research interests include\\[-0.75\baselineskip]
+\begin{itemize}
+\setlength\itemsep{0.25\baselineskip}
+\item category theory and categorification, especially the category of Soergel bimodules and its (categorical) representation theory;
+\item group theory and representation theory, primarily with respect to infinite simple groups such as Thompson-like groups and their unitary representations;
+\item planar algebras, subfactor theory and fusion categories;
+\item topological quantum field theory and low-dimensional topology.\\
+\end{itemize}
+\end{adjustwidth}
+
+\thispagestyle{empty}
+\cvsection{Publications}
+\begin{adjustwidth}{2.5em}{0pt}
+Cifuentes, J.\ D., Tanttu, T., Gilbert, W.\ et al., \textit{Bounds to electron spin qubit variability for scalable CMOS architectures}, Nat.\ Commun.\ 4299.\textbf{15} (2024).\\%[0.75\linespacing]
+\end{adjustwidth}
+
+\thispagestyle{empty}
+\cvsection{Talks}
+\begin{adjustwidth}{2.5em}{0pt}
+\begin{tabular}[t]{@{}p{2.75cm}|l@{}}
+\specialcell{\Small 2024, Dec.\ 5th} & \specialcell{{\bfseries\boldmath Contextualizing Categorical Representation Theory}}\\
+{} & \specialcell{AAMS Student Conference (Australia)}
+\end{tabular}\\[0.75\baselineskip]
+\begin{tabular}[t]{@{}p{2.75cm}|l@{}}
+\specialcell{\Small 2024, May 1st} & \specialcell{{\bfseries\boldmath Basics of Module Categories}}\\
+{} & \specialcell{Tensor Categories and their Modules Learning Seminar (Australia)}\\
+{} & \specialcell{\url{https://sites.google.com/view/tensorcategories/home}}
+\end{tabular}\\[0.75\baselineskip]
+\begin{tabular}[t]{@{}p{2.75cm}|l@{}}
+\specialcell{\Small 2023, Nov.\ 14th} & \specialcell{{\bfseries\boldmath From Subfactors to Richard Thompson’s Groups and their}}\\
+{} & \specialcell{\textbf{Generalizations}}\\
+{} & \specialcell{UNSW Pure Mathematics Honours Seminar (Australia)}
+\end{tabular}\\[0.75\baselineskip]
+\begin{tabular}[t]{@{}p{2.75cm}|l@{}}
+\specialcell{\Small 2022, Feb.\ 3rd} & \specialcell{{\bfseries\boldmath $C^*$-Algebras of Discrete Groups}}\\
+{} & \specialcell{AMSIConnect (Australia)}\\
+{} & \specialcell{\url{https://vrs.amsi.org.au/student-profile/daniel-dunmore/}}
+\end{tabular}\\[0.75\baselineskip]
+\end{adjustwidth}
+
+\thispagestyle{empty}
+\cvsection{Conferences}
+\begin{adjustwidth}{2.5em}{0pt}
+\begin{tabular}[t]{@{}p{2.75cm}|l@{}}
+\specialcell{\Small 2024, Nov.\ 18th --\!\!} & \specialcell{{\bfseries\boldmath Tensor Categories, Quantum Symmetries, and Mathematical}}\\
+\specialcell{\Small 2024, Nov.\ 29th} & \specialcell{{\bfseries\boldmath Physics}}\\
+{} & \specialcell{MATRIX (Australia)}
+\end{tabular}\\[0.75\baselineskip]
+\end{adjustwidth}
+
+\thispagestyle{empty}
+\cvsection{Teaching}
+\begin{adjustwidth}{2.5em}{0pt}
+\begin{tabular}[t]{@{}p{2.75cm}|l@{}}
+\specialcell{\Small 2024, Jan.\ 2nd --} & \specialcell{{\bfseries\boldmath An Introduction to Category Theory}}\\
+\specialcell{\Small 2024, Feb.\ 2nd} & \specialcell{Informal reading course}
+\end{tabular}\\[0.75\baselineskip]
+\end{adjustwidth}
+
+\thispagestyle{empty}
+\cvsection{Awards}
+\begin{adjustwidth}{2.5em}{0pt}
+\begin{tabular}[t]{@{}p{1cm}|l@{}}
+\specialcell{\Small 2021} & \specialcell{{\bfseries\boldmath AMSI Vacation Research Scholarship} {\Small (\$3,000 AUD)}}
+\end{tabular}\\[0.75\baselineskip]
+\end{adjustwidth}
+
+\thispagestyle{empty}
+\cvsection{Internships}
+\begin{adjustwidth}{2.5em}{0pt}
+\begin{tabular}[t]{@{}p{2.75cm}|l@{}}
+\specialcell{\Small 2020, Sept.\ --} & \specialcell{{\bfseries\boldmath ARC Centre of Excellence for Quantum Computation and}}\\
+\specialcell{\Small 2021, June} & \specialcell{{\bfseries\boldmath Communication Technology}}
+\end{tabular}\\[0.75\baselineskip]
+\end{adjustwidth}
+
+\thispagestyle{empty}
+\cvsection{Posters}
+\begin{adjustwidth}{2.5em}{0pt}
+Samuel, J., Dunmore, T., Dunmore, D., Saraiva, A., Coppersmith, S. N., \textit{Bloch Sphere Model for Two Spin-${}^1{\mskip -5mu/\mskip -3mu}_2$
+ Systems}, presented as part of the UNSW Talented Students Program (2020).\\%[0.75\linespacing]
+\end{adjustwidth}
+
+%\thispagestyle{empty}
+%\cvsection{Notes}
+%\begin{adjustwidth}{2.5em}{0pt}
+%Dunmore, D., \textit{Categorical Representation Theory}, 2024, available at \url{https://delphinoid.github.io/research/7/Notes.pdf}.\\[0.75\linespacing]
+%Dunmore, D., \textit{Basics of Module Categories}, 2024, available at \url{https://drive.google.com/file/d/12eODphEIjUIvItbEMb6y9qjiTIBbgiq-/view?usp=sharing}.\\[0.75\linespacing]
+%Dunmore, D., \textit{$C^*$-Algebras of Discrete Groups}, 2022, available at \url{https://vrs.amsi.org.au/wp-content/uploads/sites/92/2022/04/dunmore_daniel_vrs-report.pdf}.\\[0.75\linespacing]
+%Dunmore, D., \textit{Operator Algebra Notes}, 2021, available at \url{https://delphinoid.github.io/research/0/Notes.pdf}.\\
+%\end{adjustwidth}
+
+%\thispagestyle{empty}
+%\cvsection{Talks}
+%\begin{adjustwidth}{2.5em}{0pt}
+%\textbf{Basics of Module Categories}\\[0.5\baselineskip]
+%Gave a two hour talk introducing categorical representation theory via the theory of module categories at the learning seminar ``Tensor Categories and their Modules'', held jointly by the University of Sydney and the University of New South Wales. The seminar schedule and material are publicly available at \url{https://sites.google.com/view/tensorcategories}.\\[0.5\baselineskip]
+%May 1st, 2024\\[0.5\baselineskip]
+%\end{adjustwidth}
+%\begin{adjustwidth}{2.5em}{0pt}
+%\textbf{An Introduction to Category Theory}\\[0.5\baselineskip]
+%Organized a short and informal reading course on category theory for a small group of Honours students at the University of New South Wales, roughly walking through the first few chapters of the excellent introductory book of Emily Riehl.\\[0.5\baselineskip]
+%January 2024 -- February 2024\\[0.5\baselineskip]
+%\end{adjustwidth}
+%\begin{adjustwidth}{2.5em}{0pt}
+%\textbf{UNSW Pure Mathematics Honours Presentation}\\[0.5\baselineskip]
+%Gave a presentation based on my Honours thesis at the UNSW Pure Maths Seminar, which explained how Vaughan Jones used planar algebras in his attempt to create conformal field theories from subfactors, as well as how this led to the discovery of a new machine for generating unitary representations of groups of fractions, inspiring the forest-skein formalism.\\[0.5\baselineskip]
+%November 14th, 2023\\[0.5\baselineskip]
+%\end{adjustwidth}
+%\begin{adjustwidth}{2.5em}{0pt}
+%\textbf{AMSI Vacation Research Scholarship Presentation}\\[0.5\baselineskip]
+%Gave a brief presentation based on my AMSI Vacation Research Scholarship project at AMSIConnect, which introduced amenability within the context of discrete group $C^*$-algebras and concluded with an explanation of the Banach-Tarski paradox.\\[0.5\baselineskip]
+%February 3rd, 2022\\[0.5\baselineskip]
+%\end{adjustwidth}
+
+%\thispagestyle{empty}
+%\cvsection{Research Experience}
+%\begin{adjustwidth}{2.5em}{0pt}
+%\textbf{UNSW Pure Mathematics Honours Research}\\[0.5\baselineskip]
+%Worked under the supervision of Dr.\ Arnaud Brothier to study certain kinds of ``discrete conformal field theories'' arising from subfactor planar algebras and the technology of forest-skein categories, inspired by the surprising connections of Vaughan Jones between conformal field theory, subfactor theory and Richard Thompson's groups.\\[0.5\baselineskip]
+%February 2023 -- November 2023\\[0.5\baselineskip]
+%\end{adjustwidth}
+%\begin{adjustwidth}{2.5em}{0pt}
+%\textbf{AMSI Vacation Research Scholarship} \\[0.5\baselineskip]
+%Participated in a reading project in pure mathematics over the 2021 -- 2022 summer period, supervised by Dr.\ Arnaud Brothier and funded by the Australian Mathematical Sciences Institute. The project was concerned with investigating the elementary theory of group $C^*$-algebras arising from discrete groups; that is, $C^*$-algebras generated by discrete topological groups, in the sense that the algebra encodes all of the information regarding the (irreducible) unitary representations of the group. Further properties of discrete groups such as amenability were then studied in the context of group $C^*$-algebras. The report is publicly available at \url{https://vrs.amsi.org.au/student-profile/daniel-dunmore/}. \\[0.5\baselineskip]
+%December 2021 -- February 2022\\[0.5\baselineskip]
+%\end{adjustwidth}
+%\begin{adjustwidth}{2.5em}{0pt}
+%\textbf{ARC Centre of Excellence for Quantum Computation and Communication Technology Research Internship} \\[0.5\baselineskip]
+%Participated in a second research internship in theoretical physics, supervised by Dr.\ Andre Saraiva, as part of Scientia Professor Andrew Dzurak's group within the ARC Centre of Excellence for Quantum Computation and Communication Technology. Began with a very brief reading project on the basics of representation theory in the context of condensed matter physics. Investigated the implications of non-Hermitian dynamics in the context of quantum computing and devised a method for realizing effectively non-Hermitian behaviour using traditional Hermitian systems. \\[0.5\baselineskip]
+%February 2021 -- June 2021\\[0.5\baselineskip]
+%\end{adjustwidth}
+%\begin{adjustwidth}{2.5em}{0pt}
+%\textbf{ARC Centre of Excellence for Quantum Computation and Communication Technology Research Internship} \\[0.5\baselineskip]
+%Participated in a 16-week research internship in computational physics, supervised by Dr.\ Andre Saraiva and Dr.\ Chris Escott, as part of Scientia Professor Andrew Dzurak's group within the ARC Centre of Excellence for Quantum Computation and Communication Technology. Wrote software for automatically simulating metal-oxide-insulator silicon quantum dot nanodevices, as well analyzing the behaviour of the quantum dots. Investigated methods of modelling thermal strain in such devices and its theoretical effects on quantum dots. \\[0.5\baselineskip]
+%September 2020 -- December 2020\\[0.5\baselineskip]
+%\end{adjustwidth}
+%\begin{adjustwidth}{2.5em}{0pt}
+%\textbf{UNSW Science Talented Students Program} \\[0.5\baselineskip]
+%Participated in an investigation into alternative representations of systems of multiple qubits within a team of two other students, supervised by Professor Susan Coppersmith and Dr.\ Andre Saraiva. The intent of the project was to form a method for visualizing nonlocal properties of multiple qubit systems. This involved devising a new mathematical model for such systems as well as the development of software for solving and visualizing them.\\[0.5\baselineskip]
+%July 2019 -- November 2019\\[0.5\baselineskip]
+%\end{adjustwidth}
+
+%\thispagestyle{empty}
+%\cvsection{Extracurricular Activities}
+%\begin{adjustwidth}{2.5em}{0pt}
+%\textbf{UNSW School of Physics Undergraduate Advisory Committee Member} \\[0.5\baselineskip]
+%Participated in regular discussions regarding improvements to the teaching quality of undergraduate physics at UNSW. Provided feedback and suggestions on how physics could be taught more effectively to undergraduate students, with topics ranging from general course and program structure to solutions to the various issues posed by COVID-19. \\[0.5\baselineskip]
+%March 2020 -- December 2020\\[0.5\baselineskip]
+%\end{adjustwidth}
+%\newpage
+
+%% Remove everything below?
+\thispagestyle{empty}
+\cvsection{Technical Skills}
+\begin{adjustwidth}{1.4em}{0pt}
+\begin{itemize}
+\setlength\itemsep{0.75\baselineskip}
+\item Proficient in C, Assembly, MATLAB/Octave, Python, Mathematica, C\texttt{++}, PHP, JavaScript and HTML5.
+\item Experience with COMSOL Multiphysics and LiveLink for MATLAB.\\
+\end{itemize}
+\end{adjustwidth}
+
+%\thispagestyle{empty}
+%\cvsection{Personal Projects}
+%\begin{itemize}
+%\setlength\itemsep{0.75\baselineskip}
+%\item Collaborating with Thomas Dunmore on writing a fully-featured game engine from scratch in C, which implements cutting-edge research in various areas such as rigid body dynamics.
+%\item Collaborated with both Thomas Dunmore and Alvin Iskender on reverse-engineering various (discontinued) multiplayer games, whose source code had been lost, in order to make them playable again (with permission from the original developer, Jacob Grahn).
+%\item Designed and modelled medals for a 2019 LAN tournament for a highly popular video game, which were made available in-game and are used by the tournament organizers to this day.
+%\end{itemize}
+
+%\thispagestyle{empty}
+%\cvsection{Hobbies and Personal Projects}
+%\begin{itemize}
+%\setlength\itemsep{0.75\baselineskip}
+%\item I love art. I spend a lot of my free time practicing 2D and 3D digital art, with a particular focus on character design and animation. I also have interests in creative writing.
+%\item Various programming projects in C.\\[-0.25\baselineskip]
+%\begin{itemize}
+%\setlength\itemsep{0.75\baselineskip}
+%\item Currently collaborating with Thomas Dunmore on writing a complete game engine from scratch. Features implemented so far include highly optimized rigid body physics simulations with support for various colliders, joint constraints and spatial partitioning; a custom memory management system built on low-level system calls; a command pattern design structure including a programmable command-line interface; a skeletal animation system, with interpolation between multiple concurrent animations; a custom font format for GUIs, supporting BMP and MSDF (multi-channel signed distance field) rendering; a dynamic, programmable particle instancing system.
+%\item Collaborated with both Thomas Dunmore and Alvin Iskender on reverse-engineering various (discontinued) multiplayer games whose source code had been lost in order to make them playable again, for the sake of video game preservation. This was done by creating custom server software and modified clients with permission from the original developer, Jacob Grahn.
+%\end{itemize}
+%\item Member of the administration team (backend staff) for a 2019 LAN tournament with a turnout of around 100 attendees. Also designed and modelled participant and placement medals, which were later made available in-game for tournament participants. These designs are still being used by the organization to this day.
+%\item Studying Japanese. Currently around JLPT N4 -- N3 level.
+%\item Studying Chinese.
+%\item Learning piano and musical composition.
+%\end{itemize}
+
+\end{document}
