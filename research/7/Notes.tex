@@ -101,33 +101,42 @@ whose components $m_{g, f}$ are $2$-morphisms;
 \noindent\begin{definition}\textup{(Lax Natural Transformation).} A {\em lax natural transformation} $\Phi$ from the lax functor $\textup{F} : \mathscr{C} \to \mathscr{D}$ to the lax functor $\textup{G} : \mathscr{C} \to \mathscr{D}$ consists of
 \begin{enumerate}[label=$\bullet$, leftmargin=4\parindent]
 \item for each object $\textobj{i} \in \obset(\mathscr{C})$, a $1$-morphism $\Phi_\textobj{i} \in \obset(\mathscr{D}(\textup{F}(\textobj{i}), \textup{G}(\textobj{i})))$;
-\item for each $1$-morphism $f \in \obset(\mathscr{C}(\textobj{i}, \textobj{j}))$, a $2$-morphism $\Phi_f : G(f) \circ_h \Phi_\textobj{i} \Rightarrow \Phi_\textobj{j} \circ_h \textup{F}(f)$ in $\morset(\mathscr{D}(\textup{F}(\textobj{i}), \textup{G}(\textobj{j})))$;
+\item for each $1$-morphism $f \in \obset(\mathscr{C}(\textobj{i}, \textobj{j}))$, a $2$-morphism $\Phi_f : G(f) \circ_h \Phi_\textobj{i} \Rightarrow \Phi_\textobj{j} \circ_h \textup{F}(f)$ %$\Phi_f : \Phi_\textobj{j} \circ_h \textup{F}(f) \Rightarrow G(f) \circ_h \Phi_\textobj{i}$
+in $\morset(\mathscr{D}(\textup{F}(\textobj{i}), \textup{G}(\textobj{j})))$;
 \end{enumerate}
 \noindent such that
 \begin{enumerate}[label=$\bullet$, leftmargin=4\parindent]
 \item for each $2$-morphism $\alpha : f \Rightarrow g$ in $\morset(\mathscr{C}(\textobj{i}, \textobj{j}))$, the square
 \begin{center}
 \begin{tikzcd}
-\Phi_\textobj{j} \circ_h \textup{F}(f)\arrow[d, "\Phi_f"']\arrow[r, "\textup{id}_{\Phi_\textobj{j}} \circ_h \textup{F}(\alpha)" {yshift = 0.75ex}] & \Phi_\textobj{j} \circ_h \textup{F}(g)\arrow[d, "\Phi_g"]\\
-\textup{G}(f) \circ_h \Phi_\textobj{i}\arrow[r, "\textup{G}(\alpha) \circ_h \textup{id}_{\Phi_\textobj{i}}"' {yshift = -0.75ex}] & \textup{G}(g) \circ_h \Phi_\textobj{i}
+%\Phi_\textobj{j} \circ_h \textup{F}(f)\arrow[d, "\Phi_f"']\arrow[r, "\textup{id}_{\Phi_\textobj{j}} \circ_h \textup{F}(\alpha)" {yshift = 0.75ex}] & \Phi_\textobj{j} \circ_h \textup{F}(g)\arrow[d, "\Phi_g"]\\
+%\textup{G}(f) \circ_h \Phi_\textobj{i}\arrow[r, "\textup{G}(\alpha) \circ_h \textup{id}_{\Phi_\textobj{i}}"' {yshift = -0.75ex}] & \textup{G}(g) \circ_h \Phi_\textobj{i}
+\textup{G}(f) \circ_h \Phi_\textobj{i}\arrow[d, "\Phi_f"']\arrow[r, "\textup{G}(\alpha) \circ_h \textup{id}_{\Phi_\textobj{i}}" {yshift = 0.75ex}] & \textup{G}(g) \circ_h \Phi_\textobj{i}\arrow[d, "\Phi_g"]\\
+\Phi_\textobj{j} \circ_h \textup{F}(f)\arrow[r, "\textup{id}_{\Phi_\textobj{j}} \circ_h \textup{F}(\alpha)"' {yshift = -0.75ex}] & \Phi_\textobj{j} \circ_h \textup{F}(g)
 \end{tikzcd}
 \end{center}
 commutes (that is, the $2$-morphisms $\Phi_f$ are the components of a natural transformation);
 \item for each pair of $1$-morphisms $f \in \obset(\mathscr{C}(\textobj{i}, \textobj{j}))$, $g \in \obset(\mathscr{C}(\textobj{j}, \textobj{k}))$, the octagon diagram
 \begin{center}
 \begin{tikzcd}
-&[-5em] (\Phi_\textobj{k} \circ_h \textup{F}(g)) \circ_h \textup{F}(f)\arrow[dl, "\Phi_g \circ_h \textup{id}_{\textup{F}(f)}"']\arrow[r, "a_{\Phi_\textobj{k}, \textup{F}(g), \textup{F}(f)}" {yshift = 0.75ex}] & \Phi_\textobj{k} \circ_h (\textup{F}(g) \circ_h \textup{F}(f))\arrow[dr, "\textup{id}_{\Phi_\textobj{k}} \circ_h m_{g, f}"] &[-4em] \\
-(\textup{G}(g) \circ_h \Phi_\textobj{j}) \circ_h \textup{F}(f)\arrow[d, "a_{\textup{G}(g), \Phi_\textobj{j}, \textup{F}(f)}"'] &&& \Phi_\textobj{k} \circ_h \textup{F}(g \circ_h f)\arrow[d, "\Phi_{g \circ_h f}"]\\
-\textup{G}(g) \circ_h (\Phi_\textobj{j} \circ_h \textup{F}(f))\arrow[dr, "\textup{id}_{\textup{G}(g)} \circ_h \Phi_f"'] &&& \textup{G}(g \circ_h f) \circ_h \Phi_\textobj{i}\\
-& \textup{G}(g) \circ_h (\textup{G}(f) \circ_h \Phi_\textobj{i}) & (\textup{G}(g) \circ_h \textup{G}(f)) \circ_h \Phi_\textobj{i}\arrow[l, "a_{\textup{G}(g), \textup{G}(f), \Phi_\textobj{i}}" {yshift = -1ex}]\arrow[ur, "m_{g, f} \circ_h \textup{id}_{ \Phi_\textobj{i}}"'] &
+% &[-5em] (\Phi_\textobj{k} \circ_h \textup{F}(g)) \circ_h \textup{F}(f)\arrow[dl, "\Phi_g \circ_h \textup{id}_{\textup{F}(f)}"']\arrow[r, "a_{\Phi_\textobj{k}, \textup{F}(g), \textup{F}(f)}" {yshift = 0.75ex}] & \Phi_\textobj{k} \circ_h (\textup{F}(g) \circ_h \textup{F}(f))\arrow[dr, "\textup{id}_{\Phi_\textobj{k}} \circ_h m_{g, f}"] &[-4em] \\
+%(\textup{G}(g) \circ_h \Phi_\textobj{j}) \circ_h \textup{F}(f)\arrow[d, "a_{\textup{G}(g), \Phi_\textobj{j}, \textup{F}(f)}"'] &&& \Phi_\textobj{k} \circ_h \textup{F}(g \circ_h f)\arrow[d, "\Phi_{g \circ_h f}"]\\
+%\textup{G}(g) \circ_h (\Phi_\textobj{j} \circ_h \textup{F}(f))\arrow[dr, "\textup{id}_{\textup{G}(g)} \circ_h \Phi_f"'] &&& \textup{G}(g \circ_h f) \circ_h \Phi_\textobj{i}\\
+% & \textup{G}(g) \circ_h (\textup{G}(f) \circ_h \Phi_\textobj{i}) & (\textup{G}(g) \circ_h \textup{G}(f)) \circ_h \Phi_\textobj{i}\arrow[l, "a_{\textup{G}(g), \textup{G}(f), \Phi_\textobj{i}}" {yshift = -1ex}]\arrow[ur, "m_{g, f} \circ_h \textup{id}_{ \Phi_\textobj{i}}"'] &
+&[-5em] \textup{G}(g) \circ_h (\textup{G}(f) \circ_h \Phi_\textobj{i})\arrow[dl, "\textup{id}_{\textup{G}(g)} \circ_h \Phi_f"']\arrow[r, "a_{\textup{G}(g), \textup{G}(f), \Phi_\textobj{i}}" {yshift = 0.75ex}] & (\textup{G}(g) \circ_h \textup{G}(f)) \circ_h \Phi_\textobj{i}\arrow[dr, "m_{g, f} \circ_h \textup{id}_{ \Phi_\textobj{i}}"] &[-4em] \\
+\textup{G}(g) \circ_h (\Phi_\textobj{j} \circ_h \textup{F}(f))\arrow[d, "a_{\textup{G}(g), \Phi_\textobj{j}, \textup{F}(f)}"'] &&& \textup{G}(g \circ_h f) \circ_h \Phi_\textobj{i}\arrow[d, "\Phi_{g \circ_h f}"]\\
+(\textup{G}(g) \circ_h \Phi_\textobj{j}) \circ_h \textup{F}(f)\arrow[dr, "\Phi_g \circ_h \textup{id}_{\textup{F}(f)}"'] &&& \Phi_\textobj{k} \circ_h \textup{F}(g \circ_h f)\\
+& (\Phi_\textobj{k} \circ_h \textup{F}(g)) \circ_h \textup{F}(f) & \Phi_\textobj{k} \circ_h (\textup{F}(g) \circ_h \textup{F}(f))\arrow[l, "a_{\Phi_\textobj{k}, \textup{F}(g), \textup{F}(f)}" {yshift = -1ex}]\arrow[ur, "\textup{id}_{\Phi_\textobj{k}} \circ_h m_{g, f}"'] &
 \end{tikzcd}
 \end{center}
 commutes;
 \item for each object $\textobj{i} \in \obset(\mathscr{C})$, the pentagon diagram
 \begin{center}
 \begin{tikzcd}
-\Phi_\textobj{i} \circ_h \textup{id}_{\textup{F}(\textobj{i})}\arrow[d, "\textup{id}_{\Phi_\textobj{i}} \circ_h i"']\arrow[r, "r_{\Phi_\textobj{i}}"] & \Phi_\textobj{i} & \textup{id}_{\textup{G}(\textobj{i})} \circ_h \Phi_\textobj{i}\arrow[l, "l_{\Phi_\textobj{i}}"']\arrow[d, "i \circ_h \textup{id}_{\Phi_\textobj{i}}"]\\
-\Phi_\textobj{i} \circ_h \textup{F}(\textup{id}_\textobj{i})\arrow[rr, "\Phi_{\textup{id}_\textobj{i}}"'] && \textup{G}(\textup{id}_\textobj{i}) \circ_h \Phi_\textobj{i}
+%\Phi_\textobj{i} \circ_h \textup{id}_{\textup{F}(\textobj{i})}\arrow[d, "\textup{id}_{\Phi_\textobj{i}} \circ_h i"']\arrow[r, "r_{\Phi_\textobj{i}}"] & \Phi_\textobj{i} & \textup{id}_{\textup{G}(\textobj{i})} \circ_h \Phi_\textobj{i}\arrow[l, "l_{\Phi_\textobj{i}}"']\arrow[d, "i \circ_h \textup{id}_{\Phi_\textobj{i}}"]\\
+%\Phi_\textobj{i} \circ_h \textup{F}(\textup{id}_\textobj{i})\arrow[rr, "\Phi_{\textup{id}_\textobj{i}}"'] && \textup{G}(\textup{id}_\textobj{i}) \circ_h \Phi_\textobj{i}
+\textup{id}_{\textup{G}(\textobj{i})} \circ_h \Phi_\textobj{i}\arrow[r, "l_{\Phi_\textobj{i}}"]\arrow[d, "i \circ_h \textup{id}_{\Phi_\textobj{i}}"'] & \Phi_\textobj{i} & \Phi_\textobj{i} \circ_h \textup{id}_{\textup{F}(\textobj{i})}\arrow[d, "\textup{id}_{\Phi_\textobj{i}} \circ_h i"]\arrow[l, "r_{\Phi_\textobj{i}}"']\\
+\textup{G}(\textup{id}_\textobj{i}) \circ_h \Phi_\textobj{i}\arrow[rr, "\Phi_{\textup{id}_\textobj{i}}"'] && \Phi_\textobj{i} \circ_h \textup{F}(\textup{id}_\textobj{i})
 \end{tikzcd}
 \end{center}
 commutes.
