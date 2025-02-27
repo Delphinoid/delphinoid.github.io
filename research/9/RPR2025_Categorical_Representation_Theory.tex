@@ -1,0 +1,490 @@
+%%%%%%%%%
+% SETUP %
+%%%%%%%%%
+
+\documentclass{beamer}
+\mode<presentation> {
+	\usetheme{Madrid}
+}
+\setbeamertemplate{frametitle continuation}[from second][]
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{knots}
+\usetikzlibrary{arrows.meta} 
+
+% Title.
+\title[Real Groups and Categorical Rep Theory]{Real Groups and Categorical Representation Theory}
+\author{Daniel Dunmore}
+\institute[UNSW]{
+	University of New South Wales \\
+	\medskip
+	\textit{d.dunmore@unsw.edu.au}
+}
+\date{February 28, 2025}
+
+% Bibliography.
+\usepackage[%
+	backend = biber,
+	% BibLaTeX-Math package: https://github.com/konn/biblatex-math
+	style = math-alphabetic,
+	giveninits = true,
+	dashed = false,
+	url = false,
+	doi = false,
+	%sorting = none,
+	minalphanames = 3,
+	maxalphanames = 4
+]{biblatex}
+% Use the default font size for the bibliography.
+\renewcommand*{\bibfont}{\normalsize}
+% Use title case rather than sentence case for references.
+\DeclareFieldFormat{titlecase}{#1}
+% Put last names before first names.
+\DeclareNameAlias{default}{family-given}
+% Used for articles with appendices written by other authors.
+\NewBibliographyString{bywithappendix}
+\DefineBibliographyStrings{english}{
+	bywithappendix = {with an appendix by}
+}
+% Specify the bibliography data file to use.
+\addbibresource{References.bib}
+% Sort by order present in .bib file.
+%\nocite{*}
+
+
+%%%%%%%%%%%%
+% NOTATION %
+%%%%%%%%%%%%
+
+\usepackage{mathrsfs}
+
+% Adds integral notation like \oiint.
+\usepackage{esint}
+% Blackboard bold symbols.
+\usepackage{bbm}
+
+\usepackage{accents}
+% Tilde notation for vectors.
+\newcommand{\ut}[1]{\underaccent{\tilde}{#1}}
+% Arrow notation for vectors.
+\usepackage{harpoon}
+% Dirac bra-ket notation for quantum states.
+\usepackage{braket}
+
+% Differential formatting.
+\usepackage{ifthen}
+\usepackage{etoolbox}
+\newcommand*{\ndiff}[1]{\mathrm{d}#1}
+\newcommand*{\sdiff}[1]{\mathop{}\!\ndiff{#1}}
+\newcommand{\rdiff}[3][]{
+	\ifthenelse{\equal{#1}{}}
+	{\frac{\mathrm{d}#2}{\mathrm{d}#3}}
+	{\frac{\mathrm{d}^{#1}#2}{\forcsvlist\ndiff{#3}}}
+}
+\newcommand*{\npiff}[1]{\mathrm{\partial}#1}
+\newcommand*{\spiff}[1]{\mathop{}\!\npiff{#1}}
+\newcommand{\rpiff}[3][]{
+	\ifthenelse{\equal{#1}{}}
+	{\frac{\mathrm{\partial}#2}{\mathrm{\partial}#3}}
+	{\frac{\mathrm{\partial}^{#1}#2}{\forcsvlist\npiff{#3}}}
+}
+% Inexact differential for physics.
+\newcommand*{\dbar}[1]{\mathop{}\!\mathrm{\dj}#1}
+
+% Metrics, inner products and norms.
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\inprod}{\langle}{\rangle}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+% This is used if we want an empty norm. 
+\newcommand{\blank}{{}\cdot{}}
+
+% Function notation.
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\coker}{\mathrm{Coker}}
+\newcommand{\im}{\mathrm{Im}}
+\newcommand{\ev}{\mathrm{ev}}
+\newcommand{\coev}{\mathrm{coev}}
+
+% Category theory notation.
+%\newcommand{\obset}{\textnormal{Ob}_{#1}\!\left(#2\right)}
+%\newcommand{\morset}[2][]{\textnormal{Mor}_{#1}\!\left(#2\right)}
+%\newcommand{\homset}[2][]{\textnormal{Hom}_{#1}\!\left(#2\right)}
+%\newcommand{\End}[2][]{\textnormal{End}_{#1}\!\left(#2\right)}
+%\newcommand{\opp}[1]{{#1}^{\textnormal{op}}}
+%\newcommand{\textcat}[1]{\textnormal{\textsf{#1}}}
+\newcommand{\obset}{\mathrm{Ob}}
+\newcommand{\morset}{\mathrm{Mor}}
+\newcommand{\homset}{\mathrm{Hom}}
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\opp}{\mathrm{op}}
+\newcommand{\textcat}[1]{\mathrm{\textsf{#1}}}
+\newcommand{\textobj}[1]{\mathrm{\texttt{#1}}}
+
+% Special notation.
+%\newcommand{\chr}{\textnormal{char}}
+%\newcommand{\Tr}{\textnormal{Tr}}
+%\newcommand{\trv}{\textnormal{tr}}
+%\newcommand{\Dim}{\textnormal{Dim}}
+%\newcommand{\FPdim}{\textnormal{FPdim}}
+\newcommand{\chr}{\mathrm{char}}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\trv}{\mathrm{tr}}
+\newcommand{\Dim}{\mathrm{Dim}}
+\newcommand{\FPdim}{\mathrm{FPdim}}
+
+% Hiragana "yo" for the Yoneda embeddings.
+\newcommand{\yo}{\text{\usefont{U}{min}{m}{n}\symbol{'210}}}
+\DeclareFontFamily{U}{min}{}
+\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
+
+% Representation theory notation.
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\Alt}{\mathrm{Alt}}
+
+\usepackage{calc}
+
+\newcommand*{\emphasis}[1]{\textcolor{structure}{\em #1}}
+
+\usefonttheme[onlymath]{serif}
+
+\DeclareCiteCommand{\aycite}
+{\boolfalse{citetracker}\boolfalse{pagetracker}}
+{\printtext[bibhyperref]{\printnames{labelname}\addcomma\addspace\printfield{year}}}
+{\multicitedelim}
+{}
+
+% Negative horizontal phantom.
+\newcommand{\nhphantom}[1]{\sbox0{#1}\hspace{-\the\wd0}}
+
+\newtheorem{theoremdefinition}{Theorem-Definition}
+
+%\usepackage{stmaryrd}
+
+\renewcommand*{\bibfont}{\normalfont\footnotesize}
+
+\setlength{\leftmargini}{30pt}
+
+
+%%%%%%%%%%%%
+% DOCUMENT %
+%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%
+% Prelude %
+%%%%%%%%%%%
+
+\begin{frame}
+\noindent\\[-20pt]
+\begin{figure}[!ht]
+\titlepage
+\noindent\\[-20pt]
+\hspace{3.5cm}\hfill\includegraphics[width=2cm]{unsw-crest}\hfill\raisebox{-0.7093cm}{\includegraphics[width=3.5cm]{QR}}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Overview}
+The theme of this talk will be using categorification to study the representation theory of real Lie groups.\\[2ex]
+
+The material is quite dense; as a result, I would like to take a ``hands-on'' approach during this talk. I will be leaving out precise definitions of Soergel bimodules and birepresentations, and instead focusing on telling a coherent story that conveys where I fit into the picture, as well as the flavour of what I'm doing.
+\end{frame}
+
+\begin{frame}
+\frametitle{Roadmap}
+\begin{center}
+\begin{minipage}{\widthof{(1) Real Groups and Lusztig--Vogan Modules}}
+\setlength{\parskip}{4ex}
+\tableofcontents
+\end{minipage}
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Real Groups and Lusztig--Vogan Modules %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Real Groups and Lusztig--Vogan Modules}
+
+\begin{frame}
+\noindent\centerline{\LARGE\textcolor{structure}{\underline{Real Groups and Lusztig--Vogan Modules}}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Motivation I}
+Physics is, (very) roughly speaking, the study of symmetry and symmetry breaking.\\[2ex]
+
+For our purposes, this is captured by the study of Lie groups and their representations.\\[2ex]
+
+The primary motivation for this talk will be the classification of unitary representations of real Lie groups.\\[2ex]
+
+Understanding the entire class is hopeless for now, so we instead look at the more manageable class of \textcolor{structure}{admissible representations of real reductive groups}.
+\end{frame}
+
+\begin{frame}
+\frametitle{Motivation II}
+For real reductive groups in the so-called \textcolor{structure}{Harish--Chandra class}, the irreducible admissible representations are classified by a certain set of parameters due to the \textcolor{structure}{Langlands classification}.\\[2ex]
+
+This classification scheme is similar to other classification schemes in representation theory! That is, we have some standard principal series module, with every irreducible module contained uniquely within it.\\[2ex]
+
+Given such a scheme, we're often interested in the relationship between the principal series and irreducibles.
+\end{frame}
+
+\begin{frame}
+\frametitle{Motivation III}
+To this end, Lusztig and Vogan created a family of modules over the Iwahori--Hecke algebra that are built from connected real reductive groups (\cite{Vog82}, \cite{LV83}).\\[2ex]
+
+These modules admit a standard basis and a canonical basis, with the change-of-basis coefficients giving rise to a collection of polynomials.\\[2ex]
+
+The values of these \textcolor{structure}{Kazhdan--Lusztig--Vogan polynomials} at $1$ determine the Jordan–H\"{o}lder multiplicities of irreducible submodules of the standard module for the underlying reductive group.\\[2ex]
+
+The philosophy of categorification has been fruitful in similar contexts. What can it tell us here?
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lusztig--Vogan Module Categories %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Lusztig--Vogan Module Categories}
+
+\begin{frame}
+\noindent\centerline{\LARGE\textcolor{structure}{\underline{Lusztig--Vogan Module Categories}}}
+\end{frame}
+
+\begin{frame}
+\frametitle{The General Setup}
+The Lusztig--Vogan (LV) module categories take as ingredients
+\begin{itemize}
+\item a connected, complex, reductive algebraic group $G$;
+\item a Borel subgroup $B \subseteq G$;
+\item a holomorphic involution $\theta : G \to G$;
+\item a finite index subgroup $K \subseteq G^\theta$ \textit{(the identity component of $G^\theta$)};
+\item a maximal torus $T_K \subseteq B \cap K$.\\
+\end{itemize}
+\begin{align*}
+\begin{split}
+\theta &\rightsquigarrow \text{real form of $G$}\\
+T_K \subseteq G &\rightsquigarrow \text{Weyl group}\\
+B &\rightsquigarrow \text{choice of simple roots}%\\[2ex]
+\end{split}
+\end{align*}
+%The full construction of these categories is a bit involved.\\
+%In the ``equal rank'' case -- when $T_K$ is Abelian -- it simplifies dramatically!
+\end{frame}
+
+\begin{frame}
+\frametitle{The Equal Rank Case}
+\begin{enumerate}
+\item Let $W$ be a Weyl group with $S \subseteq W$ a choice of simple roots and $W_K \subseteq W$ a finite index subgroup.
+\item Define a polynomial algebra $R \coloneqq \mathbbm{k}[\alpha_s : s \in S]$ graded in degree $2$.
+\item We have a \emphasis{geometric action} of $W$ on $R$ given by\\[-4ex]
+\begin{align*}
+\begin{split}
+s(\alpha_t) = \alpha_t + 2\cos\!\left(\frac{\pi}{m_{st}}\right)\!\alpha_s.\\[-1ex]
+\end{split}
+\end{align*}
+%\item Let $R^{W_K}$ be the polynomials in $R$ that are invariant under $W_K$.
+\item For any right coset $w \in W_K\backslash W$, let $R_w$ be the \emphasis{$w$-standard $(R^{W_K}, R)$-bimodule} given by $R$ as a vector space with the right action given by the $w$-twisting $p \cdot_w f \coloneqq pw(f)$, for $p \in R_w$, $f \in R$.
+\end{enumerate}
+\begin{definition}[\aycite{LR22}] The corresponding \emphasis{(equal rank) Lusztig--Vogan module category} is\\[-4ex]
+\begin{align*}
+\begin{split}
+\mathcal{N}_{LV}^0 = \langle R_w \otimes_R X : w \in W_K\backslash W,\ X \in \obset(\mathbb{S}\textcat{Bim}(W, S))\rangle_{\oplus,\ominus,(1)}.
+\end{split}
+\end{align*}
+\end{definition}
+\end{frame}
+
+\begin{frame}
+\frametitle{Example: $\textup{SL}(2, \mathbb{R})$}
+Possibly the simplest LV category is the one corresponding to $\textup{SL}(2, \mathbb{R})$.\\[2ex]
+Our ingredients are
+\begin{itemize}
+\item $G = \textup{SL}(2, \mathbb{C})$,
+\item $B = \left\{\!\begin{pmatrix}a&b\hphantom{{}^{-1}}\\0&a^{-1}\end{pmatrix} : a \in \mathbb{C}^\times, b \in \mathbb{C}\right\}$,
+\item $\theta : \begin{pmatrix}a&b\\c&d\end{pmatrix} \mapsto \begin{pmatrix}\hphantom{-}a&-b\\-c&\hphantom{-}d\end{pmatrix}$,
+\item $T_K = K = G^\theta = \left\{\!\begin{pmatrix}a&0\hphantom{{}^{-1}}\\0&a^{-1}\end{pmatrix} : a \in \mathbb{C}^\times\right\}$.\\[2ex]
+\end{itemize}
+This corresponds to $W = S_2 = \{1, s\}$, $S = \{s\}$ and $W_K = \{1\}$.\\[2ex]
+The geometric action is given by $1(\alpha_t) = \alpha_t$ and $s(\alpha_t) = -\alpha_t$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Example: $\textup{SL}(2, \mathbb{R})$}
+Let's compute the indecomposables of this category!\\[2ex]
+
+We'll start by computing products of standard bimodules and indecomposables from $\mathbb{S}\textcat{Bim}$.
+\begin{alignat*}{2}
+R_1 \otimes_R B_1 &\cong R,&\qquad R_1 \otimes_R B_{s} &\cong B_{s},\\
+R_{s} \otimes_R B_1 &\cong R_{s},&\qquad R_{s} \otimes_R B_{s} &\cong B_{s}.
+\end{alignat*}
+As it turns out, all of these are indecomposable in $\mathcal{N}_{LV}^0$, so luckily we don't need to look at direct summands!
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Example: $\textup{SL}(2, \mathbb{R})$}
+Here's something interesting we can observe.\\[2ex]
+
+For $P, Q \in \textup{Ind}(\mathcal{N}_{LV}^0)/\!\sim$, write $Q \geq P$ if there exists $X \in \obset(\mathbb{S}\textcat{Bim})$ for which $Q$ is isomorphic to a direct summand of $P \otimes_R B$.\\[2ex]
+
+Stepping back to our example, this gives us the cell structure
+\begin{center}
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+\draw (0,0.75) -- (2.5,0);
+\draw (0,-0.75) -- (2.5,0);
+\path[fill=white] (-0.375,-0.375-0.75) rectangle (0.6,0.375+0.75);
+\path[fill=white] (2.5-0.6,-0.375) rectangle (2.875,0.375);
+\draw[fill=red!10!blue!20!gray!10!white] (-0.375,-0.375+0.75) rectangle (0.375,0.375+0.75);
+\node at (0,0.75) {$R$};
+\draw[fill=red!10!blue!20!gray!10!white] (-0.375,-0.375-0.75) rectangle (0.375,0.375-0.75);
+\node at (0,-0.75) {$R_s$};
+\draw[fill=red!10!blue!20!gray!10!white] (2.5-0.375,-0.375) rectangle (2.875,0.375);
+\node at (2.5,0) {$B_s$};
+\end{tikzpicture}\ .
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Example: $\textup{SU}(2, 1)$}
+Let's look at a more involved example.\\[2ex]
+Our ingredients are
+\begin{itemize}
+\item $G = \textup{SL}(3, \mathbb{C})$,
+\item $\theta : \begin{pmatrix}a&b&c\\d&e&f\\g&h&i\end{pmatrix} \mapsto \begin{pmatrix}\hphantom{-}a&\hphantom{-}b&-c\\\hphantom{-}d&\hphantom{-}e&-f\\-g&-h&\hphantom{-}i\end{pmatrix}$,
+\item $K = G^\theta = \left\{\!\begin{pmatrix}a&b&0\\c&d&0\\0&0&e\end{pmatrix} : a, b, c, d, e \in \mathbb{C},\ (ad - bc)e = 1\right\}$,
+\item $T_K = \left\{\!\begin{pmatrix}a&0&0\\0&b&0\\0&0&\frac{1}{ab}\end{pmatrix} : a, b \in \mathbb{C}^\times\right\}$.\\[2ex]
+\end{itemize}
+%This corresponds to $W = S_2 = \{1, s\}$, $S = \{s\}$ and $W_K = \{1\}$.\\[2ex]
+%The geometric action is given by $1(\alpha_t) = \alpha_t$ and $s(\alpha_t) = -\alpha_t$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Example: $\textup{SU}(2, 1)$}
+The indecomposables of this category are much more difficult to compute. With some work, however, it can be shown that they are
+\begin{align*}
+\begin{split}
+R,\quad R_t,\quad R_{ts},\quad B_t,\quad R_t \otimes_R B_s,\quad R^s \otimes_{R^W} R.
+\end{split}
+\end{align*}
+\noindent Products of standard bimodules and indecomposables are already no longer necessarily indecomposable!\\[2ex]
+The cell structure is given by
+\begin{center}
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+\draw (0,0.75) -- (2.5,0);
+\draw (0,-0.75) -- (2.5,0);
+\draw (0,0.75) -- (-2.5,0);
+\draw (0,-0.75) -- (-2.5,0);
+\path[fill=white] (-0.6,-0.375-0.75) rectangle (0.6,0.375+0.75);
+\path[fill=white] (-1.225,-0.375-0.75) rectangle (1.225,0.375-0.75);
+\path[fill=white] (2.5-0.6,-0.375) rectangle (2.875,0.375);
+\path[fill=white] (-2.5+0.6,-0.375) rectangle (-2.875,0.375);
+\draw[fill=red!10!blue!20!gray!10!white] (-0.375,-0.375+0.75) rectangle (0.375,0.375+0.75);
+\node at (0,0.75) {$R_t$};
+\draw[fill=red!10!blue!20!gray!10!white] (-1,-0.375-0.75) rectangle (1,0.375-0.75);
+\node at (0,-0.75) {$R^s \otimes_{R^W} R$};
+\draw[fill=red!10!blue!20!gray!10!white] (2.5-0.375,-0.375) rectangle (2.875+2,0.375);
+\node at (3.5,0) {$R_t \otimes_R B_s, R_{ts}$};
+\draw[fill=red!10!blue!20!gray!10!white] (-2.5+0.375,-0.375) rectangle (-2.875-0.5,0.375);
+\node at (-2.75,0) {$R, B_t$};
+\end{tikzpicture}\ .
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Weak Jordan-Holder Series %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Weak Jordan--H\"{o}lder Series}
+
+\begin{frame}
+\noindent\centerline{\LARGE\textcolor{structure}{\underline{Weak Jordan--H\"{o}lder Series}}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Weak Jordan--H\"{o}lder Series}
+In \cite[Theorem 8]{MM16}, Mazorchuk and Miemietz developed a higher categorical analogue to the Jordan--H\"{o}lder theorem.\\[2ex]
+This is central to higher category theory, as it shows how different birepresentations decompose into simple (transitive) birepresentations.\\[2ex]
+It's quite technical, so let's apply it to one of our examples.
+\end{frame}
+
+\begin{frame}
+\frametitle{Example: $\textup{SL}(2, \mathbb{R})$}
+Our filtrations consist of directed order ideals of $\textup{Ind}(\mathcal{N}_{LV}^0)/\!\sim$.\\ Each ideal has one less object than the next.\\[2ex]
+
+In the $\textup{SL}(2, \mathbb{R})$ case, one such filtration is
+\begin{align*}
+\begin{split}
+Q_1 \coloneqq \{[B_{s}]\} \subset Q_2 \coloneqq \{[R_{s}], [B_{s}]\} \subset Q_3 \coloneqq \{[R], [R_{s}], [B_{s}]\}.
+\end{split}
+\end{align*}
+These give rise to the additive $\mathbb{S}\textcat{Bim}$-module subcategories
+\begin{align*}
+\begin{split}
+\mathcal{M}_{Q_1} = \langle B_{s} \rangle_{\oplus,(1)},\quad\mathcal{M}_{Q_2} = \langle R_{s}, B_{s}\rangle_{\oplus,(1)},\quad\mathcal{M}_{Q_3} = \langle R, R_{s}, B_{s}\rangle_{\oplus,(1)}.
+\end{split}
+\end{align*}
+Denote by $\mathcal{M}_{Q_i/Q_{i-1}}$ the quotient of $\mathcal{M}_{Q_i}$ by the two-sided ideal generated by the identity morphisms in $Q_{i-1}$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Example: $\textup{SL}(2, \mathbb{R})$}
+What are the simple module categories?\\[2ex]
+
+Well, $\mathcal{M}_{Q_1}$ doesn't change.\\
+The quotient functor from $\mathcal{M}_{Q_2}$ to $\mathcal{M}_{Q_2/Q_1}$ takes $B_s$ to $0$.\\
+The quotient functor from $\mathcal{M}_{Q_3}$ to $\mathcal{M}_{Q_3/Q_2}$ takes $R_s$ and $B_s$ to $0$.\\[2ex]
+
+As it happens, the functor sending $R_s$ to $R$ defines an equivalence of module categories $\mathcal{M}_{Q_2/Q_1} \simeq \mathcal{M}_{Q_3/Q_2}$.\\[2ex]
+
+Don't be fooled by ``$R_s \otimes_R R_s \sim R = 0$''!\\[2ex]
+
+These are transitive module categories, but there is a unique way of making them simple by throwing away non-invertible morphisms.
+\end{frame}
+
+%%%%%%%%%%%%%%%%
+% What's Next? %
+%%%%%%%%%%%%%%%%
+
+\section{What's Next?}
+
+\begin{frame}
+\noindent\centerline{\LARGE\textcolor{structure}{\underline{What's Next?}}}
+\end{frame}
+
+\begin{frame}
+\frametitle{What's Next?}
+We would like to eventually look at these simple decompositions outside of the type $A$ case.\\[2ex]
+
+The final goal is to consider a notion of extensions in order to build new module categories from such simple constituents.\\[2ex]
+
+The hope is that these new module categories, may contain their own interesting representation theoretic data.
+\end{frame}
+
+%%%%%%%%%%%%%%
+% References %
+%%%%%%%%%%%%%%
+
+\section*{References}
+
+\begin{frame}[allowframebreaks]
+\frametitle{References}
+\printbibliography[heading = none]
+\end{frame}
+
+%%%%%%%%%%%%%
+% Thank you %
+%%%%%%%%%%%%%
+
+\begin{frame}
+\noindent\centerline{\LARGE\textcolor{structure}{\underline{Thank you very much for your attention!}}}
+%\vspace*{2em}
+%\centerline{\LARGE Any questions?}
+\end{frame}
+
+\end{document}
