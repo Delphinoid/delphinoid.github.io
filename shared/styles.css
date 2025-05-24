@@ -30,6 +30,7 @@ body {
 	margin: 0px;
 	width: 100%;
 	min-width: 274px;
+	overflow-x: hidden;
 }
 
 a {
