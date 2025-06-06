@@ -812,9 +812,9 @@ is known as a {\em Coxeter group}.\\
 \noindent\begin{theoremdefinition}\textup{(Kazhdan--Lusztig Basis).} Let $\mathscr{H}(W, S)$ be an Iwahori--Hecke algebra. Then it admits a unique $\mathbb{Z}[v, v^{-1}]$-basis $\{b_w : w \in W\}$ such that each $b_w$ satisfies
 \begin{enumerate}[label=$\bullet$, leftmargin=4\parindent]
 \item (self-duality) $\overline{b_w} = b_w$,
-\item (degree bound) $b_w = \sum_{y \in W}{h_{y,w} \delta_y}$,
+\item (degree bound) $b_w = \sum_{y \in W}{h_{y,w}(v) \delta_y}$,
 \end{enumerate}
-\noindent for some $h_{y,w} \in v\mathbb{Z}_{\geq 0}[v]$ with $h_{w,w} \coloneqq 1$ and $h_{y,w} \coloneqq 0$ whenever $y \nleq w$ under the Bruhat order. This basis is known as the {\em Kazhdan--Lusztig basis}, and the coefficients $h_{y,w}$ are called {\em Kazhdan--Lusztig polynomials}.\\
+\noindent for some $h_{y,w}(v) \in v\mathbb{Z}_{\geq 0}[v]$ with $h_{w,w}(v) \coloneqq 1$ and $h_{y,w}(v) \coloneqq 0$ whenever $y \nleq w$ under the Bruhat order. This basis is known as the {\em Kazhdan--Lusztig basis}, and the polynomials $h_{y,w}$ are called {\em Kazhdan--Lusztig polynomials}.\\
 \end{theoremdefinition}
 
 \noindent A proof for existence can be found in \cite[Theorem 3.25]{EMTW20}, while a proof for uniqueness can be found in \cite[Lemma 3.10]{EMTW20}. A helpful example for $W = S_3$ is given in \cite[\S 3.3.1]{EMTW20}. Note that all coefficients of Kazhdan--Lusztig polynomials are non-negative; this is the aforementioned {\em Kazhdan--Lusztig Positivity Conjecture}, which was first proven for general Coxeter systems by Elias and Williamson in \cite[Corollary 1.2]{EW14}. Observe also that {\em any} set $\{b_w : w \in W\}$ satisfying the degree bound condition will be a basis; in particular, the Kazhdan--Lusztig polynomials induce a triangular change of basis matrix with $1$'s along the diagonal that maps the standard basis to $\{b_w : w \in W\}$, giving an isomorphism between the two sets.\\
@@ -909,7 +909,7 @@ b_s^2 &= \delta_s^2 + 2v\delta_s + v^2\\
 \noindent\begin{theorem}\textup{(Soergel's Categorification Theorem II).}\label{SBimIndecomposables} Let $(W, S)$ be a Coxeter system and $\underline{w}$ a reduced expression for $w \in W$. Then $BS(\underline{w})$ contains, up to isomorphism, a unique indecomposable summand $B_w$, which does not appear in $BS(\underline{x})$ for any $x < w$ and depends only on $w$, not the reduced expression. Moreover, all other direct summands are grading shifts of $B_x$, for $x < w$.\newpage
 \end{theorem}
 
-\noindent A statement of and reference for these results can be found in \cite[Theorem 5.24]{EMTW20}, as well as an algorithm for finding the indecomposables $B_w$. The precise definition of the $\Delta$-character function is $\textup{ch}_\Delta : B \mapsto \sum_{y \in W} v^{\ell(y)} h_y(B) \delta_y$, where $h_y(B) \in v\mathbb{Z}_{\geq 0}[v, v^{-1}]$ is some kind of graded multiplicity (this is slightly technical, see \cite[Theorem 5.10]{EMTW20} for details). For any indecomposable Soergel bimodule $B_w$, the graded multiplicities satisfy $h_y(B_w(k)) = v^k h_{y, w}$ by Soergel's Conjecture.\\
+\noindent A statement of and reference for these results can be found in \cite[Theorem 5.24]{EMTW20}, as well as an algorithm for finding the indecomposables $B_w$. The precise definition of the $\Delta$-character function is $\textup{ch}_\Delta : B \mapsto \sum_{y \in W} v^{\ell(y)} h_y(B) \delta_y$, where $h_y(B) \in v\mathbb{Z}_{\geq 0}[v, v^{-1}]$ is some kind of graded multiplicity (this is slightly technical, see \cite[Theorem 5.10]{EMTW20} for details). For any indecomposable Soergel bimodule $B_w$, the graded multiplicities satisfy $h_y(B_w(k)) = v^k h_{y, w}(v)$ by Soergel's Conjecture.\\
 
 \noindent\begin{corollary}\label{SBimIndecomposablesCardinality} The isomorphism classes of indecomposables of $\mathbb{S}\textcat{Bim}(W, S)$ are in bijection with $W \times \mathbb{Z}$.\\
 \end{corollary}
