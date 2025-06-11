@@ -1,0 +1,398 @@
+%%%%%%%%%%%%
+% DOCUMENT %
+%%%%%%%%%%%%
+
+\documentclass[12pt, reqno]{amsart}
+\usepackage[a4paper, total={18cm, 22cm}, centering]{geometry}
+% Order matters here! The last language is the one that ends up being selected for biber.
+\usepackage[russian, japanese, english]{babel}
+
+
+%%%%%%%%%%%%
+% PACKAGES %
+%%%%%%%%%%%%
+
+% Miscellaneous packages.
+\usepackage{latexsym}
+\usepackage{amsmath, amsfonts, amsthm, amssymb, mathrsfs}
+\usepackage{graphicx}
+\usepackage[usenames, dvipsnames]{color}
+%\usepackage[hidelinks]{hyperref}
+\usepackage{hyperref}
+% Customizable enumerate list labels.
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+% Conditional.
+\usepackage{ifthen}
+\usepackage{etoolbox}
+
+% Tilde notation for vectors.
+\usepackage{accents}
+\newcommand{\ut}[1]{\underaccent{\tilde}{#1}}
+% Arrow notation for vectors.
+\usepackage{harpoon}
+% Dirac bra-ket notation for quantum states.
+\usepackage{braket}
+% Other mathematics syntax (like \coloneqq from mathtools and \oiint from esint).
+% We also use \DeclarePairedDelimiter from mathtools.
+\usepackage{mathtools, esint}
+% General blackboard bold symbols.
+\usepackage{bbm}
+
+% Scientific notation.
+\usepackage{siunitx}
+% SI unit formatting.
+\sisetup{exponent-product=\ensuremath{\cdot}, inter-unit-product=\ensuremath{\cdot}, separate-uncertainty=true, multi-part-units=single}
+
+% Table colours.
+\usepackage[table, xcdraw]{xcolor}
+\usepackage{colortbl}
+\definecolor{ColourBlack}{HTML}{000000}
+\definecolor{ColourWhite}{HTML}{FFFFFF}
+\definecolor{ColourTableGrey}{HTML}{EDEDED}
+\definecolor{Grey}{gray}{0.92}
+
+% Plotting.
+\usepackage{tikz-cd}
+\usepackage{spath3}
+\usetikzlibrary{arrows.meta, babel, decorations.markings, decorations.pathreplacing, knots}
+
+% Code.
+\usepackage{listings}
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0}
+\lstloadlanguages{Matlab}
+\lstset{language = Matlab,
+	frame = single,
+	basicstyle = \fontsize{8}{8}\ttfamily,
+	keywordstyle = [1]\color{Blue}\bfseries,
+	keywordstyle = [2]\color{Purple},
+	keywordstyle = [3]\color{Blue}\underbar,
+	identifierstyle = ,
+	commentstyle = \usefont{T1}{pcr}{}{sl}\color{MyDarkGreen}\small,
+	stringstyle = \color{Purple},
+	showstringspaces = false,
+	tabsize = 4,
+	morekeywords = {},
+	morekeywords = [2]{},
+	morekeywords = [3]{},
+	morecomment = [l][\color{Blue}]{...},
+	numbers = left,
+	firstnumber = 1,
+	numberstyle = \tiny\color{Blue},
+	stepnumber = 1
+}
+
+% Chemistry notation.
+\usepackage[version = 4]{mhchem}
+
+% Custom headers and footers.
+\usepackage{fancyhdr}
+% Makes all pages in the document conform to the custom headers and footers by default.
+\pagestyle{fancy}
+\fancyfoot[C]{\thepage}
+% Remove underlines from headers and footers.
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{14pt}
+\setlength{\footskip}{14pt}
+
+% Bibliography.
+\usepackage{doi}
+% Use the custom style "math-alphabetic" for nicer references.
+\usepackage[
+	backend=biber,
+	style=math-alphabetic,
+	firstinits=true,
+	dashed=false,
+	url=false,
+	doi=true,
+	minalphanames=3,
+	maxalphanames=4,
+	maxnames=4,
+	sorting=none
+]{biblatex}
+% Use normal font size for references.
+\renewcommand*{\bibfont}{\normalsize}
+% Use title case rather than sentence case for references.
+\DeclareFieldFormat{titlecase}{#1}
+% Specify the bibliography data file to use.
+\addbibresource{References.bib}
+% Use "Ph.D. thesis" instead of "PhD thesis".
+\DefineBibliographyStrings{english}{phdthesis = {Ph\adddot D\adddotspace thesis}}
+% Put last names first.
+\DeclareNameAlias{default}{family-given}
+% Sort by order present in .bib file.
+\nocite{*}
+
+% Date formatting for declaration.
+\usepackage[ddmmyyyy]{datetime}
+
+% Prevent hyphenation.
+\usepackage[none]{hyphenat}
+
+% Center the title.
+\usepackage{titling}
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+
+
+%%%%%%%%%%%%
+% COMMANDS %
+%%%%%%%%%%%%
+
+% Negative horizontal phantom.
+\newcommand{\nhphantom}[1]{\sbox0{#1}\hspace{-\the\wd0}}
+
+
+%%%%%%%%%%%%
+% NOTATION %
+%%%%%%%%%%%%
+
+% Differential formatting.
+\newcommand*{\ndiff}[1]{\mathrm{d}#1}
+\newcommand*{\sdiff}[1]{\mathop{}\!\ndiff{#1}}
+\newcommand{\rdiff}[3][]{
+	\ifthenelse{\equal{#1}{}}
+		{\frac{\mathrm{d}#2}{\mathrm{d}#3}}
+		{\frac{\mathrm{d}^{#1}#2}{\forcsvlist\ndiff{#3}}}
+}
+\newcommand*{\npiff}[1]{\mathrm{\partial}#1}
+\newcommand*{\spiff}[1]{\mathop{}\!\npiff{#1}}
+\newcommand{\rpiff}[3][]{
+	\ifthenelse{\equal{#1}{}}
+		{\frac{\mathrm{\partial}#2}{\mathrm{\partial}#3}}
+		{\frac{\mathrm{\partial}^{#1}#2}{\forcsvlist\npiff{#3}}}
+}
+% Inexact differential for physics.
+\newcommand*{\dbar}[1]{\mathop{}\!\mathrm{\dj}#1}
+
+% Metrics, inner products and norms.
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\inprod}{\langle}{\rangle}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+% This is used if we want an empty norm. 
+\newcommand{\blank}{{}\cdot{}}
+% Floor and ceiling functions.
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+% Function notation.
+\newcommand{\id}{\textup{id}}
+\newcommand{\coker}{\textup{Coker}}
+\newcommand{\im}{\textup{Im}}
+\newcommand{\ev}{\textup{ev}}
+\newcommand{\coev}{\textup{coev}}
+
+% Category theory notation.
+%\newcommand{\obset}{\textup{Ob}_{#1}\!\left(#2\right)}
+%\newcommand{\morset}[2][]{\textup{Mor}_{#1}\!\left(#2\right)}
+%\newcommand{\homset}[2][]{\textup{Hom}_{#1}\!\left(#2\right)}
+%\newcommand{\End}[2][]{\textup{End}_{#1}\!\left(#2\right)}
+%\newcommand{\opp}[1]{{#1}^{\textup{op}}}
+%\newcommand{\textcat}[1]{\textup{\textsf{#1}}}
+\newcommand{\obset}{\textup{Ob}}
+\newcommand{\morset}{\textup{Mor}}
+\newcommand{\homset}{\textup{Hom}}
+\newcommand{\End}{\textup{End}}
+\newcommand{\opp}{\textup{op}}
+\newcommand{\textcat}[1]{\textup{\textsf{#1}}}
+\newcommand{\textobj}[1]{\textup{\texttt{#1}}}
+
+% Special notation.
+%\newcommand{\chr}{\textup{char}}
+%\newcommand{\Tr}{\textup{Tr}}
+%\newcommand{\trv}{\textup{tr}}
+%\newcommand{\Dim}{\textup{Dim}}
+%\newcommand{\FPdim}{\textup{FPdim}}
+\newcommand{\chr}{\textup{char}}
+\newcommand{\Tr}{\textup{Tr}}
+\newcommand{\trv}{\textup{tr}}
+\newcommand{\Dim}{\textup{Dim}}
+\newcommand{\FPdim}{\textup{FPdim}}
+
+% Hiragana "yo" for the Yoneda embeddings.
+\newcommand{\yo}{\text{\usefont{U}{min}{m}{n}\symbol{'210}}}
+\DeclareFontFamily{U}{min}{}
+\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
+
+% Representation theory notation.
+\newcommand{\Sym}{\textup{Sym}}
+\newcommand{\Alt}{\textup{Alt}}
+
+% Natural isomorphism arrows.
+\usetikzlibrary{nfold}
+
+% Long squiggly arrow.
+\usetikzlibrary{decorations.pathmorphing}
+\newcommand\xlsquigarrow[1]{\mathrel{
+	\begin{tikzpicture}[baseline={(current bounding box.south)}]
+		\node[inner sep=.44ex,align=center] (tmp) {$\scriptstyle #1$};
+		\path[draw,<-,decorate,decoration={zigzag,amplitude=1pt,segment length=1.75mm,pre length=3.5pt}] (tmp.south west) -- (tmp.south east);
+	\end{tikzpicture}
+}}
+\newcommand\xrsquigarrow[1]{\mathrel{
+	\begin{tikzpicture}[baseline={(current bounding box.south)}]
+		\node[inner sep=.44ex,align=center] (tmp) {$\scriptstyle #1$};
+		\path[draw,<-,decorate,decoration={zigzag,amplitude=-1pt,segment length=1.75mm,pre length=3.5pt}] (tmp.south east) -- (tmp.south west);
+	\end{tikzpicture}
+}}
+\newcommand\xlrsquigarrow[1]{\mathrel{
+	\begin{tikzpicture}[baseline={(current bounding box.south)}]
+		\node[inner sep=.44ex,align=center] (tmp) {$\scriptstyle #1$};
+		\path[draw,<->,decorate,decoration={zigzag,amplitude=-1pt,segment length=1.75mm,pre length=3.5pt, post length=2.75pt}] (tmp.south east) -- (tmp.south west);
+	\end{tikzpicture}
+}}
+
+% Closed square root.
+\def\DHLhksqrt[#1]#2#3{
+	\setbox0=\hbox{\nhphantom{$#2\sqrt[#1]{#3\,}$}\phantom{$#2\sqrt{#3\,}$}$#2\sqrt[#1]{#3\,}$}\dimen0=\ht0
+	\advance\dimen0-0.4\ht0
+	\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}
+	{\box0\lower0.5pt\box2}
+}
+\newcommand\csqrt[2][]{\mathchoice
+	{\DHLhksqrt[#1]{\displaystyle}{#2}}
+	{\DHLhksqrt[#1]{\textstyle}{#2}}
+	{\DHLhksqrt[#1]{\scriptstyle}{#2}}
+	{\DHLhksqrt[#1]{\scriptscriptstyle}{#2}}
+}
+
+% More friendly Fraktur S and P.
+\newcommand{\mathfrakS}{\mathpalette\bigmathfrakS\relax}
+\newcommand{\bigmathfrakS}[2]{\scalebox{1.6}{$#1\mathfrak{s}$}}
+\newcommand{\mathfrakP}{\mathpalette\bigmathfrakP\relax}
+\newcommand{\bigmathfrakP}[2]{\scalebox{1.3}{$#1\mathfrak{p}$}}
+
+% Inline limits, etc.
+\newcommand\inlinestack[1]{\mathop{\vcenter{\hbox{${#1}$}}}}
+
+% Warning symbol.
+\newcommand{\warning}{\raisebox{2.65pt}{\fontencoding{U}\fontfamily{futs}\selectfont\char 49\relax}}
+
+% Use symbols instead of numbers for footnotes.
+% 0. 
+% 1. *
+% 2. †
+% 3. ‡
+% 4. §
+% 5. ¶
+% 6. ‖
+% 7. **
+% 8. ††
+% 9. ‡‡
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+
+%%%%%%%%%%%%%%
+% FORMATTING %
+%%%%%%%%%%%%%%
+
+% Bold subsection formatting.
+%\makeatletter
+%\def\@seccntformat#1{
+%	\protect\@secnumfont
+%	\expandafter\protect\csname format#1\endcsname
+%	\csname the#1\endcsname
+%	\protect\@secnumpunct
+%}
+%\newcommand{\formatsection}{\bfseries\boldmath}
+%\newcommand{\formatsubsection}{\bfseries\boldmath}
+%\newcommand{\formatsubsubsection}{\bfseries\boldmath}
+
+% Section formatting.
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\makeatletter
+\def\section{
+	\@startsection{section}{2}
+	\z@{0pt}{.5\linespacing}{\large\scshape}%\bfseries\boldmath}
+}
+\def\subsection{
+	\@startsection{subsection}{2}
+	\z@{0pt}{-.5em}{\normalfont}%\bfseries\boldmath}
+}
+\makeatother
+
+% Number equations according to the sections they appear in.
+%\numberwithin{equation}{section}
+%\numberwithin{equation}{subsection}
+%\numberwithin{equation}{subsubsection}
+
+% Ruled sections.
+\def\ruledsection#1#2{\section{#1}\label{#2}\noindent\\[-1.75\linespacing]\rule{\linewidth}{1pt}\\[-0.75\linespacing]}
+\def\ruledsectionstar#1#2{\section*{#1}\label{#2}\noindent\\[-1.75\linespacing]\rule{\linewidth}{1pt}\\[-0.75\linespacing]}
+
+% Remove the ugly random spacing that LaTeX likes to add.
+\raggedbottom
+
+
+%%%%%%%%%%%%%%%%
+% ENVIRONMENTS %
+%%%%%%%%%%%%%%%%
+
+% Sections that support equation numbering.
+\newcommand*{\problem}[2][]{
+	\ifthenelse{\equal{#1}{}}
+		{\section*{#2}\refstepcounter{section}}
+		{\section*{\texorpdfstring{#2}{#1}}\refstepcounter{section}}
+}
+\newcommand*{\subproblem}[2][]{
+	\ifthenelse{\equal{#1}{}}
+		{\subsection*{#2}\refstepcounter{subsection}}
+		{\subsection*{\texorpdfstring{#2}{#1}}\refstepcounter{subsection}}
+}
+\newcommand*{\subsubproblem}[2][]{
+	\ifthenelse{\equal{#1}{}}
+		{\subsubsection*{#2}\refstepcounter{subsubsection}}
+		{\subsubsection*{\texorpdfstring{#2}{#1}}\refstepcounter{subsubsection}}
+}
+
+% Theorem environments.
+\newtheoremstyle{_plain}{-\topsep}{-\topsep}{\itshape}{}{\bfseries}{.}{0.5em}{}
+\theoremstyle{_plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{theoremdefinition}[theorem]{Theorem-Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{lemmadefinition}[theorem]{Lemma-Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{propositiondefinition}[theorem]{Proposition-Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{corollarydefinition}[theorem]{Corollary-Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{definition}[theorem]{Definition}
+
+\newtheoremstyle{_definition}{-\topsep}{-\topsep}{}{}{\bfseries}{.}{0.5em}{}
+\theoremstyle{_definition}
+\newtheorem{example}[theorem]{Example}
+
+%\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{intuition}[theorem]{Intuition}
+\newtheorem{daggerremark}[theorem]{$\dagger$ Remark}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{observation}[theorem]{Observation}
+
+% Proof environment formatting.
+\newcommand{\tombstone}{\ensuremath{\blacksquare}}
+\newcommand{\sketchstone}{\ensuremath{\square}}
+\renewenvironment{proof}{{\textbf{Proof.}}}{\null\hfill\tombstone}
+\newenvironment{sketch}{{\textit{Sketch.}}}{\null\hfill\sketchstone}
+
+% Modified matrix environments for augmented matrices.
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{
+	\hskip -\arraycolsep
+	\let\@ifnextchar\new@ifnextchar
+	\array{#1}
+}
+\makeatother
+
+% Modified cases environment for column alignment.
+\makeatletter
+\renewenvironment{cases}[1][l]{\matrix@check\cases\env@cases{#1}}{\endarray\right.}
+\def\env@cases#1{
+	\let\@ifnextchar\new@ifnextchar
+	\left\lbrace\def\arraystretch{1.2}
+	\array{@{}#1@{\quad}l@{}}}
+\makeatother

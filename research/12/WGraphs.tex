@@ -1,0 +1,379 @@
+\input{preamble.tex}
+
+\begin{document}
+
+\thispagestyle{fancy}
+
+\begin{center}
+\LARGE\scshape Introduction to $W$-Graphs\noindent\\[-\linespacing]
+\rule{0.75\linewidth}{1pt}
+\end{center}
+\noindent\\[-0.75\linespacing]
+
+%\ruledsection{Prologue}{1}
+%\noindent\\ 
+
+%\noindent \textcolor{red}{What are these notes about?}\\
+
+%\noindent We will be working with the normalized standard basis $\delta_w \coloneqq v^{\ell(w)} T_w$ for the Iwahori--Hecke algebra, where $v \coloneqq q^{-1/2}$. We will also write $A \coloneqq \mathbb{Z}[v^{\pm 1}]$.\\
+
+\ruledsection{Kazhdan--Lusztig $W$-Graphs}{1}
+\noindent\\ Recall that, in \cite{KL79}, Kazhdan and Lusztig found a pair of self-dual bases over $\mathscr{H}(W, S)$ in terms of the standard basis $\{T_x : x \in W\}$. These are the {\em Kazhdan--Lusztig} (or {\em canonical}) {\em basis}
+\begin{align*}
+\begin{split}
+C_x &= (-1)^{\ell(x)}q^{\frac{1}{2}\ell(x)}\sum_{y \leq x} (-1)^{\ell(y)}q^{-\ell(y)}\overline{P_{y,x}(q)} T_y
+\end{split}
+\end{align*}
+\noindent and the {\em dual Kazhdan--Lusztig} (or {\em dual canonical}) {\em basis}
+\begin{align*}
+\begin{split}
+C_x' &= q^{-\frac{1}{2}\ell(x)}\sum_{y \leq x} P_{y,x}(q) T_y.
+\end{split}
+\end{align*}
+\noindent Let $\mathscr{D}_x \coloneqq \{s \in S : sx < x\}$ denote the {\em (left) descent set of $x$}. It was also shown in \cite{KL79} that
+\begin{align*}
+\begin{split}
+T_sC_x &= \begin{cases}
+-C_x, &\text{if $s \in \mathscr{D}_x$;}\\
+\nhphantom{$q$}\hphantom{-}qC_x + q^{1/2}\sum_{\{y \in W : s \in \mathscr{D}_y\}} \mu(y, x)y, &\text{otherwise}\hphantom{.}
+\end{cases}
+\end{split}
+\end{align*}
+\noindent and
+\begin{align*}
+\begin{split}
+T_sC_x' &= \begin{cases}
+\nhphantom{$q$}\hphantom{-}qC_x, &\text{if $s \in \mathscr{D}_x$;}\\
+-C_x + q^{1/2}\sum_{\{y \in W : s \in \mathscr{D}_y\}} \mu(y, x)y, &\text{otherwise.}
+\end{cases}
+\end{split}
+\end{align*}
+\noindent \textcolor{red}{Is this true? Why are we missing the term $q^{1/2}C_{sx}$?} This motivates the following definition.\\
+
+\begin{definition}\textup{($W$-Graph).} Let $(W, S)$ be a Coxeter system and $\mathscr{H}(W, S)$ its associated\linebreak Iwahori--Hecke algebra. A {\em $W$-graph} is a triple $(X, I, \mu)$ consisting of a set $X$ of vertices, a function $I : X \to \mathscr{P}(S)$ that assigns to each vertex $x \in X$ a {\em descent set} $I_x \subseteq S$, and a function
+\begin{align*}
+\begin{split}
+\mu : X \times X \to \mathbb{Z}
+\end{split}
+\end{align*}
+\noindent such that the {\em edge weight} $\mu(y, x)$ is non-zero if and only if $y \to x$ is an edge of the graph. Moreover, if $E \coloneqq \mathbb{Z}[q^{\pm 1/2}]X$ is the free $\mathbb{Z}[q^{\pm 1/2}]$-module with basis $X$, we ask that the $\mathbb{Z}[q^{\pm 1/2}]$-endomorphisms of $E$ of the form
+% ask that the free $A$-module $AX$ with basis $X$ admits a $\mathscr{H}(W, S)$-module structure satisfying
+\begin{align*}
+\begin{split}
+%\delta_s\cdot x = 
+\tau_s(x) \coloneqq \begin{cases}
+%-vx, &\text{if $s \in I_x$;}\\
+%v^{-1}x + \sum_{\{y \in X : s \in I_y\}} \mu(y, x)y, &\text{if $s \notin I_x$,}
+-x, &\text{if $s \in I_x$;}\\
+\nhphantom{$q$}\hphantom{-}qx + q^{1/2}\sum_{\{y \in X : s \in I_y\}} \mu(y, x)y, &\text{otherwise}
+\end{cases}
+\end{split}
+\end{align*}
+\noindent for each $s \in S$ satisfy the braid relations
+\begin{align*}
+\begin{split}
+\underbrace{\tau_s\tau_t\tau_s\cdots}_\text{$m_{st}$ factors} = \underbrace{\tau_t\tau_s\tau_t\cdots}_\text{$m_{st}$ factors},
+\end{split}
+\end{align*}
+\noindent for all $s, t \in S$ such that $m_{st} \neq \infty$. We define {\em dual $W$-graphs} similarly, where we instead use $\mathbb{Z}[q^{\pm 1/2}]$-endomorphisms of $E$ of the form
+\begin{align*}
+\begin{split}
+%\delta_s\cdot x = 
+\tau_s'(x) \coloneqq \begin{cases}
+%-vx, &\text{if $s \in I_x$;}\\
+%v^{-1}x + \sum_{\{y \in X : s \in I_y\}} \mu(y, x)y, &\text{if $s \notin I_x$,}
+\nhphantom{$q$}\hphantom{-}qx, &\text{if $s \in I_x$;}\\
+-x + q^{1/2}\sum_{\{y \in X : s \in I_y\}} \mu(y, x)y, &\text{otherwise.}
+\end{cases}
+\end{split}
+\end{align*}
+\end{definition}
+\newpage
+
+\noindent Asking that the $A$-endomorphisms $\tau_s$ defined above satisfy the braid relations is exactly equivalent to asking that $E$ admit a $\mathscr{H}(W, S)$-module structure given by $T_s\cdot x \coloneqq \tau_s(x)$. This is because all $\mathbb{Z}[q^{\pm 1/2}]$-endomorphisms of the form $\tau_s$ satisfy the quadratic relation $(\tau_s + 1)(\tau_s - q) = 0$, provided the sums are finite. To see that this is true, observe that when $s \notin I_x$, we have
+\begingroup
+%\addtolength{\jot}{0.5\linespacing}
+\begin{align*}
+\begin{split}
+&\hphantom{=\ \ \!} (\tau_s + 1)(\tau_s - q)x\\
+&= \tau_s^2(x) - q\tau_s(x) + \tau_s(x) - qx\\
+&= q\tau_s(x) + q^{1/2}\sum_{\{y \in X : s \in I_y\}} \mu(y, x)\tau_s(y) - q\tau_s(x) + qx + q^{1/2}\sum_{\{y \in X : s \in I_y\}} \mu(y, x)y - qx\\
+&= q^{1/2}\sum_{\{y \in X : s \in I_y\}} \mu(y, x)\tau_s(y) + q^{1/2}\sum_{\{y \in X : s \in I_y\}} \mu(y, x)y\\
+&= q^{1/2}\sum_{\{y \in X : s \in I_y\}} \mu(y, x)(-y) + q^{1/2}\sum_{\{y \in X : s \in I_y\}} \mu(y, x)y\\
+&= 0.
+\end{split}
+\end{align*}
+\endgroup
+\noindent Conversely, when $s \in I_x$, the result follows trivially. It follows that every $W$-graph (and dual $W$-graph) corresponds to a representation $\varphi : \mathscr{H}(W, S) \to \textup{End}(E)$ given on the generators by $\varphi : T_s \mapsto \tau_s$.\\
+
+\noindent It is sometimes convenient to look at the transposes of $\tau_s$ and $\tau_s'$. In particular, suppose we fix $s \in S$ and choose an ordering $X = \{x_1, \dots, x_n\}$ such that $s \in I_{x_i}$ for all $1 \leq i \leq k$ and $s \notin I_{x_j}$ for all $j \geq k$. Then we can express $\tau_s$ and $\tau_s'$ as the matrices
+\begin{align*}
+\begin{split}
+\tau_s = \begin{pmatrix}-I_k & 0\\ \hphantom{-}* & qI_{n-k}\end{pmatrix}\qquad\text{and}\qquad\tau_s' = \begin{pmatrix}qI_k & 0\\ \hphantom{-}* & -I_{n-k}\end{pmatrix},
+\end{split}
+\end{align*}
+\noindent where $I_k$ is the $k\times k$ identity matrix and the block labelled by the asterisk $*$ has elements that are either $0$ or of the form $q^{1/2}\mu(y, x)$. The transposes of $\tau_s$ and $\tau_s'$ thus involve moving only the sums, giving us
+\begin{align*}
+\begin{split}
+%\delta_s\cdot x = 
+\nhphantom{$\tau_s^T$}\hphantom{(\tau_s')^T}\tau_s^T(x) = \begin{cases}
+%-vx, &\text{if $s \in I_x$;}\\
+%v^{-1}x + \sum_{\{y \in X : s \in I_y\}} \mu(y, x)y, &\text{if $s \notin I_x$,}
+-x + q^{1/2}\sum_{\{y \in X : s \notin I_y\}} \mu(y, x)y, &\text{if $s \in I_x$;}\\
+\nhphantom{$q$}\hphantom{-}qx, &\text{otherwise\hphantom{,}}
+\end{cases}
+\end{split}
+\end{align*}
+\noindent and
+\begin{align*}
+\begin{split}
+%\delta_s\cdot x = 
+(\tau_s')^T(x) = \begin{cases}
+%-vx, &\text{if $s \in I_x$;}\\
+%v^{-1}x + \sum_{\{y \in X : s \in I_y\}} \mu(y, x)y, &\text{if $s \notin I_x$,}
+\nhphantom{$q$}\hphantom{-}qx + q^{1/2}\sum_{\{y \in X : s \notin I_y\}} \mu(y, x)y, &\text{if $s \in I_x$;}\\
+-x, &\text{otherwise,}
+\end{cases}
+\end{split}
+\end{align*}
+\noindent respectively. These also produce representations of $\mathscr{H}(W, S)$, and hence $W$-graphs, of their own.\\
+
+\noindent The (one-sided) $W$-graphs constructed in \cite{KL79} are defined by taking
+\begin{align*}
+\begin{split}
+X \coloneqq W,\qquad I_x \coloneqq \mathscr{D}_x \qquad\text{and}\qquad \mu(y, x) \coloneqq c(y, x) + c(x, y),
+\end{split}
+\end{align*}
+\noindent where $c(y, x)$ is defined to be the coefficient of $q^{(\ell(x)-\ell(y)-1)/2}$ (the power of $q$ of maximal degree) in the Kazhdan--Lusztig polynomial $P_{y,x}(q)$. Note that either $c(y, x) = 0$ or $c(x, y) = 0$ (usually both), so these $W$-graphs are not directed. They correspond to the left regular representation of $\mathscr{H}(W, S)$.\newpage
+
+\noindent From now on, we will be working with the normalized standard basis $\delta_w \coloneqq v^{\ell(w)} T_w$ for $\mathscr{H}(W, S)$, where $v \coloneqq q^{-1/2}$. Normalizing the dual Kazhdan--Lusztig basis, we obtain
+\begin{align*}
+\begin{split}
+b_x = v^{\ell(x)}\sum_{y \leq x} P_{y,x}(v^{-2}) v^{-\ell(y)}\delta_y = \sum_{y \leq x} h_{y,x}(v)\delta_y,
+\end{split}
+\end{align*}
+\noindent where $h_{y,x} : v \mapsto v^{\ell(x)-\ell(y)}P_{y,x}(v^{-2})$. Recall that $P_{y,x}(q)$ has maximal degree $\frac{1}{2}(\ell(x)-\ell(y)-1)$ in $q$. It therefore has degree greater than or equal to $1+\ell(y)-\ell(x)$ in $v$, meaning $h_{y,x}(v) \in v\mathbb{Z}[v]$, where the coefficient of $q^{\frac{1}{2}(\ell(x)-\ell(y)-1)}$ in $P_{y,x}(q)$ is now the coefficient of $v$ in $h_{y,x}(v)$. Because $\tau_s'(x)$ corresponds to $T_s \cdot x$, converting to the normalized basis involves multiplying by a factor of $v^{\ell(s)} = v$, whence
+\begin{align*}
+\begin{split}
+\delta_x \cdot x \coloneqq \begin{cases}
+v^{-1}x, &\text{if $s \in I_x$;}\\
+-vx + \sum_{\{y \in X : s \in I_y\}} \mu(y, x)y, &\text{otherwise.}
+\end{cases}
+\end{split}
+\end{align*}
+\noindent Using $b_s = \delta_s + v$, we have an action of the normalized Kazhdan--Lusztig basis given pleasantly by
+\begin{align*}
+\begin{split}
+b_s \cdot x \coloneqq \begin{cases}
+(v + v^{-1})x, &\text{if $s \in I_x$;}\\
+\sum_{\{y \in X : s \in I_y\}} \mu(y, x)y,\hphantom{-vx+\ } &\text{otherwise.}
+\end{cases}\\[\linespacing]
+\end{split}
+\end{align*}
+
+\noindent\begin{example}\textup{($W = S_2$).} Let's look at the situation when $W = S_2$. In this case, $P_{y,x}(q) \in \{0, 1\}$ for all $x, y \in W$. Perhaps unsurprisingly, the graph recovers the Bruhat order.\\[-4\linespacing]
+\begin{center}
+\begin{tikzcd}[nodes={inner sep=0pt, circle}, cramped, column sep=24pt, row sep=12pt]
+& \underset{\{s\}}{\{s\}}\arrow[dash, dl]\arrow[dash, ddr]\arrow[dash, r] & \underset{\{s\}}{\{st\}}\arrow[dash, ddl]\arrow[dash, dr] &\\
+\underset{\varnothing}{\{1\}}\arrow[dash, dr] & & & \underset{\{s, t\}}{\{sts\}}\arrow[dash, dl]\\
+& \underset{\{t\}}{\{t\}}\arrow[dash, r] & \underset{\{t\}}{\{ts\}} &
+%[nodes={inner sep=0pt, circle}, cramped, column sep=24pt, row sep=12pt]
+% & \underset{\{s\}}{\{s\}}\arrow[dash, dl]\arrow[dash, ddr]\arrow[dash, r]\arrow[loop above, looseness=3, "s"] & \underset{\{s\}}{\{st\}}\arrow[dash, ddl]\arrow[dash, dr]\arrow[loop above, looseness=3, "s"] &\\
+%\underset{\varnothing}{\{1\}}\arrow[dash, dr]\arrow[bend left=30, ur, "s"]\arrow[bend right=30, dr, "t"'] & & & \underset{\{s, t\}}{\{sts\}}\arrow[dash, dl]\arrow[loop above, looseness=3, "s"]\arrow[loop below, looseness=3, "t"]\\
+% & \underset{\{t\}}{\{t\}}\arrow[dash, r]\arrow[loop below, looseness=3, "t"] & \underset{\{t\}}{\{ts\}}\arrow[loop below, looseness=3, "t"] &
+\end{tikzcd}
+\end{center}
+\noindent\\[-3.5\linespacing] Naturally, all of the edges of this graph have unit weight. We could illustrate the action of $b_s$ by drawing an arrow labelled $s$ from $x$ to $y$ whenever $y$ appears in $b_s \cdot x$, but this would get messy!\\[\linespacing]
+\end{example}
+
+%\ruledsection{The Atlas Construction}{2}
+%\noindent\\ Let $G$ be a connected complex reductive group. For each $h \in G$, we have a corresponding map $\textup{int}_h : g \mapsto hgh^{-1}$. Let $\textup{Int}(G) \coloneqq \{\textup{int}_h : h \in G\}$ be the {\em group of inner automorphisms of $G$}. Naturally the group homomorphism $h \mapsto \textup{int}_h$ has kernel given by the center $Z(G)$ of $G$, whence $\textup{Int}(G) \cong G/Z(G)$. We also define $\textup{Aut}(G)$ to be the group of holomorphic automorphisms of $G$ and $\text{Out}(G) \coloneqq \textup{Aut}(G)/\textup{Int}(G)$ to be the group of outer automorphisms. Two holomorphic involutions $\theta, \theta' \in \textup{Aut}(G)$ are said to be {\em inner to each other} or of the same {\em inner class} if they share the same equivalence class in $\gamma \in \text{Out}(G)$; that is, if $\theta' = \theta \circ \textup{int}_h$ for some $h \in G$.\\
+
+%\noindent From now on, we will refer to a pair $(G, \gamma)$ as {\em basic data}, where $G$ is a connected complex reductive group and $\gamma \in \text{Out}(G)$ is an inner class of real forms (where we recall that the set of real forms of $G$ are in bijection with the set of $G$-conjugacy classes of holomorphic involutions, known as {\em Cartan involutions}; see \cite[\S 3]{AC09} or my notes on categorical representation theory). We will also let $\Gamma \coloneqq \textup{Gal}(\mathbb{C}/\mathbb{R}) = \{1, \sigma\}$, and define the {\em extended group for $(G, \gamma)$} to be the outer semidirect product $G^\Gamma \coloneqq G \rtimes_\varphi \Gamma$, where $\varphi : \sigma \mapsto \gamma$.\\
+
+%\newpage
+
+\ruledsection{The Harish-Chandra Picture}{2}
+%\noindent\\ Let $G$ be a connected, complex, reductive algebraic group defined over $\mathbb{R}$, with $G_\mathbb{R}$ its group of $\mathbb{R}$-rational points. Let $\theta$ be the Cartan involution corresponding to $G_\mathbb{R}$ and write $K \coloneqq G^\theta$ and $K_\mathbb{R} \coloneqq G_\mathbb{R}^\theta$ for the corresponding fixed-point subgroups, where we recall that $K_\mathbb{R}$ is maximal compact. Denote by $\mathfrak{g}$ the complexified Lie algebra of $G_\mathbb{R}$ with $\mathfrak{h}$ a Cartan subalgebra, and let $W$ be the Weyl group of $\mathfrak{g}$.\\
+\noindent\\ Let's briefly mention the connection between admissible representations and $(\mathfrak{g}, K)$-modules. Good resources for what follows are \cite{Vog81} and \cite{Bin10}.\\
+
+\noindent\begin{definition}\textup{(Continuous Representation).} Let $G$ be a Lie group. A {\em continuous representation} of $G$ is a pair $(\pi, \mathcal{H})$, where $\mathcal{H}$ is a complex Hilbert space and $\pi : G \to \mathcal{B}(\mathcal{H})$ is a continuous homomorphism of $G$ into the semigroup $\mathcal{B}(\mathcal{H})$ of bounded operators on $\mathcal{H}$, where $\mathcal{B}(\mathcal{H})$ is endowed with the weak topology. An {\em invariant subspace} of $(\pi, \mathcal{H})$ is a closed subspace of $\mathcal{H}$ that is left invariant under all the operators in $\pi(G)$. The continuous representation $(\pi, \mathcal{H})$ is said to be {\em irreducible} if $\mathcal{H} \neq \{0\}$ and there are no proper, non-trivial invariant subspaces.\newpage
+\end{definition}
+
+\noindent\begin{definition}\textup{(Bounded Equivalence).} Let $(\pi, \mathcal{H})$ and $(\pi', \mathcal{H}')$ be continuous representations of a Lie group $G$. We define the space of {\em intertwining operators} between $(\pi, \mathcal{H})$ and $(\pi', \mathcal{H}')$ to be
+\begin{align*}
+\begin{split}
+\homset_G(\pi, \pi') % &\coloneqq \homset_G(\mathcal{H}, \mathcal{H}')\\
+&\coloneqq \{L : \mathcal{H} \to \mathcal{H}' : \textup{$L$ is continuous, linear and $\pi'(g) \circ L = L \circ \pi(g)$ for all $g \in G$}\}.
+\end{split}
+\end{align*}
+We say that two continuous representations are {\em boundedly equivalent} if there exists an invertible intertwining operator between them.\\
+\end{definition}
+
+\noindent\begin{definition}\textup{(Dual Object).} Let $G$ be a Lie group that is the direct product of a compact group and an Abelian group, such that every irreducible continuous representation of $G$ is finite-dimensional. We define the {\em dual object} $\widehat{G}$ of $G$ to be the set of bounded equivalence classes of irreducible continuous representations of $G$.\\
+\end{definition}
+
+\noindent\begin{definition}\textup{(Admissible Representation).} Let $G$ be a real Lie group with $K$ a maximal compact subgroup. A continuous representation $(\pi, \mathcal{H})$ of $G$ is said to be {\em $K$-admissible} if $\homset_K(V_\delta, \mathcal{H})$ is finite-dimensional for all irreducible continuous representations $(\delta, V_\delta) \in \widehat{K}$ of $K$.\\%A vector $x \in \mathcal{H}$ is said to be {\em $K$-finite} if $\textup{span}\{\pi(k)v : k \in K\}$ is finite-dimensional, and we denote
+%\begin{align*}
+%\begin{split}
+%\mathcal{H}_K \coloneqq \{x \in \mathcal{H} : \textup{$x$ is $K$-finite}\}.
+%\end{split}
+%\end{align*}
+%\noindent Let $(\delta, V_\delta) \in \widehat{K}$ now be an irreducible continuous representation of $K$, and define
+%\begin{align*}
+%\begin{split}
+%\mathcal{H}_K(\delta) \coloneqq \bigcup_{L \in \homset_K(\delta, \pi\vert_K)} L(V_\delta)
+%\end{split}
+%\end{align*}
+%\noindent to be the {\em $\delta$ $K$-type} or {\em $\delta$-primary subspace of $\mathcal{H}$}.\\
+\end{definition}
+
+\noindent\begin{definition}\textup{($(\mathfrak{g}, K)$-Module).} Let $G$ be a real Lie group with complexified Lie algebra $\mathfrak{g}$ and maximal compact subgroup $K$. A {\em $(\mathfrak{g}, K)$-module} is a complex vector space $V$ together with a map ${\pi : \mathfrak{g} \sqcup K \to \textup{End}(V)}$ that restricts to a Lie algebra representation $\pi\vert_\mathfrak{g}$ (that is, $V$ is a $\mathcal{U}(\mathfrak{g})$-module) and a group representation $\pi\vert_K$ satisfying certain compatibility conditions. A $(\mathfrak{g}, K)$-module $V$ is said to be {\em $K$-admissible} if $\homset_K(V_\delta, V)$ is finite-dimensional for all irreducible continuous representations $(\delta, V_\delta) \in \widehat{K}$ of $K$. A $K$-admissible $(\mathfrak{g}, K)$-module which is finitely-generated over $\mathcal{U}(\mathfrak{g})$ is called a {\em Harish-Chandra module}.\\ %A morphism of $(\mathfrak{g}, K)$-modules $(\pi, V)$ and $(\pi', V')$ is a $\mathbb{C}$-linear map $L : V \to V'$ such that $\pi'(x) \circ L = L \circ \pi(x)$ for all $x \in \mathfrak{g} \sqcup K$.\\
+\end{definition}
+
+\noindent\begin{definition}\textup{($K$-Finiteness).} Let $G$ be a real Lie group with $K$ a maximal compact subgroup and $(\pi, \mathcal{H})$ a continuous representation of $G$. A vector $v \in \mathcal{H}$ is said to be {\em $K$-finite} if $\textup{span}\{\pi(k)v : k \in K\}$ is finite-dimensional. We denote $\mathcal{H}_K \coloneqq \{v \in \mathcal{H} : \textup{$v$ is $K$-finite}\}$.\\
+\end{definition}
+
+\noindent\begin{theorem}\textup{(\cite[Theorem 0.3.5]{Vog81}).}\label{ContinuousgKForward} Let $G$ be a real Lie group with Lie algebra $\mathfrak{g}_0$ and maximal compact subgroup $K$. If $(\pi, \mathcal{H})$ is a $K$-admissible representation of $G$, the limit
+\begin{align*}
+\begin{split}
+\widehat{\pi}_0(x)v \coloneqq \lim_{t\to 0}\frac{\pi(\exp(tx))v - v}{t}
+\end{split}
+\end{align*}
+exists for all $x \in \mathfrak{g}_0$ and $v \in \mathcal{H}_K$, where $\exp : \mathfrak{g}_0 \to G$ is the exponential map. In particular, this defines a Lie algebra representation $\widehat{\pi}_0 : \mathfrak{g}_0 \to \textup{End}(\mathcal{H}_K)$. Let $\widehat{\pi}\vert_\mathfrak{g} : \mathfrak{g} \to \textup{End}(\mathcal{H}_K)$ be its complexification, which exists since $\mathcal{H}$ is complex. By definition $\mathcal{H}_K$ induces a group representation $\widehat{\pi}\vert_K : K \to \textup{End}(\mathcal{H}_K)$, whence these representations endow $\mathcal{H}_K$ with the structure of a $(\mathfrak{g}, K)$-module.\\
+%If $(\pi, \mathcal{H})$ is a $K$-admissible representation of $G$, then there exists a Lie algebra representation of $\mathfrak{g}$ given by the differential  $d\pi\vert_{\mathcal{H}_K}$ of the Lie group representation $\pi\vert_{\mathcal{H}_K}$, and this together with the group representation $\pi\vert_K$ defines a Harish-Chandra module.\\
+%\begin{align*}
+%\begin{split}
+%\sigma(x) : v \mapsto \lim_{t\to 0}\frac{1}{t}(\pi(\exp(tx))v - v).
+%\end{split}
+%\end{align*}
+%\noindent\\[-0.7\linespacing]
+\end{theorem}
+
+\noindent\begin{definition}\textup{(Infinitesimal Equivalence).} Let $(\pi, V)$ and $(\pi', V')$ be $(\mathfrak{g}, K)$-modules. We define the space of {\em intertwining operators} between $(\pi, V)$ and $(\pi', V')$ to be
+\begin{align*}
+\begin{split}
+\homset_{(\mathfrak{g}, K)}(\pi, \pi') % &\coloneqq \homset_{(\mathfrak{g}, K)}(V, V')\\
+&\coloneqq \{L : V \to V' : \textup{$L$ is complex, linear and $\pi'(x) \circ L = L \circ \pi(x)$ for all $x \in \mathfrak{g} \sqcup K$}\}.
+\end{split}
+\end{align*}
+We say that two $(\mathfrak{g}, K)$-modules are equivalent if there exists an invertible intertwining operator between them. Two continuous representations are said to be {\em infinitesimally equivalent} if their corresponding Harish-Chandra modules are equivalent.\newpage
+\end{definition}
+
+%\noindent\begin{definition}\textup{(Harish-Chandra Module).} Let $G$ be a Lie group, $K \subseteq G$ a compact subgroup and $(\pi, V)$ a representation of $G$. The {\em Harish-Chandra module of $\pi$} is the subspace $X \subseteq V$ consisting of the $K$-finite smooth vectors in $V$; that is, the vectors $v$ for which the map $g \mapsto \pi(g)v$ is smooth and the subspace $\textup{span}\{\pi(k)v : k \in K\}$ is finite-dimensional.\\
+%\end{definition}
+
+\noindent\begin{theorem}\textup{(\cite[Theorem 0.3.10]{Vog81}).} Let $G$ be a real Lie group with complexified Lie algebra $\mathfrak{g}$ and maximal compact subgroup $K$. Then every irreducible $(\mathfrak{g}, K)$-module is the Harish-Chandra module of an irreducible $K$-admissible representation of $G$. In particular, every irreducible\linebreak $(\mathfrak{g}, K)$-module is automatically $K$-admissible, and we have a bijective correspondence
+\begin{align*}
+\begin{split}
+\frac{\{\textup{irreducible $K$-admissible representations of $G$}\}}{\textup{infinitesimal equivalence}} &\longleftrightarrow \frac{\{\textup{irreducible Harish-Chandra modules}\}}{\textup{equivalence}}\\
+&\longleftrightarrow \frac{\{\textup{irreducible $(\mathfrak{g}, K)$-modules}\}}{\textup{equivalence}}
+\end{split}
+\end{align*}
+\noindent via \hyperref[ContinuousgKForward]{Theorem \ref*{ContinuousgKForward}}.\\
+\end{theorem}
+
+\noindent From now on, we shall assume the following notation. Let $\mathbb{G}$ be a connected, complex, reductive algebraic group defined over $\mathbb{R}$ and $G$ its group of $\mathbb{R}$-rational points. Let $\theta$ be the Cartan involution corresponding to $G$, and write $\mathbb{K} \coloneqq \mathbb{G}^\theta$ and $K \coloneqq G^\theta$ for the corresponding fixed-point subgroups, where we recall that $K$ is necessarily maximal compact (see \cite[\S 3]{AC09} or my notes on categorical representation theory). Denote by $\mathfrak{g}$ the complexification of the Lie algebra of $G$ and let $\mathfrak{h}$ be a Cartan subalgebra of $\mathfrak{g}$. Finally, let $W$ be the Weyl group of $\mathfrak{h}$ in $\mathfrak{g}$ (\cite[Definition 0.2.5]{Vog81}).\\
+
+\noindent If $V$ is an irreducible $(\mathfrak{g}, K)$-module, Dixmier's generalization of Schur's lemma (\cite[Proposition 5.19]{Kna13}) tells us that every endomorphism of an irreducible $(\mathfrak{g}, K)$-module $V$ is a scalar. In particular, by treating $V$ as a $\mathcal{U}(\mathfrak{g})$-module, the center $Z(\mathcal{U}(\mathfrak{g}))$ acts on $V$ by
+\begin{align*}
+\begin{split}
+z \cdot v = \chi_V(z)v
+\end{split}
+\end{align*}
+\noindent for all $z \in Z(\mathcal{U}(\mathfrak{g}))$ and $v \in V$, where $\chi_V(z)\in\mathbb{C}$. The resulting homomorphism $\chi_V : Z(\mathcal{U}(\mathfrak{g})) \to \mathbb{C}$ is known as the {\em infinitesimal character of $V$}. Two equivalent $(\mathfrak{g}, K)$-modules will always share the same infinitesimal character.\\
+
+\noindent By \cite[Theorem 0.2.8]{Vog81}, we have an algebra isomorphism $\xi : Z(\mathcal{U}(\mathfrak{g})) \to \mathcal{U}(\mathfrak{h})^W$ known as the {\em Harish-Chandra isomorphism}. Suppose we let $\lambda \in \mathfrak{h}^*$. This corresponds to an algebra homomorphism $\lambda : \mathfrak{h} \to \mathbb{C}$ and hence lifts to an algebra homomorphism $\lambda : \mathcal{U}(\mathfrak{h}) \to \mathbb{C}$. Composing the latter map with the Harish-Chandra isomorphism, we obtain a map $\xi_\lambda : Z(\mathcal{U}(\mathfrak{g})) \to \mathbb{C}$. In fact, we have the following surprising result.\\
+%we have an algebra isomorphism $Z(\mathfrak{g}) \cong \mathcal{U}(\mathfrak{h})^W$ known as the {\em Harish-Chandra isomorphism}, where $\mathcal{U}(\mathfrak{h})^W$ is the algebra of $W$-invariant elements of $\mathcal{U}(\mathfrak{h})$. Letting $\widehat{G}_\textup{adm}$ denote the set of irreducible $K$-admissable representations of $G$, we have a map $\chi_\infty : \widehat{G}_\textup{adm} \to \mathcal{U}(\mathfrak{h})^W$ that takes $V$ to its infinitesimal character $\chi_V$, identified with an element 
+%Interpreting elements of $\mathcal{U}(\mathfrak{h})$ as functions on $\mathfrak{h}^*$, we therefore have a map $\xi_\lambda : Z(\mathfrak{g}) \to \mathbb{C}$ given by $\xi_\lambda : z \mapsto [\xi(z)](\lambda)$ for $\lambda \in \mathfrak{h}^*$.\\
+\noindent\begin{theorem}\textup{(\cite[Corollary 0.2.10]{Vog81}).} Every homomorphism from $Z(\mathcal{U}(\mathfrak{g}))$ to $\mathbb{C}$ is of the form $\xi_\lambda$, for some $\lambda \in \mathfrak{h}^*$. Moreover, $\xi_\lambda = \xi_{\lambda'}$ if and only if there exists some $w \in W$ for which $\lambda' = w\lambda$.\\
+\end{theorem}
+
+\noindent In other words, if we have a map $\chi : \textcat{Adm}_K(G) \to \mathfrak{h}^*/W$ that takes equivalence classes of irreducible $K$-admissible representations of $G$ to $W$-conjugacy classes of elements in $\mathfrak{h}^*$. Given some $\lambda \in \mathfrak{h}^*/W$, we will write
+\begin{align*}
+\begin{split}
+\textcat{Adm}_K(G, \lambda) \coloneqq \{\pi \in \textcat{Adm}_K(G) : \chi(\pi) = \lambda\}
+\end{split}
+\end{align*}
+\noindent for the set of equivalence classes of irreducible $K$-admissible representations of $G$ with infinitesimal character $\lambda$. By \cite[Corollary 5.4.17]{Vog81}, this set is finite.\\
+
+\noindent We shall henceforth fix $\lambda \in \mathfrak{h}^*$ non-singular and integral ($\langle \lambda, \check{\alpha}\rangle \in \mathbb{Z}_+$ for all simple coroots $\check{\alpha} \in \check{\Delta}$).
+\newpage
+
+\noindent\begin{definition}\textup{(Block).} Two irreducible $(\mathfrak{g}, K)$-modules $V$ and $V'$ are said to be {\em block equivalent} if there exists an indecomposable $(\mathfrak{g}, K)$-module $V_B$ together with a non-split short exact sequence
+\begin{align*}
+\begin{split}
+0 \to V \to V_B \to V' \to 0.
+\end{split}
+\end{align*}
+Block equivalence classes are known as {\em blocks}.\\
+\end{definition}
+
+\noindent By \cite[Lemma 9.2.3]{Vog81}, every $(\mathfrak{g}, K)$-module $V$ of finite length (that is, every $(\mathfrak{g}, K)$-module admitting a notion of a Jordan--H\"{o}lder series) can be written as a direct sum
+\begin{align*}
+\begin{split}
+V = \bigoplus_\textup{blocks $B$} V_B,
+\end{split}
+\end{align*}
+\noindent where each $V_B$ is some $(\mathfrak{g}, K)$-module whose irreducible sub-$(\mathfrak{g}, K)$-modules all belong to the block $B$. Moreover, blocks of irreducible $(\mathfrak{g}, K)$-modules are somehow determined by their infinitesimal characters (\cite[Theorem 9.2.11]{Vog81}).\\
+
+\noindent The original definition of a block from \cite[Definition 9.2.1]{Vog81} is that two irreducible $(\mathfrak{g}, K)$-modules are block equivalent if and only if their first cohomology group is non-zero. Blocks give us a way of computing the composition series of certain standard representations, generalizing the algorithm given by Kazhdan and Lusztig for Verma modules in \cite{KL79}.\\
+
+\noindent\begin{remark} We have been primarily living in the Harish-Chandra world. Atlas, on the other hand, uses a more geometric language, owing to the Langlands classification. Here, every irreducible admissible representation corresponds to a pair $(x, y)$, where $x$ is a $\mathbb{K}$-orbit in $\mathbb{G}/\mathbb{B}$ and $y$ is a $\mathbb{K}^\vee$-orbit in $\mathbb{G}^\vee/\mathbb{B}^\vee$ (see \cite[\S 10]{AC09} and \cite[\S 8]{Ada08}). Here $\mathbb{B}$ is some Borel subgroup of $\mathbb{G}$, $\mathbb{G}^\vee$ is the Langlands dual of $\mathbb{G}$, $\mathbb{B}^\vee$ is a Borel subgroup of $\mathbb{G}^\vee$ and $\mathbb{K}^\vee$ is the complexification of a maximal compact subgroup $K^\vee$ of a real form $G^\vee$ of $\mathbb{G}^\vee$. In this language, a block is a set of the form
+\begin{align*}
+\begin{split}
+B(G^\vee) \coloneqq \{(x, y) \in \mathbb{K}\backslash\mathbb{G}/\mathbb{B} \times \mathbb{K}^\vee\backslash\mathbb{G}^\vee/\mathbb{B}^\vee : \theta_{x,H}^t = -\theta_{y,H}^\vee\},
+\end{split}
+\end{align*}
+\noindent arising from a real form $G^\vee$. Here $\theta_{x,H}^t = -\theta_{y,H}^\vee$ is a technical compatibility condition. Moreover,
+\begin{align*}
+\begin{split}
+\textcat{Adm}_K(G, \lambda) \longleftrightarrow \bigsqcup_\textup{dual real forms $G^\vee$} B(G^\vee).
+\end{split}
+\end{align*}
+\noindent Similarly, the irreducible admissible representations of a real form $G^\vee$ can be broken up into blocks corresponding to real forms of $\mathbb{G}$; Vogan duality tells us that if $(x, y) \in \mathbb{K}\backslash\mathbb{G}/\mathbb{B} \times \mathbb{K}^\vee\backslash\mathbb{G}^\vee/\mathbb{B}^\vee$ corresponds to an admissible representation of $G$, then $(y, x)$ will correspond to an admissible representation of the real form $G^\vee$ of $\mathbb{G}^\vee$ corresponding to $\mathbb{K}^\vee$.\\
+\end{remark}
+
+\noindent Before we can start building $W$-graphs from blocks of irreducible Harish-Chandra modules, we need two more ingredients. The first is a notion of cells within these blocks, first appearing in \cite{BV83}.\\
+
+\noindent\begin{definition}\textup{(Harish-Chandra Cell).} Let $x, y$ be two irreducible Harish-Chandra modules with infinitesimal character $\lambda$. Write $y \geq x$ if there exists an irreducible finite-dimensional representation $f$ of $G$ such that $y$ is isomorphic to a composition factor of $f \otimes y$. We say that $x \sim y$ if $y \geq x$ and $x \geq y$. The resulting equivalence classes are known as {\em Harish-Chandra cells}.\\
+\end{definition}
+
+\noindent\begin{remark} Harish-Chandra cells are sometimes called {\em $W$-cells}, since the Harish-Chandra cells of infinitesimal character $\lambda$ admit an action of the integral Weyl group $W(\lambda)$ and hence correspond to so-called {\em Harish-Chandra cell representations of $W(\lambda)$}.\\
+\end{remark}
+
+\noindent\begin{definition}\textup{(Borho--Jantzen--Duflo $\tau$-Invariant).} Let $x$ be an irreducible Harish-Chandra module with infinitesimal character $\lambda$ and $R^+(\lambda) \coloneqq \{\alpha \in \Phi : \langle\lambda, \check{\alpha}\rangle \in \mathbb{Z}_+\}$ the {\em system of positive integral roots defined by $\lambda$}. The {\em Borho-Jantzen-Duflo $\tau$-invariant of $x$} is the set $\tau(x) \subseteq R^+(\lambda)$ of simple roots satisfying the equivalent conditions of \cite[Corollary 7.2.27]{Vog81}.\\[\linespacing]
+\end{definition}
+
+\ruledsection{The Atlas Construction}{3}
+\noindent\\ Let $B$ be a block of irreducible Harish-Chandra modules of infinitesimal character $\lambda$. Using the setup from the previous section, we build a $W$-graph from this block as follows.
+\begin{enumerate}[label=$\bullet$, leftmargin=4\parindent]
+\item The vertices are the elements $x \in B$.
+\item Define $\mu(y, x)$ to be the coefficient of $v$ in the Kazhdan--Lusztig--Vogan polynomial $h_{y,x}(v)$.
+\item Define $I_x$ to be the Borho--Jantzen--Duflo $\tau$-invariant of $x$ (see \cite[Definition 7.3.8]{Vog81}).
+\end{enumerate}
+\noindent Unlike the Kazhdan--Lusztig $W$-graph, this $W$-graph is directed. Moreover, the strongly connected components of this graph with respect to the Kazhdan--Lusztig--Vogan basis in fact exhaust the Harish-Chandra cells of $B$, and the multiplicity $\mu(x, y)$ of an edge $x \to y$ corresponds to the multiplicity with which the representation $x$ appears in $\mathfrak{g} \otimes y$.\\
+
+\noindent\begin{example}\textup{($G = \textup{SU}(2, 1)$).} Let's compute the Kazhdan--Lusztig--Vogan $W$-graph for $\textup{SU}(2, 1)$. This $W$-graph only has one block, the trivial block, consisting of $6$ irreducible representations. Let's write $B = \{x_0, x_1, x_2, x_3, x_4, x_5\}$. The complexification of the Lie algebra of $\textup{SU}(2, 1)$ is $\mathfrak{sl}(3, \mathbb{C})$, which has simple roots $\{\alpha, \beta\}$ that we identify with simple reflections $\{s, t\}$. Once again, the multiplicities are all $1$ in this example too, and in fact the edges are all bidirectional. Recalling the action of $b_s$ on our vertices induced by $\tau_s'$, we have\\[-3\linespacing]
+\begin{center}
+\begin{tikzcd}[nodes={inner sep=0pt, circle}, column sep=24pt, row sep=24pt]
+& & \underset{\{s, t\}}{x_5}\arrow[dash, dl]\arrow[dash, dr]\arrow[out=60, in=120, loop, looseness=5, "{s,t}"'] & &\\
+& \underset{\{t\}}{x_3}\arrow[dash, dl]\arrow[dash, dr]\arrow[bend right=30, dl, "s"']\arrow[bend left=30, ur, "s"]\arrow[out=105, in=165, loop, looseness=5, "t"'] & & \underset{\{s\}}{x_4}\arrow[dash, dl]\arrow[dash, dr]\arrow[bend left=30, dr, "t"]\arrow[bend right=30, ul, "t"']\arrow[out=15, in=75, loop, looseness=5, "s"'] &\\
+\underset{\{s\}}{x_2}\arrow[bend right=30, ur, "t"']\arrow[out=195, in=255, loop, looseness=5, "s"'] & & \underset{\varnothing}{x_0}\arrow[bend left=30, ul, "t"]\arrow[bend right=30, ur, "s"'] & & \underset{\{t\}}{x_1}\arrow[bend left=30, ul, "s"]\arrow[out=285, in=345, loop, looseness=5, "t"']
+% & & x_5\arrow[dl, shift right]\arrow[dr, shift right] & &\\
+% & x_4\arrow[ur, shift right]\arrow[dl, shift right]\arrow[dr, shift right] & & x_3\arrow[ul, shift right]\arrow[dl, shift right]\arrow[dr, shift right] &\\
+%x_1\arrow[ur, shift right] & & \underset{}{x_0}\arrow[ul, shift right]\arrow[ur, shift right] & & x_2\arrow[ul, shift right]
+\end{tikzcd}.
+\end{center}
+\noindent\\[-3.5\linespacing] We see that the $W$-cells of this block are $\{x_0\}$, $\{x_1, x_4\}$, $\{x_2, x_3\}$ and $\{x_5\}$.
+\end{example}
+
+\newpage
+\renewcommand\thesection{R}
+\ruledsectionstar{References}{References}
+\begingroup
+\setlength{\emergencystretch}{.5em}
+\printbibliography[heading=none]
+\endgroup
+
+\end{document}
