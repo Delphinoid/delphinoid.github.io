@@ -174,18 +174,18 @@ b_s \cdot x \coloneqq \begin{cases}
 \noindent\begin{example}\textup{($W = S_3$).} In this case, $P_{y,x}(q) \in \{0, 1\}$ for all $x, y \in W$, so the edges all have unit weight. Perhaps unsurprisingly, the graph -- pictured on the left -- recovers the Bruhat order.\\[-3.25\linespacing]
 \begin{center}
 \begin{tikzcd}[nodes={inner sep=0pt, circle}, cramped, column sep=24pt, row sep=12pt]
-& \underset{\{s\}}{s}\arrow[dash, dl]\arrow[dash, ddr]\arrow[dash, r] & \underset{\{s\}}{st}\arrow[dash, ddl]\arrow[dash, dr] &\\
+& \underset{\{s\}}{s}\arrow[dash, dl]\arrow[dash, ddr]\arrow[dash, r] & \underset{\{t\}}{ts}\arrow[dash, ddl]\arrow[dash, dr] &\\
 \underset{\varnothing}{1}\arrow[dash, dr] & & & \underset{\{s, t\}}{sts}\arrow[dash, dl]\\
-& \underset{\{t\}}{t}\arrow[dash, r] & \underset{\{t\}}{ts} &
+& \underset{\{t\}}{t}\arrow[dash, r] & \underset{\{s\}}{st} &
 %[nodes={inner sep=0pt, circle}, cramped, column sep=24pt, row sep=12pt]
 % & \underset{\{s\}}{\{s\}}\arrow[dash, dl]\arrow[dash, ddr]\arrow[dash, r]\arrow[loop above, looseness=3, "s"] & \underset{\{s\}}{\{st\}}\arrow[dash, ddl]\arrow[dash, dr]\arrow[loop above, looseness=3, "s"] &\\
 %\underset{\varnothing}{\{1\}}\arrow[dash, dr]\arrow[bend left=30, ur, "s"]\arrow[bend right=30, dr, "t"'] & & & \underset{\{s, t\}}{\{sts\}}\arrow[dash, dl]\arrow[loop above, looseness=3, "s"]\arrow[loop below, looseness=3, "t"]\\
 % & \underset{\{t\}}{\{t\}}\arrow[dash, r]\arrow[loop below, looseness=3, "t"] & \underset{\{t\}}{\{ts\}}\arrow[loop below, looseness=3, "t"] &
 \end{tikzcd}\qquad\qquad
 \begin{tikzcd}[nodes={inner sep=0pt, circle}, cramped, column sep=24pt, row sep=10pt]
-& \underset{\{s\}}{s\phantom{t}\nhphantom{t}}\arrow[out=110, in=160, loop, looseness=4, "s"']\arrow[ddr, shift right, near start, "t"'] & \underset{\{s\}}{st}\arrow[out=20, in=70, loop, looseness=4, "t"']\arrow[ddl, shift left, near start, "t"]\arrow[dr, "t"] &\\
+& \underset{\{s\}}{s\phantom{t}\nhphantom{t}}\arrow[out=110, in=160, loop, looseness=4, "s"']\arrow[r, shift right, "t"'] & \underset{\{t\}}{ts}\arrow[out=20, in=70, loop, looseness=4, "t"']\arrow[l, shift right, "s"']\arrow[dr, "s"] &\\
 \underset{\varnothing}{1}\arrow[ur, "s"]\arrow[dr, "t"'] & & & \underset{\{s, t\}}{sts}\arrow[out=-25, in=25, loop, looseness=4, "{s,t}"']\\
-& \underset{\{t\}}{t\phantom{s}\nhphantom{s}}\arrow[out=200, in=250, loop, looseness=4, "s"']\arrow[uur, shift left, near start, "s"] & \underset{\{t\}}{ts}\arrow[out=290, in=340, loop, looseness=4, "t"']\arrow[uul, shift right, near start, "s"']\arrow[ur, "s"'] &
+& \underset{\{t\}}{t\phantom{s}\nhphantom{s}}\arrow[out=200, in=250, loop, looseness=4, "t"']\arrow[r, shift right, "s"'] & \underset{\{s\}}{st}\arrow[out=290, in=340, loop, looseness=4, "s"']\arrow[l, shift right, "t"']\arrow[ur, "t"'] &
 \end{tikzcd}
 \end{center}
 \noindent\\[-2.75\linespacing] The action of $\{b_s, b_t\}$ induces a subgraph structure -- pictured on the right -- with the strongly connected components corresponding to the left cells $\{1\}$, $\{s, ts\}$, $\{t, st\}$ and $\{sts\}$ of $W$. In the language of Soergel bimodules, an arrow $x \overset{s}{\to} y$ (respectively $x \overset{t}{\to} y$) indicates that $B_y \geq_L B_x$; that is, $B_y$ is isomorphic to a direct summand of $B_s \otimes_R B_x$ (respectively $B_t \otimes_R B_x$).\\[\linespacing]
