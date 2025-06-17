@@ -236,16 +236,20 @@ R \otimes_{R^t} R \cong \langle 1 \otimes_{R^t} 1\rangle \oplus \langle \alpha_t
 %\end{align*}
 \noindent then $B_s \otimes_R B_t \otimes_R B_s \cong B_{sts} \oplus B_s$, with a similar computation yielding $B_t \otimes_R B_s \otimes_R B_t \cong B_{sts} \oplus B_t$.\newpage
 
-\noindent To this end, observe that $\alpha_t - (\alpha_s, \alpha_t)\alpha_s = \alpha_t - \frac{1}{2}\alpha_s \in R^s$ and $\alpha_s - \frac{1}{2}\alpha_t \in R^t$, whence
+\noindent To this end, observe that $\alpha_t - (\alpha_s, \alpha_t)\alpha_s = \alpha_t + \frac{1}{2}\alpha_s \in R^s$ and $\alpha_s + \frac{1}{2}\alpha_t \in R^t$, whence
 \begin{align*}
 \begin{split}
-&-\frac{2}{3}\left(\alpha_t - \frac{1}{2}\alpha_s\right) \otimes_{R^t} 1 + \bigg(\alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t\bigg) + 1 \otimes_{R^t} -\frac{4}{3}\left(\alpha_t - \frac{1}{2}\alpha_s\right)\\
-=\ &\left(\left(\frac{1}{3}\alpha_s - \frac{2}{3}\alpha_t\right) \otimes_{R^t} 1 + \alpha_t \otimes_{R^t} 1\right) + \left(1 \otimes_{R^t} \alpha_t + 1 \otimes_{R^t} \left(\frac{2}{3}\alpha_s - \frac{4}{3}\alpha_t\right)\right)\\
-=\ &\left(\frac{1}{3}\alpha_s + \frac{1}{3}\alpha_t\right) \otimes_{R^t} 1 + 1 \otimes_{R^t} \left(\frac{2}{3}\alpha_s - \frac{1}{3}\alpha_t\right)\\
+&\frac{2}{3}\left(\alpha_t + \frac{1}{2}\alpha_s\right) \otimes_{R^t} 1 - \bigg(\alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t\bigg) + 1 \otimes_{R^t} \frac{4}{3}\left(\alpha_t + \frac{1}{2}\alpha_s\right)\\
+=\ &\left(\left(\frac{2}{3}\alpha_t + \frac{2}{6}\alpha_s\right) \otimes_{R^t} 1 - \alpha_t \otimes_{R^t} 1\right) + \left(1 \otimes_{R^t} -\alpha_t + 1 \otimes_{R^t} \left(\frac{4}{3}\alpha_t + \frac{4}{6}\alpha_s\right)\right)\\
+=\ &\left(-\frac{1}{3}\alpha_t + \frac{2}{6}\alpha_s\right) \otimes_{R^t} 1 + 1 \otimes_{R^t} \left(\frac{1}{3}\alpha_t + \frac{4}{6}\alpha_s\right)\\
 =\ &\alpha_s \otimes_{R^t} 1.
+% &-\frac{2}{3}\left(\alpha_t - \frac{1}{2}\alpha_s\right) \otimes_{R^t} 1 + \bigg(\alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t\bigg) + 1 \otimes_{R^t} -\frac{4}{3}\left(\alpha_t - \frac{1}{2}\alpha_s\right)\\
+%=\ &\left(\left(\frac{1}{3}\alpha_s - \frac{2}{3}\alpha_t\right) \otimes_{R^t} 1 + \alpha_t \otimes_{R^t} 1\right) + \left(1 \otimes_{R^t} \alpha_t + 1 \otimes_{R^t} \left(\frac{2}{3}\alpha_s - \frac{4}{3}\alpha_t\right)\right)\\
+%=\ &\left(\frac{1}{3}\alpha_s + \frac{1}{3}\alpha_t\right) \otimes_{R^t} 1 + 1 \otimes_{R^t} \left(\frac{2}{3}\alpha_s - \frac{1}{3}\alpha_t\right)\\
+%=\ &\alpha_s \otimes_{R^t} 1.
 \end{split}
 \end{align*}
-\noindent From here, it is easy to see that we can obtain all of $R \otimes_{R^t} R$, giving us the desired result.\\[-1.5\baselineskip]
+\noindent From here, it is easy to see that we can also obtain the other generators $\alpha_t \otimes_{R^t} 1$, $1 \otimes_{R^t} \alpha_s$ and $1 \otimes_{R^t} \alpha_t$. We therefore obtain all of $R \otimes_{R^t} R$, giving us the desired result.\\[-1.5\baselineskip]
 \begin{center}
 \rule{0.5\linewidth}{1pt}
 \end{center}
