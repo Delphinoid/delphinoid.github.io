@@ -1,0 +1,613 @@
+\input{preamble.tex}
+
+\begin{document}
+
+\thispagestyle{fancy}
+
+\begin{center}
+\LARGE\scshape The Exceptional Lie Groups of Type $G_2$\noindent\\[-\linespacing]
+\rule{0.85\linewidth}{1pt}
+\end{center}
+\noindent\\[-0.75\linespacing]
+
+\ruledsection{The Compact Real Form $G_2$}{1}
+\noindent\\ Consider the $8$-dimensional $\mathbb{R}$-vector space with basis $B \coloneqq \{e_0, e_1, e_2, e_3, e_4, e_5, e_6, e_7\}$. We endow this vector space with the structure of an algebra by defining a multiplication via the following table.\\[-1.75\linespacing]
+\begin{center}
+\begin{equation}\label{OctonionMultiplication}
+\text{\begin{NiceTabular}{|c|c|r|r|r|r|r|r|r|r|}
+\CodeBefore
+\rowcolor[HTML]{EFEFEF}{1,2}
+\columncolor[HTML]{EFEFEF}{1,2}
+\Body\hline
+\Block[borders=right]{2-2}{$e_ie_j$} & \Block{1-9}{$e_j$}\\\cline{3-10}
+& & \multicolumn{1}{c}{$e_0$} & \multicolumn{1}{c}{$e_1$} & \multicolumn{1}{c}{$e_2$} & \multicolumn{1}{c}{$e_3$} & \multicolumn{1}{c}{$e_4$} & \multicolumn{1}{c}{$e_5$} & \multicolumn{1}{c}{$e_6$} & \multicolumn{1}{c}{$e_7$}\\\hline
+\Block{8-1}{$e_i$} & $e_0$ & \hphantom{$-$}$e_0$ &  $e_1$ &  $e_2$ &  $e_3$ &  $e_4$ &  $e_5$ &  $e_6$ &  $e_7$\\\cline{2-10}
+& $e_1$ & $e_1$ & $-e_0$ &  $e_3$ & $-e_2$ &  $e_5$ & $-e_4$ & $-e_7$ &  $e_6$\\\cline{2-10}
+& $e_2$ & $e_2$ & $-e_3$ & $-e_0$ &  $e_1$ &  $e_6$ &  $e_7$ & $-e_4$ & $-e_5$\\\cline{2-10}
+& $e_3$ & $e_3$ &  $e_2$ & $-e_1$ & $-e_0$ &  $e_7$ & $-e_6$ &  $e_5$ & $-e_4$\\\cline{2-10}
+& $e_4$ & $e_4$ & $-e_5$ & $-e_6$ & $-e_7$ & $-e_0$ &  $e_1$ &  $e_2$ &  $e_3$\\\cline{2-10}
+& $e_5$ & $e_5$ &  $e_4$ & $-e_7$ &  $e_6$ & $-e_1$ & $-e_0$ & $-e_3$ &  $e_2$\\\cline{2-10}
+& $e_6$ & $e_6$ &  $e_7$ &  $e_4$ & $-e_5$ & $-e_2$ &  $e_3$ & $-e_0$ & $-e_1$\\\cline{2-10}
+& $e_7$ & $e_7$ & $-e_6$ &  $e_5$ &  $e_4$ & $-e_3$ & $-e_2$ &  $e_1$ & $-e_0$\\\hline
+\end{NiceTabular}}
+\end{equation}\\[0.5\linespacing]
+\end{center}
+\noindent Here $e_0$ is identified with the scalar $1$. This table can also be encoded succinctly via the Fano plane.\\
+
+\noindent\begin{definition}\textup{(Octonions).} The algebra over $\mathbb{R}$ defined above is known as the {\em octonions} (or the {\em Cayley algebra}) and denoted $\mathbb{O}$.\\
+\end{definition}
+
+\noindent Let
+\begin{align*}
+\begin{split}
+x \coloneqq \sum_{i=0}^7{x_ie_i} \in \mathbb{O}
+\end{split}
+\end{align*}
+\noindent be an octonion whose coordinate vector with respect to our basis $B$ is denoted by
+\begin{align*}
+\begin{split}
+[x]_B \coloneqq (x_0, x_1, x_2, x_3, x_4, x_5, x_6, x_7) \in \mathbb{R}^8.
+\end{split}
+\end{align*}
+\noindent We define on $\mathbb{O}$ an inner product given by the dot product
+\begin{align*}
+\begin{split}
+(x, y) = [x]_B \cdot [y]_B,
+\end{split}
+\end{align*}
+\noindent for any octonion $y$ with coordinate vector $[y]_B$; a conjugation map given by
+\begin{align*}
+\begin{split}
+\overline{x} \coloneqq x_0 - \sum_{i=1}^7{x_ie_i};
+\end{split}
+\end{align*}
+\noindent a modulus given by the Euclidean norm
+\begin{align*}
+\begin{split}
+\abs{x} \coloneqq \csqrt{(x, x)};
+\end{split}
+\end{align*}
+\noindent and finally real and imaginary parts $\mathfrak{R}(x) \coloneqq x_0$ and $\mathfrak{I}(x) \coloneqq \sum_{i=1}^7{x_ie_i}$, respectively (where we have $\mathfrak{R}(x) = \frac{1}{2}(x + \overline{x})$ and $\mathfrak{I}(x) = \frac{1}{2}(x - \overline{x})$). We denote $\overline{x}/\abs{x}^2$ by $x^{-1}$, and observe that $x^{-1}x = 1 = xx^{-1}$. In other words, $\mathbb{O}$ satisfies all of the axioms of a field except for associativity and commutativity.\newpage
+
+\noindent\begin{remark}\label{CayleyDickson} Octonion multiplication seems scary, but in fact there is some hidden beauty here! As we know, $\mathbb{C} \cong \mathbb{R} \oplus \mathbb{R}$, with multiplication $(a, b)(c, d) \coloneqq (ac - \overline{d}b, da + b\overline{c})$ and conjugation $\overline{(a, b)} = (\overline{a}, -b)$. Notice that we have written conjugates of real numbers, which is of course superfluous: the reason is because the pattern as we have written here generalizes nicely. For example, the quaternions are given by $\mathbb{H} \cong \mathbb{C} \oplus \mathbb{C}$, with multiplication $(a, b)(c, d) \coloneqq (ac - \overline{d}b, da + b\overline{c})$ and conjugation $\overline{(a, b)} = (\overline{a}, -b)$. As one may guess, the octonions are then given by $\mathbb{O} \cong \mathbb{H} \oplus \mathbb{H}$, with multiplication and conjugation following this trend. This is known as the {\em Cayley--Dickson construction} for hypercomplex algebras. To see this explicitly, observe that our definition of the octonions contains the field of quaternions as
+\begin{align*}
+\begin{split}
+\mathbb{H} \cong \{x_0 + x_1e_1 + x_2e_2 + x_3e_3 : x_0, x_1, x_2, x_3 \in \mathbb{R}\}.
+\end{split}
+\end{align*}
+\noindent\\[-1.2\linespacing] Because any element $x \in \mathbb{O}$ can be written as
+\begin{align*}
+\begin{split}
+x &= x_0 + x_1e_1 + x_2e_2 + x_3e_3 + x_4e_4 + x_5e_5 + x_6e_6 + x_7e_7\\
+&= (x_0 + x_1e_1 + x_2e_2 + x_3e_3) + (x_4 + x_5e_1 + x_6e_2 + x_7e_3)e_4,
+\end{split}
+\end{align*}
+\noindent for some $x_i \in \mathbb{R}$, it follows that any $x \in \mathbb{O}$ can be written as $x = a + be_4$, for $a, b \in \mathbb{H}$. That is,
+\begin{align*}
+\begin{split}
+\mathbb{O} \cong \mathbb{H} \oplus \mathbb{H}e_4.
+\end{split}
+\end{align*}
+\noindent\\[-1.3\linespacing] Multiplication, the inner product and conjugation are recovered by
+\begin{align*}
+\begin{split}
+(a + be_4)(c + de_4) &= (ac - \overline{d}b) + (da + b\overline{c})e_4,\\
+(a + be_4, c + de_4) &= (a, c) + (b, d),\\
+\overline{a + be_4} = \overline{a} - be_4.
+\end{split}
+\end{align*}
+\noindent We will later find it convenient to define also an $\mathbb{R}$-linear map $\gamma : a + be_4 \mapsto a - be_4$, for $a, b \in \mathbb{H}$. It's worth noting too that we have a similar process to show that $\mathbb{O} \cong \mathbb{C} \oplus \mathbb{C}^3$, since
+\begin{align*}
+\begin{split}
+x = (x_0 + x_1e_1) + (x_2 + x_3e_1)e_2 + (x_4 + x_5e_1)e_4 + (x_6 + x_7e_1)e_6.\\[\linespacing]
+\end{split}
+\end{align*}
+\end{remark}
+
+\noindent Now that we hopefully have a better grasp on the octonions, we can begin to understand $G_2$. The group $G_2$ is defined to be the automorphism group of the octonions; that is,
+\begin{align*}
+\begin{split}
+G_2 \coloneqq \textup{Aut}_\mathbb{R}(\mathbb{O}) \coloneqq \{\alpha \in \textup{Iso}_\mathbb{R}(\mathbb{O}) : \alpha(xy) = \alpha(x)\alpha(y),\ \!\forall x, y \in \mathbb{O}\},
+\end{split}
+\end{align*}
+\noindent where $\textup{Iso}_\mathbb{R}(\mathbb{O})$ denotes the group of $\mathbb{R}$-vector space isomorphisms of $\mathbb{O}$. We have the following results.\\
+
+\noindent\begin{lemma}\label{InnerProduct} For any $x, y \in \mathbb{O}$, we have $(x, y) = \frac{1}{2}(\overline{x}y + \overline{y}x)$.\\
+\end{lemma}
+
+\noindent\begin{proof} Observe that
+\begin{align*}
+\begin{split}
+\overline{x}y = \!\left(x_0 - \sum_{i=1}^7{x_ie_i}\right)\!\!\left(y_0 + \sum_{i=1}^7{y_ie_i}\right)\! = x_0y_0 + \sum_{i=1}^7{x_0y_ie_i} - \sum_{i=1}^7{x_iy_0e_i} - \sum_{i=1}^7{\sum_{j=1}^7{x_iy_je_ie_j}}.
+\end{split}
+\end{align*}
+\noindent It follows that
+\begin{align*}
+\begin{split}
+\overline{x}y + \overline{y}x = 2x_0y_0 - \!\left(\sum_{i=1}^7{\sum_{j=1}^7{x_iy_je_ie_j + x_jy_ie_je_i}}\right)\!.
+\end{split}
+\end{align*}
+\noindent\\[-0.5\linespacing] However, suppose we take the table \hyperref[OctonionMultiplication]{(\ref*{OctonionMultiplication})} and throw away the first row and column. This induces a matrix that is skew-symmetric, except on the diagonal; in particular, $x_iy_je_ie_j + x_jy_ie_je_i$ is zero whenever $i \neq j$, otherwise it is $-2x_iy_i$. The result follows. This completes the proof.
+\end{proof}\newpage
+
+\noindent\begin{lemma}\label{Conjugation} For any $\alpha \in G_2$ and $x \in \mathbb{O}$, we have $\overline{\alpha(x)} = \alpha(\overline{x})$.\\
+\end{lemma}
+
+\noindent\begin{proof} By linearity, it is sufficient to show that $\alpha(1) = 1$ and $\overline{\alpha(e_i)} = -\alpha(e_i)$, for all $1 \leq i \leq 7$. Naturally, $\alpha(1)\alpha(1) = \alpha(1 \cdot 1) = \alpha(1)$, implying $\alpha(1) = 1$. Meanwhile, given $i \neq 0$, we have $\alpha(e_i)\alpha(e_i) = \alpha(e_ie_i) - \alpha(-1) = -1$. Multiplying both sides of this by $-(\alpha(e_i))^{-1}$, it follows that $-\alpha(e_i) = (\alpha(e_i))^{-1} = \overline{\alpha(e_i)}$, and hence that $\overline{\alpha(x)} = \alpha(\overline{x})$ as desired. This completes the proof.
+\end{proof}\\
+
+\noindent\begin{lemma}\label{PreservesInnerProduct} For any $\alpha \in G_2$ and $x, y \in \mathbb{O}$, we have $(\alpha(x), \alpha(y)) = (x, y)$.\\
+\end{lemma}
+
+\noindent\begin{proof} It follows from the previous lemmata that\\[-1.1\linespacing]
+\begin{align*}
+(\alpha(x), \alpha(y)) &= \frac{1}{2}\left((\overline{\alpha(x)})(\alpha(y)) + (\overline{\alpha(y)})(\alpha(x))\right)\tag*{(\hyperref[InnerProduct]{Lemma \ref*{InnerProduct}})}\\
+&= \frac{1}{2}\left((\alpha(\overline{x}))(\alpha(y)) + (\alpha(\overline{y}))(\alpha(x))\right)\tag*{(\hyperref[Conjugation]{Lemma \ref*{Conjugation}})}\\
+&= \alpha\!\left(\frac{1}{2}(\overline{x}y + \overline{y}x)\right)\! = \alpha((x, y)) = (x, y).
+\end{align*}
+\noindent\\[-0.5\linespacing] This completes the proof.
+\end{proof}\\
+
+\noindent\begin{theorem} The group $G_2$ is a compact Lie group.\\
+\end{theorem}
+
+\noindent\begin{proof} Consider the orthogonal group $\textup{O}(8)$, which we may write as
+\begin{align*}
+\begin{split}
+\textup{O}(8) = \{\alpha \in \textup{Iso}_\mathbb{R}(\mathbb{O}) : (\alpha(x), \alpha(y)) = (x, y),\ \!\forall x, y \in \mathbb{O}\}.
+\end{split}
+\end{align*}
+\noindent Clearly $G_2 \subset \textup{O}(8)$ by \hyperref[PreservesInnerProduct]{Lemma \ref*{PreservesInnerProduct}}. Recall that the orthogonal groups are themselves compact Lie groups; we claim that $G_2$ is a closed subgroup and hence a compact Lie subgroup of $\textup{O}(8)$. Well, note that for any $\alpha \in \textup{Iso}_\mathbb{R}(\mathbb{O})$, we have that $\alpha \in G_2$ if and only if $\alpha(e_ie_j) = \alpha(e_i)\alpha(e_j)$ for all $i, j \in \{0, \dots, 7\}$. Suppose we fix $i, j \in \{0, \dots, 7\}$ and let
+\begin{align*}
+\begin{split}
+X_{ij} \coloneqq \{\alpha \in \textup{O}(8) : \alpha(e_ie_j) = \alpha(e_i)\alpha(e_j)\}.
+\end{split}
+\end{align*}
+\noindent Define a map $f_{ij} : \textup{O}(8) \to \mathbb{R}^8$ by
+\begin{align*}
+\begin{split}
+f_{ij} : \alpha \mapsto \alpha(e_ie_j) - \alpha(e_i)\alpha(e_j).
+\end{split}
+\end{align*}
+\noindent This map is clearly continuous, and moreover $f_{ij}^{-1}(\{\boldsymbol{0}\}) = X_{ij}$. In other words, $X_{ij}$ is the continuous preimage of a closed set, and is hence closed. Since $G_2$ is the finite intersection of each $X_{ij}$, it too is closed. It follows that $G_2$ is a compact Lie group, as it is a closed subgroup of the compact Lie group $\textup{O}(8)$. This completes the proof.
+\end{proof}\\
+
+\noindent\begin{remark} Because $\alpha(1) = 1$ for all $\alpha \in G_2$, it is in fact true that $G_2$ is a compact subgroup of $\textup{O}(7)$. In fact, we will learn later that it is actually a subgroup of $\textup{SO}(7)$, although this is not obvious.\\
+\end{remark}
+
+\noindent We will end this section with two rather nice results that we will not prove. Although their proofs aren't too difficult, they're somewhat involved and ultimately tangential to the purpose of this piece.\\
+
+\noindent\begin{theorem}\textup{(\cite[Theorem 1.9.2, Theorem 1.9.3]{Yok25}).}\label{SimplyConnected} The Lie group $G_2$ satisfies $G_2/\textup{SU}(3) \cong S^6$, and is hence simply connected.\\
+\end{theorem}
+
+\noindent\begin{theorem}\textup{(\cite[Theorem 1.11.1]{Yok25}).}\label{TrivialCenter} The center of $G_2$ is trivial.\\
+\end{theorem}
+
+\noindent To summarize, $G_2$ is a simple, compact, simply connected Lie group given by the automorphism group of the octonions. In Atlas, the compact group $G_2$ is referred to as $\texttt{G2\_c}$.\\[\linespacing]
+
+\ruledsection{The Real Lie Algebra $\mathfrak{g}_2$}{2}
+\noindent\begin{definition}\textup{(Derivation).}\label{Derivation} Let $A$ be any algebra over $\mathbbm{k}$. The {\em space of derivations of $A$ over $\mathbbm{k}$} is
+\begin{align*}
+\begin{split}
+\textup{Der}_\mathbbm{k}(A) \coloneqq \{D \in \textup{End}_\mathbbm{k}(A) : D(xy) = D(x)y + xD(y),\ \!\forall x, y \in A\},
+\end{split}
+\end{align*}
+\noindent where $\textup{End}_\mathbb{R}(A)$ denotes the set of $\mathbbm{k}$-linear maps on $A$.\\
+\end{definition}
+
+\noindent The space of derivations is easily seen to be a Lie algebra, with Lie bracket given by the commutator $[D, E] \coloneqq D \circ E - E \circ D$. We in fact have the following result.\\
+
+\noindent\begin{theorem}\label{DerivationAutomorphism} Let $A$ be any algebra over $\mathbbm{k}$ whose automorphism group $G \coloneqq \textup{Aut}_\mathbbm{k}(A)$ is a Lie group. Then $\mathfrak{g} \coloneqq \textup{Der}_\mathbbm{k}(A)$ is the associated Lie algebra of $G$.\\
+\end{theorem}
+
+\noindent\begin{proof} Let $\gamma : [0, 1] \to G$ be a tangent vector of $G$ at the identity; that is, a path with $\gamma_0 = \textup{id}$, where $\gamma_t \coloneqq \gamma(t)$. Suppose moreover that the derivative $\gamma_t'$ with respect to $t$ satisfies $\gamma_0' = D$. Differentiating
+\begin{align*}
+\begin{split}
+\gamma_t(xy) = \gamma_t(x)\gamma_t(y)
+\end{split}
+\end{align*}
+with respect to $t$, we obtain
+\begin{align*}
+\begin{split}
+\gamma_t'(xy) = \gamma_t'(x)\gamma_t(y) + \gamma_t(x)\gamma_t'(y).
+\end{split}
+\end{align*}
+At $t = 0$, this gives us
+\begin{align*}
+\begin{split}
+D(xy) = D(x)y + xD(y).
+\end{split}
+\end{align*}
+In other words, $D \in \textup{Der}_\mathbbm{k}(A)$. Conversely, suppose that $D \in \textup{Der}_\mathbbm{k}(A)$ and let $\gamma_t \coloneqq \exp(tD)$. Define two maps $\varphi : t \mapsto \gamma_t(xy)$ and $\psi : t \mapsto \gamma_t(x)\gamma_t(y)$. Differentiating $\varphi$, we have
+\begin{align*}
+\begin{split}
+\varphi'(t) = \gamma_t'(xy) = D(\gamma_t(xy)) = D(\varphi(t)).
+\end{split}
+\end{align*}
+Meanwhile, differentiating $\psi$, we have
+\begin{align*}
+\psi'(t) &= \gamma_t'(x)\gamma_t(y) + \gamma_t(x)\gamma_t'(y)\\
+&= D(\gamma_t(x))\gamma_t(y) + \gamma_t(x)D(\gamma_t(y))\\
+&= D(\gamma_t(x)\gamma_t(y))\tag*{(\hyperref[Derivation]{Definition \ref*{Derivation}})}\\
+&= D(\psi(t)).
+\end{align*}
+Because $\varphi(0) = xy = \psi(0)$ and $\varphi'(0) = \psi'(0)$, it follows that $\varphi$ and $\psi$ are equivalent as tangent vectors, and hence $\gamma_t(xy) = \gamma_t(x)y + x\gamma_t(y)$. We have thus shown that the tangent space of $G$ at the identity is nothing but $\textup{Der}_\mathbbm{k}(A)$. This completes the proof.
+\end{proof}\newpage
+
+\noindent\begin{corollary} The Lie algebra of $G_2$ is $\mathfrak{g}_2 \coloneqq \textup{Der}_\mathbb{R}(\mathbb{O})$.\\
+\end{corollary}
+
+\noindent Suppose we define $\mathbb{R}$-linear maps $G_{ij} : \mathbb{O} \to \mathbb{O}$ and $F_{ij} : \mathbb{O} \to \mathbb{O}$ by
+\begin{align*}
+\begin{split}
+G_{ij}(e_j) = e_i;\qquad G_{ij}(e_i) = -e_j;\qquad G_{ij}(e_k) = 0,\ \forall k \neq i, j
+\end{split}
+\end{align*}
+\noindent and
+\begin{align*}
+\begin{split}
+F_{ij} : x \mapsto \frac{1}{2}e_i(\overline{e}_j x),
+\end{split}
+\end{align*}
+\noindent respectively. Moreover, consider the $\mathbb{R}$-linear map $\pi : \mathfrak{so}(7) \to \mathfrak{so}(7)$ given by
+\begin{align*}
+\begin{split}
+\pi : G_{ij} \mapsto F_{ij},
+\end{split}
+\end{align*}
+\noindent where
+\begin{align*}
+\begin{split}
+\mathfrak{so}(8) &= \{D \in \homset_\mathbb{R}(\mathbb{O}) : (D(x), y) + (x, D(y)) = 0,\ \!\forall x, y \in \mathbb{O}\},\\
+\mathfrak{so}(7) &= \{D \in \mathfrak{so}(8) : D(1) = 0\}.
+\end{split}
+\end{align*}
+\noindent We now have the following results.\\
+
+\noindent\begin{lemma} The Lie algebra $\mathfrak{g}_2$ is a Lie subalgebra of $\mathfrak{so}(7)$; that is,
+\begin{align*}
+\begin{split}
+\mathfrak{g}_2 = \{D \in \mathfrak{so}(7) : \pi(D) = D\}.\\[\linespacing]
+\end{split}
+\end{align*}
+\end{lemma}
+
+\noindent\begin{theorem}\textup{(\cite[Theorem 1.4.3]{Yok25}).}\label{Dimension} Any element of $\mathfrak{g}_2$ is given by some sum of the elements
+\begin{align*}
+\begin{split}
+\lambda_1 G_{23} + \lambda_2 G_{45} + \lambda_3 G_{67},\qquad -\lambda_1 G_{13} - \lambda_2 G_{46} + \lambda_3 G_{57},\\
+\lambda_1 G_{12} + \lambda_2 G_{47} + \lambda_3 G_{56},\qquad -\lambda_1 G_{15} + \lambda_2 G_{26} - \lambda_3 G_{37},\\
+\lambda_1 G_{14} - \lambda_2 G_{27} - \lambda_3 G_{36},\qquad -\lambda_1 G_{17} - \lambda_2 G_{24} + \lambda_3 G_{35},\\[-0.25\linespacing]
+\end{split}
+\end{align*}
+\begin{align*}
+\begin{split}
+\lambda_1 G_{16} + \lambda_2 G_{25} + \lambda_3 G_{34},
+\end{split}
+\end{align*}
+\noindent for $\lambda_1, \lambda_2, \lambda_3 \in \mathbb{R}$ such that
+\begin{align*}
+\begin{split}
+\lambda_1 + \lambda_2 + \lambda_3 = 0.
+\end{split}
+\end{align*}
+\noindent In particular, the dimension of $\mathfrak{g}_2$ is $14$.\\
+\end{theorem}
+
+\noindent Of course, one last result that is particularly important is the following.\\
+
+\noindent\begin{theorem}\textup{(\cite[Theorem 1.6.3]{Yok25}).}\label{Simple} The Lie algebra $\mathfrak{g}_2$ is simple, and hence so too is $G_2$.\\
+\end{theorem}
+
+\noindent The proofs of these results are again a little involved, so we will not provide them. Proofs can be found in the wonderful book of Yokota as usual.\\
+
+\noindent The general strategy so far has been to understand $G_2$ and its Lie algebra by looking at familiar objects that they live inside and familiar objects that live inside them. For $\mathfrak{g}_2$, we have done this by viewing it as a subalgebra of $\mathfrak{so}(7)$ and by looking at its subalgebra $\mathfrak{su}(3)$. In particular, $\mathfrak{su}(3)$ is isomorphic to $\{D \in \mathfrak{g}_2 : D(e_1) = 0\}$ -- a fact that lifts to $G_2$ and gives \hyperref[SimplyConnected]{Theorem \ref*{SimplyConnected}} -- and moreover $\mathfrak{g}_2$ decomposes into a direct sum of $\mathfrak{su}(3)$ with some algebra $\mathfrak{S}$, giving a way of attacking \hyperref[Simple]{Theorem \ref*{Simple}}. More on this will be revealed later on.\newpage
+
+\ruledsection{The Complex Form $G_2^\mathbb{C}$}{3}
+\noindent\\ By definition, the complexification of $\mathbb{O}$ is given by
+\begin{align*}
+\begin{split}
+\mathbb{O}^\mathbb{C} \coloneqq \mathbb{O} \otimes_\mathbb{R} \mathbb{C} = \{a + ib : a, b \in \mathbb{O}\}.
+\end{split}
+\end{align*}
+\noindent In this section, we would like to show that
+\begin{align*}
+\begin{split}
+G_2^\mathbb{C} \coloneqq \{\alpha \in \textup{Iso}_\mathbb{C}(\mathbb{O}^\mathbb{C}) : \alpha(xy) = \alpha(x)\alpha(y), \forall x, y \in \mathbb{O}^\mathbb{C}\}
+\end{split}
+\end{align*}
+\noindent is a simple, simply connected, complex Lie group of type $G_2$. We know it is an algebraic subgroup of $\textup{Iso}_\mathbb{C}(\mathbb{O}^\mathbb{C}) = \textup{GL}(8, \mathbb{C})$. \hyperref[DerivationAutomorphism]{Theorem \ref*{DerivationAutomorphism}} therefore tells us that its corresponding Lie algebra is
+\begin{align*}
+\begin{split}
+\mathfrak{g}_2^\mathbb{C} \coloneqq \mathfrak{g}_2 \otimes_\mathbb{R} \mathbb{C} = \textup{Der}_\mathbb{C}(\mathbb{O}^\mathbb{C}).
+\end{split}
+\end{align*}
+\noindent From here, \hyperref[Simple]{Theorem \ref*{Simple}} is easily adapted to $\mathfrak{g}_2^\mathbb{C}$, making $G_2^\mathbb{C}$ a simple, complex Lie group (alternatively, a real, compact Lie algebra is simple if and only if its complexification is simple). All that remains is to show that $G_2^\mathbb{C}$ is simply connected and indeed the complexification of $G_2$.\\
+
+\noindent For what follows, we define conjugation by $\overline{a + ib} \coloneqq \overline{a} + i\overline{b}$ and let $\tau \in G_2^\mathbb{C}$ denote the complex conjugation map taking $a + ib \in \mathbb{O}^\mathbb{C}$ to $a - ib$. Then $\mathbb{O}^\mathbb{C}$ inherits multiplication and an inner product
+\begin{align*}
+\begin{split}
+(a + ib, c + id) \coloneqq (a, c) + i(a, d) + i(b, c) - (b, d) %(a, c) - i(a, d) + i(b, c) + (b, d)
+\end{split}
+\end{align*}
+\noindent from $\mathbb{O}$, where it can be shown that the latter satisfies $\mathbb{O}^\mathbb{C}$-analogues of \hyperref[InnerProduct]{Lemma \ref*{InnerProduct}}, \hyperref[Conjugation]{Lemma \ref*{Conjugation}} and \hyperref[PreservesInnerProduct]{Lemma \ref*{PreservesInnerProduct}} (see \cite[Lemma 1.12.1]{Yok25}). This induces the canonical inner product
+\begin{align*}
+\begin{split}
+\langle a + ib, c + id\rangle \coloneqq (\tau(a + ib), c + id) = (a, c) + i(a, d) - i(b, c) + (b, d).
+\end{split}
+\end{align*}
+\noindent Given $\alpha \in G_2^\mathbb{C}$, we will define its adjoint to be the map $\alpha^*$ such that $\langle \alpha^*(x), y\rangle = \langle x, \alpha(y)\rangle$.\\
+
+\noindent\begin{lemma} For any $\alpha \in G_2^\mathbb{C}$, we have $\alpha^* = \tau\alpha^{-1}\tau \in G_2^\mathbb{C}$.\\
+\end{lemma}
+
+\noindent\begin{proof} For all $x, y \in \mathbb{O}^\mathbb{C}$, we have
+\begin{align*}
+\begin{split}
+\langle\alpha^*(x), y\rangle = \langle x, \alpha(y)\rangle = (\tau(x), \alpha(y)) = ([\alpha^{-1}\tau](x), y) = \langle[\tau\alpha^{-1}\tau](x), y\rangle.
+\end{split}
+\end{align*}
+\noindent This completes the proof.
+\end{proof}\\
+
+\noindent The upshot from this lemma is that $G_2^\mathbb{C}$ is closed under taking conjugate transposes. Moreover, $\alpha \in G_2^\mathbb{C}$ is unitary if and only if it commutes with our complex conjugation map $\tau$. We can actually say a bit more than this. Given $\alpha \in G_2$, we have a unique complexification $\alpha^\mathbb{C} \in G_2^\mathbb{C}$ that takes $x \otimes_\mathbb{R} z \in \mathbb{O} \otimes_\mathbb{R} \mathbb{C}$ to $\alpha(x) \otimes_\mathbb{R} z = z\alpha(x)$. In fact, we can do this process in reverse.\\
+
+\noindent\begin{lemma}\label{CompactSubgroup} The Lie group $G_2$ lives inside $G_2^\mathbb{C}$ as the centralizer subgroup $\{\alpha \in G_2^\mathbb{C} : \tau\alpha = \alpha\tau\}$.\\
+\end{lemma}
+
+\noindent\begin{proof} Suppose $\alpha \in G_2^\mathbb{C}$ satisfies $\tau\alpha = \alpha\tau$. Given $x \in \mathbb{O}$, we have that $[\tau\alpha](x) = [\alpha\tau](x) = \alpha(x)$, and hence $\alpha(x) \in \mathbb{O}$. Thus $\alpha$ restricts to an $\mathbb{R}$-transformation $\alpha\vert_\mathbb{O} \in G_2$, which satisfies $\alpha = (\alpha\vert_\mathbb{O})^\mathbb{C}$. This completes the proof.
+\end{proof}\newpage
+
+\noindent From this lemma, it follows that by identifying $G_2^\mathbb{C}$ with a subgroup of $\textup{GL}(8, \mathbb{C})$, we have that $G_2^\mathbb{C} \cap U(8) = G_2$, where $U(8)$ is the set of $8 \times 8$ unitary matrices. This fact allows us to determine the polar decomposition of $G_2^\mathbb{C}$.\\
+
+\noindent\begin{theorem}\label{PolarDecomposition} The polar decomposition of $G_2^\mathbb{C}$ is given by the topological product
+\begin{align*}
+\begin{split}
+G_2^\mathbb{C} \cong G_2 \times \mathbb{R}^{14}.
+\end{split}
+\end{align*}
+\noindent\\[-1.25\linespacing] In particular, $G_2^\mathbb{C}$ is simply connected.\\
+\end{theorem}
+
+\noindent\begin{proof} Recall that invertible matrices $A \in \textup{GL}(n, \mathbb{C})$ admit a unique polar decomposition of the form $A = UP$, where $U \in U(n)$ is a unitary matrix and $P \in H(n)$ is a positive-definite Hermitian matrix. In other words, by \cite[Proposition I.V.3]{Che46}, we have a homeomorphism
+\begin{align*}
+\begin{split}
+\textup{GL}(n, \mathbb{C}) \cong U(n) \times H(n).
+\end{split}
+\end{align*}
+\noindent\\[-1.25\linespacing] Note that we may identify the set $H(n)$ of positive-definite Hermitian matrices with $\mathbb{R}^d$, where
+\begin{align*}
+\begin{split}
+d \coloneqq \dim(\textup{GL}(n, \mathbb{C})) - \dim(U(n)) = 2n^2 - n^2 = n^2.
+\end{split}
+\end{align*}
+\noindent\\[-1.25\linespacing] Because $G_2^\mathbb{C}$ is an algebraic subgroup of $\textup{GL}(8, \mathbb{C})$, it follows from \hyperref[CompactSubgroup]{Lemma \ref*{CompactSubgroup}} that
+\begin{align*}
+\begin{split}
+G_2^\mathbb{C} \cong (G_2^\mathbb{C} \cap U(8)) \times \mathbb{R}^d = G_2 \times \mathbb{R}^d,
+\end{split}
+\end{align*}
+\noindent\\[-1.25\linespacing] where $d = \dim(G_2^\mathbb{C}) - \dim(G_2) = 2\times 14 - 14 = 14$ by \hyperref[Dimension]{Theorem \ref*{Dimension}}. This completes the proof.
+\end{proof}\\
+
+\noindent We have now seen the complex form $G_2^\mathbb{C}$, which is a simple, simply connected, complex Lie group of type $G_2$. In Atlas, this complex group is referred to as $\texttt{G2\_ic}$. It admits two real forms; a simple, simply connected, compact form, and a split form that we will see momentarily. Before that, however, I would like to look more at $\mathfrak{g}_2^\mathbb{C}$.\\[\linespacing]
+
+\ruledsection{The Complex Lie Algebra $\mathfrak{g}_2^\mathbb{C}$}{2}
+\noindent\\ Let's find the Dynkin diagram for $\mathfrak{g}_2^\mathbb{C}$. We shall begin by determining its Killing form. We first introduce some notation for the sake of convenience.
+\begin{align*}
+\begin{split}
+H_1 = -G_{23} + G_{45},\qquad H_2 = -G_{45} + G_{67},
+\end{split}
+\end{align*}\\[-2.5\linespacing]
+\begin{alignat*}{3}
+L_{12} &= \hphantom{-}G_{24} + G_{35},\qquad&L_{21} &= -G_{25} + G_{34},\qquad&L_{13} &= \hphantom{-}G_{26} + G_{37},\\
+L_{21} &= -G_{27} + G_{36},\qquad&L_{23} &= \hphantom{-}G_{46} + G_{57},\qquad&L_{32} &= -G_{47} + G_{56};
+\end{alignat*}\\[-2.25\linespacing]
+\begin{alignat*}{3}
+S_1 &= 2G_{12} - G_{47} - G_{56},\qquad&S_2 &= 2G_{13} - G_{46} + G_{57},\qquad&S_3 &= 2G_{14} + G_{27} + G_{36},\\
+S_4 &= 2G_{15} + G_{26} - G_{37},\qquad&S_5 &= 2G_{16} - G_{25} - G_{34},\qquad&S_6 &= 2G_{17} - G_{24} + G_{35}.
+\end{alignat*}
+\noindent Note that $H_1$, $H_2$ and the $L_{ij}$ span $\mathfrak{su}(3)$, while the $S_k$ span the algebra $\mathfrak{S}$ for which $\mathfrak{g}_2 \cong \mathfrak{su}(3) \oplus \mathfrak{S}$; it is easy to see by \hyperref[Dimension]{Theorem \ref*{Dimension}} that these indeed span $\mathfrak{g}_2$.\\
+
+%\noindent\begin{lemma} The Lie brackets of $H_1$ with each $L_{ij}$ in $\mathfrak{su}(3) \subset \mathfrak{g}_2$ are given by
+%\begin{alignat*}{3}
+%[H_1, L_{12}] &= 2L_{21},\qquad&[H_1, L_{21}] &= -2L_{12},\qquad&[H_1, L_{13}] &= L_{31},\\
+%[H_1, L_{31}] &= -L_{13},\qquad&[H_1, L_{23}] &= -L_{32},\qquad&[H_1, L_{32}] &= L_{23}.\\
+%\end{alignat*}
+%\end{lemma}
+\newpage
+
+\noindent\begin{theorem} The Killing form $B$ of $\mathfrak{g}_2^\mathbb{C}$ is given by
+\begin{align*}
+\begin{split}
+B(D_1, D_2) = 4\textup{Tr}(D_1D_2),
+\end{split}
+\end{align*}
+\noindent for all $D_1, D_2 \in \mathfrak{g}_2^\mathbb{C}$.
+\end{theorem}
+
+\noindent\begin{proof} Recall that Schur's lemma applied to the adjoint representation tells us that any invariant, symmetric, bilinear form on a simple complex Lie algebra is a scalar multiple of the Killing form. Because $(D_1, D_2) \mapsto \textup{Tr}(D_1D_2)$ is such a form, it follows that there exists some $z \in \mathbb{C}$ for which
+\begin{align*}
+\begin{split}
+B(D_1, D_2) = z\textup{Tr}(D_1D_2).
+\end{split}
+\end{align*}
+\noindent Suppose we let $D_1 = D_2 = H_1$. It can be shown that
+\begin{alignat*}{2}
+[H_1, [H_1, L_{12}]] = [H_1, 2L_{21}] &= -4L_{12},&\qquad[H_1, [H_1, L_{21}]] = [H_1, -2L_{12}] &= -4L_{21},\\
+[H_1, [H_1, L_{13}]] = [H_1, L_{31}] &= -L_{13},&\qquad[H_1, [H_1, L_{31}]] = [H_1, -L_{13}] &= -L_{31},\\
+[H_1, [H_1, L_{23}]] = [H_1, -L_{32}] &= -L_{23},&\qquad[H_1, [H_1, L_{32}]] = [H_1, L_{23}] &= -L_{32};\\
+[H_1, [H_1, S_1]] = [H_1, S_2] &= -S_1,&\qquad[H_1, [H_1, S_2]] = [H_1, -S_1] &= -S_2,\\
+[H_1, [H_1, S_3]] = [H_1, -S_4] &= -S_3,&\qquad[H_1, [H_1, S_4]] = [H_1, S_3] &= -S_4,\\
+[H_1, [H_1, S_5]] &= 0,&\qquad[H_1, [H_1, S_2]] &= 0.
+\end{alignat*}
+\noindent It follows that
+\begin{align*}
+\begin{split}
+B(H_1, H_1) \coloneqq \textup{Tr}(\textup{ad}(H_1) \circ \textup{ad}(H_1)) = (-4) \times 2 + (-1) \times 8 = -16.
+\end{split}
+\end{align*}
+\noindent Conversely,
+\begin{alignat*}{2}
+H_1H_1e_2 = H_1e_3 &= -e_2,&\qquad H_1H_1e_3 = -H_1e_2 &= -e_3,\\
+H_1H_1e_4 = -H_1e_5 &= -e_4,&\qquad H_1H_1e_5 = H_1e_4 &= -e_5,
+\end{alignat*}
+\noindent with $H_1H_1e_i = 0$ otherwise. Thus $\textup{Tr}(H_1H_1) = -4$, whence $z = 4$. This completes the proof.
+\end{proof}\\
+
+\noindent Now, note that there is a Lie algebra isomorphism $f_* : \mathfrak{sl}(3, \mathbb{C}) \to \mathfrak{su}(3)^\mathbb{C}$ of the form
+\begin{align*}
+\begin{split}
+f_* : A \mapsto \varepsilon A - \overline{\varepsilon} A^T,
+\end{split}
+\end{align*}
+\noindent for $\varepsilon \coloneqq \frac{1}{2}(1 + ie_1)$. We also have an embedding $\varphi_* : \mathfrak{su}(3)^\mathbb{C} \to \mathfrak{g}_2^\mathbb{C}$ of the form
+\begin{align*}
+\begin{split}
+\varphi_*(D) : a + m \mapsto D(m),
+\end{split}
+\end{align*}
+\noindent where $a + m \in \mathbb{C}^\mathbb{C} \oplus (\mathbb{C}^3)^\mathbb{C} \cong \mathbb{O}^\mathbb{C}$ by our observation at the end of \hyperref[CayleyDickson]{Remark \ref*{CayleyDickson}}. We view $\mathfrak{sl}(3, \mathbb{C})$ as a subalgebra of $\mathfrak{g}_2^\mathbb{C}$ via $\varphi_* \circ f_*$. The Lie algebra $\mathfrak{sl}(3, \mathbb{C})$ admits a Cartan subalgebra
+\begin{align*}
+\begin{split}
+\mathfrak{h} \coloneqq \left\{\begin{pmatrix}\lambda_1&0&0\\0&\lambda_2&0\\0&0&\lambda_3\end{pmatrix} : \lambda_1, \lambda_2, \lambda_3 \in \mathbb{C},\ \!\lambda_1 + \lambda_2 + \lambda_3 = 0\right\}
+\end{split}
+\end{align*}
+\noindent with corresponding roots $\pm(\lambda_k - \lambda_l)$ and root vectors $E_{kl}$ for $1 \leq k < l \leq 3$, where $E_{kl}$ is the $3 \times 3$ matrix whose $(k, l)$-th entry $1$ with all other entries $0$. With this, we have the following results.\newpage
+
+\noindent\begin{theorem}\label{RootSystem} The Lie algebra $\mathfrak{g}_2^\mathbb{C}$ admits a Cartan subalgebra%is of rank $2$. In particular, it admits a Cartan subalgebra
+\begin{align*}
+\begin{split}
+\mathfrak{h} \coloneqq \{-i\lambda_1 G_{23} - i\lambda_2 G_{45} - i\lambda_3 G_{67} : \lambda_1, \lambda_2, \lambda_3 \in \mathbb{C},\ \!\lambda_1 + \lambda_2 + \lambda_3 = 0\}
+\end{split}
+\end{align*}
+\noindent with corresponding roots and root vectors
+\begin{align*}
+\begin{split}
+\pm(\lambda_1 - \lambda_2) \quad &\leftrightsquigarrow\quad \pm(G_{24} + G_{35}) + i(-G_{25} + G_{34}),\\
+\pm(\lambda_1 - \lambda_3) \quad &\leftrightsquigarrow\quad \pm(G_{26} + G_{37}) + i(-G_{27} + G_{36}),\\
+\pm(\lambda_2 - \lambda_3) \quad &\leftrightsquigarrow\quad \pm(G_{46} + G_{57}) + i(-G_{47} + G_{56}),\\
+\pm\lambda_1 \quad &\leftrightsquigarrow\quad (2G_{12} - G_{47} - G_{56}) \pm i(2G_{13} - G_{46} + G_{57}),\\
+\pm\lambda_2 \quad &\leftrightsquigarrow\quad (2G_{14} - G_{27} - G_{36}) \pm i(2G_{15} - G_{26} + G_{37}),\\
+\pm\lambda_3 \quad &\leftrightsquigarrow\quad (2G_{16} - G_{25} - G_{34}) \pm i(2G_{17} - G_{24} + G_{35}).\\[\linespacing]
+\end{split}
+\end{align*}
+\end{theorem}
+
+\noindent\begin{corollary} The root system from \hyperref[RootSystem]{Theorem \ref*{RootSystem}} induces a fundamental root system
+\begin{align*}
+\begin{split}
+\alpha_1 \coloneqq \lambda_1 - \lambda_2,\qquad \alpha_2 \coloneqq \lambda_2
+\end{split}
+\end{align*}
+\noindent with highest root
+\begin{align*}
+\begin{split}
+\mu \coloneqq 2\alpha_1 + 3\alpha_2.\\[\linespacing]
+\end{split}
+\end{align*}
+\end{corollary}
+
+\noindent\begin{proof} The positive roots from \hyperref[RootSystem]{Theorem \ref*{RootSystem}} can be written as
+\begin{alignat*}{3}
+\lambda_1 - \lambda_2 &= \alpha_1,\qquad&\lambda_1 - \lambda_3 &= 2\alpha_1 + 3\alpha_2,\qquad&\lambda_2 - \lambda_3 &= \alpha_1 + 3\alpha_2,\\
+\lambda_1 &= \alpha_1 + \alpha_2,\qquad&\lambda_2 &= \alpha_2,\qquad&-\lambda_3 &= \alpha_1 + 2\alpha_2,
+\end{alignat*}
+\noindent where we have used the fact that $\lambda_1 + \lambda_2 + \lambda_3 = 0$. This completes the proof.
+\end{proof}\\
+
+\noindent\begin{theorem}\textup{(\cite[Theorem 1.8.2]{Yok25}).} The Cartan matrix for $\mathfrak{g}_2^\mathbb{C}$ is
+\begin{align*}
+\begin{split}
+A \coloneqq \begin{pmatrix}\hphantom{-}2&-1\\-3&\hphantom{-}2\end{pmatrix}.\\[\linespacing]
+\end{split}
+\end{align*}
+\end{theorem}
+
+\noindent\begin{proof} The real part of $\mathfrak{h}$ is
+\begin{align*}
+\begin{split}
+\mathfrak{h}_\mathbb{R} = \{-i\lambda_1 G_{23} - i\lambda_2 G_{45} - i\lambda_3 G_{67} : \lambda_1, \lambda_2, \lambda_3 \in \mathbb{R},\ \!\lambda_1 + \lambda_2 + \lambda_3 = 0\},
+\end{split}
+\end{align*}
+\noindent with the Killing form restricting to $\mathfrak{h}_\mathbb{R}$ as
+\begin{align*}
+\begin{split}
+B(H, H') = 8\sum_{j=1}^3 \lambda_j\lambda_j',
+\end{split}
+\end{align*}
+\noindent for
+\begin{align*}
+\begin{split}
+H &\coloneqq -i\lambda_1 G_{23} - i\lambda_2 G_{45} - i\lambda_3 G_{67},\\
+H' &\coloneqq -i\lambda_1' G_{23} - i\lambda_2' G_{45} - i\lambda_3' G_{67}.
+\end{split}
+\end{align*}
+\noindent Now, suppose we consider the canonical element $H_{\alpha_i} \in \mathfrak{h}_\mathbb{R}$ such that $B(H_{\alpha_i}, H) = \alpha_i(H)$ for all $H \in \mathfrak{h}_\mathbb{R}$. These can be computed for our simple roots $\alpha_1$ and $\alpha_2$ as
+\begin{align*}
+\begin{split}
+H_{\alpha_1} = -\frac{1}{8}iG_{23} + \frac{1}{8}iG_{45}\qquad\text{and}\qquad H_{\alpha_2} = \frac{1}{24}iG_{23} - \frac{1}{12}iG_{45} + \frac{1}{24}iG_{67}.
+\end{split}
+\end{align*}
+\noindent We therefore have
+\begin{align*}
+\begin{split}
+(\alpha_1, \alpha_1) &= B(H_{\alpha_1}, H_{\alpha_1}) = 8\left(\left(\frac{1}{8}\right)^2 + \left(-\frac{1}{8}\right)^2\right) = \frac{1}{4},\\
+(\alpha_2, \alpha_2) &= B(H_{\alpha_2}, H_{\alpha_2}) = 8\left(\left(-\frac{1}{24}\right)^2 + \left(\frac{1}{12}\right)^2 + \left(-\frac{1}{24}\right)^2\right) = \frac{1}{12},\\
+(\alpha_1, \alpha_2) &= B(H_{\alpha_1}, H_{\alpha_2}) = 8\left(\left(\frac{1}{8}\right)\left(-\frac{1}{24}\right) + \left(-\frac{1}{8}\right)\left(\frac{1}{12}\right)\right) = -\frac{1}{8}.
+\end{split}
+\end{align*}
+\noindent The entries of the Cartan matrix are given by
+\begin{align*}
+\begin{split}
+A_{ij} \coloneqq 2\frac{(\alpha_i, \alpha_j)}{(\alpha_j, \alpha_j)},
+\end{split}
+\end{align*}
+\noindent whence the result follows. This completes the proof.
+\end{proof}\\[\linespacing]
+
+\ruledsection{The Split Real Form $G_2^s$}{2}
+\noindent\\ Recall that in \hyperref[CayleyDickson]{Remark \ref*{CayleyDickson}} we gave an algorithm for building a family of hypercomplex algebras. A slight modification of this construction -- namely, replacing the minus sign with a plus sign in the definition of multiplication -- yields a new family of so-called {\em split} hypercomplex algebras. Let $\mathbb{O}^s$ therefore denote the split-octonions, given by the direct sum of two copies of the split-quaternions. As a complex vector space, we alternatively have
+\begin{align*}
+\begin{split}
+\mathbb{O}^s \cong \{x \in \mathbb{O}^\mathbb{C} : [\tau\gamma](x) = x\},
+\end{split}
+\end{align*}
+\noindent where $\gamma : a + be_4 \mapsto a - be_4$ for $a, b \in \mathbb{H}$. We define $G_2^s$ to be the automorphism group
+\begin{align*}
+\begin{split}
+G_2^s \coloneqq \textup{Aut}_\mathbb{R}(\mathbb{O}^s) \coloneqq \{\alpha \in \textup{Iso}_\mathbb{R}(\mathbb{O}^s) : \alpha(xy) = \alpha(x)\alpha(y),\ \!\forall x, y \in \mathbb{O}^s\}
+\end{split}
+\end{align*}
+\noindent of the split-octonions. Alternatively, we can view this as the centralizer of $\tau\gamma$ in $G_2^\mathbb{C}$,
+\begin{align*}
+\begin{split}
+G_2^s = (G_2^\mathbb{C})^{\tau\gamma} = \{\alpha \in G_2^\mathbb{C} : \tau\gamma\alpha = \alpha\tau\gamma\}.\\[\linespacing]
+\end{split}
+\end{align*}
+
+\noindent\begin{theorem}\textup{(\cite[Theorem 1.13.1]{Yok25}).} The polar decomposition of $G_2^s$ is given by
+\begin{align*}
+\begin{split}
+G_2^s \cong (\textup{Sp}(1) \times \textup{Sp}(1))/\mathbb{Z}_2 \times \mathbb{R}^8,
+\end{split}
+\end{align*}
+\noindent where $\textup{Sp}(1) = \{a \in \mathbb{H} : \abs{a} = 1\}$ denotes the symplectic group of unit quaternions.\\
+\end{theorem}
+
+\noindent This result follows similarly to \hyperref[PolarDecomposition]{Theorem \ref*{PolarDecomposition}}, where we use the fact that $(G_2)^\gamma = (\textup{Sp}(1) \times \textup{Sp}(1))/\mathbb{Z}_2$, as shown in \cite[Theorem 1.10.1]{Yok25}. Finally, we have one last result.\\
+
+\noindent\begin{theorem}\textup{(\cite[Theorem 1.13.2]{Yok25}).} The center of $G_2^s$ is trivial.\\
+\end{theorem}
+
+\newpage
+
+\newpage
+\renewcommand\thesection{R}
+\ruledsectionstar{References}{References}
+\begingroup
+\setlength{\emergencystretch}{.5em}
+\printbibliography[heading=none]
+\endgroup
+
+\end{document}
