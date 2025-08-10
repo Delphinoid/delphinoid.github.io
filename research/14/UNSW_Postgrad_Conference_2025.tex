@@ -1,0 +1,553 @@
+%%%%%%%%%
+% SETUP %
+%%%%%%%%%
+
+\documentclass{beamer}
+\mode<presentation> {
+	\usetheme{Madrid}
+}
+\setbeamertemplate{frametitle continuation}[from second][]
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{soul}
+
+\usepackage{tikz}
+\usetikzlibrary{knots}
+\usetikzlibrary{arrows.meta}
+
+% Title.
+\title[{\fontsize{5.5}{4}\selectfont Categorification and the Lusztig--Vogan Module}]{Categorification and the Lusztig--Vogan Module}
+\author[Daniel Dunmore]{
+    Daniel Dunmore\\
+    {\footnotesize Supervisor: Dr. Anna Romanov}
+}
+\institute[UNSW]{
+	University of New South Wales \\
+	\medskip
+	\textit{d.dunmore@unsw.edu.au}
+}
+\date{August 11, 2025}
+\titlegraphic{\includegraphics[width=2cm]{unsw-crest}}
+\logo{\includegraphics[width=3.5cm]{QR}}
+
+% Bibliography.
+\usepackage[%
+	backend = biber,
+	% BibLaTeX-Math package: https://github.com/konn/biblatex-math
+	style = math-alphabetic,
+	giveninits = true,
+	dashed = false,
+	url = false,
+	doi = false,
+	sorting = none,
+	minalphanames = 3,
+	maxalphanames = 4
+]{biblatex}
+% Use the default font size for the bibliography.
+\renewcommand*{\bibfont}{\normalsize}
+% Use title case rather than sentence case for references.
+\DeclareFieldFormat{titlecase}{#1}
+% Put last names before first names.
+\DeclareNameAlias{default}{family-given}
+% Used for articles with appendices written by other authors.
+\NewBibliographyString{bywithappendix}
+\DefineBibliographyStrings{english}{
+	bywithappendix = {with an appendix by}
+}
+% Specify the bibliography data file to use.
+\addbibresource{References.bib}
+% Sort by order present in .bib file.
+\nocite{*}
+
+
+%%%%%%%%%%%%
+% NOTATION %
+%%%%%%%%%%%%
+
+\usepackage{mathrsfs}
+
+% Adds integral notation like \oiint.
+\usepackage{esint}
+% Blackboard bold symbols.
+\usepackage{bbm}
+
+\usepackage{accents}
+% Tilde notation for vectors.
+\newcommand{\ut}[1]{\underaccent{\tilde}{#1}}
+% Arrow notation for vectors.
+\usepackage{harpoon}
+% Dirac bra-ket notation for quantum states.
+\usepackage{braket}
+
+% Differential formatting.
+\usepackage{ifthen}
+\usepackage{etoolbox}
+\newcommand*{\ndiff}[1]{\mathrm{d}#1}
+\newcommand*{\sdiff}[1]{\mathop{}\!\ndiff{#1}}
+\newcommand{\rdiff}[3][]{
+	\ifthenelse{\equal{#1}{}}
+	{\frac{\mathrm{d}#2}{\mathrm{d}#3}}
+	{\frac{\mathrm{d}^{#1}#2}{\forcsvlist\ndiff{#3}}}
+}
+\newcommand*{\npiff}[1]{\mathrm{\partial}#1}
+\newcommand*{\spiff}[1]{\mathop{}\!\npiff{#1}}
+\newcommand{\rpiff}[3][]{
+	\ifthenelse{\equal{#1}{}}
+	{\frac{\mathrm{\partial}#2}{\mathrm{\partial}#3}}
+	{\frac{\mathrm{\partial}^{#1}#2}{\forcsvlist\npiff{#3}}}
+}
+% Inexact differential for physics.
+\newcommand*{\dbar}[1]{\mathop{}\!\mathrm{\dj}#1}
+
+% Metrics, inner products and norms.
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\inprod}{\langle}{\rangle}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+% This is used if we want an empty norm. 
+\newcommand{\blank}{{}\cdot{}}
+
+% Function notation.
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\coker}{\mathrm{Coker}}
+\newcommand{\im}{\mathrm{Im}}
+\newcommand{\ev}{\mathrm{ev}}
+\newcommand{\coev}{\mathrm{coev}}
+
+% Category theory notation.
+%\newcommand{\obset}{\textnormal{Ob}_{#1}\!\left(#2\right)}
+%\newcommand{\morset}[2][]{\textnormal{Mor}_{#1}\!\left(#2\right)}
+%\newcommand{\homset}[2][]{\textnormal{Hom}_{#1}\!\left(#2\right)}
+%\newcommand{\End}[2][]{\textnormal{End}_{#1}\!\left(#2\right)}
+%\newcommand{\opp}[1]{{#1}^{\textnormal{op}}}
+%\newcommand{\textcat}[1]{\textnormal{\textsf{#1}}}
+\newcommand{\obset}{\mathrm{Ob}}
+\newcommand{\morset}{\mathrm{Mor}}
+\newcommand{\homset}{\mathrm{Hom}}
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\opp}{\mathrm{op}}
+\newcommand{\textcat}[1]{\mathrm{\textsf{#1}}}
+\newcommand{\textobj}[1]{\mathrm{\texttt{#1}}}
+
+% Special notation.
+%\newcommand{\chr}{\textnormal{char}}
+%\newcommand{\Tr}{\textnormal{Tr}}
+%\newcommand{\trv}{\textnormal{tr}}
+%\newcommand{\Dim}{\textnormal{Dim}}
+%\newcommand{\FPdim}{\textnormal{FPdim}}
+\newcommand{\chr}{\mathrm{char}}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\trv}{\mathrm{tr}}
+\newcommand{\Dim}{\mathrm{Dim}}
+\newcommand{\FPdim}{\mathrm{FPdim}}
+
+% Hiragana "yo" for the Yoneda embeddings.
+\newcommand{\yo}{\text{\usefont{U}{min}{m}{n}\symbol{'210}}}
+\DeclareFontFamily{U}{min}{}
+\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
+
+% Representation theory notation.
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\Alt}{\mathrm{Alt}}
+
+\usepackage{calc}
+
+\newcommand*{\emphasis}[1]{\textcolor{structure}{\em #1}}
+
+\usefonttheme[onlymath]{serif}
+
+\DeclareCiteCommand{\aycite}
+{\boolfalse{citetracker}\boolfalse{pagetracker}}
+{\printtext[bibhyperref]{\printnames{labelname}\addcomma\addspace\printfield{year}}}
+{\multicitedelim}
+{}
+
+% Negative horizontal phantom.
+\newcommand{\nhphantom}[1]{\sbox0{#1}\hspace{-\the\wd0}}
+
+\newtheorem{theoremdefinition}{Theorem-Definition}
+\newtheorem{conjecture}{Conjecture}
+
+\usepackage{stmaryrd}
+
+\renewcommand*{\bibfont}{\normalfont\footnotesize}
+
+\usepackage{tikz-cd}
+\usepackage{spath3}
+\usetikzlibrary{arrows.meta, babel, decorations.markings, decorations.pathreplacing, knots}
+
+\usepackage{scrextend}
+
+%%%%%%%%%%%%
+% DOCUMENT %
+%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%
+% Prelude %
+%%%%%%%%%%%
+
+\begin{frame}
+\noindent\\[-20pt]
+\begin{figure}[!ht]
+\titlepage
+\end{figure}
+\end{frame}
+\logo{}
+
+%\begin{frame}
+%\frametitle{Roadmap}
+%\begin{center}
+%\begin{minipage}{\widthof{(4) Representation Theory:\ Categorified}}
+%\setlength{\parskip}{4ex}
+%\tableofcontents
+%\end{minipage}
+%\end{center}
+%\end{frame}
+
+\begin{frame}
+\frametitle{Prologue}
+\noindent In this talk, I would like to motivate categorical representation theory from the perspective of real Lie groups.\newline
+
+\noindent I'll start by introducing Kazhdan--Lusztig theory and describing the success of categorification in giving us a new perspective in this realm.\newline
+
+\noindent I'll then mention Lusztig and Vogan's real group analogue and where I fit into understanding its categorification.\newline
+
+\noindent In particular, I would like to walk through some explicit examples of categorical Jordan--H\"{o}lder decompositions.
+\end{frame}
+
+%%%%%%%%%%%%%%
+% Background %
+%%%%%%%%%%%%%%
+
+%\section{Background}
+
+%\begin{frame}
+%\centerline{\huge\textcolor{structure}{\underline{Background}}}
+%\end{frame}
+
+\begin{frame}
+\frametitle{Kazhdan--Lusztig Theory}
+\noindent In the late 1970s, Kazhdan and Lusztig introduced a family of polynomials now known as \textcolor{structure}{Kazhdan--Lusztig polynomials}, defined as change-of-basis coefficients between the standard basis and the following self-dual basis for the Iwahori--Hecke algebra $\mathscr{H}(W, S)$.
+\begin{align*}
+\begin{split}
+b_x = \sum_{y \in W} \textcolor{structure}{h_{y,x}(v)}\delta_y
+\end{split}
+\end{align*}
+\begin{theorem}[Kazhdan--Lusztig Conjecture (\cite{KL79}: \cite{BB81}, \cite{BK81})]
+\noindent For all $x, y \in W$, the Jordan--H\"{o}lder multiplicity of the composition factor $L_y$ inside the Verma module $M_x$ is given by
+\begin{align*}
+\begin{split}
+[M_x : L_y] = h_{y,x}(1).
+\end{split}
+\end{align*}
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\frametitle{Soergel's Technology}
+\noindent Let $R \coloneqq \mathbb{R}[\alpha_s : s \in S]$ and define an $(R, R)$-bimodule
+\begin{align*}
+\begin{split}
+B_s \coloneqq R \otimes_{R^s} R(1)
+\end{split}
+\end{align*}
+\noindent for each $s \in S$. Given $w \in W$ with expression $\underline{w} = (s_1, \dots, s_k)$, we define the \textcolor{structure}{Bott--Samelson bimodule}
+\begin{align*}
+\begin{split}
+BS(w) \coloneqq B_{s_1} \otimes_R \cdots \otimes B_{s_k}.
+\end{split}
+\end{align*}
+\noindent The Karoubian envelope of the category generated by these $(R, R)$-bimodules is known as the \textcolor{structure}{category of Soergel bimodules} and denoted $\mathbb{S}\textcat{Bim}(W, S)$.\newline
+
+\noindent The indecomposables of $\mathbb{S}\textcat{Bim}(W, S)$ are, up to grading shifts, indexed by $W$, with $B_w$ denoting the unique indecomposable summand of $BS(w)$ that does not appear in $BS(x)$ for any $x < w$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Soergel's Technology}
+\noindent For all $x \in W$, we define the \textcolor{structure}{standard bimodule} $R_x$ to be the regular $(R, R)$-bimodule $R$ whose right action is twisted by reflection by $x$.\newline %$f \mapsto x(f)$, where
+%\begin{align*}
+%\begin{split}
+%s(\alpha_t) \coloneqq \alpha_t + 2\cos\!\left(\frac{\pi}{m_{st}}\right)\!\alpha_s.
+%\end{split}
+%\end{align*}
+%\noindent That is, $p \cdot f \coloneqq px(f)$ for $p \in R_x$ and $f \in R$.\newline
+
+\noindent For any Soergel bimodule $B \in \obset(\mathbb{S}\textcat{Bim}(W, S))$, we have a so-called \textcolor{structure}{$\Delta$-filtration} of $(R, R)$-bimodules
+\begin{align*}
+\begin{split}
+0 = B^k \subset B^{k-1} \subset \cdots \subset B^1 \subset B^0 = B
+\end{split}
+\end{align*}
+\noindent with subquotients $B^i/B^{i+1} \cong R_{y_i}^{\oplus h_{y_i}(B)}$, where $h_{y_i}(B) \in \mathbb{Z}_{\geq 0}[v^{\pm 1}]$.\newline
+
+\noindent By definition, $R_y^v \coloneqq R_y(1)$ and $R_y^{v^{-1}} \coloneqq R_y(-1)$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Soergel's Technology}
+\begin{theorem}[Soergel's Conjecture (\cite{Soe92}: \cite{EW14})]
+\noindent For all $x, y \in W$, the graded multiplicity of the composition factor $R_y$ in the $\Delta$-filtration of the Soergel bimodule $B_x$ is given by
+\begin{align*}
+\begin{split}
+h_y(B_x) = h_{y,x}.
+\end{split}
+\end{align*}
+Equivalently, the indecomposables of $\mathbb{S}\textcat{\textup{Bim}}(W, S)$ categorify the canonical basis for $\mathscr{H}(W, S)$.
+\end{theorem}
+\vfill
+On top of this, Soergel bimodules carry also a good deal of homological and geometric structure that isn't seen in the decategorified world.
+\vfill
+%\vfill
+%\begin{center}\textcolor{structure}{What about the Lusztig--Vogan module?}\end{center}
+%\vfill
+\end{frame}
+
+\begin{frame}
+\frametitle{Real Reductive Groups}
+\noindent The objects we are interested in studying are real reductive groups.\newline
+
+\noindent Their full representation theory is totally unmanageable.\newline Harish-Chandra's approach: study a nice subclass that {\em is} manageable.\newline
+
+\noindent The ``right'' class of representations are \textcolor{structure}{admissible representations}. Irreducible $K$-admissible representations are in bijection with irreducible $(\mathfrak{g}, K)$-modules, up to some notion of equivalence.\newline
+
+\noindent Irreducible $(\mathfrak{g}, K)$-modules can then be realized geometrically as $K$-equivariant local systems on $K$-orbits of the flag variety via Beilinson--Bernstein localization.\newline
+%\noindent The objects we are interested in studying are real reductive groups.\newline
+%\noindent Let $G$ be a connected complex reductive group with holomorphic involution $\theta$ and finite index subgroup $K \subseteq G^\theta$.\newline This data is equivalent to choosing a real form $G_\mathbb{R}$ of $G$.\newline
+
+%\noindent Harish-Chandra's approach: there is a bijection between irreducible $K$-admissible representations of a real reductive group $G_\mathbb{R}$ and irreducible $(\mathfrak{g}, K)$-modules (up to some notion of equivalence).\newline
+
+%\noindent Suppose we fix a non-singular integral infinitesimal character $\lambda$. Then the geometric version of Beilinson--Bernstein localization gives us a bijection
+%\begin{align*}
+%\begin{split}
+%\left\{\begin{matrix}\text{irreducible $(\mathfrak{g}, K)$-modules}\\\text{with character $\lambda$}\end{matrix}\right\} \xleftrightarrow{\qquad} \left\{\begin{matrix}\text{irreducible $K$-equivariant}\\\text{local systems on $K$-orbits}\end{matrix}\right\} \eqqcolon \mathscr{D}
+%\end{split}
+%\end{align*}
+%\noindent The free $\mathbb{Z}[v^{\pm 1}]$-module with basis $\mathscr{D}$ is known as the \textcolor{structure}{Lusztig--Vogan module} and denoted $\mathcal{M}_{LV}$. It admits an action of $\mathscr{H}(W, S)$.
+\end{frame}
+
+\begin{frame}
+\frametitle{The Lusztig--Vogan Module}
+\noindent Let $G$ be a connected complex reductive group with holomorphic involution $\theta$. This data is equivalent to choosing a real form $G_\mathbb{R}$ of $G$.\newline
+
+\noindent Fix a finite index subgroup $K \subseteq G^\theta$, a Borel subgroup $B \subset G$, a maximal torus $T \subset K \cap B$ and a non-singular integral infinitesimal character $\lambda$.
+\begin{align*}
+\begin{split}
+\left\{\begin{matrix}\text{irreducible $(\mathfrak{g}, K)$-modules}\\\text{with character $\lambda$}\end{matrix}\right\} \xleftrightarrow{\qquad} \mathscr{D} \coloneqq \left\{\begin{matrix}\text{irreducible $K$-equivariant}\\\text{local systems on $K$-orbits}\\\text{of the flag variety $G/B$}\end{matrix}\right\}
+\end{split}
+\end{align*}
+\noindent The free $\mathbb{Z}[v^{\pm 1}]$-module with basis $\mathscr{D}$ is known as the \textcolor{structure}{Lusztig--Vogan module} and denoted $\mathcal{M}_{LV}$. It admits an action of $\mathscr{H}(W, S)$.\newline
+
+\noindent The Lusztig--Vogan module can be thought of as a \textcolor{structure}{real group analogue to Kazhdan--Lusztig theory}.\newline
+\end{frame}
+
+\begin{frame}
+\frametitle{The Lusztig--Vogan Module}
+\noindent For each $\delta \in \mathscr{D}$, there exists a ``self-dual'' element
+\begin{align*}
+\begin{split}
+C_\delta = \sum_{\gamma \in \mathscr{D}} P_{\gamma,\delta}(v)\gamma
+\end{split}
+\end{align*}
+\noindent in $\mathcal{M}_{LV}$. The $P_{\gamma,\delta}$ are known as \textcolor{structure}{Kazhdan--Lusztig--Vogan polynomials}.\newline
+
+\begin{theorem}[\cite{LV83}]
+\noindent For all $\delta, \gamma \in W$, the Jordan--H\"{o}lder multiplicity of the composition factor $L_\gamma$ inside the $(\mathfrak{g}, K)$-module $M_\delta$ is given by
+\begin{align*}
+\begin{split}
+[M_\delta : L_\gamma] = P_{\gamma,\delta}(1).
+\end{split}
+\end{align*}
+\end{theorem}
+\vfill
+\begin{center}\textcolor{structure}{Question: can we learn more about real groups via categorification?}\end{center}
+\vfill
+\end{frame}
+
+\begin{frame}
+\frametitle{The Lusztig--Vogan Category}
+\noindent In 2022, Larson and Romanov came up with a categorification of the principle block of the Lusztig--Vogan module as a module category over the category of Soergel bimodules.\newline
+
+\noindent For the sake of simplicity, we will restrict to the case where $K$ is the connected component containing the identity and $T$ is Abelian.\newline
+
+\begin{theorem}[\cite{LR22}]
+\noindent The Grothendieck group of
+\begin{align*}
+\begin{split}
+\mathcal{N}_{LV}^0 \coloneqq \langle R_w \otimes_R X : [w] \in W_K\backslash W,\ X \in \obset(\mathbb{S}\textcat{\textup{Bim}}(W, S))\rangle_{\oplus,\ominus,(1)}
+\end{split}
+\end{align*}
+\noindent is the block of $\mathcal{M}_{LV}$ containing the trivial representation.
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Lusztig--Vogan Category}
+%\begin{center}
+\noindent Victor showed us a diagrammatic calculus for the morphisms.\newline This is already some new categorical structure.\newline
+
+\noindent I'm interested in understanding its \textcolor{structure}{(weak) Jordan--H\"{o}lder decompositions}.\newline
+
+\noindent I'd like to use the remainder of the talk to walk through a couple of concrete examples.
+%\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Example -- Type $A_1$}
+\noindent Let $G \coloneqq \textup{SL}(2, \mathbb{C})$. This group has two real forms: a compact form $\textup{SU}(2)$ and a split form $\textup{SU}(1, 1)$. Let's look at the latter.\newline
+
+\noindent The corresponding Weyl groups are $W = S_2 = \{1, s\}$ and $W_K = \{1\}$, so $W_K\backslash W = \{[1], [s]\}$.\newline
+
+\noindent Tensoring standard bimodules with indecomposable Soergel bimodules gives us four initial candidates for indecomposables (up to grading shifts).
+\begin{alignat*}{2}
+R\hphantom{{}_{s}} \otimes_R R\hphantom{{}_{s}} &\cong R,&\qquad R\hphantom{{}_{s}} \otimes_R B_{s} &\cong B_{s},\\
+R_{s} \otimes_R R\hphantom{{}_{s}} &\cong R_{s},&\qquad R_{s} \otimes_R B_{s} &\cong B_{s}.
+\end{alignat*}
+\noindent All of these are indecomposable, so we're done.
+\end{frame}
+
+\begin{frame}
+\frametitle{Example -- Type $A_1$}
+\noindent We can graph the relationships between the indecomposables under actions by $\mathbb{S}\textcat{Bim}$ as follows.\vspace{-0.5cm}
+\begin{center}
+\begin{tikzcd}[labels={outer sep=-0.65cm}, nodes={circle, minimum size=1.75cm, inner sep=0cm, outer sep=-0.5cm}, cramped, column sep=-0.5cm, row sep=-0.5cm, baseline=0.4cm]
+\pgfmatrixnextcell R \otimes_R B_s\arrow[out=60, in=120, loop, looseness=5, "s"'] \pgfmatrixnextcell\\
+R\arrow[ur, "s"] \pgfmatrixnextcell\pgfmatrixnextcell R_s\arrow[ul, "s"']
+\end{tikzcd}
+\end{center}
+\vspace{-1.5cm}\noindent The simple transitive module subcategories are generated by the strongly connected components of the graph.\newline
+
+\noindent In this instance, we have an equivalence of categories $\mathcal{M}_R \simeq \mathcal{M}_{R_s}$.\newline Thus our composition quotients are \textcolor{structure}{$\mathcal{M}_{B_s}$ with multiplicity $1$} and\newline \textcolor{structure}{$\mathcal{M}_R$ with multiplicity $2$}. Note that $\mathscr{H}(W, S)$ has two two-sided cells.
+\end{frame}
+
+\begin{frame}
+\frametitle{Example -- Type $A_2$}
+\noindent Let $G \coloneqq \textup{SL}(3, \mathbb{C})$. This group has three real forms: a compact form $\textup{SU}(3)$, a split form $\textup{SL}(3, \mathbb{R})$ and a quasi-split form $\textup{SU}(2, 1)$.\newline We'll look at $\textup{SU}(2, 1)$.\newline
+
+\noindent The corresponding Weyl groups are $W = S_3 = \langle s, t : s^2 = t^2 = (st)^3 = 1\rangle$ and $W_K = S_2 = \{1, s\}$, so $W_K\backslash W = \{[1], [t], [ts]\}$.\newline
+
+\noindent Not every product of a standard bimodule with an indecomposable Soergel bimodule is indecomposable, so we need to look for direct summands. Our indecomposables are, up to grading shifts,
+\begin{align*}
+\begin{split}
+R,\quad R_t,\quad R_{ts},\quad R \otimes_R B_t,\quad R_t \otimes_R B_s\quad\text{and}\quad R^s \otimes_{R^{s,t}} R.
+\end{split}
+\end{align*}
+%\noindent Let $G \coloneqq \textup{SL}(3, \mathbb{C})$.\newline
+
+%\noindent This has three real forms: a compact form $\textup{SU}(3)$, a split form $\textup{SL}(3, \mathbb{R})$ and a quasi-split form $\textup{SU}(2, 1)$.\newline
+
+%\noindent The group $G_\mathbb{R} \coloneqq \textup{SU}(2, 1)$ corresponds to the Cartan involution $\theta : g \mapsto I_{2,1}gI_{2,1}$. We thus have
+%\begin{align*}
+%\begin{split}
+%G^\theta = \left\{\begin{pmatrix}a&b&0\\c&d&0\\0&0&\frac{1}{ad-bc}\end{pmatrix}\right\} \cong \textup{GL}(2, \mathbb{C}).
+%\end{split}
+%\end{align*}
+%\noindent This is connected, so let's take $K \coloneqq G^\theta$.\newline
+
+%\noindent The group of diagonal matrices with unit determinant is a maximal torus.\newline Denote this by $T$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Example -- Type $A_2$}
+\vspace{-0.25cm}\noindent The graph of the action preorder is\vspace{2.75cm}
+%\vspace{2.5cm}
+\begin{center}
+\hspace{4.25cm}\begin{tikzcd}[overlay, labels={outer sep=-1cm}, nodes={circle, minimum size=2.5cm, inner sep=-0.25cm, outer sep=-0.75cm}, cramped, column sep=-0.75cm, row sep=-0.75cm]
+\pgfmatrixnextcell \pgfmatrixnextcell R^s \otimes_{R^{s,t}} R\arrow[out=60, in=120, loop, looseness=5, "{s,t}"'] \pgfmatrixnextcell \pgfmatrixnextcell\\
+\pgfmatrixnextcell R \otimes_R B_t\arrow[dl, shift right, "s"']\arrow[ur, "s"]\arrow[out=80, in=140, loop, looseness=5, "t"'] \pgfmatrixnextcell \pgfmatrixnextcell R_t \otimes_R B_s\arrow[dr, shift right, "t"']\arrow[ul, "t"']\arrow[out=40, in=100, loop, looseness=5, "s"'] \pgfmatrixnextcell\\
+R\arrow[ur, shift right, "t"']\arrow[out=220, in=280, loop, looseness=5, "s"'] \pgfmatrixnextcell \pgfmatrixnextcell R_t\arrow[ul, "t"]\arrow[ur, "s"'] \pgfmatrixnextcell \pgfmatrixnextcell R_{ts}\arrow[ul, shift right, "s"']\arrow[out=260, in=320, loop, looseness=5, "t"', outer sep=-0.5cm]
+\end{tikzcd}\hspace{4.25cm}.
+\end{center}
+\vspace{2.75cm}\noindent We have three simple quotients, where $\mathcal{M}_R \simeq \mathcal{M}_{R_{ts}}$ has multiplicity $2$.
+%\noindent The normalizer of $T$ in $K$ is
+%\begin{align*}
+%\begin{split}
+%N_K(T) = T \sqcup \left\{\begin{pmatrix}0&b&0\\c&0&0\\0&0&-\frac{1}{bc}\end{pmatrix}\right\},
+%\end{split}
+%\end{align*}
+%\noindent whence $W_K = N_K(T)/T = S_2$.\newline
+
+%\noindent Meanwhile,
+%\begin{align*}
+%\begin{split}
+%W \coloneqq N_G(T)/T = \left\langle T, \left\{\begin{pmatrix}0&b&0\\c&0&0\\0&0&-\frac{1}{bc}\end{pmatrix}\right\}, \left\{\begin{pmatrix}-\frac{1}{fh}&0&0\\0&0&f\\0&h&0\end{pmatrix}\right\}\right\rangle = S_3.
+%\end{split}
+%\end{align*}
+\end{frame}
+
+\begin{frame}
+\frametitle{Epilogue}
+\noindent We have just seen two examples for type $A$ Coxeter systems.\newline
+
+\noindent In this case, the action preorder is given by the $W$-graph (boring).\newline
+
+\noindent For some Coxeter system $(W, S)$ of type $A_n$, there is one equivalence class of simple transitive $2$-representations of $\mathbb{S}\textcat{Bim}(W, S)$ for each of the $n+1$ two-sided cells, and these are all \textcolor{structure}{cell $2$-representations} (\textcolor{structure}{\cite{MMMTZ23}}).
+\end{frame}
+
+\begin{frame}
+\frametitle{Epilogue}
+\noindent There are already lots of questions!\newline
+\begin{addmargin}[0.5cm]{0pt}
+\begin{enumerate}[]
+\item Are there Coxeter systems for which the the action preorder for the Lusztig--Vogan category is not predicted by the $W$-graph?\vspace{0.25cm}\\
+\item Can we build any interesting module categories from ``extensions'' of Lusztig--Vogan categories?\vspace{0.25cm}\\
+\item Is there a real group analogue to Soergel's conjecture?\vspace{0.25cm}\\
+\item \textcolor{structure}{What genuinely new information can we learn about real groups?}
+\end{enumerate}
+\end{addmargin}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The Lusztig--Vogan Module %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\section{The Lusztig--Vogan Module}
+
+%\begin{frame}
+%\centerline{\huge\textcolor{structure}{\underline{The Lusztig--Vogan Module}}}
+%\end{frame}
+
+%\begin{frame}
+%\frametitle{The Lusztig--Vogan Module}
+%d
+%\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Categorifying the Lusztig--Vogan Module %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\section{Categorifying the Lusztig--Vogan Module}
+
+%\begin{frame}
+%\centerline{\huge\textcolor{structure}{\underline{Categorifying the Lusztig--Vogan Module}}}
+%\end{frame}
+
+%\begin{frame}
+%\frametitle{Categorifying the Lusztig--Vogan Module}
+%d
+%\end{frame}
+
+%%%%%%%%%%%%%%
+% References %
+%%%%%%%%%%%%%%
+
+\section*{References}
+
+\begin{frame}[allowframebreaks]
+\frametitle{References}
+\vspace{-0.25cm}\printbibliography[heading = none]
+\end{frame}
+
+%%%%%%%%%%%%%
+% Thank you %
+%%%%%%%%%%%%%
+
+\begin{frame}
+\centerline{\Huge\textcolor{structure}{\underline{Thank you for your attention!}}}
+%\vspace*{2em}
+%\centerline{\LARGE Any questions?}
+\end{frame}
+
+\end{document}
