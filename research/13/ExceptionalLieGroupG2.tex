@@ -352,7 +352,7 @@ G_2^\mathbb{C} \coloneqq \{\alpha \in \textup{Iso}_\mathbb{C}(\mathbb{O}^\mathbb
 
 \noindent The upshot from this lemma is that $G_2^\mathbb{C}$ is closed under taking conjugate transposes. Moreover, $\alpha \in G_2^\mathbb{C}$ is unitary if and only if it commutes with our complex conjugation map $\tau$. We can actually say a bit more than this. Given $\alpha \in G_2$, we have a unique complexification $\alpha^\mathbb{C} \in G_2^\mathbb{C}$ that takes $x \otimes_\mathbb{R} z \in \mathbb{O} \otimes_\mathbb{R} \mathbb{C}$ to $\alpha(x) \otimes_\mathbb{R} z = z\alpha(x)$. In fact, we can do this process in reverse.\\
 
-\noindent\begin{lemma}\label{CompactSubgroup} The Lie group $G_2$ lives inside $G_2^\mathbb{C}$ as the centralizer subgroup $\{\alpha \in G_2^\mathbb{C} : \tau\alpha = \alpha\tau\}$.\\
+\noindent\begin{lemma}\label{CompactSubgroup} The group $G_2$ lives inside $G_2^\mathbb{C}$ as the fixed-point subgroup $(G_2^\mathbb{C})^\tau = \{\alpha \in G_2^\mathbb{C} : \tau\alpha = \alpha\tau\}$.\\
 \end{lemma}
 
 \noindent\begin{proof} Suppose $\alpha \in G_2^\mathbb{C}$ satisfies $\tau\alpha = \alpha\tau$. Given $x \in \mathbb{O}$, we have that $[\tau\alpha](x) = [\alpha\tau](x) = \alpha(x)$, and hence $\alpha(x) \in \mathbb{O}$. Thus $\alpha$ restricts to an $\mathbb{R}$-transformation $\alpha\vert_\mathbb{O} \in G_2$, which satisfies $\alpha = (\alpha\vert_\mathbb{O})^\mathbb{C}$. This completes the proof.
@@ -589,13 +589,13 @@ G_2^s = (G_2^\mathbb{C})^{\tau\gamma} = \{\alpha \in G_2^\mathbb{C} : \tau\gamma
 \noindent\begin{theorem}\textup{(\cite[Theorem 1.13.1]{Yok25}).} The polar decomposition of $G_2^s$ is given by
 \begin{align*}
 \begin{split}
-G_2^s \cong (\textup{Sp}(1) \times \textup{Sp}(1))/\mathbb{Z}_2 \times \mathbb{R}^8,
+G_2^s \cong \textup{SO}(4) \times \mathbb{R}^8,
 \end{split}
 \end{align*}
 \noindent where $\textup{Sp}(1) = \{a \in \mathbb{H} : \abs{a} = 1\}$ denotes the symplectic group of unit quaternions.\\
 \end{theorem}
 
-\noindent This result follows similarly to \hyperref[PolarDecomposition]{Theorem \ref*{PolarDecomposition}}, where we use the fact that $(G_2)^\gamma = (\textup{Sp}(1) \times \textup{Sp}(1))/\mathbb{Z}_2$, as shown in \cite[Theorem 1.10.1]{Yok25}. Finally, we have one last result.\\
+\noindent This result follows similarly to \hyperref[PolarDecomposition]{Theorem \ref*{PolarDecomposition}}, where $(G_2)^\gamma \cong (\textup{Sp}(1) \times \textup{Sp}(1))/\mathbb{Z}_2$ as shown in \cite[Theorem 1.10.1]{Yok25} and $(\textup{Sp}(1) \times \textup{Sp}(1))/\mathbb{Z}_2 \cong \textup{SO}(4)$. Finally, we have one last result.\\
 
 \noindent\begin{theorem}\textup{(\cite[Theorem 1.13.2]{Yok25}).} The center of $G_2^s$ is trivial.\\
 \end{theorem}
@@ -605,13 +605,23 @@ G_2^s \cong (\textup{Sp}(1) \times \textup{Sp}(1))/\mathbb{Z}_2 \times \mathbb{R
 \newpage
 \renewcommand\thesection{A}
 \ruledsectionstar{Appendix}{Appendix}
-\noindent\\ Recall that the Cayley--Dickson construction gives us an infinite family of hypercomplex algebras, sometimes referred to as the ``Cayley--Dickson algebras''. As a result, we would naturally expect to obtain an infinite family of Lie groups given by the automorphism groups of Cayley--Dickson algebras. How does $G_2$, as an exceptional Lie group, fit into this infinite family? Well, suppose we let $A_n$ denote the Cayley--Dickson algebra of real dimension $2^n$ (that is, $A_0 \coloneqq \mathbb{R}$, $A_1 \coloneqq \mathbb{C}$, $A_2 \coloneqq \mathbb{H}$ and so on). For the first few cases, we have $\textup{Aut}_\mathbb{R}(\mathbb{R}) = \{0\}$, $\textup{Aut}_\mathbb{R}(\mathbb{C}) = \mathbb{Z}/2\mathbb{Z}$ and $\textup{Aut}_\mathbb{R}(\mathbb{H}) = \textup{SO}(3)$. However, beyond this, something quite remarkable happens. In particular, for all $n \geq 3$, we have
+\noindent\\ This appendix contains an assortment of observations and remarks that would not fit anywhere else in this piece. I will likely continue to add to this over time.\\
+
+\noindent Recall that the Cayley--Dickson construction gives us an infinite family of hypercomplex algebras, sometimes referred to as the ``Cayley--Dickson algebras''. As a result, we would naturally expect to obtain an infinite family of Lie groups given by the automorphism groups of Cayley--Dickson algebras. How does $G_2$, as an exceptional Lie group, fit into this infinite family? Well, suppose we let $A_n$ denote the Cayley--Dickson algebra of real dimension $2^n$ (that is, $A_0 \coloneqq \mathbb{R}$, $A_1 \coloneqq \mathbb{C}$, $A_2 \coloneqq \mathbb{H}$ and so on). For the first few cases, we have $\textup{Aut}_\mathbb{R}(\mathbb{R}) = \{0\}$, $\textup{Aut}_\mathbb{R}(\mathbb{C}) = \mathbb{Z}/2\mathbb{Z}$ and $\textup{Aut}_\mathbb{R}(\mathbb{H}) = \textup{SO}(3)$. However, beyond this, something quite remarkable happens. In particular, for all $n \geq 3$, we have
 \begin{align*}
 \begin{split}
 \textup{Aut}_\mathbb{R}(A_{n+1}) = \textup{Aut}_\mathbb{R}(A_n) \oplus S_3.
 \end{split}
 \end{align*}
-\noindent In other words, for the octonions and beyond, we just have a copy of $G_2$ and $n-3$ copies of the symmetric group $S_3$ (\cite{ES90}).
+\noindent In other words, for the octonions and beyond, we just have a copy of $G_2$ and $n-3$ copies of the symmetric group $S_3$ (\cite{ES90}).\\
+
+\noindent On a separate note, let $G$ be a connected, complex, reductive algebraic group. Recall from structure theory that we have bijections of the form
+\begin{align*}
+\begin{split}
+\{\text{real forms of $G$}\}\ \longleftrightarrow\ \left\{\begin{matrix}\text{antiholomorphic}\\\text{involutions of $G$}\end{matrix}\right\}\!\big/\!\!\sim\ \ \longleftrightarrow\ \left\{\begin{matrix}\text{holomorphic}\\\text{involutions of $G$}\end{matrix}\right\}\!\big/\!\!\sim.
+\end{split}
+\end{align*}
+\noindent In particular, let $\sigma_c$ be the unique (up to $G$-conjugation) antiholomorphic involution of $G$ for which $G^{\sigma_c}$ is compact. If we let $\Theta$ be any $G$-conjugacy class of holomorphic involutions of $G$, then there exists some holomorphic involution $\theta \in \Theta$ that commutes with $\sigma_c$, and furthermore each $G$-conjugacy class of antiholomorphic involutions of $G$ contains $\sigma = \sigma_c \circ \theta$ for some unique choice of initial $\Theta$. In the case of $G_2^\mathbb{C}$, we have that $\sigma_c = \tau$. Meanwhile, the antiholomorphic involution for the split real form $G_2^s$ is $\sigma = \tau\gamma$, so the Cartan involution corresponding to $G_2^s$ is $\theta = \tau\tau\gamma = \gamma$. The maximal compact subgroup of $G_2^s$ is $(G_2^s)^\gamma \cong \textup{SO}(4)$, hence $(G_2^\mathbb{C})^\gamma$ is isomorphic to $\textup{SL}(2, \mathbb{C}) \times \textup{SL}(2, \mathbb{C})$, the complexification of $\textup{SO}(4)$.
 
 \newpage
 \renewcommand\thesection{R}
