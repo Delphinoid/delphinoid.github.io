@@ -1578,7 +1578,34 @@ R\arrow[ur, shift right, "u"']\arrow[out=220, in=280, loop, looseness=5, "{s,t}"
 \end{example}
 \newpage
 
-\noindent\begin{example}\textup{($G_\mathbb{R} = G_2^{c}$).}
+\noindent\begin{example}\textup{($G_\mathbb{R} = G_{2(2)}$).} The Weyl group for $G_2$ is well known to be
+\begin{align*}
+\begin{split}
+D_6 \coloneqq \langle s, t : s^2 = t^2 = (st)^6 = 1\rangle,
+\end{split}
+\end{align*}
+\noindent the dihedral group of order $12$. In \cite[Theorem 1.10.1]{Yok25}, it is shown that the fixed-point subgroup of complex $G_2$ under the Cartan involution $\gamma$ corresponding to split $G_2$ is $(\textup{Sp}(1) \times \textup{Sp}(1))/\mathbb{Z}_2 \cong \textup{SO}(4)$. This complexifies as $K = \textup{SL}(2, \mathbb{C}) \times \textup{SL}(2, \mathbb{C})$, giving us $W_K = \mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}$. Both $K$ and complex $G_2$ have a maximal torus of rank $2$, landing us in the equal rank case. At this stage, we are not sure how $W_K$ lives inside $W$. Indeed, there are three distinct copies of the Klein four-group\linebreak $\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}$ living inside $D_6$; these are
+\begin{align*}
+\begin{split}
+\langle s,\hphantom{(st)^0} (st)^3\rangle &= \{1, ststst, tstst, s\},\\
+\langle s(st)^2, (st)^3\rangle &= \{1, ststst, sts, tst\},\\
+\langle s(st)^4, (st)^3\rangle &= \{1, ststst, ststs, t\}.
+\end{split}
+\end{align*}
+\noindent Because $\abs{W_K\backslash W} = 3$, we know that $W_K\backslash W \cong \mathbb{Z}/3\mathbb{Z}$. Computing the right cosets, we have\\[-0.5\linespacing]
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|l|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+$H$ & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}$H\backslash D_6$} \\\hline
+$\langle s,\hphantom{(st)^0} (st)^3\rangle$ & $\{H, Ht, Hts\}$\\\hline
+$\langle s(st)^2, (st)^3\rangle$ & $\{H, Hs, Ht\}$\\\hline
+$\langle s(st)^4, (st)^3\rangle$ & $\{H, Hs, Hst\}$\\\hline
+\end{tabular}\ .\\[0.5\linespacing]
+\renewcommand{\arraystretch}{1}
+\end{center}
+\noindent I claim that ${}^KW = \{1, s, t\}$.
 \end{example}
 \newpage
 
