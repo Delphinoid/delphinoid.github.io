@@ -1,5 +1,5 @@
 POST_PATH/post.html
-<div><div class="post_title">Birthday Thing</div>
+<div><div class="post_title">Future Plans</div>
 <div class="post_description"></div>
 <div class="post_tags">Tags: POST_TAGS</div></div>
 <div class="post_separator"></div>
