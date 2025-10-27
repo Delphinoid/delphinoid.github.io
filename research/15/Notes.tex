@@ -11,7 +11,7 @@
 \noindent\\[-0.75\linespacing]
 
 \ruledsection{Prologue}{1}
-\noindent\\ What are fusion categories? What are near-groups?\newpage
+\noindent\\ What are fusion categories? What are near-groups, Haagerup--Izumi categories and quadratic\linebreak categories? What is modular data?\newpage
 
 \ruledsection{The Cuntz Algebra Approach of Izumi}{2}
 \noindent\\ Take $\textcat{Vec}_G$ to be skeletal. Consider an associativity constraint $a_{ghk} : ghk --> ghk$. Since $ghk$ is a simple object, $\homset(ghk, ghk) \cong \mathbbm{k}$, whence $a_{ghk} = \lambda_{ghk}\textup{id}_{ghk}$ for some $\lambda_{ghk} \in \mathbbm{k}^\times$. Note that the pentagon diagram enforces certain conditions on our choice of $\lambda_{ghk}$; in particular, if we look at this diagram, we'll see that $\lambda_{ghk} = \omega(g, h, k)$ for some $3$-cocycle $\omega$. By this, we mean a map $\omega : G \times G \times G \to \mathbbm{k}^\times$ satisfying
@@ -115,7 +115,24 @@ c = \frac{1 - \csqrt{3} + a(1)(1 + \csqrt{3})}{2\csqrt{2}}.
 \newpage
 
 \ruledsection{The Leavitt Algebra Approach of Evans--Gannon}{3}
-\noindent\\ .\newpage
+\noindent\\ The important result is \cite[Theorem 2]{EG17}.\newpage
+
+\begin{example}\textup{(Yang--Lee Category).} Let $G = \{0\}$. Then \cite[Equation 4.7]{EG17} demands that
+\begin{align*}
+\begin{split}
+A_{0,0} = \omega A_{0,0} = \overline{\omega}A_{0,0} \implies \omega = 1,
+\end{split}
+\end{align*}
+whence \cite[Equation 4.8]{EG17} tells us that
+\begin{align*}
+\begin{split}
+A_{0,0} = -\delta_\pm^{-1}.
+\end{split}
+\end{align*}
+\noindent The rest of \cite[Equations 4.7--4.10]{EG17} are satisfied by these choices. Hence by \cite[Theorem 2]{EG17}, we have two fusion categories for $G = \{0\}$; a unitary one with $\pm = +$ (the Fibonacci category) and a non-unitary one with $\pm = -$ (the Yang--Lee category).
+\end{example}
+
+\newpage
 
 \renewcommand\thesection{R}
 \ruledsectionstar{References}{References}
