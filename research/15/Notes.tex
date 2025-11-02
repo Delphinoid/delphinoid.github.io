@@ -66,9 +66,13 @@ b(0) = ca(0)b(0) \implies a(0) = c^{-1}.
 \noindent In order for $c^{-1} = c^{-3}$, we require $c = \pm 1$. Finally, \cite[Equation 9.5]{Izu17} tells us that
 \begin{align*}
 \begin{split}
-b(0)b(0)b(0) &= b(0)b(0) \mp \frac{1}{d},\\
-\implies -\frac{1}{d^3} &= \frac{1}{d^2} \mp \frac{1}{d},\\
-\implies \pm d^2 - d - 1 = 0.
+b(0)b(0)b(0) &= b(0)b(0) \mp \frac{1}{d},
+\end{split}
+\end{align*}
+\begin{align*}
+\begin{split}
+\implies &-\frac{1}{d^3} = \frac{1}{d^2} \mp \frac{1}{d},\\
+\implies &\pm d^2 - d - 1 = 0.
 \end{split}
 \end{align*}
 \noindent This only has a real solution when $c = 1$, whence $d$ is nothing but the golden ratio (as it cannot be negative in the unitary case - this alternative solution, known as the Galois dual, corresponds to a non-unitary near-group in this case and many others). This is exactly what we would expect, as $d$ is the dimension of $X$ (where $d^2 = 1 + d$ comes from the fusion rule $X^2 = \mathbbm{1} \oplus X$).\\
@@ -114,6 +118,113 @@ c = \frac{1 - \csqrt{3} + a(1)(1 + \csqrt{3})}{2\csqrt{2}}.
 \end{example}
 \newpage
 
+\noindent\begin{example}\textup{($G = \mathbb{Z}/2\mathbb{Z}$).} Let's determine the Haagerup--Izumi categories with $G = \mathbb{Z}/2\mathbb{Z}$. Let
+\begin{align*}
+\begin{split}
+d_\pm \coloneqq \frac{n \pm \csqrt{n^2 + 4}}{2},
+\end{split}
+\end{align*}
+\noindent where in this example $d \coloneqq 1 + \csqrt{2}$. Izumi's classification involves a triplet $(\epsilon_h(g), \omega(g), A_{h,k}(g))$, where $\epsilon_h(g) \in \{-1, 1\}$, $\omega(g) \in \mathbb{T}$ and $A_{h,k}(g) \in \mathbb{C}$ satisfy \cite[Equations 4.1--4.9]{Izu18}. Well, we know
+\begin{align*}
+\begin{split}
+\epsilon_0(0) = \epsilon_1(0) = 1\qquad\text{and}\qquad\epsilon_0(1) = \epsilon_0(1)\epsilon_0(1) \implies \epsilon_0(1) = 1.
+\end{split}
+\end{align*}
+\noindent By \cite[Equation 4.7]{Izu18},
+\begin{align*}
+\begin{split}
+A_{0,0}(g) = A_{0,0}(g)\omega(g),
+\end{split}
+\end{align*}
+\noindent which tells us that either $\omega(g) = 1$ or $A_{0,0}(g) = 0$ for each $g \in G$. Let's fix any $g \in G$ and consider the case when $A_{0,0}(g) = 0$. In this case, however, \cite[Equations 4.3 and 4.4]{Izu18} give us
+\begin{align*}
+\begin{split}
+A_{1,0}(g)\overline{A_{\delta_{g,0}-g,0}(g)} = 1 - \frac{\abs{\omega(g)}}{d} \implies \text{``}\frac{1}{d^2} = 1 - \frac{1}{d}\text{''}.
+\end{split}
+\end{align*}
+\noindent This ``equality'' is nonsense; we must therefore have $\omega(g) = 1$ for all $g \in G$. Suppose now that $\epsilon_1(1) = 1$. Then \cite[Equation 4.7]{Izu18} gives us
+\begin{align*}
+\begin{split}
+A_{0,1}(0) = A_{1,1}(0) = A_{1,0}(0)\qquad\text{and}\qquad A_{0,1}(1) = A_{1,1}(1) = A_{1,0}(1),
+\end{split}
+\end{align*}
+\noindent while \cite[Equation 4.8]{Izu18} gives us $A_{1,1}(0) = A_{1,1}(1)$. Now, \cite[Equations 4.4 and 4.6]{Izu18} tell us
+\begin{align*}
+\begin{split}
+A_{0,1}(0) A_{1,1}(1) + A_{1,1}(0) A_{1,0}(1) = 0.
+\end{split}
+\end{align*}
+\noindent Thus $A_{0,1}(g) = A_{1,1}(g) = A_{1,0}(g) = 0$ and hence $A_{0,0}(g) = -1/d$ by \cite[Equation 4.3]{Izu18}. However, in this case we cannot satisfy \cite[Equation 4.9]{Izu18}. Suppose instead that $\epsilon_1(1) = -1$. With this new $2$-cocycle, \cite[Equation 4.7]{Izu18} now gives us
+\begin{align*}
+\begin{split}
+A_{0,1}(0) = A_{1,1}(0) = A_{1,0}(0)\qquad\text{and}\qquad A_{0,1}(1) = -A_{1,1}(1) = A_{1,0}(1),
+\end{split}
+\end{align*}
+\noindent while \cite[Equation 4.8]{Izu18} gives us $A_{1,1}(1) = -A_{1,1}(0)$. We then see by \cite[Equation 4.4]{Izu18} that
+\begin{align*}
+\begin{split}
+A_{1,0}(0) = \pm\frac{1}{\csqrt{2}} = \pm\frac{1}{d-1},
+\end{split}
+\end{align*}
+\noindent and
+\begin{align*}
+\begin{split}
+A_{0,0}(0)A_{1,0}(0)^2 = A_{1,0}(0)^2 + A_{1,0}(0)^3 \implies A_{0,0}(0) = 1 + A_{1,0}(0) = \frac{d-1 \pm 1}{d-1}
+\end{split}
+\end{align*}
+\noindent by \cite[Equation 4.9]{Izu18}. Finally, \cite[Equation 4.3]{Izu18} allows us to deduce that
+\begin{align*}
+\begin{split}
+A_{1,0}(0) = -\frac{1}{d-1},
+\end{split}
+\end{align*}
+\noindent whence
+\begin{align*}
+\begin{split}
+A(0) = \frac{1}{d-1}\begin{pmatrix}d-2 & -1\\ -1 & -1\end{pmatrix}\qquad\text{and}\qquad A(1) = \frac{1}{d-1}\begin{pmatrix}d-2 & -1\\ -1 & \hphantom{-}1\end{pmatrix}.
+\end{split}
+\end{align*}
+\noindent\\
+\end{example}
+\newpage
+
+\noindent\begin{remark} Suppose that $\abs{G}$ is odd. Then \cite[Equation 4.1]{Izu18} tells us that $\epsilon_h(g) = 1$, while \cite[Equation 4.2]{Izu18} tells us that $\omega(g)$ does not depend on $g$. Moreover, $A_{h,k}(g)$ cannot depend on $g$ by \cite[Equation 4.5]{Izu18}, and either $\omega = 1$ or $A_{0,0} = 0$ by \cite[Equation 4.7]{Izu18}. In this case, \cite[Equations 4.1--4.9]{Izu18} reduce to the following four equations.
+\begin{align*}
+\begin{split}
+A_{h,k} = A_{-k,h-k}\omega = A_{k-h,-h}\overline{\omega},
+\end{split}
+\end{align*}
+\begin{align*}
+\begin{split}
+\sum_{h \in G} A_{h,0} = -\frac{\overline{\omega}}{d_\pm},
+\end{split}
+\end{align*}
+\begin{align*}
+\begin{split}
+\sum_{h \in G} A_{h-g,k} A_{k,h-g'} = \delta_{g,g'} - \frac{\delta_{k,0}}{d_\pm},
+\end{split}
+\end{align*}
+\begin{align*}
+\begin{split}
+\sum_{l \in G} A_{x+y,l} A_{-x,l+p} A_{-y,l+q} = A_{p+x,q+x+y} A_{q+y,p+x+y} - \frac{\delta_{x,0}\delta_{y,0}}{d_\pm}.
+\end{split}
+\end{align*}
+\end{remark}
+\noindent The first three equations above are precisely \cite[Equations 4.7, 4.8 and 4.9]{EG17}! In particular, to see that our third equation is equivalent to \cite[Equation 4.9]{EG17}, we simply make the change of variables $\hat{g} \coloneqq g' - g$ and $\hat{h} \coloneqq h - g'$, whence we obtain
+\begin{align*}
+\begin{split}
+\sum_{\hat{h} \in G} A_{\hat{h}+\hat{g},k} A_{k,\hat{h}} = \delta_{\hat{g},0} - \frac{\delta_{k,0}}{d_\pm}.
+\end{split}
+\end{align*}
+\noindent Similarly, using our first equation while making the change of variables $\hat{l} \coloneqq l-x-y$, $\hat{p} \coloneqq p+x+y$, $\hat{q} \coloneqq q+x+y$, $\hat{x} \coloneqq -x$ and $\hat{y} \coloneqq -y$, our fourth equation becomes
+\begin{align*}
+\begin{split}
+\overline{\omega}\sum_{\hat{l} \in G} A_{\hat{l},\hat{x}+\hat{y}} A_{\hat{x},\hat{l}+\hat{p}} A_{\hat{y},\hat{l}+\hat{q}} = A_{\hat{y}+\hat{p},\hat{q}} A_{\hat{x}+\hat{q},\hat{p}} - \frac{\delta_{\hat{x},0}\delta_{\hat{y},0}}{d_\pm},
+\end{split}
+\end{align*}
+\noindent showing that it is equivalent to \cite[Equation 4.11]{EG17}.
+\newpage
+
 \ruledsection{The Leavitt Algebra Approach of Evans--Gannon}{3}
 \noindent\\ The important result is \cite[Theorem 2]{EG17}.\newpage
 
@@ -126,10 +237,15 @@ A_{0,0} = \omega A_{0,0} = \overline{\omega}A_{0,0} \implies \omega = 1,
 whence \cite[Equation 4.8]{EG17} tells us that
 \begin{align*}
 \begin{split}
-A_{0,0} = -\delta_\pm^{-1}.
+A_{0,0} = -\frac{1}{d_\pm}.
 \end{split}
 \end{align*}
-\noindent The rest of \cite[Equations 4.7--4.10]{EG17} are satisfied by these choices. Hence by \cite[Theorem 2]{EG17}, we have two fusion categories for $G = \{0\}$; a unitary one with $\pm = +$ (the Fibonacci category) and a non-unitary one with $\pm = -$ (the Yang--Lee category).
+\noindent The rest of \cite[Equations 4.7--4.10]{EG17} are satisfied by these choices. Hence by \cite[Theorem 2]{EG17}, we have two fusion categories for $G = \{0\}$; a unitary one with $\pm = +$ (the Fibonacci category) and a non-unitary one with $\pm = -$ (the Yang--Lee category).\\
+\end{example}
+
+\begin{example}\textup{($G = \mathbb{Z}/2\mathbb{Z}$).} In \cite{EG17}, the classification was only given for $\abs{G}$ odd. Mimicking \cite{Izu18}, however,  we can extend it to the case when $\abs{G}$ is even. Equations
+
+To illustrate this, suppose we let $G = \mathbb{Z}/2\mathbb{Z}$.
 \end{example}
 
 \newpage
