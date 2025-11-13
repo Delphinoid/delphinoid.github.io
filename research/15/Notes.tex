@@ -11,7 +11,65 @@
 \noindent\\[-0.75\linespacing]
 
 \ruledsection{Prologue}{1}
-\noindent\\ What are fusion categories? What are near-groups, Haagerup--Izumi categories and quadratic\linebreak categories? What is modular data?\newpage
+\noindent\\ What are fusion categories? What are near-groups, Haagerup--Izumi categories and quadratic\linebreak categories? What is modular data? What are $6j$ symbols? What is the even part of a subfactor?\newpage
+
+\noindent Let $\mathcal{C}$ be a fusion category with representatives $\{X_i\}_{i \in \Gamma}$ of isomorphism classes of simple objects, and choose bases for each multiplicity space $H_{i,j}^l := \homset_\mathcal{C}(X_l, X_i \otimes X_j)$. The {\em (quantum) $6j$-symbols of $\mathcal{C}$} are the matrix blocks $\Phi_{i_1,i_2,i_3}^{i_4}$ of the change-of-basis matrices $\Phi_{i_1,i_2,i_3} \coloneqq \bigoplus_{i_4 \in \Gamma} \Phi_{i_1,i_2,i_3}^{i_4}$ given by
+\begin{align*}
+\begin{split}
+\Phi_{i_1,i_2,i_3}^{i_4} := v^{-1}(X_{i_4}, X_{i_1}, X_{i_2} \otimes X_{i_3}) \circ (\yo(\alpha_{X_{i_1}, X_{i_2}, X_{i_3}}))_{X_{i_4}} \circ u(X_{i_4}, X_{i_1} \otimes X_{i_2}, X_{i_3}),
+\end{split}
+\end{align*}
+\noindent where
+\begin{align*}
+\begin{split}
+\Phi_{i_1,i_2,i_3}^{i_4} : \bigoplus_{j\in\Gamma} (H_{j,i_3}^{i_4} \otimes_\mathbbm{k} H_{i_1,i_2}^j) \to \bigoplus_{l\in\Gamma} (H_{i_1,l}^{i_4} \otimes_\mathbbm{k} H_{i_2,i_3}^l).
+\end{split}
+\end{align*}
+\noindent Recall the Yoneda embedding
+\begin{align*}
+\begin{split}
+\yo_*(X) &\coloneqq \homset_\mathcal{C}(-, X),\\
+\yo_*(f : X \to Y) &\coloneqq \homset_\mathcal{C}(-, X) \Rightarrow \homset_\mathcal{C}(-, Y).
+\end{split}
+\end{align*}
+\noindent Taking the Yoneda embedding of a component $\alpha_{X,Y,Z} : (X \otimes Y) \otimes Z \to X \otimes (Y \otimes Z)$ of the associativity natural isomorphism $\alpha$, we obtain a natural isomorphism
+\begin{align*}
+\begin{split}
+\yo_*(\alpha_{X,Y,Z}) = \homset_\mathcal{C}(-, (X \otimes Y) \otimes Z) \Rightarrow \homset_\mathcal{C}(-, X \otimes (Y \otimes Z)).
+\end{split}
+\end{align*}
+\noindent Thus we have an isomorphism of vector spaces
+\begin{align*}
+\begin{split}
+[\yo_*(\alpha_{X,Y,Z})](W) : \homset_\mathcal{C}(W, (X \otimes Y) \otimes Z) \xrightarrow{\sim} \homset_\mathcal{C}(W, X \otimes (Y \otimes Z));
+\end{split}
+\end{align*}
+\noindent that is, an invertible matrix. In other words, the associativity is given by matrices indexed by $X, Y, Z, W$. But why do we call these $6j$ symbols? Well, we can simplify our picture further. Suppose we have an isomorphism
+\begin{align*}
+\begin{split}
+\homset_\mathcal{C}(X_4, (X_1 \otimes X_2) \otimes X_3) \xrightarrow{\sim} \homset_\mathcal{C}(X_4, X_1 \otimes (X_2 \otimes X_3)).
+\end{split}
+\end{align*}
+\noindent Let $X_5$ and $X_6$ be simple summands of $(X_1 \otimes X_2)$ and $(X_2 \otimes X_3)$, respectively. Then we can determine our isomorphism by determining the matrices of the form
+\begin{align*}
+\begin{split}
+\homset_\mathcal{C}(X_4, X_5 \otimes X_3) \to \homset_\mathcal{C}(X_4, X_1 \otimes X_6)
+\end{split}
+\end{align*}
+\noindent for all such $X_5$ and $X_6$. These matrices are exactly the $6j$ symbols, where the six simple objects $X_1, X_2, X_3, X_4, X_5, X_6$ play the role of the ``six $j$'s''.
+\noindent Note that these matrices are indeed parameterized by all ``six $j$'s'', as there could be many invertible matrices that give us a maps of the aforementioned form. We need $X_2$ in order to use the pentagon diagram for the associativity constraint and hence determine the specific invertible matrix corresponding to the associator. Moreover, $X_2$ tells us how the blocks
+\begin{align*}
+\begin{split}
+\homset_\mathcal{C}(X_4, X_5 \otimes X_3) \to \homset_\mathcal{C}(X_4, X_1 \otimes X_6)
+\end{split}
+\end{align*}
+\noindent fit together into the block diagonal matrix
+\begin{align*}
+\begin{split}
+\homset_\mathcal{C}(X_4, (X_1 \otimes X_2) \otimes X_3) \xrightarrow{\sim} \homset_\mathcal{C}(X_4, X_1 \otimes (X_2 \otimes X_3)).
+\end{split}
+\end{align*}
+\newpage
 
 \ruledsection{The Cuntz Algebra Approach of Izumi}{2}
 \noindent\\ Take $\textcat{Vec}_G$ to be skeletal. Consider an associativity constraint $a_{ghk} : ghk --> ghk$. Since $ghk$ is a simple object, $\homset(ghk, ghk) \cong \mathbbm{k}$, whence $a_{ghk} = \lambda_{ghk}\textup{id}_{ghk}$ for some $\lambda_{ghk} \in \mathbbm{k}^\times$. Note that the pentagon diagram enforces certain conditions on our choice of $\lambda_{ghk}$; in particular, if we look at this diagram, we'll see that $\lambda_{ghk} = \omega(g, h, k)$ for some $3$-cocycle $\omega$. By this, we mean a map $\omega : G \times G \times G \to \mathbbm{k}^\times$ satisfying
@@ -49,6 +107,20 @@ for all $x, y, z \in G$. By non-degenerate, we mean that
 \end{split}
 \end{align*}
 \noindent if and only if $x = y$. This is equivalent to the map $\varphi : G \to \homset(G, \mathbb{T})$ given by $x \mapsto \langle x, \cdot\rangle$ being an isomorphism.\\
+
+\noindent\begin{definition}\textup{(Cuntz Algebra).} Let $\{S_i\}_{i=1}^n$ be a set of isometries on an infinite-dimensional Hilbert space $\mathscr{H}$. Suppose moreover that these isometries satisfy the {\em Cuntz relation}
+\begin{align*}
+\begin{split}
+\sum_{k=1}^n S_kS_k^* = 1.
+\end{split}
+\end{align*}
+\noindent The {\em Cuntz algebra $\mathcal{O}_n$} is the universal $C^*$-algebra $C^*(S_1, \dots, S_n)$.\\
+\end{definition}
+
+\noindent\begin{remark} Note that, as isometries, $S_i^*S_i = 1$. In particular, we must have that $S_i^*S_j = \delta_{i,j}$ for all $i, j \in \{1, \dots, n\}$. This follows from the fact that a sum of projections is itself a projection if and only if the projections in the sum are pairwise orthogonal. The Cuntz relation is essentially ensuring that the sum of the projections $S_iS_i^*$ is the trivial projection.\\
+\end{remark}
+
+\noindent 
 \newpage
 
 \noindent\begin{example}\textup{(Fibonacci Category).} Let's look at the Fibonacci category. This is the near-group with $G = \{0\}$ and $m = 1$. Our choice for $\langle\cdot,\cdot\rangle$ is obvious, and \cite[Lemma 7.1]{Izu17} tells us that
@@ -118,7 +190,7 @@ c = \frac{1 - \csqrt{3} + a(1)(1 + \csqrt{3})}{2\csqrt{2}}.
 \end{example}
 \newpage
 
-\noindent\begin{example}\textup{($G = \mathbb{Z}/2\mathbb{Z}$).} Let's determine the Haagerup--Izumi categories with $G = \mathbb{Z}/2\mathbb{Z}$. Let
+\noindent\begin{example}\label{UHIZ2}\textup{($G = \mathbb{Z}/2\mathbb{Z}$).} Let's determine the Haagerup--Izumi categories with $G = \mathbb{Z}/2\mathbb{Z}$. Let
 \begin{align*}
 \begin{split}
 d_\pm \coloneqq \frac{n \pm \csqrt{n^2 + 4}}{2},
@@ -163,16 +235,16 @@ A_{0,1}(0) = A_{1,1}(0) = A_{1,0}(0)\qquad\text{and}\qquad A_{0,1}(1) = -A_{1,1}
 \noindent while \cite[Equation 4.8]{Izu18} gives us $A_{1,1}(1) = -A_{1,1}(0)$. We then see by \cite[Equation 4.4]{Izu18} that
 \begin{align*}
 \begin{split}
-A_{1,0}(0) = \pm\frac{1}{\csqrt{2}} = \pm\frac{1}{d-1},
+A_{0,1}(0) A_{1,0}(0) + A_{1,1}(0) A_{1,1}(0) = 1 \implies A_{1,0}(0) = \pm\frac{1}{\csqrt{2}} = \pm\frac{1}{d-1},
 \end{split}
 \end{align*}
-\noindent and
+\noindent and by \cite[Equation 4.9]{Izu18} that
 \begin{align*}
 \begin{split}
-A_{0,0}(0)A_{1,0}(0)^2 = A_{1,0}(0)^2 + A_{1,0}(0)^3 \implies A_{0,0}(0) = 1 + A_{1,0}(0) = \frac{d-1 \pm 1}{d-1}
+A_{0,0}(0)A_{1,0}(0)^2 = A_{1,0}(0)^2 + A_{1,0}(0)^3 \implies A_{0,0}(0) = 1 + A_{1,0}(0) = \frac{d-1 \pm 1}{d-1}.
 \end{split}
 \end{align*}
-\noindent by \cite[Equation 4.9]{Izu18}. Finally, \cite[Equation 4.3]{Izu18} allows us to deduce that
+\noindent Finally, \cite[Equation 4.3]{Izu18} allows us to deduce
 \begin{align*}
 \begin{split}
 A_{1,0}(0) = -\frac{1}{d-1},
@@ -184,7 +256,7 @@ A_{1,0}(0) = -\frac{1}{d-1},
 A(0) = \frac{1}{d-1}\begin{pmatrix}d-2 & -1\\ -1 & -1\end{pmatrix}\qquad\text{and}\qquad A(1) = \frac{1}{d-1}\begin{pmatrix}d-2 & -1\\ -1 & \hphantom{-}1\end{pmatrix}.
 \end{split}
 \end{align*}
-\noindent\\
+\noindent This category is nothing but the even part of the type $A_7$ subfactor.\\
 \end{example}
 \newpage
 
@@ -226,7 +298,43 @@ A_{h,k} = A_{-k,h-k}\omega = A_{k-h,-h}\overline{\omega},
 \newpage
 
 \ruledsection{The Leavitt Algebra Approach of Evans--Gannon}{3}
-\noindent\\ The important result is \cite[Theorem 2]{EG17}.\newpage
+\noindent\\ The important result is \cite[Theorem 2]{EG17}.\\
+
+\noindent\begin{definition}\textup{(Leavitt Algebra).} Let $X \coloneqq (x_{ij})$ and $Y \coloneqq (y_{ij})$ be $m \times n$ and $n \times m$ matrices of symbols, respectively. The {\em Leavitt $K$-algebra of type $(m, n)$} is the free associative unital $K$-algebra
+\begin{align*}
+\begin{split}
+\mathcal{L}_K(m, n) \coloneqq \frac{K[x_{ij}, y_{ij}]}{\langle XY = I_m, YX = I_n\rangle}.
+\end{split}
+\end{align*}
+\noindent In other words, it is the universal $K$-algebra with generators
+\begin{align*}
+\begin{split}
+\{x_{ij} : 1 \leq i \leq m, 1 \leq j \leq n\} \sqcup \{y_{ij} : 1 \leq i \leq n, 1 \leq j \leq m\}
+\end{split}
+\end{align*}
+\noindent and {\em Leavitt--Cuntz relations}
+\begin{align*}
+\begin{split}
+\sum_{k=1}^m y_{ik} x_{kj} = \delta_{i,j}\qquad\text{and}\qquad\sum_{k=1}^n x_{ik} y_{kj} = \delta_{i,j},
+\end{split}
+\end{align*}
+\noindent for all suitable $i, j$.\\
+\end{definition}
+
+\noindent Consider the Leavitt $\mathbb{C}$-algebra of type $(1, n)$, which we shall henceforth denote by $\mathcal{L}_n \coloneqq \mathcal{L}_\mathbb{C}(1, n)$. We have that $\mathcal{O}_n = C^*(\mathcal{L}_n)$, where $x_i = S_i$ and $y_i = S_i^*$. Let's think about what this means precisely. The Leavitt--Cuntz relations for $m = 1$ become
+\begin{align*}
+\begin{split}
+y_i x_j = \delta_{i,j}\qquad\text{and}\qquad\sum_{k=1}^n x_k y_k = 1.
+\end{split}
+\end{align*}
+\noindent We may endow $\mathcal{L}_n$ with the structure of a $*$-algebra by defining a conjugate homogeneous\linebreak antihomomorphism that sends $x_i \mapsto y_i$ and $y_i \mapsto x_i$. We further define
+\begin{align*}
+\begin{split}
+\norm{a} \coloneqq \sup\{p(a) : \textup{$p$ is a $C^*$-seminorm on $\mathcal{L}_n$}\}
+\end{split}
+\end{align*}
+\noindent for all $a \in \mathcal{L}_n$, where a $C^*$-seminorm is just a seminorm for which $p(a^*a) = p(a)^2$ and $p(ab) \leq p(a)p(b)$. Note that $0 \leq \norm{a} \leq 1$, as $1 = \norm{y_ix_i} = \norm{x_i^2}$ and hence $\norm{x_i} = \norm{y_i} = 1$ for all $i$. The condition $p(ab) \leq p(a)p(b)$ ensures that $\mathcal{I} \coloneqq \{a \in \mathcal{L}_n : \norm{a} = 0\}$ is an ideal in $\mathcal{L}_n$. Our $C^*$-seminorm then descends to a $C^*$-norm on the quotient $\mathcal{L}_n/\mathcal{I}$. The completion of $\mathcal{L}_n/\mathcal{I}$ with respect to this $C^*$-norm is known as the universal $C^*$-algebra of $\mathcal{L}_n$, denoted by $C^*(\mathcal{L}_n)$. This is precisely $\mathcal{O}_n$ by definition. We may therefore view $\mathcal{L}_n$ as the polynomial part of $\mathcal{O}_n$.
+\newpage
 
 \begin{example}\textup{(Yang--Lee Category).} Let $G = \{0\}$. Then \cite[Equation 4.7]{EG17} demands that
 \begin{align*}
@@ -243,9 +351,12 @@ A_{0,0} = -\frac{1}{d_\pm}.
 \noindent The rest of \cite[Equations 4.7--4.10]{EG17} are satisfied by these choices. Hence by \cite[Theorem 2]{EG17}, we have two fusion categories for $G = \{0\}$; a unitary one with $\pm = +$ (the Fibonacci category) and a non-unitary one with $\pm = -$ (the Yang--Lee category).\\
 \end{example}
 
-\begin{example}\textup{($G = \mathbb{Z}/2\mathbb{Z}$).} In \cite{EG17}, the classification was only given for $\abs{G}$ odd. Mimicking \cite{Izu18}, however,  we can extend it to the case when $\abs{G}$ is even. Equations
-
-To illustrate this, suppose we let $G = \mathbb{Z}/2\mathbb{Z}$.
+\noindent\begin{example}\textup{($G = \mathbb{Z}/2\mathbb{Z}$).} The equations we must satisfy for $\abs{G}$ even are given in \cite{Izu18} \textcolor{red}{(is this true?)}. Adapting our argument from \hyperref[UHIZ2]{Example \ref*{UHIZ2}}, we see that there is exactly one non-unitary Haagerup--Izumi category with $G = \mathbb{Z}/2\mathbb{Z}$. This corresponds to $\epsilon_h(g) = (-1)^{gh}$, $\omega(g) = 1$,
+\begin{align*}
+\begin{split}
+A(0) = \frac{1}{d-1}\begin{pmatrix}d & 1\\ 1 & 1\end{pmatrix}\qquad\text{and}\qquad A(1) = \frac{1}{d-1}\begin{pmatrix}d & \hphantom{-}1\\ 1 & -1\end{pmatrix}.
+\end{split}
+\end{align*}
 \end{example}
 
 \newpage
