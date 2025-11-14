@@ -497,21 +497,21 @@ f_* : A \mapsto \varepsilon A - \overline{\varepsilon} A^T,
 \noindent\begin{corollary} The root system from \hyperref[RootSystem]{Theorem \ref*{RootSystem}} induces a fundamental root system
 \begin{align*}
 \begin{split}
-\alpha_1 \coloneqq \lambda_1 - \lambda_2,\qquad \alpha_2 \coloneqq \lambda_2
+\alpha_1 \coloneqq \lambda_2,\qquad \alpha_2 \coloneqq \lambda_1 - \lambda_2
 \end{split}
 \end{align*}
 \noindent with highest root
 \begin{align*}
 \begin{split}
-\mu \coloneqq 2\alpha_1 + 3\alpha_2.\\[\linespacing]
+\mu \coloneqq 3\alpha_1 + 2\alpha_2.\\[\linespacing]
 \end{split}
 \end{align*}
 \end{corollary}
 
 \noindent\begin{proof} The positive roots from \hyperref[RootSystem]{Theorem \ref*{RootSystem}} can be written as
 \begin{alignat*}{3}
-\lambda_1 - \lambda_2 &= \alpha_1,\qquad&\lambda_1 - \lambda_3 &= 2\alpha_1 + 3\alpha_2,\qquad&\lambda_2 - \lambda_3 &= \alpha_1 + 3\alpha_2,\\
-\lambda_1 &= \alpha_1 + \alpha_2,\qquad&\lambda_2 &= \alpha_2,\qquad&-\lambda_3 &= \alpha_1 + 2\alpha_2,
+\lambda_2 &= \alpha_1,\qquad&\lambda_1 - \lambda_3 &= 3\alpha_1 + 2\alpha_2,\qquad&\lambda_2 - \lambda_3 &= 3\alpha_1 + \alpha_2,\\
+\lambda_1 &= \alpha_1 + \alpha_2,\qquad&\lambda_1 - \lambda_2 &= \alpha_2,\qquad&-\lambda_3 &= 2\alpha_1 + \alpha_2,
 \end{alignat*}
 \noindent where we have used the fact that $\lambda_1 + \lambda_2 + \lambda_3 = 0$. This completes the proof.
 \end{proof}\\
@@ -519,7 +519,7 @@ f_* : A \mapsto \varepsilon A - \overline{\varepsilon} A^T,
 \noindent\begin{theorem}\textup{(\cite[Theorem 1.8.2]{Yok25}).} The Cartan matrix for $\mathfrak{g}_2^\mathbb{C}$ is
 \begin{align*}
 \begin{split}
-A \coloneqq \begin{pmatrix}\hphantom{-}2&-1\\-3&\hphantom{-}2\end{pmatrix}.\\[\linespacing]
+A \coloneqq \begin{pmatrix}\hphantom{-}2&-3\\-1&\hphantom{-}2\end{pmatrix}.\\[\linespacing]
 \end{split}
 \end{align*}
 \end{theorem}
@@ -546,15 +546,15 @@ H' &\coloneqq -i\lambda_1' G_{23} - i\lambda_2' G_{45} - i\lambda_3' G_{67}.
 \noindent Now, suppose we consider the canonical element $H_{\alpha_i} \in \mathfrak{h}_\mathbb{R}$ such that $B(H_{\alpha_i}, H) = \alpha_i(H)$ for all $H \in \mathfrak{h}_\mathbb{R}$. These can be computed for our simple roots $\alpha_1$ and $\alpha_2$ as
 \begin{align*}
 \begin{split}
-H_{\alpha_1} = -\frac{1}{8}iG_{23} + \frac{1}{8}iG_{45}\qquad\text{and}\qquad H_{\alpha_2} = \frac{1}{24}iG_{23} - \frac{1}{12}iG_{45} + \frac{1}{24}iG_{67}.
+H_{\alpha_1} = \frac{1}{24}iG_{23} - \frac{1}{12}iG_{45} + \frac{1}{24}iG_{67}\qquad\text{and}\qquad H_{\alpha_2} = -\frac{1}{8}iG_{23} + \frac{1}{8}iG_{45}.
 \end{split}
 \end{align*}
 \noindent We therefore have
 \begin{align*}
 \begin{split}
-(\alpha_1, \alpha_1) &= B(H_{\alpha_1}, H_{\alpha_1}) = 8\left(\left(\frac{1}{8}\right)^2 + \left(-\frac{1}{8}\right)^2\right) = \frac{1}{4},\\
-(\alpha_2, \alpha_2) &= B(H_{\alpha_2}, H_{\alpha_2}) = 8\left(\left(-\frac{1}{24}\right)^2 + \left(\frac{1}{12}\right)^2 + \left(-\frac{1}{24}\right)^2\right) = \frac{1}{12},\\
-(\alpha_1, \alpha_2) &= B(H_{\alpha_1}, H_{\alpha_2}) = 8\left(\left(\frac{1}{8}\right)\left(-\frac{1}{24}\right) + \left(-\frac{1}{8}\right)\left(\frac{1}{12}\right)\right) = -\frac{1}{8}.
+(\alpha_1, \alpha_1) &= B(H_{\alpha_1}, H_{\alpha_1}) = 8\left(\left(-\frac{1}{24}\right)^2 + \left(\frac{1}{12}\right)^2 + \left(-\frac{1}{24}\right)^2\right) = \frac{1}{12},\\
+(\alpha_2, \alpha_2) &= B(H_{\alpha_2}, H_{\alpha_2}) = 8\left(\left(\frac{1}{8}\right)^2 + \left(-\frac{1}{8}\right)^2\right) = \frac{1}{4},\\
+(\alpha_1, \alpha_2) &= B(H_{\alpha_1}, H_{\alpha_2}) = 8\left(\left(-\frac{1}{24}\right)\left(\frac{1}{8}\right) + \left(\frac{1}{12}\right)\left(-\frac{1}{8}\right)\right) = -\frac{1}{8}.
 \end{split}
 \end{align*}
 \noindent The entries of the Cartan matrix are given by
@@ -564,7 +564,70 @@ A_{ij} \coloneqq 2\frac{(\alpha_i, \alpha_j)}{(\alpha_j, \alpha_j)},
 \end{split}
 \end{align*}
 \noindent whence the result follows. This completes the proof.
-\end{proof}\\[\linespacing]
+\end{proof}\\
+
+\noindent Note that $(\alpha_1, \alpha_1) = 1/12$ tells us that $\abs{\alpha_1} = 1/\csqrt{12}$, and similarly $\abs{\alpha_2} = 1/2$. Meanwhile, from $(\alpha_1, \alpha_2) = -1/8$ we may deduce that the angle between $\alpha_1$ and $\alpha_2$ is
+\begin{align*}
+\begin{split}
+\theta = \cos^{-1}\left(-\frac{\abs{\alpha_1}\abs{\alpha_2}}{8}\right) = \cos^{-1}\left(-\frac{\csqrt{3}}{2}\right) = \frac{5\pi}{6}.
+\end{split}
+\end{align*}
+\noindent Thus we can draw our root system as follows.
+\begin{center}
+\begin{tikzpicture}[scale=10]
+\fill[fill=gray!20, trig format=rad] (0,0) -- ({cos(2*pi/6)/2},{sin(2*pi/6)/2}) -- ({0},{sin(2*pi/6)/2});
+%
+\draw[-latex] (0,0) -- (1/2,0);
+\draw[-latex] (0,0) -- (-1/2,0);
+\node at (1/2+0.05,0) {$\alpha_2$};
+%
+\draw[-latex, trig format=rad] (0,0) -- ({cos(5*pi/6)/sqrt(12)},{sin(5*pi/6)/sqrt(12)});
+\draw[-latex, trig format=rad] (0,0) -- ({-cos(5*pi/6)/sqrt(12)},{-sin(5*pi/6)/sqrt(12)});
+\node[trig format=rad] at ({cos(5*pi/6)*(1/sqrt(12)+0.05)},{sin(5*pi/6)*(1/sqrt(12)+0.05)}) {$\alpha_1$};
+%
+\draw[-latex, trig format=rad] (0,0) -- ({cos(pi/6)/sqrt(12)},{sin(pi/6)/sqrt(12)});
+\draw[-latex, trig format=rad] (0,0) -- ({-cos(pi/6)/sqrt(12)},{-sin(pi/6)/sqrt(12)});
+\node[trig format=rad] at ({cos(pi/6)*(1/sqrt(12)+0.075)},{sin(pi/6)*(1/sqrt(12)+0.075)}) {$\alpha_1 + \alpha_2$};
+%
+\draw[-latex, trig format=rad] (0,0) -- ({0},{2*sin(5*pi/6)/sqrt(12)});
+\draw[-latex, trig format=rad] (0,0) -- ({0},{-2*sin(5*pi/6)/sqrt(12)});
+\node[trig format=rad] at ({0},{sin(5*pi/6)*(2/sqrt(12)+0.075)}) {$2\alpha_1 + \alpha_2$};
+%
+\draw[-latex, trig format=rad] (0,0) -- ({cos(4*pi/6)/2},{sin(2*pi/6)/2});
+\draw[-latex, trig format=rad] (0,0) -- ({-cos(4*pi/6)/2},{-sin(2*pi/6)/2});
+\node[trig format=rad] at ({cos(4*pi/6)*(1/2+0.05)},{sin(2*pi/6)*(1/2+0.05)}) {$3\alpha_1 + \alpha_2$};
+%
+\draw[-latex, trig format=rad] (0,0) -- ({cos(2*pi/6)/2},{sin(2*pi/6)/2});
+\draw[-latex, trig format=rad] (0,0) -- ({-cos(2*pi/6)/2},{-sin(2*pi/6)/2});
+\node[trig format=rad] at ({cos(2*pi/6)*(1/2+0.05)},{sin(2*pi/6)*(1/2+0.05)}) {$3\alpha_1 + 2\alpha_2$};
+%
+\node[trig format=rad] at ({cos(5*pi/12)*(1/5)},{sin(5*pi/12)*(1/5)}) {\small $1$};
+\node[trig format=rad] at ({cos(3*pi/12)*(1/5)},{sin(3*pi/12)*(1/5)}) {\small $s$};
+\node[trig format=rad] at ({cos(7*pi/12)*(1/5)},{sin(7*pi/12)*(1/5)}) {\small $t$};
+\node[trig format=rad] at ({cos(9*pi/12)*(1/5)},{sin(9*pi/12)*(1/5)}) {\small $ts$};
+\node[trig format=rad] at ({cos(pi/12)*(1/5)},{sin(pi/12)*(1/5)}) {\small $st$};
+\node[trig format=rad] at ({cos(11*pi/12)*(1/5)},{sin(11*pi/12)*(1/5)}) {\small $tst$};
+\node[trig format=rad] at ({cos(-pi/12)*(1/5)},{sin(-pi/12)*(1/5)}) {\small $sts$};
+\node[trig format=rad] at ({cos(13*pi/12)*(1/5)},{sin(13*pi/12)*(1/5)}) {\small $tsts$};
+\node[trig format=rad] at ({cos(-3*pi/12)*(1/5)},{sin(-3*pi/12)*(1/5)}) {\small $stst$};
+\node[trig format=rad] at ({cos(15*pi/12)*(1/5)},{sin(15*pi/12)*(1/5)}) {\small $tstst$};
+\node[trig format=rad] at ({cos(-5*pi/12)*(1/5)},{sin(-5*pi/12)*(1/5)}) {\small $ststs$};
+\node[trig format=rad] at ({cos(-7*pi/12)*(1/5)},{sin(-7*pi/12)*(1/5)}) {\small $ststst$};
+\end{tikzpicture}
+\end{center}
+\noindent This diagram immediately tells us that the Weyl group for $G_2$ is the dihedral group of order $12$,
+\begin{align*}
+\begin{split}
+W = D_6 \coloneqq \langle s, t : s^2 = t^2 = (st)^6 = 1\rangle.
+\end{split}
+\end{align*}
+\noindent In particular, the simple reflections are given by
+\begin{align*}
+\begin{split}
+s_i(v) \coloneqq v - 2\frac{(v, \alpha_i)}{(\alpha_i, \alpha_i)}\alpha_i,
+\end{split}
+\end{align*}
+\noindent for $i \in \{1, 2\}$; this is nothing but the reflection across the line perpendicular to $\alpha_i$. Here $s \coloneqq s_1$ is the reflection across $3\alpha_1 + 2\alpha_2$, while $t \coloneqq s_2$ is the reflection across $2\alpha_1 + \alpha_2$. The {\em fundamental Weyl chamber} is by definition $\{v \in \mathbb{R}^2 : (v, \alpha_1) > 0, (v, \alpha_2) > 0\}$; this region has been shaded in the diagram above. For $G_2$, the fundamental Weyl chamber is the same as the {\em fundamental Weyl alcove} $\{v \in \mathbb{R}^2 : (v, \alpha_1) > 0, (v, \alpha_2) > 0, (v, \mu) < 1\}$, where we recall that the highest root is $\mu \coloneqq 3\alpha_1+2\alpha_2$. We have also labelled the fundamental alcove by $1$, and the other alcoves by the element of the Weyl group for which they are the image of the fundamental alcove under.\\[\linespacing]
 
 \ruledsection{The Split Real Form $G_2^s$}{2}
 \noindent\\ Recall that in \hyperref[CayleyDickson]{Remark \ref*{CayleyDickson}} we gave an algorithm for building a family of hypercomplex algebras. A slight modification of this construction -- namely, replacing the minus sign with a plus sign in the definition of multiplication -- yields a new family of so-called {\em split} hypercomplex algebras. Let $\mathbb{O}^s$ therefore denote the split-octonions, given by the direct sum of two copies of the split-quaternions. As a complex vector space, we alternatively have
@@ -621,7 +684,17 @@ G_2^s \cong \textup{SO}(4) \times \mathbb{R}^8,
 \{\text{real forms of $G$}\}\ \longleftrightarrow\ \left\{\begin{matrix}\text{antiholomorphic}\\\text{involutions of $G$}\end{matrix}\right\}\!\big/\!\!\sim\ \ \longleftrightarrow\ \left\{\begin{matrix}\text{holomorphic}\\\text{involutions of $G$}\end{matrix}\right\}\!\big/\!\!\sim.
 \end{split}
 \end{align*}
-\noindent In particular, let $\sigma_c$ be the unique (up to $G$-conjugation) antiholomorphic involution of $G$ for which $G^{\sigma_c}$ is compact. If we let $\Theta$ be any $G$-conjugacy class of holomorphic involutions of $G$, then there exists some holomorphic involution $\theta \in \Theta$ that commutes with $\sigma_c$, and furthermore each $G$-conjugacy class of antiholomorphic involutions of $G$ contains $\sigma = \sigma_c \circ \theta$ for some unique choice of initial $\Theta$. In the case of $G_2^\mathbb{C}$, we have that $\sigma_c = \tau$. Meanwhile, the antiholomorphic involution for the split real form $G_2^s$ is $\sigma = \tau\gamma$, so the Cartan involution corresponding to $G_2^s$ is $\theta = \tau\tau\gamma = \gamma$. The maximal compact subgroup of $G_2^s$ is $(G_2^s)^\gamma \cong \textup{SO}(4)$, hence $(G_2^\mathbb{C})^\gamma$ is isomorphic to $\textup{SL}(2, \mathbb{C}) \times \textup{SL}(2, \mathbb{C})$, the complexification of $\textup{SO}(4)$.
+\noindent In particular, let $\sigma_c$ be the unique (up to $G$-conjugation) antiholomorphic involution of $G$ for which $G^{\sigma_c}$ is compact. If we let $\Theta$ be any $G$-conjugacy class of holomorphic involutions of $G$, then there exists some holomorphic involution $\theta \in \Theta$ that commutes with $\sigma_c$, and furthermore each $G$-conjugacy class of antiholomorphic involutions of $G$ contains $\sigma = \sigma_c \circ \theta$ for some unique choice of initial $\Theta$. In the case of $G_2^\mathbb{C}$, we have that $\sigma_c = \tau$. Meanwhile, the antiholomorphic involution for the split real form $G_2^s$ is $\sigma = \tau\gamma$, so the Cartan involution corresponding to $G_2^s$ is $\theta = \tau\tau\gamma = \gamma$. The maximal compact subgroup of $G_2^s$ is $(G_2^s)^\gamma \cong \textup{SO}(4)$, hence $(G_2^\mathbb{C})^\gamma$ is isomorphic to $\textup{SL}(2, \mathbb{C}) \times \textup{SL}(2, \mathbb{C})$, the complexification of $\textup{SO}(4)$.\\
+
+\noindent Going one step further, let $K \coloneqq (G_2^\mathbb{C})^\gamma \cong \textup{SL}(2, \mathbb{C}) \times \textup{SL}(2, \mathbb{C})$. This corresponds to a Weyl group $W_K = \mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}$. There are three distinct copies of the Klein four-group $\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}$ living inside $D_6$; these are
+\begin{align*}
+\begin{split}
+\langle s,\hphantom{ts} (st)^3\rangle &= \{1, ststst, tstst, s\},\\
+\langle sts, (st)^3\rangle &= \{1, ststst, sts, tst\},\\
+\langle t,\hphantom{ss} (st)^3\rangle &= \{1, ststst, ststs, t\}.
+\end{split}
+\end{align*}
+\noindent However, because $W_K$ is given by two commuting copies of $A_2$, it must be generated by two orthogonal elements. We immediately see that $\langle sts, (st)^3\rangle$ is the unique subgroup satisfying this condition: the roots corresponding to $s$ and $t$ are orthogonal to $3\alpha_1 + 2\alpha_2$ and $2\alpha_1+\alpha_2$, respectively, which certainly do not correspond to $(st)^3$. Thus we have the set of right cosets $W_K\backslash W = \{W_K, W_Ks, W_Kt\}$.
 
 \newpage
 \renewcommand\thesection{R}
