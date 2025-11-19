@@ -1,0 +1,204 @@
+\input{preamble.tex}
+
+\begin{document}
+
+\thispagestyle{fancy}
+
+\begin{center}
+\LARGE\scshape Classification of Fusion Categories\linebreak via Endomorphisms\noindent\\[-\linespacing]
+\rule{0.85\linewidth}{1pt}
+\end{center}
+\noindent\\[-0.75\linespacing]
+
+\ruledsection{Prologue}{1}
+\noindent\\ The goal of my project is to classify the non-unitary near-group fusion categories that arise as categories of algebra endomorphisms. Both the unitary near-group and unitary Haagerup--Izumi fusion categories arising from algebra endomorphisms have been classified by Izumi using a Cuntz algebra approach. Evans and Gannon were later successful in using a Leavitt algebra approach to classify the non-unitary Haagerup--Izumi categories arising from algebra endomorphisms. I would like to describe this approach using concrete examples. Let's begin by defining what we mean by Haagerup--Izumi fusion categories and Leavitt algebras.\\
+
+\noindent\begin{definition}\textup{(Haagerup--Izumi Category).} Let $G$ be a finite Abelian group. Define a category with (isomorphism classes of) simple objects $[\alpha_g]$ and $[\alpha_g\rho]$, for all $g \in G$, and fusion rules given by
+\begin{gather*}
+[\alpha_g] \otimes [\alpha_h] = [\alpha_{g+h}],\\
+[\alpha_g] \otimes [\alpha_h\rho] = [\alpha_{g+h}\rho] = [\alpha_h\rho] \otimes [\alpha_{-g}],\\
+[\alpha_g\rho] \otimes [\alpha_h\rho] = [\alpha_{g-h}] \oplus \bigoplus_{k \in G} [\alpha_k\rho].
+\end{gather*}
+\noindent We call this category the {\em Haagerup--Izumi category corresponding to $G$}.\\
+\end{definition}
+
+\noindent\begin{definition}\textup{(Leavitt Algebra).} The {\em Leavitt algebra $\mathcal{L}_n$} is the universal $\mathbb{C}$-algebra with generators $x_1, \dots, x_n, y_1, \dots, y_n$ satisfying the {\em Leavitt--Cuntz relations}
+\begin{align*}
+\begin{split}
+y_i x_j = \delta_{i,j}\qquad\text{and}\qquad\sum_{k=1}^n x_k y_k = 1,
+\end{split}
+\end{align*}
+\noindent for all $i, j \in \{1, \dots, n\}$.\\
+\end{definition}
+
+\noindent\begin{remark} The $C^*$-completion of the Leavitt algebra is the Cuntz algebra. Taking the $C^*$-completion allows us to use some powerful results from the theory of operator algebras, but limits us to the unitary setting. This is precisely why we are instead looking to the Leavitt algebra, which is nothing but the polynomial part of the Cuntz algebra.\\
+\end{remark}
+
+\noindent In the next section, we will work in reverse in order to demonstrate the idea behind the classification. We will begin with a fusion category and assume it admits a description in terms of algebra endomorphisms. We will then derive what this realization must look like. The particular fusion category we will choose is the Yang--Lee category; this is the simplest example of a non-unitary fusion category, and -- along with its unitary counterpart, the Fibonacci category -- forms the intersection of near-group and Haagerup--Izumi fusion categories.\newpage
+
+\ruledsection{The Fibonacci and Yang--Lee Categories}{2}
+\noindent\\ The Yang--Lee category consists of two simple objects, $\mathbbm{1}$ and $\rho$, satisfying the fusion rule
+\begin{align*}
+\begin{split}
+[\rho] \otimes [\rho] = [\mathbbm{1}] \oplus [\rho].
+\end{split}
+\end{align*}
+\noindent Let's try to model this as a system of algebra endomorphisms. The equation above is essentially saying that we have two  In order to do this, we would need to satisfy the relation
+\begin{align*}
+\begin{split}
+\rho(\rho(x)) = sxs' + t\rho(x)t',
+\end{split}
+\end{align*}
+\noindent where
+\begin{align*}
+\begin{split}
+ss' + tt' &= 1,\\
+s's = t't &= 1,\\
+s't = t's &= 0.
+\end{split}
+\end{align*}
+\noindent More precisely, these relations say that our equation for $\rho\circ\rho$ is a direct sum of objects $\id$ and $\rho$ in the category $\textcat{End}(A)$ (see: definition of an intertwiner, projection and injection). These elements $s, s', t, t' \in A$ generate a copy of the Leavitt algebra $\mathcal{L}_2$ inside $A$ by definition. We want to show that $\rho$ restricts to an endomorphism of $\mathcal{L}_2$. From our equation for $\rho\circ\rho$, we obtain
+\begin{align}
+\begin{split}\label{Eq1}
+\rho^2(x)s &= sx,\\
+\rho^2(x)t &= t\rho(x),\\
+s'\rho^2(x) &= xs',\\
+t'\rho^2(x) &= \rho(x)t'.
+\end{split}
+\end{align}
+\noindent The first equation tells us that $s$ intertwines $\id$ with $\rho^2$, i.e. $s \in \homset(\id, \rho^2)$. In total, we have
+\begin{align*}
+\begin{split}
+s &\in \homset(\id, \rho^2),\\
+t &\in \homset(\rho, \rho^2),\\
+s' &\in \homset(\rho^2, \id),\\
+t' &\in \homset(\rho^2, \rho).
+\end{split}
+\end{align*}
+\noindent Suppose $r \in \homset(\id, \rho^2)$; that is, $rx = \rho^2(x)r$ for all $x \in A$. Then
+\begin{align*}
+\begin{split}
+\noindent s'rx = s'\rho^2(x)r = xs'r,
+\end{split}
+\end{align*}
+\noindent whence $s'r \in \homset(\id, \id)$. But $\homset(\id, \id) = \mathbb{C}$ by the simplicity of $\id$, and so $s'r \in \mathbb{C}$. Moreover,
+\begin{align*}
+\begin{split}
+\noindent t'rx = t'\rho^2(x)r = \rho(x)t'r,
+\end{split}
+\end{align*}
+\noindent meaning $t'r \in \homset(\id, \rho)$. But $\rho$ is also simple, and so $\homset(\id, \rho) = \{0\}$ and $t'r = 0$. It follows from the Leavitt-Cuntz relation $ss' + tt' = 1$ that
+\begin{align*}
+\begin{split}
+r = (ss' + tt')r = ss'r \in \mathbb{C}s.
+\end{split}
+\end{align*}
+\noindent Thus $\homset(\id, \rho^2) = \mathbb{C}s$. We can proceed similarly for the other Hom-spaces, whence we have in total
+\begin{align*}
+\begin{split}
+\homset(\id, \rho^2) &= \mathbb{C}s,\\
+\homset(\rho, \rho^2) &= \mathbb{C}t,\\
+\homset(\rho^2, \id) &= \mathbb{C}s',\\
+\homset(\rho^2, \rho) &= \mathbb{C}t'.
+\end{split}
+\end{align*}
+\noindent Using \hyperref[Eq1]{Equation (\ref*{Eq1})}, we have
+\begin{align*}
+\begin{split}
+s'\rho(s)\rho(x) = s'\rho(sx) = s'\rho(\rho^2(x)s) = s'\rho^2(\rho(x))\rho(s) = \rho(x)s'\rho(s),\\
+t'\rho(s)\rho(x) = t'\rho(sx) = t'\rho(\rho^2(x)s) = t'\rho^2(\rho(x))\rho(s) = \rho^2(x)t'\rho(s).
+\end{split}
+\end{align*}
+\noindent In other words, $s'\rho(s) \in \homset(\rho, \rho) = \mathbb{C}$, so $s'\rho(s) = a \in \mathbb{C}$. Similarly, $t'\rho(s) \in \homset(\rho, \rho^2) = \mathbb{C}t$, so $t'\rho(s) = bt$ for some $b \in \mathbb{C}$. It follows that
+\begin{align*}
+\begin{split}
+\rho(s) = (ss' + tt')\rho(s) = s(s'\rho(s)) = t(t'\rho(s)) = as + btt.
+\end{split}
+\end{align*}
+\noindent Similar computations yield, in total,
+\begin{align*}
+\begin{split}
+\rho(s) &= as + btt,\\
+\rho(s') &= a's' + b't't',\\
+\rho(t) &= cst' + dtss' + ettt',\\
+\rho(t') &= c'ts' + d'ss't' + e'tt't',
+\end{split}
+\end{align*}
+\noindent for some $a', b', c, c', d, d', e, e' \in \mathbb{C}$. We have shown that $\rho$ maps generators of $\mathcal{L}_2$ into $\mathcal{L}_2$ and hence confirmed that $\rho \in \End(\mathcal{L}_2)$. The game now is to use the constraints on $\rho$ to determine the constants.\\
+
+\noindent We first note that $\rho$ must be an algebra endomorphism, and hence it must respect the Leavitt--Cuntz relations. For instance,
+\begin{align*}
+\begin{split}
+1 = \rho(s')\rho(s) = (a's' + b't't')(as + btt) = a's'as + a's'btt + b't't'as + b't't'btt = a'a + b'b.
+\end{split}
+\end{align*}
+\noindent Similarly, by expanding $1 = \rho(s)\rho(s') + \rho(t)\rho(t')$ 
+\begin{align*}
+\begin{split}
+ss' + tt' = 1 &= \rho(s)\rho(s') + \rho(t)\rho(t')\\
+&= (as + btt)(a's' + b't't') + (cst' + dtss' + ettt')(c'ts' + d'ss't' + e'tt't')\\
+&= (aa' + cc')ss' + (ab' + ce')st't' + (ba' + ec')tts' + (bb' + ee')tttt't' + dd't(1 - tt')t'\\
+&= (aa' + cc')ss' + dd'tt' + (ab' + ce')st't' + (ba' + ec')tts' + (bb' + ee' - dd')ttt't'.
+\end{split}
+\end{align*}
+\noindent In other words, by comparing coefficients,
+\begin{align*}
+\begin{split}
+aa' + cc' = dd' &= 1,\\
+ab' + ce' &= 0,\\
+ba' + ec' &= 0,\\
+bb' + ee' - dd' &= 0.
+\end{split}
+\end{align*}
+\noindent More constraints follow from \hyperref[Eq1]{Equation (\ref*{Eq1})} after setting $x$ equal to $s, s', t, t'$.\newpage
+
+\noindent Using all of these equations, we are able to solve for our ten parameters. What we find is that
+\begin{align*}
+\begin{split}
+a = a' = -e = -e' &= \frac{-1 \pm \csqrt{5}}{2},\\
+b = b' = c = c' &= \csqrt{a},\\
+d = d' &= 1.
+\end{split}
+\end{align*}
+\noindent We have two solutions; one when $\pm = +$ and the other when $\pm = -$. These two solutions correspond to the Fibonacci category and Yang--Lee category, respectively (where $1/a$ corresponds to the categorical dimension).\\[\linespacing]
+
+\ruledsection{The Classification}{3}
+\noindent\\ The full classification is as follows.\\
+
+\noindent\begin{theorem} The spherical Haagerup--Izumi fusion categories arising from algebra endomorphisms are in bijection (up to some suitable notion of equivalence) with tuples $(G, \pm, \omega, A)$, where $G$ is a finite Abelian group, $\omega^3 = 1$ and $A$ is a matrix with entries $A_{g,h}$, for $g,h \in G$, satisfying
+\begin{align*}
+\begin{split}
+A_{g,h} = \omega A_{-h,g-h} &= \overline{\omega} A_{h-g,-g},\\
+\sum_{h \in G} A_{h,0} &= -\overline{\omega}d_\pm^{-1},\\
+\sum_{g \in G} A_{h+g,k} A_{k,g} &= \delta_{h,0} - d_\pm^{-1}\delta_{k,0},\\
+\sum_{l,m \in G} A_{l,m} A_{l+g,h} A_{h+m,l+i} A_{i,k+m} &= A_{h-g,i-g}\delta_{k,g} - \overline{\omega}\delta_{h,0} A_{i,k} - \omega d_\pm^{-1} A_{g,h}\delta_{i,0}.
+\end{split}
+\end{align*}
+\noindent In particular, this correspondence is realized by maps
+\begin{align*}
+\begin{split}
+\rho(s) &= d_\pm^{-1}s + b\sum_{g \in G}t_g t_g,\\
+\rho(s') &= d_\pm^{-1}s' + \omega b\sum_{g \in G} t_g' t_g',\\
+\rho(t_g) &= bst_{-g}' + \omega t_{-g}ss' + \sum_{h,k \in G} A_{h+g,k+g} t_h t_{h+k+g} t_k',\\
+\rho(t_g') &= \omega bt_{-g}s' + \overline{\omega}ss't_{-g}' + \sum_{h,k \in G} A_{k+g,h+g} t_k t_{g+h+k}' t_h',
+\end{split}
+\end{align*}
+\begin{align*}
+\begin{split}
+\alpha_g(s) = s,\qquad\alpha_g(s') = s',\qquad\alpha_g(t_h) = t_{h+2g},\qquad\alpha_g(t_h') = t_{h+2g}'
+\end{split}
+\end{align*}
+\noindent that restrict to endomorphisms of the Leavitt algebra, where $b \coloneqq 1/\csqrt{\omega d_\pm}$. Moreover, the\linebreak corresponding fusion category is unitary if and only if $\pm = +$ and $A$ is Hermitian.\\
+\end{theorem}
+
+\noindent 
+
+\newpage
+\renewcommand\thesection{R}
+\ruledsectionstar{References}{References}
+\begingroup
+\setlength{\emergencystretch}{.5em}
+\printbibliography[heading=none]
+\endgroup
+
+\end{document}
