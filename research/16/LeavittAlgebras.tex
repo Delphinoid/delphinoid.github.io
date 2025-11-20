@@ -13,13 +13,13 @@
 \ruledsection{Prologue}{1}
 \noindent\\ The goal of my project is to classify the non-unitary near-group fusion categories that arise as categories of algebra endomorphisms. Both the unitary near-group and unitary Haagerup--Izumi fusion categories arising from algebra endomorphisms have been classified by Izumi using a Cuntz algebra approach. Evans and Gannon were later successful in using a Leavitt algebra approach to classify the non-unitary Haagerup--Izumi categories arising from algebra endomorphisms. I would like to describe this approach using concrete examples. Let's begin by defining what we mean by Haagerup--Izumi fusion categories and Leavitt algebras.\\
 
-\noindent\begin{definition}\textup{(Haagerup--Izumi Category).} Let $G$ be a finite Abelian group. Define a category with (isomorphism classes of) simple objects $[\alpha_g]$ and $[\alpha_g\rho]$, for all $g \in G$, and fusion rules given by
+\noindent\begin{definition}\textup{(Haagerup--Izumi Category).} Let $G$ be a finite Abelian group. A {\em Haagerup--Izumi category corresponding to $G$} is a category with simple objects $[\alpha_g]$ and $[\alpha_g\rho]$, for all $g \in G$, satisfying the fusion rules
 \begin{gather*}
 [\alpha_g] \otimes [\alpha_h] = [\alpha_{g+h}],\\
 [\alpha_g] \otimes [\alpha_h\rho] = [\alpha_{g+h}\rho] = [\alpha_h\rho] \otimes [\alpha_{-g}],\\
 [\alpha_g\rho] \otimes [\alpha_h\rho] = [\alpha_{g-h}] \oplus \bigoplus_{k \in G} [\alpha_k\rho].
 \end{gather*}
-\noindent We call this category the {\em Haagerup--Izumi category corresponding to $G$}.\\
+\noindent\\
 \end{definition}
 
 \noindent\begin{definition}\textup{(Leavitt Algebra).} The {\em Leavitt algebra $\mathcal{L}_n$} is the universal $\mathbb{C}$-algebra with generators $x_1, \dots, x_n, y_1, \dots, y_n$ satisfying the {\em Leavitt--Cuntz relations}
@@ -43,7 +43,7 @@ y_i x_j = \delta_{i,j}\qquad\text{and}\qquad\sum_{k=1}^n x_k y_k = 1,
 [\rho] \otimes [\rho] = [\mathbbm{1}] \oplus [\rho].
 \end{split}
 \end{align*}
-\noindent Let's try to model this as a system of algebra endomorphisms. The equation above is essentially saying that we have two  In order to do this, we would need to satisfy the relation
+\noindent Let's try to model this as a system of algebra endomorphisms. In order to do this, let's recall the definition of a direct sum. Essentially, if $\rho$ is to be realized as an endomorphism of some algebra, we would need to satisfy the relation
 \begin{align*}
 \begin{split}
 \rho(\rho(x)) = sxs' + t\rho(x)t',
@@ -57,7 +57,7 @@ s's = t't &= 1,\\
 s't = t's &= 0.
 \end{split}
 \end{align*}
-\noindent More precisely, these relations say that our equation for $\rho\circ\rho$ is a direct sum of objects $\id$ and $\rho$ in the category $\textcat{End}(A)$ (see: definition of an intertwiner, projection and injection). These elements $s, s', t, t' \in A$ generate a copy of the Leavitt algebra $\mathcal{L}_2$ inside $A$ by definition. We want to show that $\rho$ restricts to an endomorphism of $\mathcal{L}_2$. From our equation for $\rho\circ\rho$, we obtain
+\noindent These relations say exactly that our equation for $\rho\circ\rho$ is a direct sum of objects $\id$ and $\rho$ in the category $\textcat{End}(A)$ (see: definition of an intertwiner, projection and injection). These elements $s, s', t, t' \in A$ play the role of projections from $\rho^2$ and inclusions into $\rho^2$ generate a copy of the Leavitt algebra $\mathcal{L}_2$ inside $A$ by definition. We want to show that $\rho$ restricts to an endomorphism of $\mathcal{L}_2$. From our equation for $\rho\circ\rho$, we obtain
 \begin{align}
 \begin{split}\label{Eq1}
 \rho^2(x)s &= sx,\\
