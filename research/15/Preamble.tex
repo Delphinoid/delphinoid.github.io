@@ -269,6 +269,16 @@
 % Warning symbol.
 \newcommand{\warning}{\raisebox{2.65pt}{\fontencoding{U}\fontfamily{futs}\selectfont\char 49\relax}}
 
+\newcommand\dhrightarrow{
+\mathrel{\ooalign{$\rightarrow$\cr
+$\mkern3.5mu\rightarrow$}}
+}
+
+\newcommand\dhxrightarrow[2][]{
+\mathrel{\ooalign{$\xrightarrow[#1\mkern4mu]{#2\mkern4mu}$\cr
+\hidewidth$\rightarrow\mkern4mu$}}
+}
+
 % Use symbols instead of numbers for footnotes.
 % 0. 
 % 1. *

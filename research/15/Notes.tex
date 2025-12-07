@@ -13,7 +13,13 @@
 \ruledsection{Prologue}{1}
 \noindent\\ What are fusion categories? What are near-groups, Haagerup--Izumi categories and quadratic\linebreak categories? What is modular data? What are $6j$ symbols? What is the even part of a subfactor?\newpage
 
-\noindent Let $\mathcal{C}$ be a fusion category with representatives $\{X_i\}_{i \in \Gamma}$ of isomorphism classes of simple objects, and choose bases for each multiplicity space $H_{i,j}^l := \homset_\mathcal{C}(X_l, X_i \otimes X_j)$. The {\em (quantum) $6j$-symbols of $\mathcal{C}$} are the matrix blocks $\Phi_{i_1,i_2,i_3}^{i_4}$ of the change-of-basis matrices $\Phi_{i_1,i_2,i_3} \coloneqq \bigoplus_{i_4 \in \Gamma} \Phi_{i_1,i_2,i_3}^{i_4}$ given by
+\noindent Let $\mathcal{C}$ be a fusion category over $\mathbbm{k}$ with representatives $\{X_i\}_{i \in \Gamma}$ of isomorphism classes of simple objects, and choose bases for each multiplicity space $H_{i,j}^l := \homset_\mathcal{C}(X_l, X_i \otimes X_j)$. The {\em (quantum) $6j$-symbols of $\mathcal{C}$} are the matrix blocks
+\begin{align*}
+\begin{split}
+\Phi_{i_1,i_2,i_3}^{i_4} : \bigoplus_{j\in\Gamma} (H_{j,i_3}^{i_4} \otimes_\mathbbm{k} H_{i_1,i_2}^j) \to \bigoplus_{l\in\Gamma} (H_{i_1,l}^{i_4} \otimes_\mathbbm{k} H_{i_2,i_3}^l)
+\end{split}
+\end{align*}
+\noindent of the change-of-basis matrices $\Phi_{i_1,i_2,i_3} \coloneqq \bigoplus_{i_4 \in \Gamma} \Phi_{i_1,i_2,i_3}^{i_4}$, and are given by
 \begin{align*}
 \begin{split}
 \Phi_{i_1,i_2,i_3}^{i_4} := v^{-1}(X_{i_4}, X_{i_1}, X_{i_2} \otimes X_{i_3}) \circ (\yo(\alpha_{X_{i_1}, X_{i_2}, X_{i_3}}))_{X_{i_4}} \circ u(X_{i_4}, X_{i_1} \otimes X_{i_2}, X_{i_3}),
@@ -22,20 +28,33 @@
 \noindent where
 \begin{align*}
 \begin{split}
-\Phi_{i_1,i_2,i_3}^{i_4} : \bigoplus_{j\in\Gamma} (H_{j,i_3}^{i_4} \otimes_\mathbbm{k} H_{i_1,i_2}^j) \to \bigoplus_{l\in\Gamma} (H_{i_1,l}^{i_4} \otimes_\mathbbm{k} H_{i_2,i_3}^l).
+u(U,V,W) : \bigoplus_{j \in \Gamma} (\homset_\mathcal{C}(U, X_j \otimes W) \otimes_\mathbbm{k} \homset_\mathcal{C}(X_j, V)) \to \homset(U, V \otimes W),\\
+v(U,V,W) : \bigoplus_{l \in \Gamma} (\homset_\mathcal{C}(U, V \otimes X_{l\nhphantom{$_{l}$}\hphantom{j}\ \!\!}) \otimes_\mathbbm{k} \homset_\mathcal{C}(X_{l\nhphantom{$_{l}$}\hphantom{j}\ \!\!}, W)) \to \homset(U, V \otimes W)
 \end{split}
 \end{align*}
-\noindent Recall the Yoneda embedding
+\noindent are the maps defined by
+\begin{align*}
+\begin{split}
+u(U, V, W) \coloneqq \bigoplus_{j \in \Gamma}u_j(U, V, W)\quad\text{and}\quad v(U, V, W) \coloneqq \bigoplus_{l \in \Gamma}v_l(U, V, W),
+\end{split}
+\end{align*}
+\noindent\\[-0.7\linespacing] with
+\begin{align*}
+\begin{split}
+[u_j(U, V, W)](f \otimes_\mathbbm{k} g) \coloneqq (g \otimes \id_W) \circ f\quad\text{and}\quad [v_l(U, V, W)](f' \otimes_\mathbbm{k} g') \coloneqq (\id_V \otimes g') \circ f'
+\end{split}
+\end{align*}
+\noindent for all $f \in \homset_\mathcal{C}(U, X_j \otimes W)$, $g \in \homset_\mathcal{C}(X_j, V)$, $f' \in \homset_\mathcal{C}(U, V \otimes X_l)$ and $g \in \homset_\mathcal{C}(X_l, W))$. Recall now the Yoneda embedding
 \begin{align*}
 \begin{split}
 \yo_*(X) &\coloneqq \homset_\mathcal{C}(-, X),\\
-\yo_*(f : X \to Y) &\coloneqq \homset_\mathcal{C}(-, X) \Rightarrow \homset_\mathcal{C}(-, Y).
+\yo_*(f : X \to Y) &\coloneqq (\homset_\mathcal{C}(-, X) \Rightarrow \homset_\mathcal{C}(-, Y)).
 \end{split}
 \end{align*}
 \noindent Taking the Yoneda embedding of a component $\alpha_{X,Y,Z} : (X \otimes Y) \otimes Z \to X \otimes (Y \otimes Z)$ of the associativity natural isomorphism $\alpha$, we obtain a natural isomorphism
 \begin{align*}
 \begin{split}
-\yo_*(\alpha_{X,Y,Z}) = \homset_\mathcal{C}(-, (X \otimes Y) \otimes Z) \Rightarrow \homset_\mathcal{C}(-, X \otimes (Y \otimes Z)).
+\yo_*(\alpha_{X,Y,Z}) = (\homset_\mathcal{C}(-, (X \otimes Y) \otimes Z) \Rightarrow \homset_\mathcal{C}(-, X \otimes (Y \otimes Z))).
 \end{split}
 \end{align*}
 \noindent Thus we have an isomorphism of vector spaces
@@ -56,8 +75,9 @@
 \homset_\mathcal{C}(X_4, X_5 \otimes X_3) \to \homset_\mathcal{C}(X_4, X_1 \otimes X_6)
 \end{split}
 \end{align*}
-\noindent for all such $X_5$ and $X_6$. These matrices are exactly the $6j$ symbols, where the six simple objects $X_1, X_2, X_3, X_4, X_5, X_6$ play the role of the ``six $j$'s''.
-\noindent Note that these matrices are indeed parameterized by all ``six $j$'s'', as there could be many invertible matrices that give us a maps of the aforementioned form. We need $X_2$ in order to use the pentagon diagram for the associativity constraint and hence determine the specific invertible matrix corresponding to the associator. Moreover, $X_2$ tells us how the blocks
+\noindent for all such $X_5$ and $X_6$. These matrices are exactly the $6j$ symbols, where the six simple objects $X_1, X_2, X_3, X_4, X_5, X_6$ play the role of the eponymous ``six $j$'s''. This is also where $u$ and $v$ come in; given $f \in H_{5,3}^4$ and $g \in H_{1,2}^5$, we have $[u_5(X_4, X_1 \otimes X_2, X_3)](f \otimes_\mathbbm{k} g) : X_4 \to (X_1 \otimes X_2) \otimes X_3$, and similarly $[v_6(X_4, X_1, X_2 \otimes X_3)](f' \otimes_\mathbbm{k} g') : X_4 \to X_1 \otimes (X_2 \otimes X_3)$ for $f' \in H_{1,6}^4$ and $g' \in H_{2,3}^6$.\newpage
+
+\noindent Note that these matrices are indeed parameterized by all ``six $j$'s'', as there could be many invertible matrices that give us a maps of the aforementioned form. We need $X_2$ in order to use the pentagon diagram for the associativity constraint and hence determine the specific invertible matrix\linebreak corresponding to the associator. Moreover, $X_2$ tells us how the blocks
 \begin{align*}
 \begin{split}
 \homset_\mathcal{C}(X_4, X_5 \otimes X_3) \to \homset_\mathcal{C}(X_4, X_1 \otimes X_6)
@@ -69,6 +89,106 @@
 \homset_\mathcal{C}(X_4, (X_1 \otimes X_2) \otimes X_3) \xrightarrow{\sim} \homset_\mathcal{C}(X_4, X_1 \otimes (X_2 \otimes X_3)).
 \end{split}
 \end{align*}
+\noindent\\[-\linespacing]
+
+\noindent\begin{example}\textup{($\textcat{Vec}_{\mathbb{Z}/2\mathbb{Z}}$).} Consider $\textcat{Vec}_{\mathbb{Z}/2\mathbb{Z}}$, a category with two isomorphism classes of simple objects -- $[\mathbbm{1}]$ and $[X]$ -- satisfying the fusion rule
+\begin{align*}
+\begin{split}
+X \otimes X \cong \mathbbm{1}.
+\end{split}
+\end{align*}
+\noindent Let's start by computing the change-of-basis matrix $\Phi_{X,X,X}$. This matrix can be written in block diagonal form as
+\begin{align*}
+\begin{split}
+\Phi_{X,X,X} = \begin{pmatrix}\Phi_{X,X,X}^\mathbbm{1}&0\\0&\Phi_{X,X,X}^X\end{pmatrix}.
+\end{split}
+\end{align*}
+\noindent First, observe that
+\begin{align*}
+\begin{split}
+\Phi_{X,X,X}^\mathbbm{1} : \homset(\mathbbm{1}, (X \otimes X) \otimes X) \to \homset(\mathbbm{1}, X \otimes (X \otimes X));
+\end{split}
+\end{align*}
+\noindent but $(X \otimes X) \otimes X \cong X \cong X \otimes (X \otimes X)$, so $\Phi_{X,X,X}^\mathbbm{1}$ is just the isomorphism of $0$-dimensional vector spaces; that is, $\Phi_{X,X,X}^\mathbbm{1} = 0$. Let's now compute $\Phi_{X,X,X}^X$. %Denote $X \otimes X$ by $\widetilde{\mathbbm{1}}$.
+We shall start by choosing bases for the multiplicity spaces $H_{X,X}^{{\mathbbm{1}}}$, $H_{{\mathbbm{1}},X}^X$ and $H_{X,{\mathbbm{1}}}^X$. These spaces are all $1$-dimensional, so we will choose basis elements $\iota_{X,X}^{{\mathbbm{1}}}$, $\lambda_X^{-1}$ and $\rho_X^{-1}$, respectively. Here we have a canonical choice of basis elements for $H_{{\mathbbm{1}},X}^X$ and $H_{X,{\mathbbm{1}}}^X$; namely, the left and right unitors $\lambda$ and $\rho$. This culminates in the basis elements
+\begin{align*}
+\begin{split}
+\iota_{(X \otimes X) \otimes X}^X \coloneqq (\iota_{X,X}^{{\mathbbm{1}}} \otimes \id_X) \circ \lambda_X^{-1} = [u_{{\mathbbm{1}}}(X, X \otimes X, X)](\lambda_X^{-1} \otimes_\mathbbm{k} \iota_{X,X}^{{\mathbbm{1}}})
+\end{split}
+\end{align*}
+\noindent and
+\begin{align*}
+\begin{split}
+\iota_{X \otimes (X \otimes X)}^X \coloneqq (\id_X \otimes \iota_{X,X}^{{\mathbbm{1}}}) \circ \rho_X^{-1} = [v_{{\mathbbm{1}}}(X, X, X \otimes X)](\rho_X^{-1} \otimes_\mathbbm{k} \iota_{X,X}^{{\mathbbm{1}}})
+\end{split}
+\end{align*}
+\noindent for $\homset(X, (X \otimes X) \otimes X)$ and $\homset(X, X \otimes (X \otimes X))$, respectively. These are once again both $1$-dimensional spaces, so let's define a constant $\mu_1 \in \mathbbm{k}$ for which
+\begin{align*}
+\begin{split}
+\Phi_{X,X,X}^X(\iota_{(X \otimes X) \otimes X}^X) \eqqcolon \mu_1 \cdot \iota_{X \otimes (X \otimes X)}^X.
+\end{split}
+\end{align*}
+\noindent In order to determine $\mu_1$, we need to use the pentagon equation. To this end, we first choose bases for the Hom-spaces
+\begin{align*}
+\begin{split}
+\homset({\mathbbm{1}}, ({\mathbbm{1}} \otimes X) \otimes X),\\
+\homset({\mathbbm{1}}, {\mathbbm{1}} \otimes (X \otimes X)),\\
+\homset({\mathbbm{1}}, (X \otimes {\mathbbm{1}}) \otimes X),\\
+\homset({\mathbbm{1}}, X \otimes ({\mathbbm{1}} \otimes X)),\\
+\homset({\mathbbm{1}}, (X \otimes X) \otimes {\mathbbm{1}}),\\
+\homset({\mathbbm{1}}, X \otimes (X \otimes {\mathbbm{1}})).
+\end{split}
+\end{align*}
+\noindent We can write bases for these Hom-spaces in terms of the bases we chose previously. That is,
+\begin{align*}
+\begin{split}
+\iota_{({\mathbbm{1}} \otimes X) \otimes X}^{\mathbbm{1}} &\coloneqq (\lambda_X^{-1} \otimes \id_X) \circ \iota_{X,X}^{{\mathbbm{1}}},\\
+\iota_{{\mathbbm{1}} \otimes (X \otimes X)}^{\mathbbm{1}} &\coloneqq (\id_{\mathbbm{1}} \otimes \iota_{X,X}^{{\mathbbm{1}}}) \circ \lambda_{\mathbbm{1}}^{-1},\\
+\iota_{(X \otimes {\mathbbm{1}}) \otimes X}^{\mathbbm{1}} &\coloneqq (\rho_X^{-1} \otimes \id_X) \circ \iota_{X,X}^{{\mathbbm{1}}},\\
+\iota_{X \otimes ({\mathbbm{1}} \otimes X)}^{\mathbbm{1}} &\coloneqq (\id_X \otimes \lambda_X^{-1}) \circ \iota_{X,X}^{{\mathbbm{1}}},\\
+\iota_{(X \otimes X) \otimes {\mathbbm{1}}}^{\mathbbm{1}} &\coloneqq (\iota_{X,X}^{{\mathbbm{1}}} \otimes \id_{\mathbbm{1}}) \circ \lambda_{\mathbbm{1}}^{-1},\\
+\iota_{X \otimes (X \otimes {\mathbbm{1}})}^{\mathbbm{1}} &\coloneqq (\id_X \otimes \rho_X^{-1}) \circ \iota_{X,X}^{{\mathbbm{1}}}.
+\end{split}
+\end{align*}
+\noindent This culminates in the three new constants given by
+\begin{align*}
+\begin{split}
+\Phi_{{\mathbbm{1}},X,X}^{\mathbbm{1}}(\iota_{({\mathbbm{1}} \otimes X) \otimes X}^{\mathbbm{1}}) &\eqqcolon \mu_2 \cdot \iota_{{\mathbbm{1}} \otimes (X \otimes X)}^{\mathbbm{1}},\\
+\Phi_{X,{\mathbbm{1}},X}^{\mathbbm{1}}(\iota_{(X \otimes {\mathbbm{1}}) \otimes X}^{\mathbbm{1}}) &\eqqcolon \mu_3 \cdot \iota_{X \otimes ({\mathbbm{1}} \otimes X)}^{\mathbbm{1}},\\
+\Phi_{X,X,{\mathbbm{1}}}^{\mathbbm{1}}(\iota_{(X \otimes X) \otimes {\mathbbm{1}}}^{\mathbbm{1}}) &\eqqcolon \mu_4 \cdot \iota_{X \otimes (X \otimes {\mathbbm{1}})}^{\mathbbm{1}}.
+\end{split}
+\end{align*}
+\noindent The final bases we need are for the Hom-spaces
+\begin{align*}
+\begin{split}
+\homset({\mathbbm{1}}, ((X \otimes X) \otimes X) \otimes X),\\
+\homset({\mathbbm{1}}, (X \otimes (X \otimes X)) \otimes X),\\
+\homset({\mathbbm{1}}, (X \otimes X) \otimes (X \otimes X)),\\
+\homset({\mathbbm{1}}, X \otimes ((X \otimes X) \otimes X)),\\
+\homset({\mathbbm{1}}, X \otimes (X \otimes (X \otimes X))).
+\end{split}
+\end{align*}
+\noindent Following the same procedure as before, we have
+\begin{align*}
+\begin{split}
+\iota_{((X \otimes X) \otimes X) \otimes X}^{\mathbbm{1}} &\coloneqq (\iota_{(X \otimes X) \otimes X}^X \otimes \id_X) \circ \iota_{X,X}^{{\mathbbm{1}}} = ((\iota_{X,X}^{{\mathbbm{1}}} \otimes \id_X) \otimes \id_X) \circ \iota_{({\mathbbm{1}} \otimes X) \otimes X}^{\mathbbm{1}},\\
+\iota_{(X \otimes (X \otimes X)) \otimes X}^{\mathbbm{1}} &\coloneqq (\iota_{X \otimes (X \otimes X)}^X \otimes \id_X) \circ \iota_{X,X}^{{\mathbbm{1}}} = ((\id_X \otimes \iota_{X,X}^{{\mathbbm{1}}}) \otimes \id_X) \circ \iota_{(X \otimes {\mathbbm{1}}) \otimes X}^{\mathbbm{1}},\\
+\iota_{(X \otimes X) \otimes (X \otimes X)}^{\mathbbm{1}} &\coloneqq (\iota_{X,X}^{{\mathbbm{1}}} \otimes (\id_X \otimes \id_X)) \circ \iota_{{\mathbbm{1}} \otimes (X \otimes X)}^{\mathbbm{1}} = ((\id_X \otimes \id_X) \otimes \iota_{X,X}^{{\mathbbm{1}}}) \circ \iota_{(X \otimes X) \otimes {\mathbbm{1}}}^{\mathbbm{1}},\\ %(\iota_{X,X}^{{\mathbbm{1}}} \otimes \iota_{X,X}^{{\mathbbm{1}}}) \circ \lambda_{\mathbbm{1}}^{-1},\\
+\iota_{X \otimes ((X \otimes X) \otimes X)}^{\mathbbm{1}} &\coloneqq (\id_X \otimes \iota_{(X \otimes X) \otimes X}^X) \circ \iota_{X,X}^{{\mathbbm{1}}} = (\id_X \otimes (\iota_{X,X}^{\mathbbm{1}} \otimes \id_X)) \circ \iota_{X \otimes ({\mathbbm{1}} \otimes X)}^{\mathbbm{1}},\\
+\iota_{X \otimes (X \otimes (X \otimes X))}^{\mathbbm{1}} &\coloneqq (\id_X \otimes \iota_{X \otimes (X \otimes X)}^X) \circ \iota_{X,X}^{{\mathbbm{1}}} = (\id_X \otimes (\id_X \otimes \iota_{X,X}^{{\mathbbm{1}}})) \circ \iota_{X \otimes (X \otimes {\mathbbm{1}})}^{\mathbbm{1}}.
+\end{split}
+\end{align*}
+\noindent The pentagon diagram thus gives us
+\begin{center}
+\begin{tikzcd}[arrows={|->}, row sep=1.2cm, column sep=2cm]
+& \iota_{((X \otimes X) \otimes X) \otimes X}^{\mathbbm{1}}\arrow[dl, "\alpha_{X,X,X} \otimes \id_X"']\arrow[dr, "\alpha_{X \otimes X,X,X}"] &\\
+\mu_1 \cdot \iota_{(X \otimes (X \otimes X)) \otimes X}^{\mathbbm{1}}\arrow[d, "\alpha_{X,X \otimes X,X}"'] & & \mu_2 \cdot \iota_{(X \otimes X) \otimes (X \otimes X)}^{\mathbbm{1}}\arrow[d, "\alpha_{X \otimes X,X,X}"]\\
+\mu_1\mu_3 \cdot \iota_{X \otimes ((X \otimes X) \otimes X)}^{\mathbbm{1}}\arrow[r, "\alpha_{X,X,X}\otimes\id_X"'] & \mu_1^2\mu_3 \cdot \iota_{X \otimes (X \otimes (X \otimes X))}^{\mathbbm{1}}\arrow[r, equal] & \mu_2\mu_4 \cdot \iota_{X \otimes (X \otimes (X \otimes X))}^{\mathbbm{1}}\\
+\end{tikzcd}.
+\end{center}
+\newpage
+\noindent .
+\end{example}
 \newpage
 
 \ruledsection{The Cuntz Algebra Approach of Izumi}{2}
