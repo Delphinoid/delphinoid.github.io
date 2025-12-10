@@ -169,16 +169,16 @@ B_s \otimes_R B_t \cong R \otimes_{R^s} R \otimes_{R^t} R(2)\qquad\text{and}\qqu
 B_s \otimes_R B_t \otimes_R B_s \cong B_{sts} \oplus B_s\qquad\text{and}\qquad B_t \otimes_R B_s \otimes_R B_t \cong B_{sts} \oplus B_t.
 \end{split}
 \end{align*}
-\noindent To this end, let's define an $(R, R)$-bimodule homomorphism $\phi : B_{sts} \to B_s \otimes_R B_t \otimes_R B_s$ by extending
+\noindent To this end, let's define an $(R, R)$-bimodule homomorphism $\iota_{sts} : B_{sts} \to B_s \otimes_R B_t \otimes_R B_s$ by extending
 \begin{align*}
 \begin{split}
-\phi : 1 \otimes_{R^{s,t}} 1 \mapsto 1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} 1.
+\iota_{sts} : 1 \otimes_{R^{s,t}} 1 \mapsto 1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} 1.
 \end{split}
 \end{align*}
-\noindent This is clearly a well-defined homomorphism of graded $(R, R)$-bimodules, as $f \otimes_{R^{s,t}} 1 = 1 \otimes_{R^{s,t}} f$ if and only if $f \in R^{s,t}$ if and only if $f \in R^s, R^t$. In fact, this reasoning also shows that it is injective. Suppose we define another $(R, R)$-bimodule homomorphism $\psi : B_s \to B_s \otimes_R B_t \otimes_R B_s$ by extending
+\noindent This is clearly a well-defined homomorphism of graded $(R, R)$-bimodules, as $f \otimes_{R^{s,t}} 1 = 1 \otimes_{R^{s,t}} f$ if and only if $f \in R^{s,t}$ if and only if $f \in R^s, R^t$. In fact, this reasoning also shows that it is injective. Suppose we define another $(R, R)$-bimodule homomorphism $\iota_s : B_s \to B_s \otimes_R B_t \otimes_R B_s$ by extending
 \begin{align*}
 \begin{split}
-\psi : 1 \otimes_{R^s} 1 &\mapsto \frac{1}{2}(1 \otimes_{R^s} (\alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t) \otimes_{R^s} 1).\\
+\iota_s : 1 \otimes_{R^s} 1 &\mapsto \frac{1}{2}(1 \otimes_{R^s} (\alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t) \otimes_{R^s} 1).\\
 % &\hphantom{\mapsto}\nhphantom{$=$}= \frac{1}{2}(1 \otimes_{R^s} \alpha_t \otimes_{R^t} 1 \otimes_{R^s} 1 + 1 \otimes_{R^s} 1 \otimes_{R^t} \alpha_t \otimes_{R^s} 1),
 \end{split}
 \end{align*}
@@ -216,16 +216,16 @@ f \otimes_{R^s} \alpha_t \otimes_{R^t} 1 \otimes_{R^s} 1 + f \otimes_{R^s} 1 \ot
 &= 1 \otimes_{R^s} \alpha_t \otimes_{R^t} 1 \otimes_{R^s} f + 1 \otimes_{R^s} 1 \otimes_{R^t} \alpha_t \otimes_{R^s} f.
 \end{split}
 \end{align*}
-\noindent Thus $\psi$ is well-defined, and like $\phi$ it is a monomorphism. Because $\langle 1 \otimes_{R^t} 1\rangle$ and $\langle \alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t\rangle$ clearly generate disjoint $(R^s, R^s)$-bimodules, $\phi$ and $\psi$ are themselves disjoint. If we can show
+\noindent Thus $\iota_s$ is well-defined, and like $\iota_{sts}$ it is a monomorphism. Because $\langle 1 \otimes_{R^t} 1\rangle$ and $\langle \alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t\rangle$ clearly generate disjoint $(R^s, R^s)$-bimodules, $\iota_{sts}$ and $\iota_s$ are themselves disjoint. If we can show
 \begin{align*}
 \begin{split}
 R \otimes_{R^t} R \cong \langle 1 \otimes_{R^t} 1\rangle \oplus \langle \alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t\rangle,
 \end{split}
-\end{align*} %Looking to the images of $\phi$ and $\psi$, we see that
+\end{align*} %Looking to the images of $\iota_{sts}$ and $\iota_s$, we see that
 %\begin{align*}
 %\begin{split}
-%\im(\phi) &= R \otimes_{R^s} R^s \otimes_{R^t} R^s \otimes_{R^s} R,\\
-%\im(\psi) &= R \otimes_{R^s} (R^s\alpha_t \otimes_{R^t} R^s \oplus R^s \otimes_{R^t} R^s\alpha_t) \otimes_{R^s} R.
+%\im(\iota_{sts}) &= R \otimes_{R^s} R^s \otimes_{R^t} R^s \otimes_{R^s} R,\\
+%\im(\iota_s) &= R \otimes_{R^s} (R^s\alpha_t \otimes_{R^t} R^s \oplus R^s \otimes_{R^t} R^s\alpha_t) \otimes_{R^s} R.
 %\end{split}
 %\end{align*}
 %\noindent Thus these maps are disjoint, as $R^s \otimes_{R^t} R^s$, $R^s\alpha_t \otimes_{R^t} R^s$ and $R^s \otimes_{R^t} R^s\alpha_t$ are pairwise disjoint. In order to show that $B_s \otimes_R B_t \otimes_R B_s \cong B_{sts} \oplus B_s$, we just need to find an $(R^s, R^s)$-bimodule isomorphism
@@ -236,12 +236,12 @@ R \otimes_{R^t} R \cong \langle 1 \otimes_{R^t} 1\rangle \oplus \langle \alpha_t
 %\end{align*}
 \noindent then $B_s \otimes_R B_t \otimes_R B_s \cong B_{sts} \oplus B_s$, with a similar computation yielding $B_t \otimes_R B_s \otimes_R B_t \cong B_{sts} \oplus B_t$.\newpage
 
-\noindent To this end, observe that $\alpha_t - (\alpha_s, \alpha_t)\alpha_s = \alpha_t + \frac{1}{2}\alpha_s \in R^s$ and $\alpha_s + \frac{1}{2}\alpha_t \in R^t$, whence
+\noindent To this end, observe that $\alpha_t - (\alpha_s, \alpha_t)\alpha_s = \frac{1}{2}\alpha_s + \alpha_t \in R^s$ and $\alpha_s + \frac{1}{2}\alpha_t \in R^t$, whence
 \begin{align*}
 \begin{split}
-&\frac{2}{3}\left(\alpha_t + \frac{1}{2}\alpha_s\right) \otimes_{R^t} 1 - \bigg(\alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t\bigg) + 1 \otimes_{R^t} \frac{4}{3}\left(\alpha_t + \frac{1}{2}\alpha_s\right)\\
-=\ &\left(\left(\frac{2}{3}\alpha_t + \frac{2}{6}\alpha_s\right) \otimes_{R^t} 1 - \alpha_t \otimes_{R^t} 1\right) + \left(1 \otimes_{R^t} -\alpha_t + 1 \otimes_{R^t} \left(\frac{4}{3}\alpha_t + \frac{4}{6}\alpha_s\right)\right)\\
-=\ &\left(-\frac{1}{3}\alpha_t + \frac{2}{6}\alpha_s\right) \otimes_{R^t} 1 + 1 \otimes_{R^t} \left(\frac{1}{3}\alpha_t + \frac{4}{6}\alpha_s\right)\\
+&\frac{2}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right) \otimes_{R^t} 1 - \bigg(\alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t\bigg) + 1 \otimes_{R^t} \frac{4}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right)\\
+=\ &\left(\left(\frac{2}{6}\alpha_s + \frac{2}{3}\alpha_t\right) \otimes_{R^t} 1 - \alpha_t \otimes_{R^t} 1\right) + \left(1 \otimes_{R^t} -\alpha_t + 1 \otimes_{R^t} \left(\frac{4}{6}\alpha_s + \frac{4}{3}\alpha_t\right)\right)\\
+=\ &\left(\frac{2}{6}\alpha_s - \frac{1}{3}\alpha_t\right) \otimes_{R^t} 1 + 1 \otimes_{R^t} \left(\frac{4}{6}\alpha_s + \frac{1}{3}\alpha_t\right)\\
 =\ &\alpha_s \otimes_{R^t} 1.
 % &-\frac{2}{3}\left(\alpha_t - \frac{1}{2}\alpha_s\right) \otimes_{R^t} 1 + \bigg(\alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t\bigg) + 1 \otimes_{R^t} -\frac{4}{3}\left(\alpha_t - \frac{1}{2}\alpha_s\right)\\
 %=\ &\left(\left(\frac{1}{3}\alpha_s - \frac{2}{3}\alpha_t\right) \otimes_{R^t} 1 + \alpha_t \otimes_{R^t} 1\right) + \left(1 \otimes_{R^t} \alpha_t + 1 \otimes_{R^t} \left(\frac{2}{3}\alpha_s - \frac{4}{3}\alpha_t\right)\right)\\
@@ -276,4 +276,117 @@ B_{sts} \otimes_R B_s &\cong (R \otimes_{R^{s,t}} R(3)) \otimes_R (R \otimes_{R^
 \noindent The other isomorphisms follow similarly. We have thus shown that we obtain no new indecomposables by tensoring, meaning we are done with our classification. This completes the proof.
 \end{proof}\\
 
+\noindent An alternate proof of the above is to find explicit projections $\pi_s : B_s \otimes_R B_t \otimes_R B_s \to B_s$ and $\pi_{sts} : B_s \otimes_R B_t \otimes_R B_s \to B_{sts}$ for which $\pi_s \circ \iota_s = \id_{B_s}$ and $\pi_{sts} \circ \iota_{sts} = \id_{B_{sts}}$. It is not too hard to find $\pi_s$. One can easily show that it is nothing but
+\begin{align*}
+\pi_s : 1 \otimes_{R^s} f \otimes_{R^t} g \otimes_{R^s} 1 \mapsto -2\partial_s(fg) \otimes_{R^s} 1,
+\end{align*}
+\noindent where we remind the reader that we are using the relatively non-standard normalization\linebreak $\delta_s : f \mapsto (f - s(f))/2\alpha_s$ of the Demazure operator. But how can we find $\pi_{sts}$? Well, let
+\begin{align*}
+e \coloneqq \iota_s \circ \pi_s  : 1 \otimes_{R^s} f \otimes_{R^t} g \otimes_{R^s} 1 \mapsto -\delta_s(fg) \otimes_{R^s} (\alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t) \otimes_{R^s} 1.
+\end{align*}
+\noindent As we would expect, $e_s$ is an idempotent, as
+\begin{align*}
+e_s^2 = \iota_s \circ \pi_s \circ \iota_s \circ \pi_s = \iota_s \circ \id_{B_s} \circ \pi_s = e_s.
+\end{align*}
+\noindent It follows from idempotent theory that the idempotent $e_{sts} = \iota_{sts} \circ \pi_{sts}$ satisfies
+\begin{align*}
+\id_{B_s \otimes_R B_t \otimes_R B_s} = e_{sts} + e_s.
+\end{align*}
+\noindent This gives us an explicit formula for $e_{sts}$; namely, $e_{sts} = 1 - e_s$, whence
+\begin{align*}
+e_{sts} = 1 \otimes_{R^s} f \otimes_{R^t} g \otimes_{R^s} 1 \mapsto 1 \otimes_{R^s} f \otimes_{R^t} g \otimes_{R^s} 1 + \delta_s(fg) \otimes_{R^s} (\alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t) \otimes_{R^s} 1.
+\end{align*}
+\noindent We can use this to determine $\pi_{sts}$. First, we know that $\pi_{sts}$ will be some map of the form
+\begin{align*}
+\pi_{sts} : 1 \otimes_{R^s} f \otimes_{R^t} g \otimes_{R^s} 1 \mapsto \sum_{i} h_i \otimes_{R^{s,t}} k_i.
+\end{align*}
+\noindent Thus we must rearrange the image of $e_{sts}$ such that the inner tensors are $1$. Let's write
+\begin{align*}
+1 \otimes_{R^s} f \otimes_{R^t} g \otimes_{R^s} 1 =\ &1 \otimes_{R^s} (P_s(f) + \delta_s(f)\alpha_s) \otimes_{R^t} (P_s(g) + \delta_s(g)\alpha_s) \otimes_{R^s} 1\\
+=\ &P_s(f) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} P_s(g)\ +\\
+&\delta_s(f) \otimes_{R^s} \alpha_s \otimes_{R^t} 1 \otimes_{R^s} P_s(g)\ +\\
+&P_s(f) \otimes_{R^s} 1 \otimes_{R^t} \alpha_s \otimes_{R^s} \delta_s(g)\ +\\
+&\delta_s(f) \otimes_{R^s} \alpha_s \otimes_{R^t} \alpha_s \otimes_{R^s} \delta_s(g).
+\end{align*}
+\noindent This greatly simplifies our work, as now we need only compute how $e_{sts}$ acts on these four tensors. The first one is simple, since $\delta_s(1) = 0$:
+\begin{align*}
+e_{sts}(1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} 1) = 1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} 1.
+\end{align*}
+\noindent As for the next two, observe that
+\begin{align*}
+(\alpha_s + \alpha_t) - \frac{2}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right) = \frac{2}{3}\left(\alpha_s + \frac{1}{2}\alpha_t\right).
+\end{align*}
+\noindent Hence
+\begin{align*}
+e_{sts}(1 \otimes_{R^s} \alpha_s \otimes_{R^t} 1 \otimes_{R^s} 1) =\ &1 \otimes_{R^s} \alpha_s \otimes_{R^t} 1 \otimes_{R^s} 1\ +\ 1 \otimes_{R^s} (\alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t) \otimes_{R^s} 1\\
+=\ &1 \otimes_{R^s} (\alpha_s + \alpha_t) \otimes_{R^t} 1 \otimes_{R^s} 1\ +\ 1 \otimes_{R^s} 1 \otimes_{R^t} \alpha_t \otimes_{R^s} 1\\
+=\ &1 \otimes_{R^s} \frac{1}{3}(2\alpha_s + \alpha_t) \otimes_{R^t} 1 \otimes_{R^s} 1\ +\ 1 \otimes_{R^s} 1 \otimes_{R^t} \alpha_t \otimes_{R^s} 1\ +\\
+&1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^t} 1 \otimes_{R^s} 1\\
+=\ &1 \otimes_{R^s} 1 \otimes_{R^t} \frac{1}{3}(2\alpha_s + 4\alpha_t) \otimes_{R^s} 1\ +\ 1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^t} 1 \otimes_{R^s} 1\\
+=\ &1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{1}{3}(2\alpha_s + 4\alpha_t)\ +\ \frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} 1.
+\end{align*}
+\noindent The result for $1 \otimes_{R^s} 1 \otimes_{R^t} \alpha_s \otimes_{R^s} 1$ follows by symmetry. We can then play a similar game for the remaining tensor. We begin by observing that
+\begin{align*}
+\alpha_s + \frac{2}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right) &= \frac{4}{3}\left(\alpha_s + \frac{1}{2}\alpha_t\right)
+\end{align*}
+\noindent and
+\begin{align*}
+R^{s,t} = \mathbb{R}[\alpha_s^2 + \alpha_s\alpha_t + \alpha_t^2].
+\end{align*}
+\noindent Now,
+\begin{align*}
+e_{sts}(1 \otimes_{R^s} \alpha_s \otimes_{R^t} \alpha_s \otimes_{R^s} 1) =\ &1 \otimes_{R^s} \alpha_s \otimes_{R^t} \alpha_s \otimes_{R^s} 1\\
+=\ &1 \otimes_{R^s} \frac{2}{3}(2\alpha_s + \alpha_t) \otimes_{R^t} \frac{2}{3}(2\alpha_s + \alpha_t) \otimes_{R^s} 1\ -\\
+&1 \otimes_{R^s} \frac{2}{3}(2\alpha_s + \alpha_t) \otimes_{R^t} \frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1\ -\\
+&1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^t} \frac{2}{3}(2\alpha_s + \alpha_t) \otimes_{R^s} 1\ +\\
+&1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^t} \frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1\\
+=\ &1 \otimes_{R^s} 1 \otimes_{R^t} \frac{2}{9}(8\alpha_s^2 + 8\alpha_s\alpha_t + 2\alpha_t^2) \otimes_{R^s} 1\ -\\
+&1 \otimes_{R^s} 1 \otimes_{R^t} \frac{2}{9}(2\alpha_s^2 + 5\alpha_s\alpha_t + 2\alpha_t^2) \otimes_{R^s} 1\ -\\
+&1 \otimes_{R^s} \frac{2}{9}(2\alpha_s^2 + 5\alpha_s\alpha_t + 2\alpha_t^2) \otimes_{R^t} 1 \otimes_{R^s} 1\ +\\
+&\frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t)\\
+=\ &1 \otimes_{R^s} 1 \otimes_{R^t} \frac{2}{9}(8\alpha_s^2 + 8\alpha_s\alpha_t + 2\alpha_t^2) \otimes_{R^s} 1\ -\\
+&1 \otimes_{R^s} 1 \otimes_{R^t} \frac{2}{9}(2\alpha_s^2 + 5\alpha_s\alpha_t + 2\alpha_t^2) \otimes_{R^s} 1\ -\\
+&1 \otimes_{R^s} \frac{2}{9}(2\alpha_s^2 + 5\alpha_s\alpha_t + 2\alpha_t^2) \otimes_{R^t} 1 \otimes_{R^s} 1\ +\\
+&\frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t)\\
+=\ &1 \otimes_{R^s} 1 \otimes_{R^t} \frac{2}{9}(6\alpha_s^2 + 3\alpha_s\alpha_t) \otimes_{R^s} 1\ -\\
+&1 \otimes_{R^s} \frac{2}{9}(2\alpha_s^2 + 5\alpha_s\alpha_t + 2\alpha_t^2) \otimes_{R^t} 1 \otimes_{R^s} 1\ +\\
+&\frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t)\\
+=\ &1 \otimes_{R^s} 1 \otimes_{R^t} \frac{2}{9}(3\alpha_s^2 + 3\alpha_s\alpha_t) \otimes_{R^s} 1\ -\\
+&1 \otimes_{R^s} \frac{2}{9}(2\alpha_s^2 + 5\alpha_s\alpha_t + 2\alpha_t^2) \otimes_{R^t} 1 \otimes_{R^s} 1\ +\\
+&\frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t)\ +\\
+&1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{2}{3}\alpha_s^2.\\
+%=\ &1 \otimes_{R^s} \frac{2}{9}(\alpha_s^2 - 2\alpha_s\alpha_t - 2\alpha_t^2) \otimes_{R^t} 1 \otimes_{R^s} 1\ +\\
+% &\frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t) +\\
+% &1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{2}{3}\alpha_s^2.
+%=\ -&\frac{4}{9}(\alpha_s^2 - \alpha_s\alpha_t - \alpha_t^2) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} 1\ +\\
+% &\frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t) +\\
+% &1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{2}{3}\alpha_s^2\ +\ \frac{2}{3}\alpha_s^2 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} 1.\\
+\end{align*}
+\newpage
+\noindent From here, we finish by using the aforementioned fact that $\alpha_s^2 + \alpha_s\alpha_t + \alpha_t^2$ is both $s$-invariant and $t$-invariant to write
+\begin{align*}
+e_{sts}(1 \otimes_{R^s} \alpha_s \otimes_{R^t} \alpha_s \otimes_{R^s} 1) =\ &1 \otimes_{R^s} \frac{2}{9}(3\alpha_s^2 + 3\alpha_s\alpha_t) \otimes_{R^t} 1 \otimes_{R^s} 1\ -\\
+&1 \otimes_{R^s} \frac{2}{9}(2\alpha_s^2 + 5\alpha_s\alpha_t + 2\alpha_t^2) \otimes_{R^t} 1 \otimes_{R^s} 1\ +\\
+&\frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t)\ +\\
+&1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{2}{3}\alpha_s^2.\\
+=\ &1 \otimes_{R^s} \frac{2}{9}(\alpha_s^2 - 2\alpha_s\alpha_t - 2\alpha_t^2) \otimes_{R^t} 1 \otimes_{R^s} 1\ +\\
+&\frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t)\ +\\
+&1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{2}{3}\alpha_s^2\\
+=\ &\frac{4}{9}(-\alpha_s^2 - \alpha_s\alpha_t - \alpha_t^2) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} 1\ +\\
+&\frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t)\ +\\
+&1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{2}{3}\alpha_s^2\ +\ \frac{2}{3}\alpha_s^2 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} 1.
+\end{align*}
+\noindent We therefore conclude that
+\begin{align*}
+\pi_{sts} : 1 \otimes_{R^s} f \otimes_{R^t} g \otimes_{R^s} 1 \mapsto\ &P_s(f) \otimes_{R^{s,t}} P_s(g)\ +\\
+&\partial_s(f)\frac{2}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right) \otimes_{R^{s,t}} P_s(g)\ +\\
+&\partial_s(f) \otimes_{R^{s,t}} \frac{4}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right) P_s(g)\ +\\
+&P_s(g) \otimes_{R^{s,t}} \frac{2}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right)\partial_s(f)\ +\\
+&P_s(g) \frac{4}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right) \otimes_{R^{s,t}} \partial_s(f)\ +\\
+&\partial_s(f)\frac{1}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right) \otimes_{R^{s,t}} \frac{1}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right)\partial_s(g)\ +\\
+&\partial_s(f) \otimes_{R^{s,t}} \frac{2}{3}\alpha_s^2\partial_s(g)\ +\\
+&\partial_s(f)\frac{2}{3}\alpha_s^2 \otimes_{R^{s,t}} \partial_s(g)\ -\\
+&\partial_s(f)\frac{4}{9}(\alpha_s^2 + \alpha_s\alpha_t + \alpha_t^2) \otimes_{R^{s,t}} \partial_s(g).
+\end{align*}
+\noindent Phew!!
 \end{document}
