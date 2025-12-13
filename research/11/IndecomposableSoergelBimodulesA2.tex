@@ -236,47 +236,13 @@ R \otimes_{R^t} R \cong \langle 1 \otimes_{R^t} 1\rangle \oplus \langle \alpha_t
 %\end{align*}
 \noindent then $B_s \otimes_R B_t \otimes_R B_s \cong B_{sts} \oplus B_s$, with a similar computation yielding $B_t \otimes_R B_s \otimes_R B_t \cong B_{sts} \oplus B_t$.\newpage
 
-\noindent To this end, observe that $\alpha_t - (\alpha_s, \alpha_t)\alpha_s = \frac{1}{2}\alpha_s + \alpha_t \in R^s$ and $\alpha_s + \frac{1}{2}\alpha_t \in R^t$, whence
+\noindent While we could just figure out how to write $x \otimes_{R^t} y$ in $\langle 1 \otimes_{R^t} 1\rangle \oplus \langle \alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t\rangle$ for all $x, y \in \{1, \alpha_s, \alpha_t\}$, there is perhaps a more informative way to prove this result. This is to find explicit projections $\pi_s : B_s \otimes_R B_t \otimes_R B_s \to B_s$ and $\pi_{sts} : B_s \otimes_R B_t \otimes_R B_s \to B_{sts}$ for which
 \begin{align*}
-\begin{split}
-&\frac{2}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right) \otimes_{R^t} 1 - \bigg(\alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t\bigg) + 1 \otimes_{R^t} \frac{4}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right)\\
-=\ &\left(\left(\frac{2}{6}\alpha_s + \frac{2}{3}\alpha_t\right) \otimes_{R^t} 1 - \alpha_t \otimes_{R^t} 1\right) + \left(1 \otimes_{R^t} -\alpha_t + 1 \otimes_{R^t} \left(\frac{4}{6}\alpha_s + \frac{4}{3}\alpha_t\right)\right)\\
-=\ &\left(\frac{2}{6}\alpha_s - \frac{1}{3}\alpha_t\right) \otimes_{R^t} 1 + 1 \otimes_{R^t} \left(\frac{4}{6}\alpha_s + \frac{1}{3}\alpha_t\right)\\
-=\ &\alpha_s \otimes_{R^t} 1.
-% &-\frac{2}{3}\left(\alpha_t - \frac{1}{2}\alpha_s\right) \otimes_{R^t} 1 + \bigg(\alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t\bigg) + 1 \otimes_{R^t} -\frac{4}{3}\left(\alpha_t - \frac{1}{2}\alpha_s\right)\\
-%=\ &\left(\left(\frac{1}{3}\alpha_s - \frac{2}{3}\alpha_t\right) \otimes_{R^t} 1 + \alpha_t \otimes_{R^t} 1\right) + \left(1 \otimes_{R^t} \alpha_t + 1 \otimes_{R^t} \left(\frac{2}{3}\alpha_s - \frac{4}{3}\alpha_t\right)\right)\\
-%=\ &\left(\frac{1}{3}\alpha_s + \frac{1}{3}\alpha_t\right) \otimes_{R^t} 1 + 1 \otimes_{R^t} \left(\frac{2}{3}\alpha_s - \frac{1}{3}\alpha_t\right)\\
-%=\ &\alpha_s \otimes_{R^t} 1.
-\end{split}
+\pi_{sts} \circ \iota_{sts} &= \id_{B_{sts}},\\
+\pi_s \circ \iota_s &= \id_{B_s},\\
+\iota_{sts} \circ \pi_{sts} + \iota_s \circ \pi_s &= \id_{B_s \otimes_R B_t \otimes_R B_s}.
 \end{align*}
-\noindent From here, it is easy to see that we can also obtain the other generators $\alpha_t \otimes_{R^t} 1$, $1 \otimes_{R^t} \alpha_s$ and $1 \otimes_{R^t} \alpha_t$. We therefore obtain all of $R \otimes_{R^t} R$, giving us the desired result.\\[-1.5\baselineskip]
-\begin{center}
-\rule{0.5\linewidth}{1pt}
-\end{center}
-\noindent\\[-\baselineskip] All that's left is to clean up a few loose ends. First, we see that $B_{st}$ and $B_{ts}$ are not isomorphic, as
-\begin{align*}
-\begin{split}
-B_s \otimes_R B_t \otimes_R B_s \cong B_{sts} \oplus B_s \not\cong B_{st}(-1) \oplus B_{st}(1) \cong B_s \otimes_R B_s \otimes_R B_t.
-\end{split}
-\end{align*}
-\noindent Note that we have used the fact here that direct sum decompositions are unique. Finally, in order to show that all indecomposables have been exhausted, we claim that
-\begin{align*}
-\begin{split}
-B_{sts} \otimes_R B_s \cong B_s \otimes_R B_{sts} \cong B_{sts}(1) \oplus B_{sts}(-1) \cong B_t \otimes_R B_{sts} \cong B_{sts} \otimes_R B_t.
-\end{split}
-\end{align*}
-\noindent Recall that in \hyperref[RSplitting]{Lemma \ref*{RSplitting}}, we found an isomorphism $R \cong R^s \oplus R^s(-2)$ of $(R^s, R^s)$-bimodules. It is easy to see that this restricts to an isomorphism of $(R^{s,t}, R^s)$-bimodules, whence
-\begin{align*}
-B_{sts} \otimes_R B_s &\cong (R \otimes_{R^{s,t}} R(3)) \otimes_R (R \otimes_{R^s} R(1))\\
-&\cong R \otimes_{R^{s,t}} R \otimes_{R^s} R(4)\\
-&\cong R \otimes_{R^{s,t}} (R^s \oplus R^s(-2)) \otimes_{R^s} R(4) \tag*{(\hyperref[RSplitting]{Lemma \ref*{RSplitting}})}\\
-&\cong (R \otimes_{R^{s,t}} R(4)) + (R \otimes_{R^W} R(2))\\
-&\cong B_{sts}(1) \oplus B_{sts}(-1).
-\end{align*}
-\noindent The other isomorphisms follow similarly. We have thus shown that we obtain no new indecomposables by tensoring, meaning we are done with our classification. This completes the proof.
-\end{proof}\\
-
-\noindent An alternate proof of the above is to find explicit projections $\pi_s : B_s \otimes_R B_t \otimes_R B_s \to B_s$ and $\pi_{sts} : B_s \otimes_R B_t \otimes_R B_s \to B_{sts}$ for which $\pi_s \circ \iota_s = \id_{B_s}$ and $\pi_{sts} \circ \iota_{sts} = \id_{B_{sts}}$. It is not too hard to find $\pi_s$. One can easily show that it is nothing but
+\noindent Note that this is precisely what $B_s \otimes_R B_t \otimes_R B_s \cong B_{sts} \oplus B_s$ means by definition. It is not too hard to find $\pi_s$. One can easily show that it is nothing but
 \begin{align*}
 \pi_s : 1 \otimes_{R^s} f \otimes_{R^t} g \otimes_{R^s} 1 \mapsto -2\partial_s(fg) \otimes_{R^s} 1,
 \end{align*}
@@ -288,11 +254,11 @@ e \coloneqq \iota_s \circ \pi_s  : 1 \otimes_{R^s} f \otimes_{R^t} g \otimes_{R^
 \begin{align*}
 e_s^2 = \iota_s \circ \pi_s \circ \iota_s \circ \pi_s = \iota_s \circ \id_{B_s} \circ \pi_s = e_s.
 \end{align*}
-\noindent It follows from idempotent theory that the idempotent $e_{sts} = \iota_{sts} \circ \pi_{sts}$ satisfies
+\noindent As mentioned above, we want to find $e_{sts} = \iota_{sts} \circ \pi_{sts}$ satisfying
 \begin{align*}
-\id_{B_s \otimes_R B_t \otimes_R B_s} = e_{sts} + e_s.
+e_{sts} + e_s = \id_{B_s \otimes_R B_t \otimes_R B_s}.
 \end{align*}
-\noindent This gives us an explicit formula for $e_{sts}$; namely, $e_{sts} = 1 - e_s$, whence
+\noindent This gives us an explicit formula for $e_{sts}$; namely, $e_{sts} = \id_{B_s \otimes_R B_t \otimes_R B_s} - e_s$, whence
 \begin{align*}
 e_{sts} = 1 \otimes_{R^s} f \otimes_{R^t} g \otimes_{R^s} 1 \mapsto 1 \otimes_{R^s} f \otimes_{R^t} g \otimes_{R^s} 1 + \delta_s(fg) \otimes_{R^s} (\alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t) \otimes_{R^s} 1.
 \end{align*}
@@ -327,13 +293,13 @@ e_{sts}(1 \otimes_{R^s} \alpha_s \otimes_{R^t} 1 \otimes_{R^s} 1) =\ &1 \otimes_
 \end{align*}
 \noindent The result for $1 \otimes_{R^s} 1 \otimes_{R^t} \alpha_s \otimes_{R^s} 1$ follows by symmetry. We can then play a similar game for the remaining tensor. We begin by observing that
 \begin{align*}
-\alpha_s + \frac{2}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right) &= \frac{4}{3}\left(\alpha_s + \frac{1}{2}\alpha_t\right)
+\alpha_s + \frac{2}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right) &= \frac{4}{3}\left(\alpha_s + \frac{1}{2}\alpha_t\right).
 \end{align*}
-\noindent and
-\begin{align*}
-R^{s,t} = \mathbb{R}[\alpha_s^2 + \alpha_s\alpha_t + \alpha_t^2].
-\end{align*}
-\noindent Now,
+%\noindent and
+%\begin{align*}
+%R^{s,t} = \mathbb{R}[\alpha_s^2 + \alpha_s\alpha_t + \alpha_t^2].
+%\end{align*}
+\noindent Thus
 \begin{align*}
 e_{sts}(1 \otimes_{R^s} \alpha_s \otimes_{R^t} \alpha_s \otimes_{R^s} 1) =\ &1 \otimes_{R^s} \alpha_s \otimes_{R^t} \alpha_s \otimes_{R^s} 1\\
 =\ &1 \otimes_{R^s} \frac{2}{3}(2\alpha_s + \alpha_t) \otimes_{R^t} \frac{2}{3}(2\alpha_s + \alpha_t) \otimes_{R^s} 1\ -\\
@@ -347,14 +313,7 @@ e_{sts}(1 \otimes_{R^s} \alpha_s \otimes_{R^t} \alpha_s \otimes_{R^s} 1) =\ &1 \
 =\ &1 \otimes_{R^s} 1 \otimes_{R^t} \frac{2}{9}(8\alpha_s^2 + 8\alpha_s\alpha_t + 2\alpha_t^2) \otimes_{R^s} 1\ -\\
 &1 \otimes_{R^s} 1 \otimes_{R^t} \frac{2}{9}(2\alpha_s^2 + 5\alpha_s\alpha_t + 2\alpha_t^2) \otimes_{R^s} 1\ -\\
 &1 \otimes_{R^s} \frac{2}{9}(2\alpha_s^2 + 5\alpha_s\alpha_t + 2\alpha_t^2) \otimes_{R^t} 1 \otimes_{R^s} 1\ +\\
-&\frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t)\\
-=\ &1 \otimes_{R^s} 1 \otimes_{R^t} \frac{2}{9}(6\alpha_s^2 + 3\alpha_s\alpha_t) \otimes_{R^s} 1\ -\\
-&1 \otimes_{R^s} \frac{2}{9}(2\alpha_s^2 + 5\alpha_s\alpha_t + 2\alpha_t^2) \otimes_{R^t} 1 \otimes_{R^s} 1\ +\\
-&\frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t)\\
-=\ &1 \otimes_{R^s} 1 \otimes_{R^t} \frac{2}{9}(3\alpha_s^2 + 3\alpha_s\alpha_t) \otimes_{R^s} 1\ -\\
-&1 \otimes_{R^s} \frac{2}{9}(2\alpha_s^2 + 5\alpha_s\alpha_t + 2\alpha_t^2) \otimes_{R^t} 1 \otimes_{R^s} 1\ +\\
-&\frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t)\ +\\
-&1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{2}{3}\alpha_s^2.\\
+&\frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t).
 %=\ &1 \otimes_{R^s} \frac{2}{9}(\alpha_s^2 - 2\alpha_s\alpha_t - 2\alpha_t^2) \otimes_{R^t} 1 \otimes_{R^s} 1\ +\\
 % &\frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t) +\\
 % &1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{2}{3}\alpha_s^2.
@@ -363,9 +322,24 @@ e_{sts}(1 \otimes_{R^s} \alpha_s \otimes_{R^t} \alpha_s \otimes_{R^s} 1) =\ &1 \
 % &1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{2}{3}\alpha_s^2\ +\ \frac{2}{3}\alpha_s^2 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} 1.\\
 \end{align*}
 \newpage
-\noindent From here, we finish by using the aforementioned fact that $\alpha_s^2 + \alpha_s\alpha_t + \alpha_t^2$ is both $s$-invariant and $t$-invariant to write
+\noindent From here, we note that
 \begin{align*}
-e_{sts}(1 \otimes_{R^s} \alpha_s \otimes_{R^t} \alpha_s \otimes_{R^s} 1) =\ &1 \otimes_{R^s} \frac{2}{9}(3\alpha_s^2 + 3\alpha_s\alpha_t) \otimes_{R^t} 1 \otimes_{R^s} 1\ -\\
+R^{s,t} = \mathbb{R}[\alpha_s^2 + \alpha_s\alpha_t + \alpha_t^2];
+\end{align*}
+\noindent in particular,
+\begin{align*}
+\alpha_s^2 + \alpha_s\alpha_t \in R^t.
+\end{align*}
+\noindent We may hence continue with
+\begin{align*}
+e_{sts}(1 \otimes_{R^s} \alpha_s \otimes_{R^t} \alpha_s \otimes_{R^s} 1) =\ &1 \otimes_{R^s} 1 \otimes_{R^t} \frac{2}{9}(6\alpha_s^2 + 3\alpha_s\alpha_t) \otimes_{R^s} 1\ -\\
+&1 \otimes_{R^s} \frac{2}{9}(2\alpha_s^2 + 5\alpha_s\alpha_t + 2\alpha_t^2) \otimes_{R^t} 1 \otimes_{R^s} 1\ +\\
+&\frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t)\\
+=\ &1 \otimes_{R^s} 1 \otimes_{R^t} \frac{2}{9}(3\alpha_s^2 + 3\alpha_s\alpha_t) \otimes_{R^s} 1\ -\\
+&1 \otimes_{R^s} \frac{2}{9}(2\alpha_s^2 + 5\alpha_s\alpha_t + 2\alpha_t^2) \otimes_{R^t} 1 \otimes_{R^s} 1\ +\\
+&\frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t)\ +\\
+&1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{2}{3}\alpha_s^2.\\
+=\ &1 \otimes_{R^s} \frac{2}{9}(3\alpha_s^2 + 3\alpha_s\alpha_t) \otimes_{R^t} 1 \otimes_{R^s} 1\ -\\
 &1 \otimes_{R^s} \frac{2}{9}(2\alpha_s^2 + 5\alpha_s\alpha_t + 2\alpha_t^2) \otimes_{R^t} 1 \otimes_{R^s} 1\ +\\
 &\frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t)\ +\\
 &1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{2}{3}\alpha_s^2.\\
@@ -374,7 +348,8 @@ e_{sts}(1 \otimes_{R^s} \alpha_s \otimes_{R^t} \alpha_s \otimes_{R^s} 1) =\ &1 \
 &1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{2}{3}\alpha_s^2\\
 =\ &\frac{4}{9}(-\alpha_s^2 - \alpha_s\alpha_t - \alpha_t^2) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} 1\ +\\
 &\frac{1}{3}(\alpha_s + 2\alpha_t) \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{1}{3}(\alpha_s + 2\alpha_t)\ +\\
-&1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{2}{3}\alpha_s^2\ +\ \frac{2}{3}\alpha_s^2 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} 1.
+&1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} \frac{2}{3}\alpha_s^2\ +\\
+&\frac{2}{3}\alpha_s^2 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} 1.
 \end{align*}
 \noindent We therefore conclude that
 \begin{align*}
@@ -389,4 +364,43 @@ e_{sts}(1 \otimes_{R^s} \alpha_s \otimes_{R^t} \alpha_s \otimes_{R^s} 1) =\ &1 \
 &\partial_s(f)\frac{4}{9}(\alpha_s^2 + \alpha_s\alpha_t + \alpha_t^2) \otimes_{R^{s,t}} \partial_s(g).
 \end{align*}
 \noindent Phew!!
+%\noindent To this end, observe that $\alpha_t - (\alpha_s, \alpha_t)\alpha_s = \frac{1}{2}\alpha_s + \alpha_t \in R^s$ and $\alpha_s + \frac{1}{2}\alpha_t \in R^t$, whence
+%\begin{align*}
+%\begin{split}
+% &\frac{2}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right) \otimes_{R^t} 1 - \bigg(\alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t\bigg) + 1 \otimes_{R^t} \frac{4}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right)\\
+% =\ &\left(\left(\frac{2}{6}\alpha_s + \frac{2}{3}\alpha_t\right) \otimes_{R^t} 1 - \alpha_t \otimes_{R^t} 1\right) + \left(1 \otimes_{R^t} -\alpha_t + 1 \otimes_{R^t} \left(\frac{4}{6}\alpha_s + \frac{4}{3}\alpha_t\right)\right)\\
+% =\ &\left(\frac{2}{6}\alpha_s - \frac{1}{3}\alpha_t\right) \otimes_{R^t} 1 + 1 \otimes_{R^t} \left(\frac{4}{6}\alpha_s + \frac{1}{3}\alpha_t\right)\\
+%=\ &\alpha_s \otimes_{R^t} 1.
+% &-\frac{2}{3}\left(\alpha_t - \frac{1}{2}\alpha_s\right) \otimes_{R^t} 1 + \bigg(\alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t\bigg) + 1 \otimes_{R^t} -\frac{4}{3}\left(\alpha_t - \frac{1}{2}\alpha_s\right)\\
+%=\ &\left(\left(\frac{1}{3}\alpha_s - \frac{2}{3}\alpha_t\right) \otimes_{R^t} 1 + \alpha_t \otimes_{R^t} 1\right) + \left(1 \otimes_{R^t} \alpha_t + 1 \otimes_{R^t} \left(\frac{2}{3}\alpha_s - \frac{4}{3}\alpha_t\right)\right)\\
+%=\ &\left(\frac{1}{3}\alpha_s + \frac{1}{3}\alpha_t\right) \otimes_{R^t} 1 + 1 \otimes_{R^t} \left(\frac{2}{3}\alpha_s - \frac{1}{3}\alpha_t\right)\\
+%=\ &\alpha_s \otimes_{R^t} 1.
+%\end{split}
+%\end{align*}
+%\noindent From here, it is easy to see that we can also obtain the other generators $\alpha_t \otimes_{R^t} 1$, $1 \otimes_{R^t} \alpha_s$ and $1 \otimes_{R^t} \alpha_t$. We therefore obtain all of $R \otimes_{R^t} R$, giving us the desired result.\\[-1.5\baselineskip]
+\begin{center}
+\rule{0.5\linewidth}{1pt}
+\end{center}
+\noindent\\[-\baselineskip] All that's left is to clean up a few loose ends. First, we see that $B_{st}$ and $B_{ts}$ are not isomorphic, as
+\begin{align*}
+\begin{split}
+B_s \otimes_R B_t \otimes_R B_s \cong B_{sts} \oplus B_s \not\cong B_{st}(-1) \oplus B_{st}(1) \cong B_s \otimes_R B_s \otimes_R B_t.
+\end{split}
+\end{align*}
+\noindent Note that we have used the fact here that direct sum decompositions are unique. Finally, in order to show that all indecomposables have been exhausted, we claim that
+\begin{align*}
+\begin{split}
+B_{sts} \otimes_R B_s \cong B_s \otimes_R B_{sts} \cong B_{sts}(1) \oplus B_{sts}(-1) \cong B_t \otimes_R B_{sts} \cong B_{sts} \otimes_R B_t.
+\end{split}
+\end{align*}
+\noindent Recall that in \hyperref[RSplitting]{Lemma \ref*{RSplitting}}, we found an isomorphism $R \cong R^s \oplus R^s(-2)$ of $(R^s, R^s)$-bimodules. It is easy to see that this restricts to an isomorphism of $(R^{s,t}, R^s)$-bimodules, whence
+\begin{align*}
+B_{sts} \otimes_R B_s &\cong (R \otimes_{R^{s,t}} R(3)) \otimes_R (R \otimes_{R^s} R(1))\\
+&\cong R \otimes_{R^{s,t}} R \otimes_{R^s} R(4)\\
+&\cong R \otimes_{R^{s,t}} (R^s \oplus R^s(-2)) \otimes_{R^s} R(4) \tag*{(\hyperref[RSplitting]{Lemma \ref*{RSplitting}})}\\
+&\cong (R \otimes_{R^{s,t}} R(4)) + (R \otimes_{R^W} R(2))\\
+&\cong B_{sts}(1) \oplus B_{sts}(-1).
+\end{align*}
+\noindent The other isomorphisms follow similarly. We have thus shown that we obtain no new indecomposables by tensoring, meaning we are done with our classification. This completes the proof.
+\end{proof}
 \end{document}
