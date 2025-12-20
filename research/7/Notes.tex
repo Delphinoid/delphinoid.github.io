@@ -1549,14 +1549,14 @@ R_x \otimes_R R_r(-1) \cong R_{xr}(-1) \hookrightarrow R_x \otimes_R B_r \twohea
 \noindent Then $M$ is indecomposable.\\
 \end{lemma}
 
-%\noindent\begin{proposition}\textup{(Lusztig--Vogan Demazure Operator).} Consider some reflection $w \in W$ and let $y \in R$ be its corresponding root. We have an $(R^w, R^w)$-bimodule homomorphism $\partial_w : R \to R^w(-2)$,
-%\begin{align*}
-%\begin{split}
-%\partial_w : f \mapsto \frac{f - w(f)}{y},
-%\end{split}
-%\end{align*}
-%\noindent for all $f \in R$.\\
-%\end{proposition}
+\noindent\begin{proposition}\textup{(Lusztig--Vogan Demazure Operator).} Consider some reflection $w \in W$ and let $y \in R$ be its corresponding root. We have an $(R^w, R^w)$-bimodule homomorphism $\partial_w : R \to R^w(-2)$,
+\begin{align*}
+\begin{split}
+\partial_w : f \mapsto \frac{f - w(f)}{y},
+\end{split}
+\end{align*}
+\noindent for all $f \in R$.\\
+\end{proposition}
 
 \noindent\begin{remark} A generalization of \hyperref[RSplitting]{Lemma \ref*{RSplitting}} tells us that for any $f \in R$, we have a splittng of $(R^w, R^w)$-bimodules $R \cong R^w \oplus R^wy \cong R^w \oplus R^w(-2)$ where $f + w(f) \in R^w$ and $f - w(f) \in R^wy$.\\
 \end{remark}
@@ -1982,7 +1982,7 @@ R_s \dhxrightarrow{\iota^{st}_0} R \otimes_R B_s \otimes_R B_t \xhookrightarrow{
 \noindent where
 \begin{align*}
 \begin{split}
-\iota^{st}_0 : f \mapsto d_s \otimes_{R^t} f \qquad\text{and}\qquad\pi^{st}_0 : f \otimes_{R^s} g \otimes_{R^t} h \mapsto s(\delta_t(s(f)g)h).
+\iota^{st}_0 : f \mapsto d_s \otimes_{R^t} s(f) \qquad\text{and}\qquad\pi^{st}_0 : f \otimes_{R^s} g \otimes_{R^t} h \mapsto s(\delta_t(s(f)g)h) = \partial_{sts}(fs(g))s(h).
 \end{split}
 \end{align*}
 \noindent Note that these maps are well-defined $(R^{W_K}, R)$-bimodule homomorphisms, since

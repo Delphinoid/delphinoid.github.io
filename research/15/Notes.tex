@@ -13,42 +13,10 @@
 \ruledsection{Prologue}{1}
 \noindent\\ What are fusion categories? What are near-groups, Haagerup--Izumi categories and quadratic\linebreak categories? What is modular data? What are $6j$ symbols? What is the even part of a subfactor?\newpage
 
-\noindent Let $\mathcal{C}$ be a fusion category over $\mathbbm{k}$ with representatives $\{X_i\}_{i \in \Gamma}$ of isomorphism classes of simple objects, and choose bases for each multiplicity space $H_{i,j}^l := \homset_\mathcal{C}(X_l, X_i \otimes X_j)$. The {\em (quantum) $6j$-symbols of $\mathcal{C}$} are the matrix blocks
+\noindent Let $\mathcal{C}$ be a fusion category over $\mathbbm{k}$. Recall the Yoneda embedding
 \begin{align*}
 \begin{split}
-\Phi_{i_1,i_2,i_3}^{i_4} : \bigoplus_{j\in\Gamma} (H_{j,i_3}^{i_4} \otimes_\mathbbm{k} H_{i_1,i_2}^j) \to \bigoplus_{l\in\Gamma} (H_{i_1,l}^{i_4} \otimes_\mathbbm{k} H_{i_2,i_3}^l)
-\end{split}
-\end{align*}
-\noindent of the change-of-basis matrices $\Phi_{i_1,i_2,i_3} \coloneqq \bigoplus_{i_4 \in \Gamma} \Phi_{i_1,i_2,i_3}^{i_4}$, and are given by
-\begin{align*}
-\begin{split}
-\Phi_{i_1,i_2,i_3}^{i_4} := v^{-1}(X_{i_4}, X_{i_1}, X_{i_2} \otimes X_{i_3}) \circ (\yo(\alpha_{X_{i_1}, X_{i_2}, X_{i_3}}))_{X_{i_4}} \circ u(X_{i_4}, X_{i_1} \otimes X_{i_2}, X_{i_3}),
-\end{split}
-\end{align*}
-\noindent where
-\begin{align*}
-\begin{split}
-u(U,V,W) : \bigoplus_{j \in \Gamma} (\homset_\mathcal{C}(U, X_j \otimes W) \otimes_\mathbbm{k} \homset_\mathcal{C}(X_j, V)) \to \homset(U, V \otimes W),\\
-v(U,V,W) : \bigoplus_{l \in \Gamma} (\homset_\mathcal{C}(U, V \otimes X_{l\nhphantom{$_{l}$}\hphantom{j}\ \!\!}) \otimes_\mathbbm{k} \homset_\mathcal{C}(X_{l\nhphantom{$_{l}$}\hphantom{j}\ \!\!}, W)) \to \homset(U, V \otimes W)
-\end{split}
-\end{align*}
-\noindent are the maps defined by
-\begin{align*}
-\begin{split}
-u(U, V, W) \coloneqq \bigoplus_{j \in \Gamma}u_j(U, V, W)\quad\text{and}\quad v(U, V, W) \coloneqq \bigoplus_{l \in \Gamma}v_l(U, V, W),
-\end{split}
-\end{align*}
-\noindent\\[-0.7\linespacing] with
-\begin{align*}
-\begin{split}
-[u_j(U, V, W)](f \otimes_\mathbbm{k} g) \coloneqq (g \otimes \id_W) \circ f\quad\text{and}\quad [v_l(U, V, W)](f' \otimes_\mathbbm{k} g') \coloneqq (\id_V \otimes g') \circ f'
-\end{split}
-\end{align*}
-\noindent for all $f \in \homset_\mathcal{C}(U, X_j \otimes W)$, $g \in \homset_\mathcal{C}(X_j, V)$, $f' \in \homset_\mathcal{C}(U, V \otimes X_l)$ and $g \in \homset_\mathcal{C}(X_l, W))$. Recall now the Yoneda embedding
-\begin{align*}
-\begin{split}
-\yo_*(X) &\coloneqq \homset_\mathcal{C}(-, X),\\
-\yo_*(f : X \to Y) &\coloneqq (\homset_\mathcal{C}(-, X) \Rightarrow \homset_\mathcal{C}(-, Y)).
+\yo_*(X) \coloneqq \homset_\mathcal{C}(-, X)\qquad\text{and}\qquad\yo_*(f : X \to Y) \coloneqq (\homset_\mathcal{C}(-, X) \Rightarrow \homset_\mathcal{C}(-, Y)).
 \end{split}
 \end{align*}
 \noindent Taking the Yoneda embedding of a component $\alpha_{X,Y,Z} : (X \otimes Y) \otimes Z \to X \otimes (Y \otimes Z)$ of the associativity natural isomorphism $\alpha$, we obtain a natural isomorphism
@@ -63,41 +31,88 @@ u(U, V, W) \coloneqq \bigoplus_{j \in \Gamma}u_j(U, V, W)\quad\text{and}\quad v(
 [\yo_*(\alpha_{X,Y,Z})](W) : \homset_\mathcal{C}(W, (X \otimes Y) \otimes Z) \xrightarrow{\sim} \homset_\mathcal{C}(W, X \otimes (Y \otimes Z));
 \end{split}
 \end{align*}
-\noindent that is, an invertible matrix. In other words, the associativity is given by matrices indexed by $X, Y, Z, W$. But why do we call these $6j$ symbols? Well, we can simplify our picture further. Suppose we have an isomorphism
+\noindent that is, an invertible matrix. In other words, the associativity is given by matrices indexed by $X, Y, Z, W$. But we can simplify things further! Suppose we now choose representatives $\{X_i\}_{i \in \Gamma}$ of isomorphism classes of simple objects and bases for each {\em multiplicity space} $H_{i,j}^h := \homset_\mathcal{C}(X_h, X_i \otimes X_j)$. Then by semisimplicity,
 \begin{align*}
 \begin{split}
-\homset_\mathcal{C}(X_4, (X_1 \otimes X_2) \otimes X_3) \xrightarrow{\sim} \homset_\mathcal{C}(X_4, X_1 \otimes (X_2 \otimes X_3)).
+X_i \otimes X_j \cong \bigoplus_{h \in \Gamma} X_h^{\dim_\mathbbm{k}(H_{i,j}^h)},
 \end{split}
 \end{align*}
-\noindent Let $X_5$ and $X_6$ be simple summands of $(X_1 \otimes X_2)$ and $(X_2 \otimes X_3)$, respectively. Then we can determine our isomorphism by determining the matrices of the form
+\noindent whence we have both
 \begin{align*}
 \begin{split}
-\homset_\mathcal{C}(X_4, X_5 \otimes X_3) \to \homset_\mathcal{C}(X_4, X_1 \otimes X_6)
+\bigoplus_{m\in\Gamma} H_{m,i_3}^{i_0} \otimes_\mathbbm{k} H_{i_1,i_2}^m &= \bigoplus_{m\in\Gamma} \homset_\mathcal{C}(X_{i_0}, X_m \otimes X_{i_3}) \otimes_\mathbbm{k} \homset_\mathcal{C}(X_m, X_{i_1} \otimes X_{i_2})\\
+&\cong \homset_\mathcal{C}(X_{i_0}, (X_{i_1} \otimes X_{i_2}) \otimes X_{i_3})
 \end{split}
 \end{align*}
-\noindent for all such $X_5$ and $X_6$. These matrices are exactly the $6j$ symbols, where the six simple objects $X_1, X_2, X_3, X_4, X_5, X_6$ play the role of the eponymous ``six $j$'s''. This is also where $u$ and $v$ come in; given $f \in H_{5,3}^4$ and $g \in H_{1,2}^5$, we have $[u_5(X_4, X_1 \otimes X_2, X_3)](f \otimes_\mathbbm{k} g) : X_4 \to (X_1 \otimes X_2) \otimes X_3$, and similarly $[v_6(X_4, X_1, X_2 \otimes X_3)](f' \otimes_\mathbbm{k} g') : X_4 \to X_1 \otimes (X_2 \otimes X_3)$ for $f' \in H_{1,6}^4$ and $g' \in H_{2,3}^6$.\newpage
+\noindent and
+\begin{align*}
+\begin{split}
+\bigoplus_{n\in\Gamma} H_{i_1,n}^{i_0} \otimes_\mathbbm{k} H_{i_2,i_3}^n &= \bigoplus_{n\in\Gamma} \homset_\mathcal{C}(X_{i_0}, X_{i_1} \otimes X_n) \otimes_\mathbbm{k} \homset_\mathcal{C}(X_n, X_{i_2} \otimes X_{i_3})\\
+&\cong \homset_\mathcal{C}(X_{i_0}, X_{i_1} \otimes (X_{i_2} \otimes X_{i_3})).
+\end{split}
+\end{align*}
+\noindent We thus obtain canonical bases for the above Hom-spaces. The {\em (quantum) $6j$-symbols of $\mathcal{C}$} are then defined to be the matrix blocks of the form
+\begin{align*}
+\begin{split}
+\Phi_{i_1,i_2,i_3}^{i_0,m,n} : H_{m,i_3}^{i_0} \otimes_\mathbbm{k} H_{i_1,i_2}^m \to H_{i_1,n}^{i_0} \otimes_\mathbbm{k} H_{i_2,i_3}^n
+\end{split}
+\end{align*}
+\noindent such that the block-diagonal matrices $\Phi_{i_1,i_2,i_3}^{i_0} := \bigoplus_{m\in\Gamma}\bigoplus_{n\in\Gamma} \Phi_{i_1,i_2,i_3}^{i_0,m,n}$ give a change-of-basis
+\begin{align*}
+\begin{split}
+\Phi_{i_1,i_2,i_3}^{i_0} : \homset_\mathcal{C}(X_{i_0}, (X_{i_1} \otimes X_{i_2}) \otimes X_{i_3}) \cong \homset_\mathcal{C}(X_{i_0}, X_{i_1} \otimes (X_{i_2} \otimes X_{i_3}))%\xrightarrow{\sim} \homset_\mathcal{C}(X_{i_0}, X_{i_1} \otimes (X_{i_2} \otimes X_{i_3}))
+\end{split}
+\end{align*}
+\noindent between the canonical bases. These matrices $\Phi_{i_1,i_2,i_3}^{i_0}$ themselves form the blocks of a block-diagonal matrix $\Phi_{i_1,i_2,i_3} \coloneqq \bigoplus_{i_0 \in \Gamma} \Phi_{i_1,i_2,i_3}^{i_0}$, which gives us a change-of-basis $(X_{i_1} \otimes X_{i_2}) \otimes X_{i_3} \cong X_{i_1} \otimes (X_{i_2} \otimes X_{i_3})$ describing how the associator acts on each summand $X_{i_0}$. As it happens, we in fact have that%\xrightarrow{\sim} X_{i_1} \otimes (X_{i_2} \otimes X_{i_3})$ describing how the associator acts on each summand $X_{i_0}$. As it happens, we in fact have that
+\begin{align*}
+\begin{split}
+\Phi_{i_1,i_2,i_3}^{i_0,m,n} = v_n^{-1}(X_{i_0}, X_{i_1}, X_{i_2} \otimes X_{i_3}) \circ [\yo_*(\alpha_{X_{i_1}, X_{i_2}, X_{i_3}})]({X_{i_0}}) \circ u_m(X_{i_0}, X_{i_1} \otimes X_{i_2}, X_{i_3}),
+\end{split}
+\end{align*}
+\noindent where
+\begin{align*}
+\begin{split}
+[u_m(W, U, V)](f \otimes_\mathbbm{k} g) \coloneqq (g \otimes \id_V) \circ f\quad\text{and}\quad [v_n(W, U, V)](f' \otimes_\mathbbm{k} g') \coloneqq (\id_U \otimes g') \circ f'
+\end{split}
+\end{align*}
+\noindent for all $f \in \homset_\mathcal{C}(W, X_m \otimes V)$, $g \in \homset_\mathcal{C}(X_m, U)$, $f' \in \homset_\mathcal{C}(W, U \otimes X_n)$ and $g \in \homset_\mathcal{C}(X_n, V))$.\\
 
-\noindent Note that these matrices are indeed parameterized by all ``six $j$'s'', as there could be many invertible matrices that give us a maps of the aforementioned form. We need $X_2$ in order to use the pentagon diagram for the associativity constraint and hence determine the specific invertible matrix\linebreak corresponding to the associator. Moreover, $X_2$ tells us how the blocks
+\noindent More explicitly, suppose we have an isomorphism
+\begin{align*}
+\begin{split}
+\homset_\mathcal{C}(X_4, (X_1 \otimes X_2) \otimes X_3) \cong \homset_\mathcal{C}(X_4, X_1 \otimes (X_2 \otimes X_3)).%\xrightarrow{\sim} \homset_\mathcal{C}(X_4, X_1 \otimes (X_2 \otimes X_3)).
+\end{split}
+\end{align*}
+\newpage
+\noindent Let $X_5$ and $X_6$ be simple summands of $(X_1 \otimes X_2)$ and $(X_2 \otimes X_3)$, respectively. Then we can determine our isomorphism by determining the block matrices of the form
 \begin{align*}
 \begin{split}
 \homset_\mathcal{C}(X_4, X_5 \otimes X_3) \to \homset_\mathcal{C}(X_4, X_1 \otimes X_6)
 \end{split}
 \end{align*}
-\noindent fit together into the block diagonal matrix
-\begin{align*}
-\begin{split}
-\homset_\mathcal{C}(X_4, (X_1 \otimes X_2) \otimes X_3) \xrightarrow{\sim} \homset_\mathcal{C}(X_4, X_1 \otimes (X_2 \otimes X_3)).
-\end{split}
-\end{align*}
-\noindent\\[-\linespacing]
+\noindent for all such $X_5$ and $X_6$. These matrices are exactly the $6j$ symbols, where the six simple objects $X_1, X_2, X_3, X_4, X_5, X_6$ play the role of the eponymous ``six $j$'s''. This is also where $u$ and $v$ come in; given $f \in H_{5,3}^4$ and $g \in H_{1,2}^5$, we have $[u_5(X_4, X_1 \otimes X_2, X_3)](f \otimes_\mathbbm{k} g) : X_4 \to (X_1 \otimes X_2) \otimes X_3$, and similarly $[v_6(X_4, X_1, X_2 \otimes X_3)](f' \otimes_\mathbbm{k} g') : X_4 \to X_1 \otimes (X_2 \otimes X_3)$ for $f' \in H_{1,6}^4$ and $g' \in H_{2,3}^6$.\\
+
+%\noindent Note that these matrices are indeed parameterized by all ``six $j$'s'', as there could be many invertible matrices that give us a maps of the aforementioned form. We need $X_2$ in order to use the pentagon diagram for the associativity constraint and hence determine the specific invertible matrix\linebreak corresponding to the associator. Moreover, $X_2$ tells us how the blocks
+%\begin{align*}
+%\begin{split}
+%\homset_\mathcal{C}(X_4, X_5 \otimes X_3) \to \homset_\mathcal{C}(X_4, X_1 \otimes X_6)
+%\end{split}
+%\end{align*}
+%\noindent fit together into the block diagonal matrix
+%\begin{align*}
+%\begin{split}
+%\homset_\mathcal{C}(X_4, (X_1 \otimes X_2) \otimes X_3) \xrightarrow{\sim} \homset_\mathcal{C}(X_4, X_1 \otimes (X_2 \otimes X_3)).
+%\end{split}
+%\end{align*}
+%\noindent\\[-\linespacing]
 
 \noindent\begin{example}\textup{($\textcat{Vec}_{\mathbb{Z}/2\mathbb{Z}}$).} Consider $\textcat{Vec}_{\mathbb{Z}/2\mathbb{Z}}$, a category with two isomorphism classes of simple objects -- $[\mathbbm{1}]$ and $[X]$ -- satisfying the fusion rule
 \begin{align*}
 \begin{split}
-X \otimes X \cong \mathbbm{1}.
+[X] \otimes [X] = [\mathbbm{1}].
 \end{split}
 \end{align*}
-\noindent Let's start by computing the change-of-basis matrix $\Phi_{X,X,X}$. This matrix can be written in block diagonal form as
+\noindent Let's assume that it's skeletal -- that is, $X \otimes X = \mathbbm{1}$ -- and start by computing the change-of-basis matrix $\Phi_{X,X,X}$. This matrix can be written in block diagonal form as
 \begin{align*}
 \begin{split}
 \Phi_{X,X,X} = \begin{pmatrix}\Phi_{X,X,X}^\mathbbm{1}&0\\0&\Phi_{X,X,X}^X\end{pmatrix}.
@@ -109,7 +124,7 @@ X \otimes X \cong \mathbbm{1}.
 \Phi_{X,X,X}^\mathbbm{1} : \homset(\mathbbm{1}, (X \otimes X) \otimes X) \to \homset(\mathbbm{1}, X \otimes (X \otimes X));
 \end{split}
 \end{align*}
-\noindent but $(X \otimes X) \otimes X \cong X \cong X \otimes (X \otimes X)$, so $\Phi_{X,X,X}^\mathbbm{1}$ is just the isomorphism of $0$-dimensional vector spaces; that is, $\Phi_{X,X,X}^\mathbbm{1} = 0$. Let's now compute $\Phi_{X,X,X}^X$. %Denote $X \otimes X$ by $\widetilde{\mathbbm{1}}$.
+\noindent but $(X \otimes X) \otimes X = X = X \otimes (X \otimes X)$, so $\Phi_{X,X,X}^\mathbbm{1}$ is just the isomorphism of $0$-dimensional vector spaces; that is, $\Phi_{X,X,X}^\mathbbm{1} = 0$. Let's now compute $\Phi_{X,X,X}^X$. %Denote $X \otimes X$ by $\widetilde{\mathbbm{1}}$.
 We shall start by choosing bases for the multiplicity spaces $H_{X,X}^{{\mathbbm{1}}}$, $H_{{\mathbbm{1}},X}^X$ and $H_{X,{\mathbbm{1}}}^X$. These spaces are all $1$-dimensional, so we will choose basis elements $\iota_{X,X}^{{\mathbbm{1}}}$, $\lambda_X^{-1}$ and $\rho_X^{-1}$, respectively. Here we have a canonical choice of basis elements for $H_{{\mathbbm{1}},X}^X$ and $H_{X,{\mathbbm{1}}}^X$; namely, the left and right unitors $\lambda$ and $\rho$. This culminates in the basis elements
 \begin{align*}
 \begin{split}
@@ -122,13 +137,13 @@ We shall start by choosing bases for the multiplicity spaces $H_{X,X}^{{\mathbbm
 \iota_{X \otimes (X \otimes X)}^X \coloneqq (\id_X \otimes \iota_{X,X}^{{\mathbbm{1}}}) \circ \rho_X^{-1} = [v_{{\mathbbm{1}}}(X, X, X \otimes X)](\rho_X^{-1} \otimes_\mathbbm{k} \iota_{X,X}^{{\mathbbm{1}}})
 \end{split}
 \end{align*}
-\noindent for $\homset(X, (X \otimes X) \otimes X)$ and $\homset(X, X \otimes (X \otimes X))$, respectively. These are once again both $1$-dimensional spaces, so let's define a constant $\mu_1 \in \mathbbm{k}$ for which
+\noindent for $\homset(X, (X \otimes X) \otimes X)$ and $\homset(X, X \otimes (X \otimes X))$, respectively. These are once again both $1$-dimensional spaces, so let's define a constant $\mu_1 \in \mathbbm{k}^\times$ for which
 \begin{align*}
 \begin{split}
 \Phi_{X,X,X}^X(\iota_{(X \otimes X) \otimes X}^X) \eqqcolon \mu_1 \cdot \iota_{X \otimes (X \otimes X)}^X.
 \end{split}
 \end{align*}
-\noindent In order to determine $\mu_1$, we need to use the pentagon equation. To this end, we first choose bases for the Hom-spaces
+\noindent In order to gain constraints on $\mu_1$, we need to use the pentagon equation. To this end, we first choose bases for the Hom-spaces
 \begin{align*}
 \begin{split}
 \homset({\mathbbm{1}}, ({\mathbbm{1}} \otimes X) \otimes X),\\
@@ -182,23 +197,46 @@ We shall start by choosing bases for the multiplicity spaces $H_{X,X}^{{\mathbbm
 \begin{center}
 \begin{tikzcd}[arrows={|->}, row sep=1.2cm, column sep=2cm]
 & \iota_{((X \otimes X) \otimes X) \otimes X}^{\mathbbm{1}}\arrow[dl, "\alpha_{X,X,X} \otimes \id_X"']\arrow[dr, "\alpha_{X \otimes X,X,X}"] &\\
-\mu_1 \cdot \iota_{(X \otimes (X \otimes X)) \otimes X}^{\mathbbm{1}}\arrow[d, "\alpha_{X,X \otimes X,X}"'] & & \mu_2 \cdot \iota_{(X \otimes X) \otimes (X \otimes X)}^{\mathbbm{1}}\arrow[d, "\alpha_{X \otimes X,X,X}"]\\
-\mu_1\mu_3 \cdot \iota_{X \otimes ((X \otimes X) \otimes X)}^{\mathbbm{1}}\arrow[r, "\alpha_{X,X,X}\otimes\id_X"'] & \mu_1^2\mu_3 \cdot \iota_{X \otimes (X \otimes (X \otimes X))}^{\mathbbm{1}}\arrow[r, equal] & \mu_2\mu_4 \cdot \iota_{X \otimes (X \otimes (X \otimes X))}^{\mathbbm{1}}\\
+\mu_1 \cdot \iota_{(X \otimes (X \otimes X)) \otimes X}^{\mathbbm{1}}\arrow[d, "\alpha_{X,X \otimes X,X}"'] & & \mu_2 \cdot \iota_{(X \otimes X) \otimes (X \otimes X)}^{\mathbbm{1}}\arrow[d, "\alpha_{X,X,X \otimes X}"]\\
+\mu_1\mu_3 \cdot \iota_{X \otimes ((X \otimes X) \otimes X)}^{\mathbbm{1}}\arrow[r, "\id_X\otimes\alpha_{X,X,X}"'] & \mu_1^2\mu_3 \cdot \iota_{X \otimes (X \otimes (X \otimes X))}^{\mathbbm{1}}\arrow[r, equal] & \mu_2\mu_4 \cdot \iota_{X \otimes (X \otimes (X \otimes X))}^{\mathbbm{1}}\\
 \end{tikzcd}.
 \end{center}
 \newpage
-\noindent .
+\noindent This gives us the relation $\mu_1^2\mu_3 = \mu_2\mu_4$. However, there could be more constraints on these constants! As it turns out, though, there is a simple way of determining these. Suppose we use the more insightful labeling convention
+\begin{align*}
+\begin{split}
+\omega(X, X, X) &\coloneqq \mu_1,\\
+\omega(\nhphantom{${\mathbbm{1}}$}\hphantom{X}{\mathbbm{1}}, X, X) &\coloneqq \mu_2,\\
+\omega(X, \nhphantom{${\mathbbm{1}}$}\hphantom{X}{\mathbbm{1}}, X) &\coloneqq \mu_3,\\
+\omega(X, X, \nhphantom{${\mathbbm{1}}$}\hphantom{X}{\mathbbm{1}}) &\coloneqq \mu_4.
+\end{split}
+\end{align*}
+\noindent The reason why we have chosen this relabeling is because now acting by $\alpha_{A, B, C}$ in the pentagon diagram introduces a factor of $\omega(A, B, C)$. If we apply this to the general pentagon diagram
+\begin{center}
+\begin{tikzcd}[row sep=1.2cm, column sep=2cm]
+& ((A \otimes B) \otimes C) \otimes D\arrow[dl, "\alpha_{A,B,C} \otimes \id_D"']\arrow[dr, "\alpha_{A \otimes B,C,D}"] &\\
+(A \otimes (B \otimes C)) \otimes D\arrow[d, "\alpha_{A,B \otimes C,D}"'] & & (A \otimes B) \otimes (C \otimes D)\arrow[d, "\alpha_{A,B,C\otimes D}"]\\
+A \otimes ((B \otimes C) \otimes D)\arrow[rr, "\id_A\otimes\alpha_{B,C,D}"'] & & A \otimes (B \otimes (C \otimes D))
+\end{tikzcd},
+\end{center}
+\noindent we obtain the constraints
+\begin{align*}
+\begin{split}
+\omega(A, B, C)\omega(A, BC, D)\omega(B, C, D) = \omega(AB, C, D)\omega(A, B, CD)
+\end{split}
+\end{align*}
+\noindent for all $A, B, C, D \in \obset(\textcat{Vec}_{\mathbb{Z}/2\mathbb{Z}})$. This is exactly the definition for a $3$-cocycle $\omega$! In general, the possible $6j$-symbols -- and hence the possible associators -- for $\textcat{Vec}_G$ are exactly given by $3$-cocycles. We will henceforth denote by $\textcat{Vec}_G^\omega$ the category of $G$-graded vector spaces with associativity constraint $\alpha_{ghk} = \omega(g, h, k)\textup{id}_{ghk}$, for all $g, h, k \in G$, and $\textcat{Vec}_G$ the category with trivial associativity.\\
 \end{example}
 \newpage
 
 \ruledsection{The Cuntz Algebra Approach of Izumi}{2}
-\noindent\\ Take $\textcat{Vec}_G$ to be skeletal. Consider an associativity constraint $a_{ghk} : ghk --> ghk$. Since $ghk$ is a simple object, $\homset(ghk, ghk) \cong \mathbbm{k}$, whence $a_{ghk} = \lambda_{ghk}\textup{id}_{ghk}$ for some $\lambda_{ghk} \in \mathbbm{k}^\times$. Note that the pentagon diagram enforces certain conditions on our choice of $\lambda_{ghk}$; in particular, if we look at this diagram, we'll see that $\lambda_{ghk} = \omega(g, h, k)$ for some $3$-cocycle $\omega$. By this, we mean a map $\omega : G \times G \times G \to \mathbbm{k}^\times$ satisfying
-\begin{align*}
-\begin{split}
-\omega(x, y, zw)\omega(xy, z, w)\omega(y, z, w)^{-1}\omega(x, yz, w)^{-1}\omega(x, y, z)^{-1} = 1
-\end{split}
-\end{align*}
-for all $x, y, z, w \in G$. We will henceforth denote by $\textcat{Vec}_G^\omega$ the category of $G$-graded vector spaces with associativity constraint $a_{ghk} = \omega(g, h, k)\textup{id}_{ghk}$, for all $g, h, k \in G$, and $\textcat{Vec}_G$ the category of $G$-graded vector spaces with trivial associativity.\\
+%\noindent\\ Take $\textcat{Vec}_G$ to be skeletal. Consider an associativity constraint $a_{ghk} : ghk \to ghk$. Since $ghk$ is a simple object, $\homset(ghk, ghk) \cong \mathbbm{k}$, whence $a_{ghk} = \mu_{ghk}\textup{id}_{ghk}$ for some $\mu_{ghk} \in \mathbbm{k}^\times$. Note that the pentagon diagram enforces certain conditions on our choice of $\mu_{ghk}$; in particular, if we look at this diagram, we'll see that $\mu_{ghk} = \omega(g, h, k)$ for some $3$-cocycle $\omega$. By this, we mean a map $\omega : G \times G \times G \to \mathbbm{k}^\times$ satisfying
+%\begin{align*}
+%\begin{split}
+%\omega(x, y, zw)\omega(xy, z, w)\omega(y, z, w)^{-1}\omega(x, yz, w)^{-1}\omega(x, y, z)^{-1} = 1
+%\end{split}
+%\end{align*}
+%\noindent for all $x, y, z, w \in G$. We will henceforth denote by $\textcat{Vec}_G^\omega$ the category of $G$-graded vector spaces with associativity constraint $a_{ghk} = \omega(g, h, k)\textup{id}_{ghk}$, for all $g, h, k \in G$, and $\textcat{Vec}_G$ the category of $G$-graded vector spaces with trivial associativity.\\
 
 \noindent Consider the category $\textup{End}(M)$, for $M$ a hyperfinite type III factor. This category is strict, as $\rho \otimes \sigma \coloneqq \rho \circ \sigma$ by definition. Every near-group category with group $G$ contains some copy of $\textcat{Vec}_G^\omega$ corresponding to the group-like part. Because every unitary near-group category is a subcategory of $\textup{End}(M)$ and is hence itself strict, we know that it will actually contain the ``strictification'' of some $\textcat{Vec}_G^\omega$. However, Izumi shows that if $\mathcal{C}$ is any fusion category containing a simple object that is fixed under tensor products with invertibles (that is, there exists some simple object $X$ such that $X \otimes g \cong X$ for all invertible $g$), then it contains a copy of $\textcat{Vec}_G$, for $G$ the group of isomorphism classes of invertible objects. He shows in addition that if the fusion category is also unitary, then $g \otimes X = X$ (but we may not necessarily have that $X \otimes g = X$). The upshot is that we almost know how objects are tensored, since the group-like part will have trivial associativity (that is, $g \otimes h = gh$). We just need to understand $X \otimes g$ and $X \otimes X$, as well as the morphisms.\\
 
@@ -212,7 +250,7 @@ for all $x, y, z, w \in G$. We will henceforth denote by $\textcat{Vec}_G^\omega
 \end{align*}
 where the map $\alpha : G \to \textup{Aut}(M)$ induces an injective homomorphism from $G$ into $\textup{Out}(M)$.\\
 
-\noindent The main result of \cite{Izu17} is \cite[Theorem 4.9]{Izu17}. Essentially, there is a bijective correspondence between the set of equivalence classes of unitary near-group categories with finite group $G$ and multiplicity parameter $m$ and the set of equivalence classes of admissible tuples $(\mathcal{K}, j_1, j_2, V, U_\mathcal{K}, \chi, l)$ (see \cite[Definition 4.8]{Izu17}). Here $\mathcal{K}$ is the finite-dimensional Hilbert space $\homset(\rho, \rho^2)$, $j_1$ and $j_2$ are two antilinear isometries of $\mathcal{K}$, $V$ and $U_\mathcal{K}$ are unitary representations of $G$ on $\mathcal{K}$, $\{\chi_g\}_{g \in G}$ are characters of $G$ and $l$ is a linear map from $\mathcal{K}$ to the set $\mathcal{B}(\mathcal{K}, \mathcal{K} \otimes \mathcal{K})$ of bounded operators $\mathcal{K} \to \mathcal{K} \otimes \mathcal{K}$.\newpage
+\noindent The main result of \cite{Izu17} is \cite[Theorem 4.9]{Izu17}. Essentially, there is a bijective correspondence between the set of equivalence classes of unitary near-group categories with finite group $G$ and multiplicity parameter $m$ and the set of equivalence classes of admissible tuples $(\mathcal{K}, j_1, j_2, V, U_\mathcal{K}, \chi, l)$ (see \cite[Definition 4.8]{Izu17}). Here $\mathcal{K}$ is the finite-dimensional Hilbert space $\homset(\rho, \rho^2)$, $j_1$ and $j_2$ are two antilinear isometries of $\mathcal{K}$, $V$ and $U_\mathcal{K}$ are unitary representations of $G$ on $\mathcal{K}$, $\{\chi_g\}_{g \in G}$ are characters of $G$ and $l$ is a linear map from $\mathcal{K}$ to the set $\mathcal{B}(\mathcal{K}, \mathcal{K} \otimes \mathcal{K})$ of bounded operators $\mathcal{K} \to \mathcal{K} \otimes \mathcal{K}$.\\
 
 \noindent By \cite[Theorem 9.1]{Izu17}, the unitary near-group categories with finite Abelian group $G$ and $m = \abs{G}$ are completely classified tuples of the form $(\langle\cdot,\cdot\rangle, a, b, c)$, where $\langle\cdot,\cdot\rangle : G \times G \to \mathbb{T}$ is a non-degenerate symmetric bicharacter and where $a : G \to \mathbb{T}$, $b : G \to \mathbb{T}$ and $c \in \mathbb{T}$ satisfy various conditions. When we say that $\langle\cdot,\cdot\rangle$ is a bicharacter, we mean that
 \begin{align*}
