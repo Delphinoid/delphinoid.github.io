@@ -13,7 +13,7 @@
 \ruledsection{Prologue}{1}
 \noindent\\ What are fusion categories? What are near-groups, Haagerup--Izumi categories and quadratic\linebreak categories? What is modular data? What are $6j$ symbols? What is the even part of a subfactor?\newpage
 
-\noindent Let $\mathcal{C}$ be a fusion category over $\mathbbm{k}$. Recall the Yoneda embedding
+\noindent Let $\mathcal{C}$ be a skeletal fusion category over $\mathbbm{k}$. Recall the Yoneda embedding
 \begin{align*}
 \begin{split}
 \yo_*(X) \coloneqq \homset_\mathcal{C}(-, X)\qquad\text{and}\qquad\yo_*(f : X \to Y) \coloneqq (\homset_\mathcal{C}(-, X) \Rightarrow \homset_\mathcal{C}(-, Y)).
@@ -31,7 +31,7 @@
 [\yo_*(\alpha_{X,Y,Z})](W) : \homset_\mathcal{C}(W, (X \otimes Y) \otimes Z) \xrightarrow{\sim} \homset_\mathcal{C}(W, X \otimes (Y \otimes Z));
 \end{split}
 \end{align*}
-\noindent that is, an invertible matrix. In other words, the associativity is given by matrices indexed by $X, Y, Z, W$. But we can simplify things further! Suppose we now choose representatives $\{X_i\}_{i \in \Gamma}$ of isomorphism classes of simple objects and bases for each {\em multiplicity space} $H_{i,j}^h := \homset_\mathcal{C}(X_h, X_i \otimes X_j)$. Then by semisimplicity,
+\noindent that is, an invertible matrix. In other words, the associativity is given by matrices indexed by $X, Y, Z, W$. But we can simplify things further! Suppose we now choose representatives $\{X_i\}_{i \in \Gamma}$ of isomorphism classes of simple objects and fix a choice of basis (gauge) for each {\em multiplicity space} $H_{i,j}^h := \homset_\mathcal{C}(X_h, X_i \otimes X_j)$. Then by semisimplicity,
 \begin{align*}
 \begin{split}
 X_i \otimes X_j \cong \bigoplus_{h \in \Gamma} X_h^{\dim_\mathbbm{k}(H_{i,j}^h)},
@@ -76,6 +76,7 @@ X_i \otimes X_j \cong \bigoplus_{h \in \Gamma} X_h^{\dim_\mathbbm{k}(H_{i,j}^h)}
 \end{split}
 \end{align*}
 \noindent for all $f \in \homset_\mathcal{C}(W, X_m \otimes V)$, $g \in \homset_\mathcal{C}(X_m, U)$, $f' \in \homset_\mathcal{C}(W, U \otimes X_n)$ and $g \in \homset_\mathcal{C}(X_n, V))$.\\
+\newpage
 
 \noindent More explicitly, suppose we have an isomorphism
 \begin{align*}
@@ -83,7 +84,6 @@ X_i \otimes X_j \cong \bigoplus_{h \in \Gamma} X_h^{\dim_\mathbbm{k}(H_{i,j}^h)}
 \homset_\mathcal{C}(X_4, (X_1 \otimes X_2) \otimes X_3) \cong \homset_\mathcal{C}(X_4, X_1 \otimes (X_2 \otimes X_3)).%\xrightarrow{\sim} \homset_\mathcal{C}(X_4, X_1 \otimes (X_2 \otimes X_3)).
 \end{split}
 \end{align*}
-\newpage
 \noindent Let $X_5$ and $X_6$ be simple summands of $(X_1 \otimes X_2)$ and $(X_2 \otimes X_3)$, respectively. Then we can determine our isomorphism by determining the block matrices of the form
 \begin{align*}
 \begin{split}
@@ -128,22 +128,22 @@ X_i \otimes X_j \cong \bigoplus_{h \in \Gamma} X_h^{\dim_\mathbbm{k}(H_{i,j}^h)}
 We shall start by choosing bases for the multiplicity spaces $H_{X,X}^{{\mathbbm{1}}}$, $H_{{\mathbbm{1}},X}^X$ and $H_{X,{\mathbbm{1}}}^X$. These spaces are all $1$-dimensional, so we will choose basis elements $\iota_{X,X}^{{\mathbbm{1}}}$, $\lambda_X^{-1}$ and $\rho_X^{-1}$, respectively. Here we have a canonical choice of basis elements for $H_{{\mathbbm{1}},X}^X$ and $H_{X,{\mathbbm{1}}}^X$; namely, the left and right unitors $\lambda$ and $\rho$. This culminates in the basis elements
 \begin{align*}
 \begin{split}
-\iota_{(X \otimes X) \otimes X}^X \coloneqq (\iota_{X,X}^{{\mathbbm{1}}} \otimes \id_X) \circ \lambda_X^{-1} = [u_{{\mathbbm{1}}}(X, X \otimes X, X)](\lambda_X^{-1} \otimes_\mathbbm{k} \iota_{X,X}^{{\mathbbm{1}}})
+\iota_{(X \otimes X) \otimes X}^X \coloneqq (\iota_{X,X}^{{\mathbbm{1}}} \otimes \id_X) \circ \lambda_X^{-1} = [u_{{\mathbbm{1}}}(X, X \otimes X, X)](\lambda_X^{-1} \otimes_\mathbbm{k} \iota_{X,X}^{{\mathbbm{1}}}),
 \end{split}
 \end{align*}
-\noindent and
+%\noindent and
 \begin{align*}
 \begin{split}
-\iota_{X \otimes (X \otimes X)}^X \coloneqq (\id_X \otimes \iota_{X,X}^{{\mathbbm{1}}}) \circ \rho_X^{-1} = [v_{{\mathbbm{1}}}(X, X, X \otimes X)](\rho_X^{-1} \otimes_\mathbbm{k} \iota_{X,X}^{{\mathbbm{1}}})
+\iota_{X \otimes (X \otimes X)}^X \coloneqq (\id_X \otimes \iota_{X,X}^{{\mathbbm{1}}}) \circ \hphantom{\lambda}\nhphantom{$\rho$}\rho_X^{-1} = [v_{{\mathbbm{1}}}(X, X, X \otimes X)\hphantom{u}\nhphantom{$v$}](\rho_X^{-1}\hphantom{\lambda}\nhphantom{$\rho$} \otimes_\mathbbm{k} \iota_{X,X}^{{\mathbbm{1}}})\hphantom{,}
 \end{split}
 \end{align*}
-\noindent for $\homset(X, (X \otimes X) \otimes X)$ and $\homset(X, X \otimes (X \otimes X))$, respectively. These are once again both $1$-dimensional spaces, so let's define a constant $\mu_1 \in \mathbbm{k}^\times$ for which
+\noindent for $\homset(X, (X \otimes X) \otimes X)$ and $\homset(X, X \otimes (X \otimes X))$, respectively. These are once again both $1$-dimensional spaces, so let's define a constant $\omega_1 \in \mathbbm{k}^\times$ for which
 \begin{align*}
 \begin{split}
-\Phi_{X,X,X}^X(\iota_{(X \otimes X) \otimes X}^X) \eqqcolon \mu_1 \cdot \iota_{X \otimes (X \otimes X)}^X.
+\Phi_{X,X,X}^X(\iota_{(X \otimes X) \otimes X}^X) \eqqcolon \omega_1 \cdot \iota_{X \otimes (X \otimes X)}^X.
 \end{split}
 \end{align*}
-\noindent In order to gain constraints on $\mu_1$, we need to use the pentagon equation. To this end, we first choose bases for the Hom-spaces
+\noindent To gain constraints on $\omega_1$, we must use the pentagon equation. To this end, consider the Hom-spaces
 \begin{align*}
 \begin{split}
 \homset({\mathbbm{1}}, ({\mathbbm{1}} \otimes X) \otimes X),\\
@@ -154,6 +154,7 @@ We shall start by choosing bases for the multiplicity spaces $H_{X,X}^{{\mathbbm
 \homset({\mathbbm{1}}, X \otimes (X \otimes {\mathbbm{1}})).
 \end{split}
 \end{align*}
+\newpage
 \noindent We can write bases for these Hom-spaces in terms of the bases we chose previously. That is,
 \begin{align*}
 \begin{split}
@@ -168,9 +169,9 @@ We shall start by choosing bases for the multiplicity spaces $H_{X,X}^{{\mathbbm
 \noindent This culminates in the three new constants given by
 \begin{align*}
 \begin{split}
-\Phi_{{\mathbbm{1}},X,X}^{\mathbbm{1}}(\iota_{({\mathbbm{1}} \otimes X) \otimes X}^{\mathbbm{1}}) &\eqqcolon \mu_2 \cdot \iota_{{\mathbbm{1}} \otimes (X \otimes X)}^{\mathbbm{1}},\\
-\Phi_{X,{\mathbbm{1}},X}^{\mathbbm{1}}(\iota_{(X \otimes {\mathbbm{1}}) \otimes X}^{\mathbbm{1}}) &\eqqcolon \mu_3 \cdot \iota_{X \otimes ({\mathbbm{1}} \otimes X)}^{\mathbbm{1}},\\
-\Phi_{X,X,{\mathbbm{1}}}^{\mathbbm{1}}(\iota_{(X \otimes X) \otimes {\mathbbm{1}}}^{\mathbbm{1}}) &\eqqcolon \mu_4 \cdot \iota_{X \otimes (X \otimes {\mathbbm{1}})}^{\mathbbm{1}}.
+\Phi_{{\mathbbm{1}},X,X}^{\mathbbm{1}}(\iota_{({\mathbbm{1}} \otimes X) \otimes X}^{\mathbbm{1}}) &\eqqcolon \omega_2 \cdot \iota_{{\mathbbm{1}} \otimes (X \otimes X)}^{\mathbbm{1}},\\
+\Phi_{X,{\mathbbm{1}},X}^{\mathbbm{1}}(\iota_{(X \otimes {\mathbbm{1}}) \otimes X}^{\mathbbm{1}}) &\eqqcolon \omega_3 \cdot \iota_{X \otimes ({\mathbbm{1}} \otimes X)}^{\mathbbm{1}},\\
+\Phi_{X,X,{\mathbbm{1}}}^{\mathbbm{1}}(\iota_{(X \otimes X) \otimes {\mathbbm{1}}}^{\mathbbm{1}}) &\eqqcolon \omega_4 \cdot \iota_{X \otimes (X \otimes {\mathbbm{1}})}^{\mathbbm{1}}.
 \end{split}
 \end{align*}
 \noindent The final bases we need are for the Hom-spaces
@@ -197,18 +198,18 @@ We shall start by choosing bases for the multiplicity spaces $H_{X,X}^{{\mathbbm
 \begin{center}
 \begin{tikzcd}[arrows={|->}, row sep=1.2cm, column sep=2cm]
 & \iota_{((X \otimes X) \otimes X) \otimes X}^{\mathbbm{1}}\arrow[dl, "\alpha_{X,X,X} \otimes \id_X"']\arrow[dr, "\alpha_{X \otimes X,X,X}"] &\\
-\mu_1 \cdot \iota_{(X \otimes (X \otimes X)) \otimes X}^{\mathbbm{1}}\arrow[d, "\alpha_{X,X \otimes X,X}"'] & & \mu_2 \cdot \iota_{(X \otimes X) \otimes (X \otimes X)}^{\mathbbm{1}}\arrow[d, "\alpha_{X,X,X \otimes X}"]\\
-\mu_1\mu_3 \cdot \iota_{X \otimes ((X \otimes X) \otimes X)}^{\mathbbm{1}}\arrow[r, "\id_X\otimes\alpha_{X,X,X}"'] & \mu_1^2\mu_3 \cdot \iota_{X \otimes (X \otimes (X \otimes X))}^{\mathbbm{1}}\arrow[r, equal] & \mu_2\mu_4 \cdot \iota_{X \otimes (X \otimes (X \otimes X))}^{\mathbbm{1}}\\
+\omega_1 \cdot \iota_{(X \otimes (X \otimes X)) \otimes X}^{\mathbbm{1}}\arrow[d, "\alpha_{X,X \otimes X,X}"'] & & \omega_2 \cdot \iota_{(X \otimes X) \otimes (X \otimes X)}^{\mathbbm{1}}\arrow[d, "\alpha_{X,X,X \otimes X}"]\\
+\omega_1\omega_3 \cdot \iota_{X \otimes ((X \otimes X) \otimes X)}^{\mathbbm{1}}\arrow[r, "\id_X\otimes\alpha_{X,X,X}"'] & \omega_1^2\omega_3 \cdot \iota_{X \otimes (X \otimes (X \otimes X))}^{\mathbbm{1}}\arrow[r, equal] & \omega_2\omega_4 \cdot \iota_{X \otimes (X \otimes (X \otimes X))}^{\mathbbm{1}}\\
 \end{tikzcd}.
 \end{center}
 \newpage
-\noindent This gives us the relation $\mu_1^2\mu_3 = \mu_2\mu_4$. However, there could be more constraints on these constants! As it turns out, though, there is a simple way of determining these. Suppose we use the more insightful labeling convention
+\noindent This gives us the relation $\omega_1^2\omega_3 = \omega_2\omega_4$. However, there could be more constraints on these constants! As it turns out, though, there is a simple way of determining these. Suppose we use the more insightful labeling convention
 \begin{align*}
 \begin{split}
-\omega(X, X, X) &\coloneqq \mu_1,\\
-\omega(\nhphantom{${\mathbbm{1}}$}\hphantom{X}{\mathbbm{1}}, X, X) &\coloneqq \mu_2,\\
-\omega(X, \nhphantom{${\mathbbm{1}}$}\hphantom{X}{\mathbbm{1}}, X) &\coloneqq \mu_3,\\
-\omega(X, X, \nhphantom{${\mathbbm{1}}$}\hphantom{X}{\mathbbm{1}}) &\coloneqq \mu_4.
+\omega(X, X, X) &\coloneqq \omega_1,\\
+\omega(\nhphantom{${\mathbbm{1}}$}\hphantom{X}{\mathbbm{1}}, X, X) &\coloneqq \omega_2,\\
+\omega(X, \nhphantom{${\mathbbm{1}}$}\hphantom{X}{\mathbbm{1}}, X) &\coloneqq \omega_3,\\
+\omega(X, X, \nhphantom{${\mathbbm{1}}$}\hphantom{X}{\mathbbm{1}}) &\coloneqq \omega_4.
 \end{split}
 \end{align*}
 \noindent The reason why we have chosen this relabeling is because now acting by $\alpha_{A, B, C}$ in the pentagon diagram introduces a factor of $\omega(A, B, C)$. If we apply this to the general pentagon diagram
@@ -225,8 +226,22 @@ A \otimes ((B \otimes C) \otimes D)\arrow[rr, "\id_A\otimes\alpha_{B,C,D}"'] & &
 \omega(A, B, C)\omega(A, BC, D)\omega(B, C, D) = \omega(AB, C, D)\omega(A, B, CD)
 \end{split}
 \end{align*}
-\noindent for all $A, B, C, D \in \obset(\textcat{Vec}_{\mathbb{Z}/2\mathbb{Z}})$. This is exactly the definition for a $3$-cocycle $\omega$! In general, the possible $6j$-symbols -- and hence the possible associators -- for $\textcat{Vec}_G$ are exactly given by $3$-cocycles. We will henceforth denote by $\textcat{Vec}_G^\omega$ the category of $G$-graded vector spaces with associativity constraint $\alpha_{ghk} = \omega(g, h, k)\textup{id}_{ghk}$, for all $g, h, k \in G$, and $\textcat{Vec}_G$ the category with trivial associativity.\\
+\noindent for all $A, B, C, D \in \obset(\textcat{Vec}_{\mathbb{Z}/2\mathbb{Z}})$. This is exactly the definition for a $3$-cocycle $\omega : (\mathbb{Z}/2\mathbb{Z})^{\oplus 3} \to \mathbbm{k}^\times$! In general, given a finite Abelian group $G$, there is a bijective correspondence between cohomologous $3$-cocycles on $G$ and monoidal equivalence classes of $6j$-symbols. We shall henceforth denote by $\textcat{Vec}_G^\omega$ the category of $G$-graded vector spaces whose $6j$-symbols are given by the non-trivial $3$-cocycle $\omega : G \times G \times G \to \mathbbm{k}^\times$, and $\textcat{Vec}_G$ the category whose $6j$-symbols are trivial.\\
 \end{example}
+
+\noindent Consider $\textcat{Vec}_G^\omega$, for some non-trivial $3$-cocycle $\omega$. By the strictification theorem of Mac Lane, this category is monoidally equivalent to a strict monoidal category, say $\mathcal{S}$. But if the associator for $\mathcal{S}$ is trivial, wouldn't the $6j$-symbols too be trivial? Well, suppose that for any pair $g, h \in G$, we pick an isomorphism $\mu_{g,h} : g \otimes h \to gh$. Note that in the skeletal setting $g \otimes h = gh$, but in the strict setting they are only guaranteed to be isomorphic. Because $\homset(g \otimes (h \otimes k), (g \otimes h) \otimes k)$ is $1$-dimensional,
+\begin{align*}
+\begin{split}
+\mu_{g,hk} \circ (\id_g \otimes \mu_{h,k}) = \omega(g, h, k) \mu_{gh,k} \circ (\mu_{g,h} \otimes \id_k)
+\end{split}
+\end{align*}
+\noindent for some $\omega(g, h, k) \in \mathbbm{k}^\times$. Doing this for each vertex of the pentagon diagram, we recover that $\omega$ must be a $3$-cocycle. If we choose another isomorphism, say $\mu'_{g,h}$, then it must satisfy $\mu'_{g,h} = \beta(g,h)\mu_{g,h}$ for some $\beta(g, h) \in \mathbbm{k}^\times$. Replacing $\mu$ with $\mu'$ gives us a new scalar
+\begin{align*}
+\begin{split}
+\omega'(g, h, k) = \beta(h, k)^{-1}\beta(g, hk)^{-1}\beta(gh, k)\beta(g, h)\omega(g, h, k).
+\end{split}
+\end{align*}
+\noindent In other words, it multiplies $\omega$ by a $3$-coboundary, giving us a cohomologous $3$-cocycle.
 \newpage
 
 \ruledsection{The Cuntz Algebra Approach of Izumi}{2}
@@ -243,12 +258,12 @@ A \otimes ((B \otimes C) \otimes D)\arrow[rr, "\id_A\otimes\alpha_{B,C,D}"'] & &
 \noindent In \cite{Izu17}, Izumi showed that every unitary near-group category $\mathcal{C}$ with multiplicity $m$ is equivalent to a subcategory of $\textup{End}(M)$, where $M$ is the hyperfinite type $\textup{III}_1$ factor. In particular, it is generated by a single irreducible endomorphism $\rho \in \textup{End}_0(M)$ satisfying the fusion rules
 \begin{align*}
 \begin{split}
-[\rho] \otimes [\rho] = \bigoplus_{g \in G} [\alpha_g] \oplus [\rho]^{\oplus m},\\
 [\alpha_g] \otimes [\alpha_h] = [\alpha_{gh}],\\
 [\alpha_g] \otimes [\rho] = [\rho] \otimes [\alpha_g] = [\rho],\\
+[\rho] \otimes [\rho] = \bigoplus_{g \in G} [\alpha_g] \oplus [\rho]^{\oplus m},\\
 \end{split}
 \end{align*}
-where the map $\alpha : G \to \textup{Aut}(M)$ induces an injective homomorphism from $G$ into $\textup{Out}(M)$.\\
+\noindent where the map $\alpha : G \to \textup{Aut}(M)$ induces an injective homomorphism from $G$ into $\textup{Out}(M)$.\\
 
 \noindent The main result of \cite{Izu17} is \cite[Theorem 4.9]{Izu17}. Essentially, there is a bijective correspondence between the set of equivalence classes of unitary near-group categories with finite group $G$ and multiplicity parameter $m$ and the set of equivalence classes of admissible tuples $(\mathcal{K}, j_1, j_2, V, U_\mathcal{K}, \chi, l)$ (see \cite[Definition 4.8]{Izu17}). Here $\mathcal{K}$ is the finite-dimensional Hilbert space $\homset(\rho, \rho^2)$, $j_1$ and $j_2$ are two antilinear isometries of $\mathcal{K}$, $V$ and $U_\mathcal{K}$ are unitary representations of $G$ on $\mathcal{K}$, $\{\chi_g\}_{g \in G}$ are characters of $G$ and $l$ is a linear map from $\mathcal{K}$ to the set $\mathcal{B}(\mathcal{K}, \mathcal{K} \otimes \mathcal{K})$ of bounded operators $\mathcal{K} \to \mathcal{K} \otimes \mathcal{K}$.\\
 
@@ -456,7 +471,7 @@ A_{h,k} = A_{-k,h-k}\omega = A_{k-h,-h}\overline{\omega},
 \newpage
 
 \ruledsection{The Leavitt Algebra Approach of Evans--Gannon}{3}
-\noindent\\ The important result is \cite[Theorem 2]{EG17}.\\
+\noindent\\ The important results are \cite[Theorem 1 and Theorem 2]{EG17}.\\
 
 \noindent\begin{definition}\textup{(Leavitt Algebra).} Let $X \coloneqq (x_{ij})$ and $Y \coloneqq (y_{ij})$ be $m \times n$ and $n \times m$ matrices of symbols, respectively. The {\em Leavitt $K$-algebra of type $(m, n)$} is the free associative unital $K$-algebra
 \begin{align*}
@@ -491,7 +506,30 @@ y_i x_j = \delta_{i,j}\qquad\text{and}\qquad\sum_{k=1}^n x_k y_k = 1.
 \norm{a} \coloneqq \sup\{p(a) : \textup{$p$ is a $C^*$-seminorm on $\mathcal{L}_n$}\}
 \end{split}
 \end{align*}
-\noindent for all $a \in \mathcal{L}_n$, where a $C^*$-seminorm is just a seminorm for which $p(a^*a) = p(a)^2$ and $p(ab) \leq p(a)p(b)$. Note that $0 \leq \norm{a} \leq 1$, as $1 = \norm{y_ix_i} = \norm{x_i^2}$ and hence $\norm{x_i} = \norm{y_i} = 1$ for all $i$. The condition $p(ab) \leq p(a)p(b)$ ensures that $\mathcal{I} \coloneqq \{a \in \mathcal{L}_n : \norm{a} = 0\}$ is an ideal in $\mathcal{L}_n$. Our $C^*$-seminorm then descends to a $C^*$-norm on the quotient $\mathcal{L}_n/\mathcal{I}$. The completion of $\mathcal{L}_n/\mathcal{I}$ with respect to this $C^*$-norm is known as the universal $C^*$-algebra of $\mathcal{L}_n$, denoted by $C^*(\mathcal{L}_n)$. This is precisely $\mathcal{O}_n$ by definition. We may therefore view $\mathcal{L}_n$ as the polynomial part of $\mathcal{O}_n$.
+\noindent for all $a \in \mathcal{L}_n$, where a $C^*$-seminorm is just a seminorm for which $p(a^*a) = p(a)^2$ and $p(ab) \leq p(a)p(b)$. Note that $0 \leq \norm{a} \leq 1$, as $1 = \norm{y_ix_i} = \norm{x_i^2}$ and hence $\norm{x_i} = \norm{y_i} = 1$ for all $i$. The condition $p(ab) \leq p(a)p(b)$ ensures that $\mathcal{I} \coloneqq \{a \in \mathcal{L}_n : \norm{a} = 0\}$ is an ideal in $\mathcal{L}_n$. Our $C^*$-seminorm then descends to a $C^*$-norm on the quotient $\mathcal{L}_n/\mathcal{I}$. The completion of $\mathcal{L}_n/\mathcal{I}$ with respect to this $C^*$-norm is known as the universal $C^*$-algebra of $\mathcal{L}_n$, denoted by $C^*(\mathcal{L}_n)$. This is precisely $\mathcal{O}_n$ by definition. We may therefore view $\mathcal{L}_n$ as the polynomial part of $\mathcal{O}_n$.\\
+
+\noindent Because $\mathcal{L}_n$ is a unital algebra over $\mathbb{C}$, its algebra endomorphisms define a strict preadditive $\mathbb{C}$-linear tensor category $\mathcal{E}(\mathcal{L}_n)$. The objects of $\mathcal{E}(\mathcal{L}_n)$ are algebra endomorphisms of $\mathcal{L}_n$, while the morphisms are intertwiners. In other words, a morphism $r \in \homset_{\mathcal{E}(\mathcal{L}_n)}(\beta, \gamma)$ is an element $r \in \mathcal{L}_n$ for which $r\beta(x) = \gamma(x)r$ for all $x \in \mathcal{L}_n$, with composition being multiplication in $\mathcal{L}_n$. We endow $\mathcal{E}(\mathcal{L}_n)$ with a tensor product given on objects as $\beta \otimes \gamma \coloneqq \beta \circ \gamma$ for all $\beta, \gamma \in \obset(\mathcal{E}(\mathcal{L}_n))$ and on morphisms as $r \otimes s \coloneqq r\beta(s) = \gamma(s)r \in \homset_{\mathcal{E}(\mathcal{L}_n)}(\beta\circ\rho, \gamma\circ\sigma)$ for all $r \in \homset_{\mathcal{E}(\mathcal{L}_n)}(\beta, \gamma)$ and $s \in \homset_{\mathcal{E}(\mathcal{L}_n)}(\rho, \sigma)$. Note that this is indeed well-defined, since
+\begin{align*}
+\begin{split}
+r\beta(s)\beta(\rho(x)) = \gamma(s)r\beta(\rho(x)) = \gamma(s)\gamma(\rho(x))r = \gamma(s\rho(x))r = \gamma(\sigma(x)s)r = \gamma(\sigma(x))\gamma(s)r
+\end{split}
+\end{align*}
+\noindent for all $x \in \mathcal{L}_n$.
+
+\noindent Let $\mathcal{A}$ now be a collection of algebra endomorphisms of $\mathcal{L}_n$ that is closed under composition and that contains the identity. We denote by $\mathcal{E}(\mathcal{A})$ the subcategory of $\mathcal{E}(\mathcal{L}_n)$ restricted to $\mathcal{A}$. This subcategory is itself a $\mathbb{C}$-linear tensor category, and $\End_{\mathcal{E}(\mathcal{A})}(\id) = \mathbb{C}$. Suppose we now take its Karoubi envelope, $\overline{\mathcal{E}(\mathcal{A})}$. Its objects consist of pairs $(p, \beta)$, where $\beta \in \mathcal{A}$ and $p \in \End_{\mathcal{E}(\mathcal{A})}(\beta)$ is an idempotent. The morphism spaces are of the form $\homset_{\overline{\mathcal{E}(\mathcal{A})}}((p, \beta), (q, \gamma)) \coloneqq q\homset_{\mathcal{E}(\mathcal{A})}(\beta, \gamma)p$, with composition given once more by multiplication. We endow $\overline{\mathcal{E}(\mathcal{A})}$ with the structure of a tensor category by defining a monoidal product on objects by $(p, \beta) \otimes (q, \gamma) \coloneqq (p \otimes q, \beta \otimes \gamma) = (p\beta(q), \beta\circ\gamma)$ and on morphisms by $(qrp) \otimes (q'r'p') \coloneqq qrp\beta(q'r'p')$, for $qrp \in \homset((p,\beta), (q,\gamma))$ and $q'r'p' \in \homset((p',\beta'), (q',\gamma'))$. We also endow $\overline{\mathcal{E}(\mathcal{A})}$ with the structure of an additive category as follows. The objects in this category are ordered $n$-tuples $((p_1, \beta_1), \dots, (p_n, \beta_n)) \eqcolon (p_1, \beta_1) \oplus \cdots \oplus (p_n, \beta_n)$, while the morphism spaces are
+\begin{align*}
+\begin{split}
+\homset(((p_1, \beta_1), \dots, (p_n, \beta_n)), ((q_1, \gamma_1), \dots, (q_m, \gamma_m)))
+\end{split}
+\end{align*}
+\begin{align*}
+\begin{split}
+\qquad\quad= \begin{pmatrix} q_1\homset(\beta_1, \gamma_1)p_1 & \cdots & q_1\homset(\beta_n, \gamma_1)p_n\\ \vdots & \ddots & \vdots\\ q_m\homset(\beta_1, \gamma_m)p_1 & \cdots & q_m\homset(\beta_n, \gamma_m)p_n\end{pmatrix}.
+\end{split}
+\end{align*}
+\noindent Composition of morphisms in this category corresponds to matrix multiplication. The monoidal product $((p_1, \beta_1), \dots, (p_n, \beta_n)) \otimes ((q_1, \gamma_1), \dots, (q_m, \gamma_m))$ is the direct sum of each $(p_i, \beta_i) \otimes (q_j, \gamma_j)$. On morphisms, the monoidal product acts as the Kronecker product, with $(ij, i'j')$th entry given by $q_ir_{ji}p_j \otimes q_{i'}'r_{j'i'}'p_{j'}'$. We will write $\overline{\mathcal{E}(\mathcal{A})}_\oplus$ for the Karoubi envelope $\overline{\mathcal{E}(\mathcal{A})}$ extended by direct sums.\\
+
+\noindent Suppose as before that $\mathcal{A}$ is a collection of $\mathcal{L}_n$-endomorphisms that is closed under composition and contains the identity. Suppose that $\homset(\beta, \gamma) = \homset(\widetilde{\beta}, \widetilde{\gamma})$ in $\mathcal{L}_n$ for all $\beta, \gamma \in \mathcal{A}$, where $\widetilde{\beta}(x) \coloneqq \beta(x')'$, and moreover that these Hom-spaces are all finite-dimensional. Then $\overline{\mathcal{E}(\mathcal{A})}_\oplus$ is a strict rigid semisimple $\mathbb{C}$-linear tensor category with finite-dimensional Hom-spaces by \cite[Lemma 2]{EG17}.
 \newpage
 
 \begin{example}\textup{(Yang--Lee Category).} Let $G = \{0\}$. Then \cite[Equation 4.7]{EG17} demands that
@@ -516,7 +554,158 @@ A(0) = \frac{1}{d-1}\begin{pmatrix}d & 1\\ 1 & 1\end{pmatrix}\qquad\text{and}\qq
 \end{split}
 \end{align*}
 \end{example}
+\newpage
 
+\ruledsection{Realizing Non-Unitary Near-Groups}{3}
+%\noindent\\ .\\
+
+\noindent\begin{proposition}\label{CommutingInvertibles} Let $\mathcal{C}$ be a $\mathbbm{k}$-linear fusion category with group $G$ of invertible objects, and suppose there exists a simple object $X \in \obset(\mathcal{C})$ such that $g \otimes X \cong X$ for all $g \in G$. Then the full Abelian monoidal subcategory generated by $G$ is $\textcat{Vec}_G$ with trivial associativity.\\
+\end{proposition}
+
+\noindent\begin{proof} Let $\mathcal{D}$ be the subcategory generated by $G$. This category is easily seen to be fusion, and is hence equivalent to $\textcat{Vec}_G$ on the level of fusion rings. It thus suffices to show that the associativity is trivial. We first choose isomorphisms $f_g \in \homset_\mathcal{C}(g \otimes X, X)$ and $\mu_{g,h}' \in \homset_\mathcal{C}(g \otimes h, gh)$ for all $g, h \in G$. Because $\homset_\mathcal{C}((g \otimes h) \otimes X, gh \otimes X)$ is $1$-dimensional, there exists some $z \in \mathbbm{k}^\times$ for which
+\begin{align*}
+\begin{split}
+z\mu_{g,h}' \otimes \id_X = z(\mu_{g,h}' \otimes \id_X) = f_{gh}^{-1} \circ f_g \circ (\id_g \otimes f_h) \circ \alpha_{g,h,X}.
+\end{split}
+\end{align*}
+\noindent That is, for each pair $g, h \in G$, there exists a unique isomorphism $\mu_{g,h} \coloneqq z\mu_{g,h}'$ for which the diagram
+\begin{center}
+\begin{tikzcd}[/tikz/column 1/.style={column sep = 1.5cm}]
+(g \otimes h) \otimes X \arrow[dd, "\alpha_{g,h,X}"'] \arrow[r, "\mu_{g,h} \otimes \id_X"] & gh \otimes X \arrow[dr, "f_{gh}"] \\
+& & X\\
+g \otimes (h \otimes X) \arrow[r, "\id_g \otimes f_h"'] & g \otimes X \arrow[ur, "f_g"']
+\end{tikzcd}
+\end{center}
+%\begin{center}
+%\begin{tikzcd}
+% & (g \otimes h) \otimes X\arrow[ld, "\alpha_{g,h,X}"']\arrow[rd, "\mu_{g,h} \otimes \id_X"] &\\
+%g \otimes (h \otimes X)\arrow[d, "\id_g \otimes f_{h}"'] & & gh \otimes X\arrow[d, "f_{gh}"]\\
+%g \otimes X\arrow[rr, "f_g"'] & & X
+%\end{tikzcd}
+%\end{center}
+\noindent commutes. From this, we obtain the commutative diagram
+\begin{center}
+\begin{tikzcd}[/tikz/column 1/.style={column sep = -4.0em}, /tikz/column 1/.style={column sep = -4.0em}, /tikz/column 2/.style={column sep = 2.0em}, /tikz/column 3/.style={column sep = 2.0em}, /tikz/column 4/.style={column sep = -1.0em}, /tikz/column 5/.style={column sep = -1.0em}, row sep = 2.0em]
+{((g \otimes h) \otimes k) \otimes X} \arrow[dr, "{\alpha_{g \otimes h,k,X}}"] \arrow[rrrr, "{(\mu_{g,h} \otimes \id_k) \otimes \id_X}"] \arrow[dddddd, "{\alpha_{g,h,k} \otimes \id_X}"'] & & & & {(gh \otimes k) \otimes X} \arrow[dl, "{\alpha_{gh,k,X}}"'] \arrow[dddr, "{\mu_{gh,k} \otimes \id_X}"] \\
+& {(g \otimes h) \otimes (k \otimes X)} \arrow[dd, "{\alpha_{g,h,k \otimes X}}"] \arrow[dr, "{\id_{g \otimes h} \otimes f_k}"] \arrow[rr, "{\mu_{g,h} \otimes \id_{k \otimes X}}"] & & {gh \otimes (k \otimes X)} \arrow[d, "{\id_{gh} \otimes f_k}"'] \\
+& & {(g \otimes h) \otimes X} \arrow[dd, "{\alpha_{g,h,X}}"] \arrow[r, "{\mu_{g,h} \otimes \id_X}"'] & {gh \otimes X} \arrow[dr, "{f_{gh}}"'] \\
+& {g \otimes (h \otimes (k \otimes X))} \arrow[dr, "{\id_g \otimes (\id_h \otimes f_k)}"] & & & {X} & {ghk \otimes X} \arrow[l, "{f_{ghk}}"'] \\
+& & {g \otimes (h \otimes X)} \arrow[r, "{\id_g \otimes f_h}"] & {g \otimes X} \arrow[ur, "{f_g}"] \\
+& {g \otimes ((h \otimes k) \otimes X)} \arrow[uu, "{\id_g \otimes \alpha_{h,k,X}}"'] \arrow[rr, "{\id_g \otimes (\mu_{h,k} \otimes \id_X)}"'] & & {g \otimes (hk \otimes X)} \arrow[u, "{\id_g \otimes f_{hk}}"] \\
+{(g \otimes (h \otimes k)) \otimes X} \arrow[rrrr, "{(\id_g \otimes \mu_{h,k}) \otimes \id_X}"'] \arrow[ur, "{\alpha_{g,h \otimes k,X}}"'] & & & & {(g \otimes hk) \otimes X} \arrow[uuur, "{\mu_{g,hk} \otimes \id_X}"'] \arrow[ul, "{\alpha_{g,hk,X}}"]
+\end{tikzcd}.
+\end{center}
+%\begin{center}
+%\begin{tikzcd}[/tikz/column 1/.style={column sep = -1.75cm}, /tikz/column 2/.style={column sep = -1.75cm}, /tikz/column 3/.style={column sep = -2cm}, /tikz/column 4/.style={column sep = -0.75cm}, /tikz/column 5/.style={column sep = -0.3cm}, /tikz/column 6/.style={column sep = -1cm}, /tikz/column 7/.style={column sep = 1cm}, row sep = 0.5cm]
+% & & & & ((g \otimes h) \otimes k) \otimes X\arrow[dllll, "\alpha_{g,h,k} \otimes \id_X"']\arrow[dd, "\alpha_{g \otimes h, k, X}"]\arrow[drrr, "(\mu_{g,h} \otimes \id_k) \otimes \id_X)"] & & &\\
+% (g \otimes (h \otimes k)) \otimes X\arrow[dr, "\alpha_{g, h\otimes k, X}"]\arrow[dddddd, "(\id_g \otimes \mu_{h,k}) \otimes \id_X"'] & & & & & & & (gh \otimes k) \otimes X\arrow[ddl, "\alpha_{gh,k,X}"']\arrow[dddddd, "\mu_{gh,k} \otimes \id_X"]\\
+% & g \otimes ((h \otimes k) \otimes X)\arrow[dr, "\id_g\otimes\alpha_{h,k,X}"]\arrow[dddd, "\id_g\otimes(\mu_{h,k} \otimes \id_X)"  {yshift=-1.125cm}] & & & (g \otimes h) \otimes (k \otimes X)\arrow[dll, "\alpha_{g,h,k\otimes X}"]\arrow[d, "\id_{g\otimes h} \otimes f_k"]\arrow[drr, "\mu_{g,h} \otimes \id_{k\otimes X}"] & & &\\
+% & & g \otimes (h \otimes (k \otimes X))\arrow[dr, "\id_g \otimes (\id_h \otimes f_k)"'] & & (g \otimes h) \otimes X\arrow[dl, "\alpha_{g,h,X}"']\arrow[dr, "\mu_{g,h} \otimes \id_X"] & & gh \otimes (k \otimes X)\arrow[dl, "\id_{gh} \otimes f_k"] &\\
+% & & & g \otimes (h \otimes X)\arrow[d, "\id_g \otimes f_{h}"'] & & gh \otimes X\arrow[d, "f_{gh}"] & &\\
+% & & & g \otimes X\arrow[rr, "f_g"'] & & X & &\\
+% & g \otimes (hk \otimes X)\arrow[urr, "\alpha_{g,hk,X}"'] & & & & & &\\
+% (g \otimes hk) \otimes X\arrow[ur]\arrow[rrrrrrr, "\mu_{g,hk} \otimes \id_X"'] & & & & & & & ghk \otimes X\arrow[uull, "f_{ghk}"']
+%\end{tikzcd}.
+%\end{center}
+%\begin{center}
+%\begin{tikzcd}[/tikz/column 1/.style={column sep = -1.75cm}, /tikz/column 2/.style={column sep = -1.75cm}, /tikz/column 3/.style={column sep = -2cm}, /tikz/column 4/.style={column sep = -0.75cm}, /tikz/column 5/.style={column sep = -0.5cm}, /tikz/column 6/.style={column sep = -1cm}, /tikz/column 7/.style={column sep = 1cm}]
+% & & & & ((g \otimes h) \otimes k) \otimes X\arrow[dllll]\arrow[dd]\arrow[drrr] & & &\\
+% (g \otimes (h \otimes k)) \otimes X\arrow[dr]\arrow[dddddd] & & & & & & & (gh \otimes k) \otimes X\arrow[ddl]\arrow[dddddd]\\
+% & g \otimes ((h \otimes k) \otimes X)\arrow[dr]\arrow[dddd] & & & (g \otimes h) \otimes (k \otimes X)\arrow[dll]\arrow[d]\arrow[drr] & & &\\
+% & & g \otimes (h \otimes (k \otimes X))\arrow[dr] & & (g \otimes h) \otimes X\arrow[dl]\arrow[dr] & & gh \otimes (k \otimes X)\arrow[dl] &\\
+% & & & g \otimes (h \otimes X)\arrow[d] & & gh \otimes X\arrow[d] & &\\
+% & & & g \otimes X\arrow[rr] & & X & &\\
+% & g \otimes (hk \otimes X)\arrow[urr] & & & & & &\\
+% (g \otimes hk) \otimes X\arrow[ur]\arrow[rrrrrrr] & & & & & & & ghk \otimes X\arrow[uull]\\
+%\end{tikzcd}
+%\end{center}
+\newpage
+\noindent Note that the leftmost pentagon is the pentagon diagram for the associator, while all other pentagons are versions of the pentagon given at the beginning of the proof. The upper middle quadrilateral comes from the functoriality of $\otimes$, with the remaining quadrilaterals come from the naturality of $\alpha$. If we look at the boundary, we obtain the commutative diagram
+\begin{center}
+\begin{tikzcd}[/tikz/column 1/.style={column sep = 1.5cm}]
+(g \otimes h) \otimes k \arrow[dd, "\alpha_{g,h,k}"'] \arrow[r, "\mu_{g,h} \otimes \id_k"] & gh \otimes k \arrow[dr, "\mu_{gh,k}"] \\
+& & ghk\\
+g \otimes (h \otimes k) \arrow[r, "\id_g \otimes \mu_{h,k}"'] & g \otimes hk \arrow[ur, "\mu_{g,hk}"']
+\end{tikzcd}
+\end{center}
+%\begin{center}
+%\begin{tikzcd}
+% & (g \otimes h) \otimes k\arrow[ld, "\alpha_{g,h,k}"']\arrow[rd, "\mu_{g,h} \otimes \id_k"] &\\
+%g \otimes (h \otimes k)\arrow[d, "\id_g \otimes \mu_{h,k}"'] & & gh \otimes k\arrow[d, "\mu_{gh,k}"]\\
+%g \otimes hk\arrow[rr, "\mu_{g,hk}"'] & & ghk
+%\end{tikzcd}.
+%\end{center}
+\noindent Thus the associator for $\mathcal{D}$ is given by
+\begin{align*}
+\begin{split}
+\alpha_{g,h,k} = (\id_g \otimes \mu_{h,k}^{-1}) \circ \mu_{g,hk}^{-1} \circ \mu_{gh,k} \circ (\mu_{g,h} \otimes \id_k),
+\end{split}
+\end{align*}
+\noindent which is cohomologous to the trivial $3$-cocycle. This completes the proof.
+\end{proof}\\
+
+\noindent\textcolor{red}{Add citation for Tom's notes.}\\
+
+\noindent\textcolor{red}{We should focus on the case when $G$ is finite Abelian, and possibly when $m = k\abs{G}$ for some $k \in \mathbb{N}$.}\\
+
+\noindent Let $\mathcal{C}$ be a near-group category with multiplicity $m$, whose invertible objects form the finite group $G$ of order $n$. Assume this category admits a realization as a subcategory of $\mathcal{E}(A)$ for some algebra $A$. Then we must ask for endomorphisms $\rho$ and $\alpha_g$, for all $g \in G$, satisfying
+\begin{align*}
+\begin{split}
+[\alpha_g] \otimes [\alpha_h] = [\alpha_{gh}],\\
+[\alpha_g] \otimes [\rho] = [\rho] \otimes [\alpha_g] = [\rho],\\
+[\rho] \otimes [\rho] = \bigoplus_{g \in G} [\alpha_g] \oplus [\rho]^{\oplus m}.
+\end{split}
+\end{align*}
+\noindent %Let $\mathcal{L} \coloneqq \mathcal{L}_{m+n}$ and consider $s_i, s_i', t_g, t_g' \in \mathcal{L}$, for all $i \in \{1, \dots, m\}$ and $g \in G$.
+Suppose we choose our $\alpha_g$ such that $\alpha_g \circ \rho = \rho$, for all $g \in G$. Note that we will not necessarily have ``$\rho \circ \alpha_g = \rho$''. By definition, we may only expect $\rho(\alpha_g(x)) = U(g)^{-1}\rho(x)U(g)$ for some invertible $U(g) \in A$. By \hyperref[CommutingInvertibles]{Proposition \ref*{CommutingInvertibles}}, we will however always have $\alpha_g \circ \alpha_h = \alpha_{gh}$ for all $g, h \in G$. The third equation above tells us, by definition of the direct sum, that we must have $s_g, s_g', t_i, t_i' \in A$ such that %for $i \in \{1, \dots, m\}$ and $g \in G$ such that
+\begin{align*}
+\begin{split}
+\rho(\rho(x)) = \sum_{g \in G}{s_g\alpha_g(x)s_g'} + \sum_{i=1}^m{t_i\rho(x)t_i'}
+\end{split}
+\end{align*}
+\noindent for all $x \in A$, where
+\begin{align*}
+\begin{split}
+\sum_{g' \in G}{s_{g'}s_{g'}'} + \sum_{i'=1}^m{t_{i'}t_{i'}'} = 1,\qquad s_g's_h = \delta_{g,h},\qquad t_i't_j = \delta_{i,j}\qquad\text{and}\qquad s_g't_i = 0 = t_i's_g,
+\end{split}
+\end{align*}
+\noindent for all $g, h \in G$ and $i, j \in \{1, \dots, m\}$. We would like to show that $\rho$ and $\alpha_g$ restrict to endomorphisms of the Leavitt algebra $\mathcal{L} \coloneqq \mathcal{L}_{m+n}$ with generators $s_g, s_g', t_i, t_i'$, for $g \in G$ and $i \in \{1, \dots, m\}$.\\
+
+\newpage
+
+\noindent Determine how $\rho$ and $\alpha_g$ act on the generators!\\
+
+\newpage
+
+\noindent Suppose we instead have \\
+
+\noindent Indeed, suppose we fix a non-zero morphism $s_e \in \homset_{\mathcal{E}(\mathcal{L})}(\id, \rho \otimes \rho)$. We claim that this element admits a left inverse. As an intertwiner, $s_e$ is an element satisfying $s_ex = \rho^2(x)s_e$ for all $x \in \mathcal{L}$. Thus $\mathcal{L}s_e$ is a non-zero two-sided ideal. Because $\mathcal{L} \neq \mathcal{L}_1$ is simple, we must have that $\mathcal{L}s_e = \mathcal{L}$. This means that $1 \in \mathcal{L}s_e$, and hence $s_e$ must admit a left inverse. Denote this by $s_e'$. Fix now a non-zero isomorphism $f_g \in \homset_{\mathcal{E}(\mathcal{L})}(g \otimes \rho, \rho)$ and let
+\begin{align*}
+\begin{split}
+s_g \coloneqq (f_g \otimes \id_\rho) \circ (\id_g \otimes s_e) \in \homset_{\mathcal{E}(\mathcal{L})}(g, \rho \otimes \rho),
+\end{split}
+\end{align*}
+\noindent for each $g \in G$. Because $s_e$ admits the left inverse $s_e'$, we have also the left inverse
+\begin{align*}
+\begin{split}
+s_g' \coloneqq (\id_g \otimes s_e') \circ (f_g^{-1} \otimes \id_\rho)
+\end{split}
+\end{align*}
+\noindent for $s_g$.\\
+
+\noindent Because the group-like elements of $\mathcal{C}$ have Frobenius--Perron dimension $1$, the dimension of $\rho$ must satisfy $d^2 = md + n$. In other words, $\rho$ must have dimension
+\begin{align*}
+\begin{split}
+d_\pm \coloneqq \frac{m + \csqrt{m^2 + 4n}}{2}.
+\end{split}
+\end{align*}
+\noindent\\
+
+\newpage
+
+\noindent 
+
+\noindent\textcolor{red}{For each set of fusion rules, find solution set of endomorphisms $\rho$ and $\alpha_g$. Then for each possible solution, show that $\overline{\mathcal{E}(\mathcal{A})}_\oplus$ is a fusion category.}
 \newpage
 
 \renewcommand\thesection{R}
