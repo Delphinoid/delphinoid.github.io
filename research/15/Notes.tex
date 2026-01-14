@@ -683,7 +683,7 @@ s_g \coloneqq \id_{\alpha_g} \otimes s_e \in \homset_{\mathcal{E}(A)}(g, \rho \o
 s_g' \coloneqq \id_{\alpha_g} \otimes s_e'
 \end{split}
 \end{align*}
-\noindent for $s_g$. We will now find, for each $g \in G$, an invertible $U(g) \in \homset_{\mathcal{E}(A)}(\rho, \rho \otimes \alpha_g)$ satisfying both $U(g)s_e = s_e$ and $\rho(\alpha_g(x)) = U(g)^{-1}\rho(x)U(g)$, for all $x \in A$. Because $\alpha_g \otimes \rho = \rho$ and the space $\homset_{\mathcal{E}(A)}(\id, \rho \otimes \rho)$ containing $s_e$ is $1$-dimensional, there certainly exists an invertible $U(g)$ satisfying
+\noindent for $s_g$. We will now find, for each $g \in G$, an isomorphism $U(g) \in \homset_{\mathcal{E}(A)}(\rho, \rho \otimes \alpha_g)$. We will find one satisfying the normalization condition $U(g)s_e = s_e$. Because $\alpha_g \otimes \rho = \rho$ and the space $\homset_{\mathcal{E}(A)}(\id, \rho \otimes \rho)$ containing $s_e$ is $1$-dimensional, there certainly exists a morphism $U(g)$ satisfying
 \begin{align*}
 \begin{split}
 s_e = (U(g) \otimes \id_\rho) \circ s_e.
@@ -700,13 +700,9 @@ s_e = (U(g) \otimes \id_\rho) \circ s_e.
 \implies (U(g) \otimes \id_{\alpha_h}) \circ U(h) = U(gh)
 \end{split}
 \end{align*}
-\noindent \textcolor{red}{via abstract nonsense}, whence $g \mapsto U(g) \otimes \id_{\rho}$ gives a representation of $G$ on $\homset_{\mathcal{E}(A)}(\rho \otimes \rho, \rho \otimes \rho)$.\\
+\noindent \textcolor{red}{via abstract nonsense}, whence $g \mapsto U(g) \otimes \id_{\rho}$ gives a representation of $G$ on $\homset_{\mathcal{E}(A)}(\rho \otimes \rho, \rho \otimes \rho)$. In other words, $U(g)$ is invertible with $U(g)^{-1} = U(g^{-1})$, whence $\rho(\alpha_g(x)) = U(g)^{-1}\rho(x)U(g)$.\\
 
-\noindent\textcolor{red}{Show that $\rho(\alpha_g(x)) = U(g)^{-1}\rho(x)U(g)$.}\\
-
-\newpage
-
-\noindent We would like to show that $\rho$ and $\alpha_g$ restrict to endomorphisms of the Leavitt algebra $\mathcal{L} \coloneqq \mathcal{L}_{m+n}$ with generators $s_g, s_g', t_i, t_i'$, for $g \in G$ and $i \in \{1, \dots, m\}$.\\
+\noindent We now wish to show that $\rho$ and $\alpha_g$ restrict to endomorphisms of the Leavitt algebra $\mathcal{L} \coloneqq \mathcal{L}_{m+n}$, with generators $s_g, s_g', t_i, t_i'$ for $g \in G$ and $i \in \{1, \dots, m\}$.\\
 
 \newpage
 
