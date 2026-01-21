@@ -1,0 +1,61 @@
+\input{preamble.tex}
+
+\begin{document}
+
+\thispagestyle{fancy}
+
+\begin{center}
+\LARGE\scshape Computational Decompositions in Lusztig--Vogan Categories\noindent\\[-\linespacing]
+\rule{0.75\linewidth}{1pt}
+\end{center}
+\noindent\\[-0.75\linespacing]
+
+\ruledsection{Strategy}{1}
+\noindent\\ Let $R^{W_K} \coloneqq \mathbb{R}[x_1, \dots, x_m] \subseteq R$ for some polynomial ring $R$, graded in degree $2$. Consider some graded Krull--Schmidt $(R^{W_K}, R)$-bimodule $B$ that is graded free of finite rank as a right $R$-module with basis $\{b_1, \dots, b_n\}$. We want to determine the indecomposable summands of $B$. This is equivalent to determining its primitive idempotents.\\
+
+\noindent Let's ignore the grading for a moment. As a free right $R$-module, we know that $B \cong R^{\oplus n}$ and hence that $\text{End}_{\text{Mod}-R}(B) \cong M_n(R)$. As a result, we can encode the left action of $R^{W_K}$ as a set $\{A_k\}_{k=1}^m$ of $n\times n$ matrices satisfying $A_k f = x_k \cdot f$ for all $f = b_1\cdot f_1 + \cdots + b_n\cdot f_n \in B$. More explicitly, we may write $A_k \coloneqq (a_{ij}^k)_{i,j=1}^n$, where $a_{ij}^k$ is the coefficient of $b_i$ in $x_k \cdot b_j$. Then $\text{End}_{R^{W_K}-\text{Mod}-R}(B)$ is the subset of $M_n(R)$ consisting of matrices that commute with every $A_k$. Finally, in order to reintroduce the grading, we need only enforce homogeneity on each matrix $M$; that is, we require some $d \in \mathbb{N}$ such that every $Mb_k$ is homogeneous in degree $d$. The set of degree $d$ endomorphisms is %Our final set of endomorphisms is therefore
+\begin{align*}
+\begin{split}
+%\text{End}(B) \cong \left\{M = (m_{ij})_{i,j=1}^n \in M_n(R) : \begin{matrix}[r]MA_k - A_kM,\ \forall k \in \{1, \dots, m\};\\\exists\ d \in \mathbb{N}\ \text{s.t.\ \!}\deg(m_{ij}) = d-\deg(b_i)+\deg(b_j),\ \forall m_{ij} \neq 0\end{matrix}\right\}.
+\text{End}^d(B) \cong \left\{M = (m_{ij})_{i,j=1}^n \in M_n(R) : \begin{matrix}[r]MA_k - A_kM,\ \forall k \in \{1, \dots, m\};\\\deg(m_{ij}) = d-\deg(b_i)+\deg(b_j),\ \forall m_{ij} \neq 0\end{matrix}\right\}.
+\end{split}
+\end{align*}
+\noindent Thus we are interested in the sets
+\begin{align*}
+\begin{split}
+\text{Prim}^d(B) \coloneqq \{E \in \text{End}^d(B) : E^2 = E, \nexists E_1 \perp E_2 \ \text{s.t.\ \!}E = E_1 + E_2\}.
+\end{split}
+\end{align*}
+\noindent These conditions give us a system of equations that we can solve using Magma.\\
+
+\noindent Suppose we have an arbitrary $(R, R)$-bimodule $B$ that is free of finite rank as an $R$-module with basis $\{b_1, \dots, b_n\}$ and left action matrices $A_f : g \mapsto f \cdot g$. One can show that, using the basis
+\begin{align*}
+\begin{split}
+b_0^s \coloneqq 1 \otimes_{R^s} 1,\qquad b_1^s \coloneqq c_s \coloneqq \frac{1}{2}(\alpha_s \otimes_{R^s} 1 + 1 \otimes_{R^s} \alpha_s),
+\end{split}
+\end{align*}
+\noindent for $B_s$, the bimodule $B \otimes_R B_s$ admits a basis $\{b_i \otimes_R b_0^s\}_{i=1}^n \cup \{b_i \otimes_R b_1^s\}_{i=1}^n$ and left action matrices
+\begin{align*}
+\begin{split}
+A_f^s \coloneqq \begin{pmatrix}[rr]s(A_f) & 0\\\partial_s(A_f) & A_f\end{pmatrix}
+\end{split}
+\end{align*}
+\noindent for all $f \in R$ (and hence all $f \in R^{W_K}$). All of the modules that we will be looking at are of the form $B = B_{s_1} \otimes_R \cdots \otimes_R B_{s_\ell}$. Given a binary word $w = w_1 \cdots w_\ell$ for $w_i \in \{0, 1\}$, let
+\begin{align*}
+\begin{split}
+b_w \coloneqq b_{w_1}^{s_1} \otimes_R \cdots \otimes_R b_{w_\ell}^{s_\ell}.
+\end{split}
+\end{align*}
+\noindent The set of all $b_w$ corresponding to binary words $w$ of length $\ell$ is a basis for $B$. Moreover, if we let $f\varphi_i : g \mapsto fs_i(g)$ if $w_i = 0$ and $f\varphi_i : g \mapsto f\partial_{s_i}(g)$ if $w_i = 1$, then
+\begin{align*}
+\begin{split}
+f_0 \otimes_{R^{s_1}} \cdots \otimes_{R^{s_\ell}} f_\ell = \sum_w b_w \cdot [f_\ell\varphi_\ell \circ \cdots \circ f_1\varphi_1](f_0).
+\end{split}
+\end{align*}
+\newpage
+
+\noindent Note that in small rank examples, if we have a primitive idempotent $E$, we can often determine whether or not $1-E$ is primitive using rank arguments. For instance, if $B$ is rank $4$ and we can show that $E$ is the only primitive rank $1$ idempotent, then $1-E$ must necessarily be primitive. This exact situation occurs for $B_s \otimes_R B_t$ and $B_t \otimes_R B_s$ in type $G_2$.\\
+
+\noindent One optimization we can make is to solve for primitive idempotents one degree at a time. However, solving the system of equations that define $\text{Prim}^d(B)$ gets computationally expensive quite fast, and even rank $4$ computations tend to require some tricks to perform. One significant optimization is to take $R$ over $\mathbb{Q}$ and realize its generators as large primes. This is a significant reduction that appears to make the computations tractable at the cost of a larger solution space. If we already know an idempotent, we can also use it to reduce the dimension of our ideal.
+
+\end{document}
