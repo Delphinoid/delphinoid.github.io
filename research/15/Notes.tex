@@ -826,7 +826,7 @@ U(g) = \sum_{h \in G}{\chi_h(g)s_hs_h'} + U_\mathcal{K}(g)
 [\varphi^{-1} \circ V(g) \circ \varphi](x) = (U_g \otimes \ev_\rho \otimes \id_\rho) \circ (\id_\rho \otimes \id_\rho \otimes x) \circ (\coev_\rho \otimes \id_\rho) = U(g)x.
 \end{split}
 \end{align*}
-\noindent Note that because $x \in \homset_{\mathcal{E}(A)}(\rho, \rho \otimes \rho)$, we have that $x \in \text{span}\{t_1, \dots, t_m\}$ and hence $s_h'x = 0$ for all $h \in G$ by our initial direct sum properties. In other words, $U(g)x = U_\mathcal{K}(g)x$. A similar process shows us that
+\noindent Note that because $x \in \homset_{\mathcal{E}(A)}(\rho, \rho \otimes \rho)$, we have that $x \in \text{span}\{t_1, \dots, t_m\}$ and hence $s_h'x = 0$ for all $h \in G$ by our initial direct sum properties. Thus $U(g)x = U_\mathcal{K}(g)x$. A similar process yields
 \begin{align*}
 \begin{split}
 [\varphi \circ V(g) \circ \varphi^{-1}](x) &= (\id_\rho \otimes U_{g^{-1}}^{-1}) \circ (x \otimes \id_{\alpha_{g^{-1}}}) \circ U_{g^{-1}} = \rho(U(g)) x U(g)^{-1}.
@@ -871,13 +871,13 @@ U(g) = \sum_{h \in G}{\chi_h(g)s_hs_h'} + U_\mathcal{K}(g)
 
 \noindent Recall that $\alpha_g(s_h) = \id_{\alpha_g} \otimes (\id_{\alpha_h} \otimes s_e) = \id_{\alpha_{gh}} \otimes s_e = s_{gh}$, and similarly for $\alpha_g(s_h')$. In other words, $\alpha_g(s_h) \in \mathcal{L}$ for all $g, h \in G$. All that remains is to show how $\rho$ and $\alpha_g$ act on our $t_i$ and $t_j'$.\\
 
-\noindent We will find it convenient now to denote both $\mathcal{K} \coloneqq \homset_{\mathcal{E}(A)}(\rho, \rho \otimes \rho) = \text{span}_\mathbbm{k}\{t_1, \dots, t_m\}$ and $\mathcal{K}^{-1} \coloneqq \homset_{\mathcal{E}(A)}(\rho \otimes \rho, \rho) = \text{span}_\mathbbm{k}\{t_1', \dots, t_m'\}$, and let
+\noindent We will find it convenient now to denote both $\mathcal{K} \coloneqq \homset_{\mathcal{E}(A)}(\rho, \rho \otimes \rho) = \text{span}_\mathbbm{k}\{t_1, \dots, t_m\}$ and $\mathcal{K}' \coloneqq \homset_{\mathcal{E}(A)}(\rho \otimes \rho, \rho) = \text{span}_\mathbbm{k}\{t_1', \dots, t_m'\}$, and let
 \begin{align*}
 \begin{split}
-\mathcal{K}^p\mathcal{K}^{-q} \coloneqq \text{span}_\mathbbm{k}\{t_{i_1}t_{i_2} \cdots t_{i_p}t_{j_1}'t_{j_2}' \cdots t_{j_q}'\}_{i_1,\dots,i_p,j_1,\dots,j_q=1}^m
+\mathcal{K}^p\mathcal{K}'^q \coloneqq \text{span}_\mathbbm{k}\{t_{i_1}t_{i_2} \cdots t_{i_p}t_{j_1}'t_{j_2}' \cdots t_{j_q}'\}_{i_1,\dots,i_p,j_1,\dots,j_q=1}^m
 \end{split}
 \end{align*}
-\noindent for $p, q \in \mathbb{N}$. In other words, $\mathcal{K}^p\mathcal{K}^{-q} \cong \mathcal{K}^{\otimes p} \otimes (\mathcal{K}^{-1})^{\otimes q}$. We will also define the projections
+\noindent for $p, q \in \mathbb{N}$. In other words, $\mathcal{K}^p\mathcal{K}'^q \cong \mathcal{K}^{\otimes p} \otimes (\mathcal{K}')^{\otimes q}$. We will also define the projections
 \begin{align*}
 \begin{split}
 P \coloneqq \sum_{g \in G}{s_gs_g'}\qquad\text{and}\qquad Q \coloneqq \sum_{i=1}^m{t_it_i'}.
@@ -885,7 +885,17 @@ P \coloneqq \sum_{g \in G}{s_gs_g'}\qquad\text{and}\qquad Q \coloneqq \sum_{i=1}
 \end{align*}
 \newpage
 
-\noindent .
+\noindent\begin{lemma} There exists a unique linear map $l : \mathcal{K} \to \mathcal{K}^2\mathcal{K}'$ such that
+\begin{align*}
+\begin{split}
+\rho(T) = \sum_{h \in G}{s_h\alpha_h(s_e'\rho(T))} + \sum_{h \in G}{\alpha_h(\varphi(T))s_hs_h'} + l(T)
+\end{split}
+\end{align*}
+\noindent for all $T \in \mathcal{K}$. \textcolor{red}{Plus some other things.}\\
+\end{lemma}
+
+\noindent\begin{proof} \textcolor{red}{Still need to write this up. It may help to define $j_1'$ and $j_2'$.}
+\end{proof}
 
 
 
