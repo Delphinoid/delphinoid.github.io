@@ -1,0 +1,183 @@
+\input{preamble.tex}
+
+\begin{document}
+
+\thispagestyle{fancy}
+
+\begin{center}
+\LARGE\scshape Computing $\mathbb{S}\textcat{Bim}$-Module\linebreak Categories in Magma\noindent\\[-\linespacing]
+\rule{0.85\linewidth}{1pt}
+\end{center}
+\noindent\\[-0.75\linespacing]
+
+\ruledsection{Prologue}{1}
+\noindent\\ Outside of simple cases\footnote[2]{...such as types $A_1$ and $A_2$, which you can find my notes on \href{https://delphinoid.github.io/research/11/IndecomposableSoergelBimodulesA2.pdf}{here}.}, decomposing Soergel bimodules by hand can be quite a difficult task. This difficulty remains present in decomposing the objects of other $\mathbb{S}\textcat{Bim}$-module categories, such as the Lusztig--Vogan categories of Larson and Romanov (\cite{LR22}). These notes will detail a general algorithm for decomposing such objects, which we were able to implement in Magma. Before that, however, we will briefly review Soergel bimodules and the Lusztig--Vogan categories. We will also see some examples of decompositions done by hand.\\
+
+\noindent Typically, the category of Soergel bimodules is built from a {\em realization} $\mathcal{R} \coloneqq (\mathfrak{h}, \{\alpha_s^\vee\}_{s \in S}, \{\alpha_s\}_{s \in S})$ of a Coxeter system $(W, S)$; that is, a free $\mathbbm{k}$-module $\mathfrak{h}$ of finite rank, together with subsets $ \{\alpha_s^\vee\}_{s \in S} \subset \mathfrak{h}$ and $ \{\alpha_s\}_{s \in S} \subset \mathfrak{h}^* \coloneqq \homset(\mathfrak{h}, \mathbbm{k})$ for which
+\begin{enumerate}[label=\textup{(\roman*).}, ref=\textup{(\roman*)}, leftmargin=4\parindent]
+\item $\alpha_s(\alpha_s^\vee) = 2$;
+\item the map given by $\rho(s) : v \mapsto v - \alpha_s(v)\alpha_s^\vee$ for all $v \in \mathfrak{h}$ extends to a representation $\rho : W \curvearrowright \mathfrak{h}$;
+\item certain minor technical conditions are satisfied (\cite[\S 5.7]{EMTW20}).
+\end{enumerate}
+\noindent Note that $\rho$ induces a contragredient representation given by $\rho^*(s) : \gamma \mapsto \gamma - \gamma(\alpha_s^\vee)\alpha_s$ for all $\gamma \in \mathfrak{h}^*$.\\
+
+\noindent Suppose we let $\mathfrak{h} \coloneqq \bigoplus_{s \in S} \mathbb{R}\alpha_s^\vee$ and define elements $\{\alpha_s\} \subset \mathfrak{h}^* = \textup{span}_\mathbb{R}\{\alpha_s : s \in S\}$ by
+\begin{align}
+\begin{split}
+\label{GeometricForm}\alpha_s(\alpha_t^\vee) \coloneqq \begin{cases}-2\cos\!\left(\frac{\pi}{m_{st}}\right)\!,&m_{st} \neq \infty;\\-2,&m_{st} = \infty.\end{cases}
+\end{split}
+\end{align}
+\noindent This defines what is known as the {\em geometric realization} $\mathcal{R}_\textup{geom}$, and is what we will henceforth use. The {\em geometric representation} $W \curvearrowright \mathfrak{h}^*$ is always faithful, and it is positive-definite if and only if $W$ is finite. However, it is not always reflection faithful, such as in the case of affine Weyl groups.\\
+
+\noindent At first blush, this presents a problem, as Soergel's theory (Soergel's categorification theorem, Soergel's conjecture, etc.) is only guaranteed to hold for {\em reflection faithful} realizations over an infinite field of characteristic not equal to $2$. However, suppose we consider the {\em Kac--Moody realization}, given by taking $\mathfrak{h}$ to be the real vector space of minimal dimension with subsets $\{\alpha_s^\vee\} \subset \mathfrak{h}$ and $\{\alpha_s\} \subset \mathfrak{h}^*$ satisfying \hyperref[GeometricForm]{Equation (\ref*{GeometricForm})}. Soergel proved that this realization is always reflection faithful, and moreover Libedinsky showed that Soergel's theory holds for the geometric representation if and only if it holds for this Kac--Moody representation (\cite[\S 5.6]{EMTW20}). In other words, the geometric representation will be sufficient for our purposes.\newpage
+
+\noindent\begin{remark} In \cite{LR22}, the {\em root datum realization} is used, which takes $\mathfrak{h}$ to be the Lie algebra of a maximal torus in a connected complex reductive algebraic group (that is, the $\mathbbm{k}$-span of the cocharacter lattice of said maximal torus). This makes sense only when $W$ is a Weyl group and produces a monoidally equivalent category% when our realization is reflection faithful
+, so we will not mention it in the sequel.\\
+\end{remark}
+
+\noindent Let $R \coloneqq \textup{Sym}(\mathfrak{h}^*)$, where $\textup{deg}(\mathfrak{h}^*) = 2$. Because $\{\alpha_s\}_{s \in S}$ forms an $\mathbb{R}$-basis for $\mathfrak{h}^*$ in $\mathcal{R}_\textup{geom}$, we have that $R = \mathbb{R}[\alpha_s : s \in S]$, with $\textup{deg}(\alpha_s) = 2$ for all $s \in S$. Define the fixed point subrings
+\begin{align*}
+\begin{split}
+R^I \coloneqq \{f \in R : w(f) = f\textup{ for all $w \in \langle I\rangle$}\}
+\end{split}
+\end{align*}
+\noindent for $I \subseteq W$ and consider the $(R, R)$-bimodules of the form
+\begin{align*}
+\begin{split}
+B_s \coloneqq R \otimes_{R^s} R(1)
+\end{split}
+\end{align*}
+\noindent for $s \in S$, where $(1)$ denotes a grading shift by $1$. Given an expression $\underline{w} = (s_1, \dots, s_k)$ for $w \in W$, define the {\em Bott--Samelson bimodule} $BS(\underline{w})$ by
+\begin{align*}
+\begin{split}
+BS(\underline{w}) \coloneqq B_{s_1} \otimes_R \cdots \otimes_R B_{s_k},
+\end{split}
+\end{align*}
+\noindent where we assume that $BS(\varnothing) = R$. 
+Then we have the following definition.\\
+
+\noindent\begin{definition}\textup{(Soergel Bimodules).} The {\em category of Soergel bimodules} $\mathbb{S}\textcat{Bim}(\mathcal{R})$ is defined to be the graded closure of the Karoubian envelope of the strictly full additive subcategory of $R\textcat{-GrMod-}R$ that is generated by Bott--Samelson bimodules.\\
+\end{definition}
+
+\noindent Put more simply, Soergel bimodules are direct summands of finite direct sums of grading shifts of Bott--Samelson bimodules. The morphisms are graded $(R, R)$-bimodule homomorphisms.\\
+
+\noindent Suppose now that we take some finite index reflection subgroup $W_K \subseteq W$ and let ${}^KW$ denote a set of right coset representatives for $W_K\backslash W$. For each $w \in W$, we define the {\em $w$-standard $(R^{W_K}, R)$-bimdoule} $R_w$ to be $R$ as a vector space with the left action given by left multiplication and the right action given by $p \cdot_w f \coloneqq p w(f)$, for all $p \in R_w$ and $f \in R$.\\
+
+\noindent\begin{definition}\textup{(Lusztig--Vogan Category).} The {\em Lusztig--Vogan category} $\mathcal{N}_{LV}^0(\mathcal{R}, K)$ is defined as
+\begin{align*}
+\begin{split}
+\mathcal{N}_{LV}^0(\mathcal{R}, K) \coloneqq \langle R_w \otimes_R X : w \in {}^KW,\ X \in \obset(\mathbb{S}\textcat{Bim}(\mathcal{R}))\rangle_{\oplus,\ominus,(1)}.
+\end{split}
+\end{align*}
+\noindent That is, it is the additive, graded closure of the Karoubian envelope of the category generated by tensoring $w$-standard bimodules on the right with Soergel bimodules.\\
+\end{definition}
+
+\noindent\begin{remark} This definition arises when the two maximal tori chosen during the construction from \cite{LR22} are of equal rank. It allows us to build $\mathcal{N}_{LV}^0$ for arbitrary Coxeter systems!\\\\
+\end{remark}
+
+\ruledsection{Examples}{2}
+\noindent\\ Now that we have been introduced to the protagonists of this story, let's see some examples. I claimed early on that decomposing Soergel bimodules by hand is difficult, and I'd like to try to convince you of that now by providing some decompositions in one of the simplest examples.\newpage
+
+\noindent Probably the limit of what I can do by hand is type $A_2$, where $(W, S) = (S_3, \{s, t\})$. This is troublesome even in the case of Soergel bimodules! For example, in $\mathbb{S}\textcat{Bim}(A_2)$, we have\\[-\linespacing]
+\begin{align*}
+B_s \otimes_R B_t \otimes_R B_s \cong B_{sts} \oplus B_s.
+\end{align*}
+\noindent\\[-\linespacing] This decomposition is given by inclusions $\iota_s : B_s \to B_s \otimes_R B_t \otimes_R B_s$ and $\iota_{sts} : B_{sts} \to B_s \otimes_R B_t \otimes_R B_s$ together with projections $\pi_s : B_s \otimes_R B_t \otimes_R B_s \to B_s$ and $\pi_{sts} : B_s \otimes_R B_t \otimes_R B_s \to B_{sts}$. In this case,\\[-\linespacing]
+\begin{align*}
+\begin{split}
+\iota_s : 1 \otimes_{R^s} 1 &\mapsto \frac{1}{2}(1 \otimes_{R^s} (\alpha_t \otimes_{R^t} 1 + 1 \otimes_{R^t} \alpha_t) \otimes_{R^s} 1)
+\end{split}
+\end{align*}
+\noindent\\[-\linespacing] and\\[-\linespacing]
+\begin{align*}
+\begin{split}
+\iota_{sts} : 1 \otimes_{R^{s,t}} 1 \mapsto 1 \otimes_{R^s} 1 \otimes_{R^t} 1 \otimes_{R^s} 1
+\end{split}
+\end{align*}
+\noindent\\[-\linespacing] define the inclusions, while\\[-\linespacing]
+\begin{align*}
+\pi_s : 1 \otimes_{R^s} f \otimes_{R^t} g \otimes_{R^s} 1 \mapsto -2\partial_s(fg) \otimes_{R^s} 1
+\end{align*}
+\noindent\\[-\linespacing] and\\[-1.1\linespacing]
+\begin{align*}
+\pi_{sts} : 1 \otimes_{R^s} f \otimes_{R^t} g \otimes_{R^s} 1 \mapsto\ &P_s(f) \otimes_{R^{s,t}} P_s(g)\ +\\
+&\partial_s(f)\frac{2}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right) \otimes_{R^{s,t}} P_s(g)\ +\\
+&\partial_s(f) \otimes_{R^{s,t}} \frac{4}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right) P_s(g)\ +\\
+&P_s(f) \otimes_{R^{s,t}} \frac{2}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right)\partial_s(g)\ +\\
+&P_s(f) \frac{4}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right) \otimes_{R^{s,t}} \partial_s(g)\ +\\
+&\partial_s(f)\frac{1}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right) \otimes_{R^{s,t}} \frac{1}{3}\left(\frac{1}{2}\alpha_s + \alpha_t\right)\partial_s(g)\ +\\
+&\partial_s(f) \otimes_{R^{s,t}} \frac{2}{3}\alpha_s^2\partial_s(g)\ +\\
+&\partial_s(f)\frac{2}{3}\alpha_s^2 \otimes_{R^{s,t}} \partial_s(g)\ -\\
+&\partial_s(f)\frac{4}{9}(\alpha_s^2 + \alpha_s\alpha_t + \alpha_t^2) \otimes_{R^{s,t}} \partial_s(g)
+\end{align*}
+\noindent define the projections. It's perhaps not too hard to see how this could get difficult quickly in larger examples! This task remains difficult for our Lusztig--Vogan categories; in fact, since $\mathcal{N}_{LV}^0(\textup{SU}(2, 1))$ consists of $(R^s, R)$-bimodules, truncating the inclusions above by cutting off the $B_s$ at the front will induce the decomposition $R \otimes_R B_t \otimes_R B_s \cong (R \otimes_R B_{sts}) \oplus R$ as $(R^s, R)$-bimodules. Meanwhile, the projection of $R \otimes_R B_t \otimes_R B_s$ into $R$ is given by\\[-\linespacing]
+\begin{align*}
+f \otimes_{R^t} g \otimes_{R^s} h \mapsto \partial_s(fg)h,
+\end{align*}
+\noindent\\[-\linespacing] while the projection into $R \otimes_R B_{sts}$ is some (computable) mess I haven't written down. Of course, this only works for $R \otimes_R B_t \otimes_R B_s$; for $R_t \otimes_R B_s \otimes_R B_t \cong (R \otimes_R B_{sts}) \oplus R_t$, we are not so fortunate, and end up with (for example) the scarier projection into $R_{ts}$ of the form\\[-\linespacing]
+\begin{align*}
+f \otimes_{R^t} g \otimes_{R^s} h \otimes_{R^t} k \mapsto ts(\delta_t(st(f)s(g)h)k).
+\end{align*}
+\newpage
+
+\noindent\\[4\linespacing]
+\begin{center}
+\begin{figure}[!ht]
+\begin{tikzcd}[overlay, labels={outer sep=-1cm}, nodes={circle, minimum size=2.5cm, inner sep=-0.25cm, outer sep=-0.75cm}, cramped, column sep=-0.75cm, row sep=-0.75cm]
+& & R \otimes_R B_{sts}\arrow[out=60, in=120, loop, looseness=5, "{s,t}"'] & &\\
+& R \otimes_R B_t\arrow[dl, shift right, "s"']\arrow[ur, "s"]\arrow[out=80, in=140, loop, looseness=5, "t"'] & & R_t \otimes_R B_s\arrow[dr, shift right, "t"']\arrow[ul, "t"']\arrow[out=40, in=100, loop, looseness=5, "s"'] &\\
+R\arrow[ur, shift right, "t"']\arrow[out=220, in=280, loop, looseness=5, "s"'] & & R_t\arrow[ul, "t"]\arrow[ur, "s"'] & & R_{ts}\arrow[ul, shift right, "s"']\arrow[out=260, in=320, loop, looseness=5, "t"', outer sep=-0.5cm]
+\end{tikzcd}
+\begin{center}
+\noindent\\[-2\linespacing]\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad.
+\end{center}
+\noindent\\[6\linespacing]\caption{The $W$-graph for $\mathcal{N}_{LV}^0(\textup{SU}(2, 1))$, showing its module structure.}\noindent\\[-0.5\linespacing]
+\end{figure}
+\end{center}
+
+\noindent Doing these examples by hand relies both on making educated guesses for the inclusions and a trick for the projections that only works for modules with two indecomposable summands. While we do have a few tools for determining indecomposability without explicitly computing the idempotents, even these unfortunately do not get us very far in more complicated settings!\\\\
+
+\ruledsection{The Algorithm}{3}
+\noindent\\ Suppose $R^{W_K} = \mathbb{R}[x_1, \dots, x_m] \subseteq R$, graded in degree $2$, and consider some graded Krull--Schmidt $(R^{W_K}, R)$-bimodule $Q$ that is graded free of finite rank as a right $R$-module with basis $\{b_1, \dots, b_n\}$. All Soergel bimodules and objects in our Lusztig--Vogan categories satisfy this. We want to determine the indecomposable summands of $Q$; this is equivalent to determining its primitive idempotents.\\
+
+\noindent Let's ignore the grading for a moment. As a free right $R$-module, we know that $Q \cong R^{\oplus n}$ and hence that $\textup{End}_{\textup{Mod-}R}(Q) \cong M_n(R)$. As a result, we can encode the left action of $R^{W_K}$ via the basis $\{A_k\}_{k=1}^m$ of $n\times n$ matrices satisfying $A_k f = x_k \cdot f$ for all $f = b_1\cdot f_1 + \cdots + b_n\cdot f_n \in Q$. More explicitly, we may write $A_k \coloneqq (a_{ij}^k)_{i,j=1}^n$, where $a_{ij}^k$ is the coefficient of $b_i$ in $x_k \cdot b_j$. Then $\textup{End}_{R^{W_K}\textup{-Mod-}R}(Q)$ is precisely the subset of $M_n(R)$ consisting of matrices that commute with every $A_k$. Finally, in order to reintroduce the grading, we need only enforce homogeneity on each matrix $M$; that is, we require some $d \in \mathbb{N}$ such that every $Mb_k$ is homogeneous in degree $d$. The set of degree $d$ endomorphisms is
+\begin{align*}
+\begin{split}
+\textup{End}^d(Q) \cong \left\{M = (m_{ij})_{i,j=1}^n \in M_n(R) : \begin{matrix}[r]MA_k - A_kM,\ \forall k \in \{1, \dots, m\};\\\deg(m_{ij}) = d-\deg(b_i)+\deg(b_j),\ \forall m_{ij} \neq 0\end{matrix}\right\}.
+\end{split}
+\end{align*}
+\noindent Thus we are interested in the set
+\begin{align*}
+\begin{split}
+\textup{Idem}(Q) \coloneqq \{E \in \textup{End}^0(Q) : E^2 = E\},
+\end{split}
+\end{align*}
+\noindent where the condition $E^2 = E$ enforces $d = 0$. These conditions give us a system of equations that we can solve to find the idempotents for $Q$. The primitive idempotents are then the orthogonal idempotents of minimal rank whose ranks sum to the rank of $Q$.\\
+
+\noindent  Observe what we have just done: if all one cares about are its idempotents, $Q$ may be encoded as a basis $\{b_1, \dots, b_n\}$ together with a set of left action matrices $\{A_k\}_{k=1}^m$. This lays the foundation for our algorithm. In practice, because this basis is built into the action matrices, we really only need to keep track of the grading of each basis vector.\\
+
+\noindent Suppose we now have an arbitrary $(R, R)$-bimodule $Q$ that is free of finite rank as an $R$-module with basis $\{b_1, \dots, b_n\}$ and left action matrices $A_k : f \mapsto x_k \cdot f$. One can show that, using the basis
+\begin{align*}
+\begin{split}
+b_1^s \coloneqq 1 \otimes_{R^s} 1,\qquad b_2^s \coloneqq \frac{1}{2}(\alpha_s \otimes_{R^s} 1 + 1 \otimes_{R^s} \alpha_s),
+\end{split}
+\end{align*}
+\noindent for $B_s$, the bimodule $Q \otimes_R B_s$ admits a basis $\{b_i \otimes_R b_1^s\}_{i=1}^n \cup \{b_i \otimes_R b_2^s\}_{i=1}^n$ and left action matrices
+\begin{align*}
+\begin{split}
+A_k^s \coloneqq \begin{pmatrix}[rr]s(A_k) & 0\\\partial_s(A_k) & A_k\end{pmatrix}
+\end{split}
+\end{align*}
+\noindent for all $k \in \{1, \dots, m\}$. Thus we have also a way of encoding the product $Q \otimes_R B_s$.\\
+
+\noindent With all of this in mind, we are ready to understand how our algorithm works. We begin by encoding the $w$-standard bimodule $R_w$ for each $w \in {}^KW$. These are all rank $1$ and are hence encoded by the degree $0$ basis vector $1 \in R$ together with the left action scalars $\{w(x_k)\}_{k=1}^m$. From here, we proceed ``layer-by-layer'', tensoring by $B_s$ for each $s \in S$. After tensoring with some $B_s$, we find the primitive idempotents by solving the aforementioned system of equations. Each idempotent matrix admits some basis $\{b_1, \dots, b_r\}$ for its image (where the standard basis vectors are taken to be the basis for the module being decomposed), along with a matrix $P$ such that $PI$ is the $r \times r$ identity matrix (where $I$ is the matrix whose columns are the basis vectors $\{b_1, \dots, b_r\}$). Then our new indecomposable is encoded by $\{b_1, \dots, b_r\}$ together with $\{PA^s_kI\}_{k=1}^m$. We finally check if this indecomposable is isomorphic to one we've seen before and then repeat the process.\\
+
+\newpage
+\renewcommand\thesection{R}
+\ruledsectionstar{References}{References}
+\begingroup
+\setlength{\emergencystretch}{.5em}
+\printbibliography[heading=none]
+\endgroup
+
+\end{document}
