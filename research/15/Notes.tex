@@ -500,7 +500,7 @@ A_{h,k} = A_{-k,h-k}\omega = A_{k-h,-h}\overline{\omega},
 y_i x_j = \delta_{i,j}\qquad\text{and}\qquad\sum_{k=1}^n x_k y_k = 1.
 \end{split}
 \end{align*}
-\noindent We may endow $\mathcal{L}_n$ with the structure of a $*$-algebra by defining a conjugate homogeneous\linebreak antihomomorphism that sends $x_i \mapsto y_i$ and $y_i \mapsto x_i$. We further define
+\noindent We may endow $\mathcal{L}_n$ with the structure of a $*$-algebra by defining an involutive conjugate homogeneous antiautomorphism that sends $x_i \mapsto y_i$ and $y_i \mapsto x_i$. We further define
 \begin{align*}
 \begin{split}
 \norm{a} \coloneqq \sup\{p(a) : \textup{$p$ is a $C^*$-seminorm on $\mathcal{L}_n$}\}
@@ -691,7 +691,15 @@ g \otimes (h \otimes k) \arrow[r, "\id_g \otimes \mu_{h,k}"'] & g \otimes hk \ar
 [\rho] \otimes [\rho] = \bigoplus_{g \in G} [\alpha_g] \oplus [\rho]^{\oplus m}.
 \end{gather*}
 \noindent %Let $\mathcal{L} \coloneqq \mathcal{L}_{m+n}$ and consider $s_i, s_i', t_g, t_g' \in \mathcal{L}$, for all $i \in \{1, \dots, m\}$ and $g \in G$.
-Suppose we choose our $\alpha_g$ such that $\alpha_g \circ \rho = \rho$, for all $g \in G$. Note that we will not necessarily have ``$\rho \circ \alpha_g = \rho$''. By definition, we may only expect $\rho(\alpha_g(x)) = U(g)\rho(x)U(g)^{-1}$ for some invertible $U(g) \in A$. By \hyperref[CommutingInvertibles]{Proposition \ref*{CommutingInvertibles}}, we will however always have $\alpha_g \circ \alpha_h = \alpha_{gh}$ for all $g, h \in G$. The third equation above tells us, by definition of the direct sum, that we must have $s_g, s_g', t_i, t_i' \in A$ such that %for $i \in \{1, \dots, m\}$ and $g \in G$ such that
+Bbecause the group-like elements of $\mathcal{C}$ have Frobenius--Perron dimension $1$, the dimension of $\rho$ must satisfy $d^2 = md + n$. In other words,
+\begin{align*}
+\begin{split}
+d \coloneqq \frac{m \pm \csqrt{m^2 + 4n}}{2}
+\end{split}
+\end{align*}
+\noindent will be the dimension of $\rho$. Duals of simple objects are simple, so our fusion rules tell us that we must have $[\rho^*] = [\rho]$. Suppose we choose a representative $\rho$ for which $\rho^* = \rho$, as well as representatives $\alpha_g$ such that $\alpha_g \circ \rho = \rho$ for all $g \in G$. We denote by $\nu \in \{-1, 1\}$ the Frobenius--Schur indicator of $\rho$.\\
+
+\noindent With these choices, we will then not necessarily have ``$\rho \circ \alpha_g = \rho$''; by definition, we may only expect $\rho(\alpha_g(x)) = U(g)\rho(x)U(g)^{-1}$ for some invertible $U(g) \in A$. By \hyperref[CommutingInvertibles]{Proposition \ref*{CommutingInvertibles}}, however, we will always have $\alpha_g \circ \alpha_h = \alpha_{gh}$ for all $g, h \in G$. The third equation from our fusion rules above tells us, by definition of the direct sum, that we must have $s_g, s_g', t_i, t_i' \in A$ such that %for $i \in \{1, \dots, m\}$ and $g \in G$ such that
 \begin{align*}
 \begin{split}
 \rho(\rho(x)) = \sum_{g \in G}{s_g\alpha_g(x)s_g'} + \sum_{i=1}^m{t_i\rho(x)t_i'}
@@ -703,13 +711,7 @@ Suppose we choose our $\alpha_g$ such that $\alpha_g \circ \rho = \rho$, for all
 \sum_{g \in G}{s_gs_g'} + \sum_{i=1}^m{t_it_i'} = 1,\qquad s_g's_h = \delta_{g,h},\qquad t_i't_j = \delta_{i,j}\qquad\text{and}\qquad s_g't_i = 0 = t_i's_g,
 \end{split}
 \end{align*}
-\noindent for all $g, h \in G$ and $i, j \in \{1, \dots, m\}$. However, there are in general no canonical choices for these elements. We will make the following choices. First, because the group-like elements of $\mathcal{C}$ have Frobenius--Perron dimension $1$, the dimension of $\rho$ must satisfy $d^2 = md + n$. In other words,
-\begin{align*}
-\begin{split}
-d \coloneqq \frac{m \pm \csqrt{m^2 + 4n}}{2}
-\end{split}
-\end{align*}
-\noindent will be the dimension of $\rho$. Because duals of simple objects are simple, our fusion rules tell us that we must have $\rho^* \cong \rho$. Let's choose $\rho^* = \rho$ and denote by $\nu \in \{-1, 1\}$ the Frobenius--Schur indicator of $\rho$. Since $s_e \in \homset_{\mathcal{E}(A)}(\id, {\rho \otimes \rho})$ and $s_e' \in \homset_{\mathcal{E}(A)}({\rho \otimes \rho}, \id)$ live in $1$-dimensional spaces, we can choose them to be scalar multiples of the coevaluator and evaluator, normalized with respect to the direct sum condition $s_e's_e = 1$. That is,
+\noindent for all $g, h \in G$ and $i, j \in \{1, \dots, m\}$. There are in general no canonical choices for these elements, so we will proceed as follows. Because both $s_e \in \homset_{\mathcal{E}(A)}(\id, {\rho \otimes \rho})$ and $s_e' \in \homset_{\mathcal{E}(A)}({\rho \otimes \rho}, \id)$ live in $1$-dimensional spaces, we can choose them to be scalar multiples of the coevaluator and evaluator, normalized with respect to the direct sum condition $s_e's_e = 1$. That is,
 \begin{align*}
 \begin{split}
 s_e \coloneqq \frac{1}{\csqrt{d}}\coev_\rho\qquad\text{and}\qquad s_e' \coloneqq \frac{\nu}{\csqrt{d}}\ev_\rho.
@@ -761,7 +763,7 @@ S \coloneqq \sum_{h \in G}{s_hs_h'}\qquad\text{and}\qquad T \coloneqq \sum_{i=1}
 \end{align*}
 \noindent where we recall that $S + T = 1$.\\
 
-\noindent Let $\{t_1, \dots, t_m\}$ be a basis for $\mathcal{K}$ and $\{t_1', \dots, t_m'\}$ a basis for $\mathcal{K}'$ satisfying $t_i't_j = \delta_{i,j}$, which we know must exist by our direct sum properties. Every map in $\homset_{\mathcal{E}(A)}({\rho \otimes \rho}, {\rho \otimes \rho})$ is a linear combination of maps that go from ${\rho \otimes \rho} \to X \to {\rho \otimes \rho}$, for some simple object $X$, whence it follows that $\homset_{\mathcal{E}(A)}({\rho \otimes \rho}, {\rho \otimes \rho})$ is spanned by $\{t_it_j'\}_{i,j = 1}^m \sqcup \{s_gs_g'\}_{g \in G}$. %Because morphisms in $\mathcal{E}(A)$ are nothing but elements of the algebra $A$, we have that
+\noindent  Every map in $\homset_{\mathcal{E}(A)}({\rho \otimes \rho}, {\rho \otimes \rho})$ is a linear combination of maps ${\rho \otimes \rho} \to X \to {\rho \otimes \rho}$ for some simple object $X$, whence $\homset_{\mathcal{E}(A)}({\rho \otimes \rho}, {\rho \otimes \rho})$ is spanned by $\{t_it_j'\}_{i,j = 1}^m \sqcup \{s_gs_g'\}_{g \in G}$. %Because morphisms in $\mathcal{E}(A)$ are nothing but elements of the algebra $A$, we have that
 %\begin{align*}
 %\begin{split}
 %\homset_{\mathcal{E}(A)}(\rho, \rho \otimes \alpha_g) \subseteq \homset_{\mathcal{E}(A)}({\rho \otimes \rho}, \rho \otimes \alpha_g \otimes \rho) = \homset_{\mathcal{E}(A)}({\rho \otimes \rho}, {\rho \otimes \rho}).
@@ -774,16 +776,23 @@ Thus
 U(g) = \sum_{h \in G}{\chi_h(g)s_hs_h'} + U_\mathcal{K}(g)
 \end{split}
 \end{align*}
-\noindent for $\chi_h : G \to \mathbb{T}$ and $U_\mathcal{K}(g) \in \text{span}\{t_it_j'\}_{i,j = 1}^m = \mathcal{K}\mathcal{K}'$. In particular, $\mathcal{K}\mathcal{K}' = \text{End}(\mathcal{K})$. Certainly $\mathcal{K}\mathcal{K}' \subseteq \text{End}(\mathcal{K})$, since $t_it_j'\mathcal{K} \subseteq \mathcal{K}$; the converse direction comes by comparing dimensions. Thus $U_\mathcal{K} : G \to \text{End}(\mathcal{K})$ defines a representation as the projection of $U(g)$ onto $\mathcal{K}\mathcal{K}'$. %\textcolor{red}{We will later see that these $\chi_h$ are precisely the characters of $G$.}\\
-Finally, for each $g \in G$, we have an element $V(g) : x \mapsto \alpha_g(x)$, defining yet another representation $V : G \to \text{End}(\mathcal{K})$.\\
+\noindent for \textcolor{red}{$\chi_h : G \to \mathbbm{k}^\times$} and $U_\mathcal{K}(g) \in \text{span}\{t_it_j'\}_{i,j = 1}^m = \mathcal{K}\mathcal{K}'$. Note then that $U(g)s_e = s_e$ is equivalent to $\chi_e(g) = 1$. Moreover, $\mathcal{K}\mathcal{K}' = \text{End}(\mathcal{K})$. Certainly $\mathcal{K}\mathcal{K}' \subseteq \text{End}(\mathcal{K})$, since $t_it_j'\mathcal{K} \subseteq \mathcal{K}$; the converse direction comes by comparing dimensions. Thus $U_\mathcal{K} : G \to \text{End}(\mathcal{K})$ defines a representation as the projection of $U(g)$ onto $\mathcal{K}\mathcal{K}'$.\\ %\textcolor{red}{We will later see that these $\chi_h$ are precisely the characters of $G$.}\\
+
+\noindent Another consequence of the definition of $\mathcal{K}$ is that $\alpha_g(x) \in \mathcal{K}$ for all $x \in \mathcal{K}$, and similarly $\alpha_g(y) \in \mathcal{K}'$ for all $y \in \mathcal{K}'$. We must therefore have an element $V(g) \in \mathcal{K}\mathcal{K}'$ satisfying $\alpha_g(x) = V(g)x$ for all $x \in \mathcal{K}$, defining a final representation $V : G \to \text{End}(\mathcal{K})$. In fact, $1 = \alpha_g(t_i't_i) = \alpha_g(t_i')V(g)t_i$ tells us that $\alpha_g(y) = yV(g)^{-1}$ for all $y \in \mathcal{K}'$, as both $V(g)$ and $t_i$ have unique left inverses.\\% In particular, $\alpha_g(U_\mathcal{K}(h)) = V(g)U_\mathcal{K}(h)V'(g)$.\\ %In particular, we have the following result.\\
 
 \noindent We wish to show that $\rho$ and $\alpha_g$ restrict to endomorphisms of %the Leavitt algebra
-$\mathcal{L} \coloneqq \mathcal{L}_{m+n}$, with generators $s_g, s_g', t_i, t_i'$ for $g \in G$ and $i \in \{1, \dots, m\}$. Recall that $\alpha_g(s_h) = \id_{\alpha_g} \otimes (\id_{\alpha_h} \otimes s_e) = \id_{\alpha_{gh}} \otimes s_e = s_{gh}$, and similarly for $\alpha_g(s_h')$. In other words, $\alpha_g(s_h) \in \mathcal{L}$ for all $g, h \in G$. Of course $\alpha_g(x) \in \mathcal{K}$ and $\alpha_g(y) \in \mathcal{K}'$ for all $x \in \mathcal{K}$, $y \in \mathcal{K}'$ and $g \in G$. All that remains is to show how $\rho$ acts on $\mathcal{K}$ and $\mathcal{K}'$.\\
+$\mathcal{L} \coloneqq \mathcal{L}_{m+n}$, with generators $s_g, s_g', t_i, t_i'$ for $g \in G$ and $i \in \{1, \dots, m\}$. Recall that $\alpha_g(s_h) = \id_{\alpha_g} \otimes (\id_{\alpha_h} \otimes s_e) = \id_{\alpha_{gh}} \otimes s_e = s_{gh}$, and similarly for $\alpha_g(s_h')$. In other words, $\alpha_g(s_h) \in \mathcal{L}$ for all $g, h \in G$. Of course, $\alpha_g(x) \in \mathcal{K}$ and $\alpha_g(y) \in \mathcal{K}'$ for all $x \in \mathcal{K}$, $y \in \mathcal{K}'$ and $g \in G$. All that remains is to show how $\rho$ acts on $\mathcal{K}$ and $\mathcal{K}'$.\\
 
 \noindent\begin{lemma} We have $\rho(s_g), \rho(s_g') \in \mathcal{L}$ for all $g \in G$. In particular,
 \begin{align*}
 \begin{split}
-\rho(s_e) = \sum_{h \in G}{\frac{\nu}{d}s_h} + \sum_{i=1}^m{t_it_i'\rho(s_e)}\qquad\text{and}\qquad \rho(s_e') = \sum_{h \in G}{\frac{\nu}{d}s_h'} + \sum_{i=1}^m{\rho(s_e')t_it_i'}.%,
+\rho(s_e) = \sum_{h \in G}{\frac{\nu}{d}s_h} + \sum_{i=1}^m{t_it_i'\rho(s_e)}\qquad\text{and}\qquad \rho(s_e') = \sum_{h \in G}{\frac{\nu}{d}s_h'} + \sum_{i=1}^m{\rho(s_e')t_it_i'}%,
+\end{split}
+\end{align*}
+\noindent with
+\begin{align*}
+\begin{split}
+\sum_{i=1}^m \rho(s_e')t_it_i'\rho(s_e) = \frac{m}{d}.
 \end{split}
 \end{align*}
 \noindent\\% where $\rho(s_g) = U(g)^{-1}\rho(s_e)U(g)$ and $\rho(s_g') = U(g)^{-1}\rho(s_e')U(g)$ for all $g \in G$.\\
@@ -807,7 +816,7 @@ S\rho(s_e) = \sum_{h \in G}{s_hs_h'\rho(s_e)} = \sum_{h \in G}{\alpha_h(s_es_e'\
 \rho(s_e')S = \sum_{h \in G}{\frac{\nu}{d}s_h'},
 \end{split}
 \end{align*}
-\noindent where $\rho(s_e')t_i \in \mathcal{K}'$ and hence $\rho(s_e')T \in (\mathcal{K}')^2$. This completes the proof.
+\noindent where $\rho(s_e')t_i \in \mathcal{K}'$ and hence $\rho(s_e')T \in (\mathcal{K}')^2$. The final equation follows directly from $\rho(s_e')\rho(s_e) = 1$. This completes the proof.
 \end{proof}\\
 
 %\noindent \textcolor{red}{Suppose we now let $V(g) : x \mapsto \id_{\alpha_g} \otimes x$ for all $x \in \homset_{\mathcal{E}(A)}(\rho, {\rho \otimes \rho})$, which defines another representation $V : G \to \text{End}(\homset_{\mathcal{E}(A)}(\rho, {\rho \otimes \rho}))$.}\\
@@ -879,7 +888,7 @@ S\rho(s_e) = \sum_{h \in G}{s_hs_h'\rho(s_e)} = \sum_{h \in G}{\alpha_h(s_es_e'\
 %\end{align*}
 %\noindent\textcolor{red}{We should show the diagrammatics here.}\\
 
-\noindent\begin{lemma} The map $\varphi : \mathcal{K} \to \mathcal{K}$ given by
+\noindent\begin{lemma}\label{OneClickRotation} The map $\varphi : \mathcal{K} \to \mathcal{K}$ given by
 \begin{align*}
 \begin{split}
 \varphi : x &\mapsto \frac{d}{\nu}\rho^2(s_e')\rho(x)s_e
@@ -935,23 +944,26 @@ S\rho(s_e) = \sum_{h \in G}{s_hs_h'\rho(s_e)} = \sum_{h \in G}{\alpha_h(s_es_e'\
 {}^{**}x = \frac{d^3}{\nu^3}\rho^2(s_e')\rho^3(s_e')\rho^4(s_e')\rho^3(x)\rho^2(s_e)\rho(s_e)s_e = \varphi^3(x).
 \end{split}
 \end{align*}
-\noindent Because the pivotal structure $\psi_\rho : \rho \to {}^{**}\rho$ is multiplication by $\nu$, we have that ${}^{**}x = \nu^2x\nu^{-1}$, whence $\varphi^3(x) = \nu x$. Now, using the normalization relation $U(g)^{-1}s_e = s_e$, we observe that
+\noindent Because the pivotal structure $\psi_\rho : \rho \to {}^{**}\rho$ is multiplication by $\nu$, we have that ${}^{**}x = \nu^2x\nu^{-1}$, whence $\varphi^3(x) = \nu x$. Now, using the normalization relation $U(g)^{-1}s_e = s_e$ and the definition of morphisms,
 \begin{align*}
 \begin{split}
 \varphi(\alpha_g(\varphi^{-1}(x))) &= \frac{d^2}{\nu^2}\rho^2(s_e')\rho(\alpha_g(s_e'\rho(x)\rho(s_e)))s_e = \frac{d^2}{\nu^2}\rho^2(s_e')U(g)\rho(s_e')\rho^2(x)\rho^2(s_e)U(g)^{-1}s_e\\
-&= \frac{d^2}{\nu^2}U(g)\rho^2(s_e')\rho(s_e')\rho^2(x)\rho^2(s_e)s_e = U(g)x = U_\mathcal{K}(g)x. %\frac{d^2}{\nu^2}\rho^2(s_e')\rho(\alpha_g(s_e'))\rho^2(x)\rho^2(s_e)s_e\\
+&= \frac{d^2}{\nu^2}U(g)\rho^2(s_e')\rho(s_e')\rho^2(x)\rho^2(s_e)s_e = \frac{d^2}{\nu^2}U(g)\rho^2(s_e')\rho(s_e')s_e x s_e\\
+&= \frac{d}{\nu}U(g)\rho^2(s_e') x s_e = \frac{d}{\nu}U(g) x \rho(s_e')s_e = U(g)x = U_\mathcal{K}(g)x. %\frac{d^2}{\nu^2}\rho^2(s_e')\rho(\alpha_g(s_e'))\rho^2(x)\rho^2(s_e)s_e\\
 % &= \frac{d^2}{\nu^2}\rho^2(s_e')U(g)\rho(s_e')U(g)^{-1}s_exs_e = \frac{d^2}{\nu^2}\rho^2(s_e')U(g)\rho(s_e')s_exs_e\\
 % &= \frac{d}{\nu}\rho^2(s_e')U(g)xs_e = \frac{d}{\nu}U(g)\rho^2(s_e')xs_e = U(g)x = U_\mathcal{K}(g)x.
 \end{split}
 \end{align*}
-\noindent\textcolor{red}{Finally, using the normalization relation $U(g)s_e = s_e$, we have}
+\noindent\textcolor{red}{Finally, using the normalization relation $s_e'U(g) = s_e'$, we have}
 \begin{align*}
 \begin{split}
 %\varphi^2(\alpha_g(\varphi^{-2}(x))) &= d^4 \rho^2(s_e')\rho^3(s_e')\rho^2(\alpha_g(s_e'\rho(s_e')\rho^2(x)\rho^2(s_e)\rho(s_e)))\rho(s_e)s_e\\
 % &= d^4 \rho^2(s_e')\rho^3(s_e')\rho(U(g))\rho^2(s_e')\rho^3(s_e')\rho^4(x)\rho^4(s_e)\rho^3(s_e)\rho(U(g)^{-1})\rho(s_e)s_e\\
 % &= 
 \textcolor{red}{\varphi^{-1}(\alpha_g(\varphi(x)))} &\textcolor{red}{= \frac{d^2}{\nu^2}s_e'\rho(\alpha_g(\rho^2(s_e')\rho(x) s_e))\rho(s_e) = \frac{d^2}{\nu^2}s_e'U(g)\rho^3(s_e')\rho^2(x)\rho(s_e)U(g)^{-1}\rho(s_e)}\\
-&\textcolor{red}{=} 
+&\textcolor{red}{= \frac{d^2}{\nu^2}s_e'\rho^3(s_e')\rho^2(x)\rho(s_e)U(g)^{-1}\rho(s_e) = \frac{d^2}{\nu^2}\rho(s_e')s_e'\rho^2(x)\rho(s_e)U(g)^{-1}\rho(s_e)}\\
+&\textcolor{red}{= \frac{d^2}{\nu^2}\rho(s_e')xs_e'\rho(s_e)U(g)^{-1}\rho(s_e) = \frac{d}{\nu}\rho(s_e')xU(g)^{-1}\rho(s_e)}\\
+&\textcolor{red}{= \frac{d}{\nu}\rho(s_e')\rho(U(g))xU(g)^{-1}\rho(s_e)}
 % &= \frac{d^2}{\nu^2}\rho(s_e')xs_e'U(g)\rho(s_e)U(g)^{-1}\rho(s_e) = \frac{d^2}{\nu^2}\rho(s_e')xs_e'U(g)\rho(s_e)U(g)^{-1}\rho(s_e)
 %\rho(U(g)) x U(g)^{-1}.
 \end{split}
@@ -965,7 +977,33 @@ S\rho(s_e) = \sum_{h \in G}{s_hs_h'\rho(s_e)} = \sum_{h \in G}{\alpha_h(s_es_e'\
 \noindent This completes the proof.
 \end{proof}\\
 
-\noindent\begin{lemma} There exists a unique linear map $l : \mathcal{K} \to \mathcal{K}^2\mathcal{K}'$ such that
+\noindent The result $\varphi(\alpha_g(\varphi^{-1}(x))) = U_\mathcal{K}(g)x$ can be rewritten as $\varphi \circ V(g) = U_\mathcal{K}(g) \circ \varphi$. In other words, the representations $U_\mathcal{K}$ and $V$ are equivalent and intertwined by $\varphi$. This lemma also admits the following ``dual'' that is proved similarly.\\
+
+\noindent\begin{lemma}\label{OneClickRotation'} The map $\varphi' : \mathcal{K}' \to \mathcal{K}'$ given by
+\begin{align*}
+\begin{split}
+\varphi' : y &\mapsto \frac{d}{\nu}s_e'\rho(y)\rho^2(s_e)
+%\varphi : x &\mapsto d\rho^2(s_e')\rho(x)s_e
+\end{split}
+\end{align*}
+\noindent admits the inverse
+\begin{align*}
+\begin{split}
+\varphi'^{-1} : y &\mapsto \frac{d}{\nu}\rho(s_e')\rho(y)s_e,
+%\varphi^{-1} : x &\mapsto d s_e'\rho(x)\rho(s_e),
+\end{split}
+\end{align*}
+%\noindent Moreover, we have
+\noindent and moreover we have
+\begin{align*}
+\begin{split}
+\varphi'^3(y) = \nu y,\qquad\varphi'(\alpha_g(\varphi'^{-1}(y))) = yU_\mathcal{K}(g)^{-1}\qquad\text{and}\qquad \textcolor{red}{\varphi'^{-1}(\alpha_g(\varphi'(y))) = U(g) y\rho(U(g)^{-1})}
+\end{split}
+\end{align*}
+\noindent for all $y \in \mathcal{K}'$ and $g \in G$.\\
+\end{lemma}
+
+\noindent\begin{lemma}\label{RhoK} There exists a unique linear map $l : \mathcal{K} \to \mathcal{K}^2\mathcal{K}'$ such that
 \begin{align*}
 \begin{split}
 %\rho(x) = \sum_{h \in G}{s_h V(h) s_e'\rho(x)} + \sum_{h \in G}{\alpha_h(\varphi(x))s_hs_h'} + l(x)
@@ -1017,9 +1055,88 @@ T\rho(\varphi^{-1}(x)) &= T\rho(\varphi^{-1}(x))(S + T)\\
 \noindent Thus we have shown that $\alpha_h(l_e(\varphi^{-1}(x))) = \alpha_h(x)$, whence composing both sides with $\alpha_{h^{-1}}$ gives us the desired result. This completes the proof.
 \end{proof}\\
 
-\noindent\textcolor{red}{To-do: do all of this for $\mathcal{K}'$.}\\
+\noindent Once again, we have the following ``dual'' to the lemma above.\\
 
-\noindent We have thus shown that $\rho$ and $\alpha_g$ are endomorphisms of the Leavitt algebra, as they are given by noncommutative polynomials in our Leavitt algebra generators.
+\noindent\begin{lemma}\label{RhoK'} There exists a unique linear map $l' : \mathcal{K}' \to \mathcal{K}(\mathcal{K}')^2$ such that
+\begin{align*}
+\begin{split}
+%\rho(x) = \sum_{h \in G}{s_h V(h) s_e'\rho(x)} + \sum_{h \in G}{\alpha_h(\varphi(x))s_hs_h'} + l(x)
+\rho(y) = \sum_{h \in G}{\rho(y)s_h s_h'} + \sum_{h \in G}{s_hs_h'\alpha_h(\varphi'(y))} + l'(y)
+\end{split}
+\end{align*}
+\noindent for all $y \in \mathcal{K}'$, where $\alpha_g \circ l' = l'$ for all $g \in G$.\\
+\end{lemma}
+
+\noindent The proof follows from the fact that $\rho(\mathcal{K}')\mathcal{K} \subset \homset_{\mathcal{E}(A)}({\rho \otimes \rho}, {\rho \otimes \rho})$, with the rest of the proof being essentially the same but with the order of multiplication reversed.\\
+
+\noindent We have thus shown that $\rho$ and $\alpha_g$ are endomorphisms of the Leavitt algebra, as they are given by noncommutative polynomials in our Leavitt algebra generators. In doing so, we have chosen
+\begin{enumerate}[label=\textup{(\roman*).}, ref=\textup{(\roman*)}, leftmargin=4\parindent]
+\item a self-dual representative $\rho$ of $[\rho]$;
+\item representatives $\alpha_g$ for each $[\alpha_g]$ such that $\alpha_g \circ \rho = \rho$;
+\item a choice of projection $s_e'$ and inclusion $s_e$.
+\end{enumerate}
+\noindent Note that we only assume that $\mathcal{C}$ is pivotal so that $\nu\varphi$ is order $3$. \textcolor{red}{How do these choices affect things?}\\
+
+\noindent Recall that the Leavitt algebra $\mathcal{L}$ admits an involutive antiautomorphism $-' : \mathcal{L} \to \mathcal{L}$ that exchanges each $s_g$ and $t_i$ with their primed versions and vice versa. Note that $\rho$, $\alpha_g$ and $\varphi$ are compatible with this map; in particular, $\rho(-)' = \rho(-')$, $\alpha_g(-)' = \alpha_g(-')$ and $\varphi(-)' = \varphi'(-')$. We shall henceforth define $\varphi$ and $l$ on $\mathcal{K}'$ via $\varphi'$ and $l'$, respectively.\\
+
+\noindent Our setting diverges from the unitary setting here due to the fact that $U(g)'$ is not necessarily equal to $U(g)^{-1}$, since $\overline{\chi_h(g)}$ is not necessarily equal to $\chi_h(g)^{-1}$ and $U_\mathcal{K}(g)'$ is not necessarily equal to $U_\mathcal{K}(g)^{-1}$. In fact, $\chi_h(g)$ is precisely where we will start to see issues.\\
+
+\noindent\textcolor{red}{Prove other properties. The following results follow the work of Izumi closely.}\\
+
+\noindent\begin{lemma} We have
+\begin{gather*}
+\chi_h(g)V(h)U_\mathcal{K}(g) = U_\mathcal{K}(g)V(h),\\
+l(\alpha_g(x)) = U(g)l(x)U(g)^{-1},\\
+l'(\alpha_g(y)) = U(g)l'(y)U(g)^{-1},
+\end{gather*}
+\noindent for all $x \in \mathcal{K}$, $y \in \mathcal{K}'$ and $g, h \in G$.\\
+\end{lemma}
+
+\noindent\begin{proof} These relations follow from $\rho(\alpha_g(x)) = U(g)\rho(x)U(g)^{-1}$. By \hyperref[OneClickRotation]{Lemma \ref*{OneClickRotation}} and \hyperref[RhoK]{Lemma \ref*{RhoK}},
+\begin{align*}
+\begin{split}
+\rho(\alpha_g(x)) &= \sum_{h\in G} s_hs_h'\rho(\alpha_g(x)) + \sum_{h\in G} V(h)\varphi(\alpha_g(x))s_hs_h' + l(\alpha_g(x))\\
+&= \sum_{h\in G} s_hs_h'U(g)\rho(x)U(g)^{-1} + \sum_{h\in G} V(h)U_\mathcal{K}(g)\varphi(x)s_hs_h' + l(\alpha_g(x)).
+\end{split}
+\end{align*}
+\noindent Meanwhile,
+\begin{align*}
+\begin{split}
+U(g)\rho(x)U(g)^{-1} &= \sum_{h\in G} U(g)s_hs_h'\rho(x)U(g)^{-1} + \sum_{h\in G} U(g)V(h)\varphi(x)s_hs_h'U(g)^{-1} + U(g)l(x)U(g)^{-1}\\
+&= \sum_{h\in G} s_hs_h'U(g)\rho(x)U(g)^{-1} + \sum_{h\in G} \chi_h(g)^{-1}U_\mathcal{K}(g)V(h)\varphi(x)s_hs_h' + U(g)l(x)U(g)^{-1}.
+\end{split}
+\end{align*}
+\noindent The final equation follows from \hyperref[OneClickRotation']{Lemma \ref*{OneClickRotation'}} and \hyperref[RhoK']{Lemma \ref*{RhoK'}}. This completes the proof.
+\end{proof}\\
+
+\noindent\begin{corollary} \textcolor{red}{We have}
+\begin{gather*}
+\textcolor{red}{\chi_h(g) = \chi_g(h),}\\
+\textcolor{red}{\alpha_h(U(g)) = \chi_h(g)^{-1} U(g)}
+\end{gather*}
+\noindent \textcolor{red}{for all $g, h \in G$.}\\
+\end{corollary}
+
+\noindent\begin{proof} \textcolor{red}{Recall that $\varphi V(g) = U_\mathcal{K}(g)\varphi$ and $\varphi^3(x) = \nu x$ by \hyperref[OneClickRotation]{Lemma \ref*{OneClickRotation}}. Thus}
+\begin{align*}
+\begin{split}
+\textcolor{red}{U_\mathcal{K}(g)V(h) = \varphi V(g)\varphi^{-1}V(h) = \varphi V(g)\varphi^{-2}U_\mathcal{K}(h)\varphi}\\
+\textcolor{red}{V(h)U_\mathcal{K}(g) = \varphi^{-1} U_\mathcal{K}(h)\varphi U_\mathcal{K}(g) = \varphi^{-1} U_\mathcal{K}(h)\varphi^2 V(g)\varphi^{-1}}
+\end{split}
+\end{align*}
+\noindent \textcolor{red}{This completes the proof.}
+\end{proof}\\
+
+\noindent\begin{theorem} .\\
+\end{theorem}
+
+\noindent\begin{proof} For all $g \in G$, we have $\delta_{g,e} = \rho(s_e's_g) = \rho(s_e')U(g)\rho(s_e)U(g)^{-1}$. Since $U(e) = 1$,
+\begin{align*}
+\begin{split}
+\delta_{g,e} &= \rho(s_e')U(g)\rho(s_e) = \frac{1}{d^2}\sum_{h \in G} \chi_h(g) + \sum_{i,j=1}^m \rho(s_e')t_it_i' U_\mathcal{K}(g)t_jt_j'\rho(s_e)\\
+\end{split}
+\end{align*}
+\end{proof}\\
 
 \newpage
 
