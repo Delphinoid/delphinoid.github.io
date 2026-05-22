@@ -245,13 +245,13 @@ A \otimes ((B \otimes C) \otimes D)\arrow[rr, "\id_A\otimes\alpha_{B,C,D}"'] & &
 \newpage
 
 \ruledsection{The Cuntz Algebra Approach of Izumi}{2}
-%\noindent\\ Take $\textcat{Vec}_G$ to be skeletal. Consider an associativity constraint $a_{ghk} : ghk \to ghk$. Since $ghk$ is a simple object, $\homset(ghk, ghk) \cong \mathbbm{k}$, whence $a_{ghk} = \mu_{ghk}\textup{id}_{ghk}$ for some $\mu_{ghk} \in \mathbbm{k}^\times$. Note that the pentagon diagram enforces certain conditions on our choice of $\mu_{ghk}$; in particular, if we look at this diagram, we'll see that $\mu_{ghk} = \omega(g, h, k)$ for some $3$-cocycle $\omega$. By this, we mean a map $\omega : G \times G \times G \to \mathbbm{k}^\times$ satisfying
+%\noindent\\ Take $\textcat{Vec}_G$ to be skeletal. Consider an associativity constraint $a_{ghk} : ghk \to ghk$. Since $ghk$ is a simple object, $\homset(ghk, ghk) \cong \mathbbm{k}$, whence $a_{ghk} = \mu_{ghk}\id_{ghk}$ for some $\mu_{ghk} \in \mathbbm{k}^\times$. Note that the pentagon diagram enforces certain conditions on our choice of $\mu_{ghk}$; in particular, if we look at this diagram, we'll see that $\mu_{ghk} = \omega(g, h, k)$ for some $3$-cocycle $\omega$. By this, we mean a map $\omega : G \times G \times G \to \mathbbm{k}^\times$ satisfying
 %\begin{align*}
 %\begin{split}
 %\omega(x, y, zw)\omega(xy, z, w)\omega(y, z, w)^{-1}\omega(x, yz, w)^{-1}\omega(x, y, z)^{-1} = 1
 %\end{split}
 %\end{align*}
-%\noindent for all $x, y, z, w \in G$. We will henceforth denote by $\textcat{Vec}_G^\omega$ the category of $G$-graded vector spaces with associativity constraint $a_{ghk} = \omega(g, h, k)\textup{id}_{ghk}$, for all $g, h, k \in G$, and $\textcat{Vec}_G$ the category of $G$-graded vector spaces with trivial associativity.\\
+%\noindent for all $x, y, z, w \in G$. We will henceforth denote by $\textcat{Vec}_G^\omega$ the category of $G$-graded vector spaces with associativity constraint $a_{ghk} = \omega(g, h, k)\id_{ghk}$, for all $g, h, k \in G$, and $\textcat{Vec}_G$ the category of $G$-graded vector spaces with trivial associativity.\\
 
 \noindent Consider the category $\textup{End}(M)$, for $M$ a hyperfinite type III factor. This category is strict, as $\rho \otimes \sigma \coloneqq \rho \circ \sigma$ by definition. Every near-group category with group $G$ contains some copy of $\textcat{Vec}_G^\omega$ corresponding to the group-like part. Because every unitary near-group category is a subcategory of $\textup{End}(M)$ and is hence itself strict, we know that it will actually contain the ``strictification'' of some $\textcat{Vec}_G^\omega$. However, Izumi shows that if $\mathcal{C}$ is any fusion category containing a simple object that is fixed under tensor products with invertibles (that is, there exists some simple object $X$ such that $X \otimes g \cong X$ for all invertible $g$), then it contains a copy of $\textcat{Vec}_G$, for $G$ the group of isomorphism classes of invertible objects. He shows in addition that if the fusion category is also unitary, then $g \otimes X = X$ (but we may not necessarily have that $X \otimes g = X$). The upshot is that we almost know how objects are tensored, since the group-like part will have trivial associativity (that is, $g \otimes h = gh$). We just need to understand $X \otimes g$ and $X \otimes X$, as well as the morphisms.\\
 
@@ -638,11 +638,72 @@ g \otimes (h \otimes k) \arrow[r, "\id_g \otimes \mu_{h,k}"'] & g \otimes hk \ar
 \noindent Thus the associator for $\mathcal{D}$ is given by
 \begin{align*}
 \begin{split}
-\alpha_{g,h,k} = (\id_g \otimes \mu_{h,k}^{-1}) \circ \mu_{g,hk}^{-1} \circ \mu_{gh,k} \circ (\mu_{g,h} \otimes \id_k),
+\alpha_{g,h,k} = (\id_g \otimes \mu_{h,k}^{-1}) \circ \mu_{g,hk}^{-1} \circ \mu_{gh,k} \circ (\mu_{g,h} \otimes \id_k).
 \end{split}
 \end{align*}
-\noindent \textcolor{red}{which is cohomologous to the trivial $3$-cocycle (proof? check section 3.1 of\\ https://8426thmy.github.io/research/fusion\_category\_modules\_phd/phd\_notes.pdf)}.\\ This completes the proof.
+\noindent We claim that $\alpha$ is cohomologous to the trivial $3$-cocycle. Indeed, let $\alpha^1_{g,h,k}$ denote the components of the trivial associator in $\mathcal{D}$, for $g, h, k \in G$. This morphism factors as
+\begin{align*}
+\begin{split}
+\alpha^1_{g,h,k} = (\id_g \otimes \beta_{h,k}^{-1}) \circ \beta_{g,hk}^{-1} \circ \beta_{gh,k} \circ (\beta_{g,h} \otimes \id_k),
+\end{split}
+\end{align*}
+\noindent where we define $\beta_{g,h} \in \homset_\mathcal{C}(g\otimes h, gh)$ by $\beta_{g,h}(u \otimes v) \coloneqq uv$ for all $g, h \in G$. By linearity, there exists a $3$-cochain $a : G^2 \to \mathbbm{k}^\times$ such that $\alpha_{g,h,k} = a(g,h,k)\alpha^1_{g,h,k}$. Moreover, for all $g, h \in G$ there exists a $2$-cochain $b : G^2 \to \mathbbm{k}^\times$ satisfying $\mu_{g,h} = b(g, h)\beta_{g,h}$. It follows that
+\begin{align*}
+\begin{split}
+a(g,h,k) = b(g,h)^{-1}b(gh,k)b(g,hk)^{-1}b(g,h).
+\end{split}
+\end{align*}
+\noindent In particular, it is clear that $a^{-1} = d^2(b)$, where $d^2$ is the second differential, implying that $a^{-1}$ and hence $a$ are $3$-coboundaries. The claim follows, with the classification of monoidal structures on $\textcat{Vec}_G$ (\cite[Proposition 2.6.1]{EGNO16}) showing that $\mathcal{D}$ is monoidally equivalent to $\textcat{Vec}_G$ with trivial associativity. This completes the proof.
 \end{proof}\\
+
+\noindent\begin{lemma}\label{SelfDual} Let $\mathcal{C}$ be a rigid category with simple object $X$ isomorphic to its dual. Then we may endow $\mathcal{C}$ with a rigid structure such that $X$ is self-dual.\\
+\end{lemma}
+
+\noindent\begin{proof} We will consider the left duals, but note that the following proof holds similarly for right duals. Let $f_X : X \to X^*$ be an isomorphism from $X$ to its left dual. We define a new evaluator and a new coevaluator by
+\begin{align*}
+\begin{split}
+\overline{\textup{ev}}_X \coloneqq \textup{ev}_X \circ (f_X \otimes \id_X)\qquad\text{and}\qquad\overline{\textup{coev}}_X \coloneqq (\id_X \otimes f_X^{-1}) \circ \textup{coev}_X,
+\end{split}
+\end{align*}
+\noindent respectively. This gives $X$ the structure of a left dual to itself. Moreover, the left dual $f_X^* : X^{**} \to X^*$ allows us to give $X^*$ the structure of a left dual to itself by defining
+\begin{align*}
+\begin{split}
+\overline{\textup{ev}}_{X^*} \coloneqq \textup{ev}_{X^*} \circ ({f_X^*}^{-1} \otimes \id_{X^*})\qquad\text{and}\qquad\overline{\textup{coev}}_{X^*} \coloneqq (\id_{X^*} \otimes f_X^*) \circ \textup{coev}_{X^*}.
+\end{split}
+\end{align*}
+\noindent In particular, these are consistent in the sense that one can show (with some effort) that
+\begin{align*}
+\begin{split}
+\overline{\textup{ev}}_{X^*}\circ (f_X \otimes f_X) = \overline{\textup{ev}}_X \qquad\text{and}\qquad(f_X^{-1} \otimes f_X^{-1}) \circ \overline{\textup{coev}}_{X^*} = \overline{\textup{coev}}_X.
+\end{split}
+\end{align*}
+\noindent This completes the proof.
+\end{proof}\\
+
+\noindent\begin{remark}\label{DimensionFrobeniusSchur} Let $\mathcal{C}$ be a pivotal fusion category with simple object $X$ isomorphic to its dual. Let's write down the dimension of $X$. By definition,
+\begin{align*}
+\begin{split}
+\textup{Dim}(X) \coloneqq \ev_{X^{*}} \circ (\psi_X \otimes \id_{X^{*}}) \circ \coev_X.
+\end{split}
+\end{align*}
+\noindent Under \hyperref[SelfDual]{Lemma \ref*{SelfDual}}, we can rewrite this in terms of the new evaluator and coevaluator as
+\begin{align*}
+\begin{split}
+\textup{Dim}(X) &= \overline{\ev}_{X^{*}} \circ (f_X^* \otimes \id_{X^*}) \circ (\psi_X \otimes \id_{X^{*}}) \circ (\id_X \otimes f_X) \circ \overline{\coev}_X\\
+&= \overline{\ev}_X \circ (f_X^{-1} \otimes f_X^{-1}) \circ (f_X^* \otimes \id_{X^*}) \circ (\psi_X \otimes \id_{X^{*}}) \circ (\id_X \otimes f_X) \circ \overline{\coev}_X.
+\end{split}
+\end{align*}
+\noindent Consider the map $r_X : f \mapsto f^* \circ \psi_X$ in $\textup{End}(\homset_\mathcal{C}(X, X^*))$. Because $\homset_\mathcal{C}(X, X^*)$ is $1$-dimensional, the aforementioned endomorphism space is not only $1$-dimensional but admits a canonical basis given by $\id_{\homset_\mathcal{C}(X, X^*)} \mapsto \id_{\homset_\mathcal{C}(X, X^*)}$. In other words, $r_X$ is multiplication by a scalar. Since $r_X^2(f) = f$, it follows that $r_X(f) = \nu f$, for $\nu \in \{-1, 1\}$. This is precisely the (second) Frobenius--Schur indicator of $X$. Returning to the dimension, it follows that
+\begin{align*}
+\begin{split}
+\textup{Dim}(X) &= \overline{\ev}_X \circ (f_X^{-1} \otimes f_X^{-1}) \circ (f_X^* \otimes \id_{X^*}) \circ (\psi_X \otimes \id_{X^{*}}) \circ (\id_X \otimes f_X) \circ \overline{\coev}_X\\
+&= \nu\ \overline{\ev}_X \circ (f_X^{-1} \otimes f_X^{-1}) \circ (f_X \otimes f_X) \circ \overline{\coev}_X\\
+&= \nu\ \overline{\ev}_X \circ \overline{\coev}_X\\
+&= \overline{\ev}_X \circ (\overline{\psi}_X \otimes \id_X) \circ \overline{\coev}_X.
+\end{split}
+\end{align*}
+\noindent This shows us that a side effect of taking $X$ to be self-dual is that the new pivotal structure $\overline{\psi}_X : X \to X$ becomes multiplication by the Frobenius--Schur indicator.\\
+\end{remark}
 
 \noindent\textcolor{red}{Add citation for Tom's notes.}\\
 
@@ -691,25 +752,19 @@ g \otimes (h \otimes k) \arrow[r, "\id_g \otimes \mu_{h,k}"'] & g \otimes hk \ar
 [\rho] \otimes [\rho] = \bigoplus_{g \in G} [\alpha_g] \oplus [\rho]^{\oplus m}.
 \end{gather*}
 \noindent %Let $\mathcal{L} \coloneqq \mathcal{L}_{m+n}$ and consider $s_i, s_i', t_g, t_g' \in \mathcal{L}$, for all $i \in \{1, \dots, m\}$ and $g \in G$.
-Because the group-like elements of $\mathcal{C}$ have Frobenius--Perron dimension $1$, the dimension of $\rho$ must satisfy $d^2 = md + n$. In other words,
+Because the group-like elements of $\mathcal{C}$ have Frobenius--Perron dimension $1$, our fusion rules tell us that $d \coloneqq \textup{Dim}(\rho)$ must satisfy $d^2 = md + n$. In other words,
 \begin{align*}
 \begin{split}
 d \coloneqq \frac{m \pm \csqrt{m^2 + 4n}}{2}
 \end{split}
 \end{align*}
-\noindent will be the dimension of $\rho$. Duals of simple objects are simple and duals preserve the Frobenius--Perron dimension, so our fusion rules tell us that we have an isomorphism $f_\rho : \rho \to \rho^*$. Given a left evaluator $\overline{\textup{ev}}_\rho$ and a left coevaluator $\overline{\textup{coev}}_\rho$, this allows us to define a new evaluator and coevaluator
-\begin{align*}
-\begin{split}
-\textup{ev}_\rho \coloneqq \overline{\textup{ev}}_\rho \circ (f_\rho \otimes \textup{id}_\rho)\qquad\text{and}\qquad\textup{coev}_\rho \coloneqq (\textup{id}_\rho \otimes f_\rho^{-1}) \circ \overline{\textup{coev}}_\rho,
-\end{split}
-\end{align*}
-\noindent respectively, meaning we may choose a representative for the left dual such that $\rho^* = \rho$, and similarly for the right dual. Moreover, let $\alpha_g' \in [\alpha_g]$ and suppose $\alpha_g' \circ \rho = \rho'$. Then there exists some invertible $\omega_g \in \homset_{\mathcal{E}(A)}(\rho', \rho)$ for which $\alpha_g'(\rho(x)) = \omega_g^{-1}\rho(x)\omega_g$. We may therefore choose representatives $\alpha_g : x \mapsto \omega_g\alpha_g'(x)\omega_g^{-1}$ such that $\alpha_g \circ \rho = \rho$. Moreover, there exists $\mu_{g,h} \in \homset_{\mathcal{E}(A)}(\alpha_{gh}, \alpha_g \otimes \alpha_h)$ such that $\alpha_g(\alpha_h(x)) = \mu_{g,h}\alpha_{gh}(x)\mu_{g,h}^{-1}$. Thus
+\noindent will be the dimension of $\rho$. Duals of simple objects are simple and duals preserve the Frobenius--Perron dimension, so our fusion rules tell us that ${}^*\rho \cong \rho \cong \rho^*$. We may therefore take the duals of $\rho$ to be equal by \hyperref[SelfDual]{Lemma \ref*{SelfDual}}. Suppose now that $\alpha_g' \in [\alpha_g]$ and suppose $\alpha_g' \circ \rho = \rho'$. Then there exists some invertible $\omega_g \in \homset_{\mathcal{E}(A)}(\rho', \rho)$ for which $\alpha_g'(\rho(x)) = \omega_g^{-1}\rho(x)\omega_g$. We may therefore choose representatives $\alpha_g : x \mapsto \omega_g\alpha_g'(x)\omega_g^{-1}$ such that $\alpha_g \circ \rho = \rho$. Moreover, there exists $\mu_{g,h} \in \homset_{\mathcal{E}(A)}(\alpha_{gh}, \alpha_g \otimes \alpha_h)$ such that $\alpha_g(\alpha_h(x)) = \mu_{g,h}\alpha_{gh}(x)\mu_{g,h}^{-1}$. Thus
 \begin{align*}
 \begin{split}
 \rho(x) = \alpha_g(\alpha_h(\rho(x))) = \mu_{g,h}\alpha_{gh}(\rho(x))\mu_{g,h}^{-1} = \mu_{g,h}\rho(x)\mu_{g,h}^{-1}.
 \end{split}
 \end{align*}
-\noindent It follows that $\mu_{g,h} \in \homset_{\mathcal{E}(A)}(\rho, \rho)$. Since $\rho$ is simple, the space $\homset_{\mathcal{E}(A)}(\rho, \rho)$ is $1$-dimensional and so $\mu_{g,h}$ is a scalar, whence $\alpha_g \circ \alpha_h = \alpha_{gh}$ for all $g, h \in G$. With these choices, we may only expect $\rho(\alpha_g(x)) = U_g\rho(x)U_g^{-1}$ for some invertible $U_g \in \homset_{\mathcal{E}(A)}(\rho, \rho \otimes \alpha_g)$.\\
+\noindent It follows that $\mu_{g,h} \in \homset_{\mathcal{E}(A)}(\rho, \rho)$. Since $\rho$ is simple, the space $\homset_{\mathcal{E}(A)}(\rho, \rho)$ is $1$-dimensional and so $\mu_{g,h}$ is a scalar, whence $\alpha_g \circ \alpha_h = \alpha_{gh}$ for all $g, h \in G$. With these choices, however, we may only expect $\rho(\alpha_g(x)) = U_g\rho(x)U_g^{-1}$ for some invertible $U_g \in \homset_{\mathcal{E}(A)}(\rho, \rho \otimes \alpha_g)$.\\
 
 \noindent The third equation from our fusion rules above tells us, by definition of the direct sum, that we must have $s_g, s_g', t_i, t_i' \in A$ such that %for $i \in \{1, \dots, m\}$ and $g \in G$ such that
 \begin{align*}
@@ -723,16 +778,16 @@ d \coloneqq \frac{m \pm \csqrt{m^2 + 4n}}{2}
 \sum_{g \in G}{s_gs_g'} + \sum_{i=1}^m{t_it_i'} = 1,\qquad s_g's_h = \delta_{g,h},\qquad t_i't_j = \delta_{i,j}\qquad\text{and}\qquad s_g't_i = 0 = t_i's_g,
 \end{split}
 \end{align*}
-\noindent for all $g, h \in G$ and $i, j \in \{1, \dots, m\}$. There are in general no canonical choices for these elements, so we will proceed as follows. Because both $s_e \in \homset_{\mathcal{E}(A)}(\id, {\rho \otimes \rho})$ and $s_e' \in \homset_{\mathcal{E}(A)}({\rho \otimes \rho}, \id)$ live in $1$-dimensional spaces, we can choose them to be scalar multiples of the coevaluator and evaluator, normalized with respect to the direct sum condition $s_e's_e = 1$. That is,
+\noindent for all $g, h \in G$ and $i, j \in \{1, \dots, m\}$. There are in general no canonical choices for these elements, so we will proceed as follows. Because both $s_e \in \homset_{\mathcal{E}(A)}(\id, {\rho \otimes \rho})$ and $s_e' \in \homset_{\mathcal{E}(A)}({\rho \otimes \rho}, \id)$ live in $1$-dimensional spaces, we can choose them to be scalar multiples of the coevaluator and evaluator, normalized with respect to the direct sum condition $s_e's_e = 1$. By \hyperref[DimensionFrobeniusSchur]{Remark \ref*{DimensionFrobeniusSchur}}, we have
 \begin{align*}
 \begin{split}
-s_e \coloneqq \frac{1}{\csqrt{d}}\coev_\rho\qquad\text{and}\qquad s_e' \coloneqq \frac{1}{\csqrt{d}}(\ev_{\rho^*} \circ (\psi_\rho \otimes \textup{id}_\rho)) = \frac{\nu}{\csqrt{d}}\ev_\rho,
+s_e \coloneqq \frac{1}{\csqrt{d}}\coev_\rho\qquad\text{and}\qquad s_e' \coloneqq \frac{1}{\csqrt{d}}(\ev_\rho \circ (\psi_\rho \otimes \id_\rho)) = \frac{\nu}{\csqrt{d}}\ev_\rho,
 \end{split}
 \end{align*}
-\noindent where $\psi : \rho \to \rho^{**}$ is the pivotal structure corresponding to multiplication by $\nu \in \{-1, 1\}$, the Frobenius--Schur indicator of $\rho$. This will force
+\noindent where the pivotal structure $\psi_\rho$ is multiplication by the Frobenius--Schur indicator $\nu \in \{-1, 1\}$. Thus
 \begin{align*}
 \begin{split}
-\rho(s_e')s_e = \frac{\nu}{d}(\textup{id}_\rho \otimes \ev_\rho) \circ (\coev_\rho \otimes \textup{id}_\rho) = \frac{\nu}{d} = \frac{\nu}{d}(\ev_\rho \otimes \textup{id}_\rho) \circ (\textup{id}_\rho \otimes \coev_\rho) = s_e'\rho(s_e).
+\rho(s_e')s_e = \frac{\nu}{d}(\id_\rho \otimes \ev_\rho) \circ (\coev_\rho \otimes \id_\rho) = \frac{\nu}{d} = \frac{\nu}{d}(\ev_\rho \otimes \id_\rho) \circ (\id_\rho \otimes \coev_\rho) = s_e'\rho(s_e).
 \end{split}
 \end{align*}
 \noindent Suppose now that $s_g \coloneqq \alpha_g(s_e)$. Recalling the definition of the monoidal product of morphisms in our category and our assumption that $\alpha_g \otimes \rho = \rho$,% this means that
@@ -767,10 +822,10 @@ U_{gh} = (U_g \otimes \id_{\alpha_h}) \circ U_h. %(U(g) \otimes \id_\rho) \circ 
 \end{align*}
 \noindent together with the fact that $\homset_{\mathcal{E}(A)}(\rho, \rho \otimes \alpha_{gh})$ is $1$-dimensional. Thus the map $U : g \mapsto U_g \otimes \id_{\rho}$ defines a representation $U : G \to \homset_{\mathcal{E}(A)}({\rho \otimes \rho}, {\rho \otimes \rho})$. In other words, $U(g)$ is invertible with $U(g)^{-1} = U(g^{-1})$. It follows that $\rho(\alpha_g(x)) = U_g\rho(x)U_g^{-1} = U(g)\rho(x)U(g)^{-1}$.\\
 
-\noindent We will find it convenient now to denote both $\mathcal{K} \coloneqq \homset_{\mathcal{E}(A)}(\rho, {\rho \otimes \rho}) = \text{span}_\mathbbm{k}\{t_1, \dots, t_m\}$ and $\mathcal{K}' \coloneqq \homset_{\mathcal{E}(A)}({\rho \otimes \rho}, \rho) = \text{span}_\mathbbm{k}\{t_1', \dots, t_m'\}$, and let
+\noindent We will find it convenient now to denote both $\mathcal{K} \coloneqq \homset_{\mathcal{E}(A)}(\rho, {\rho \otimes \rho}) = \textup{span}_\mathbbm{k}\{t_1, \dots, t_m\}$ and $\mathcal{K}' \coloneqq \homset_{\mathcal{E}(A)}({\rho \otimes \rho}, \rho) = \textup{span}_\mathbbm{k}\{t_1', \dots, t_m'\}$, and let
 \begin{align*}
 \begin{split}
-\mathcal{K}^p\mathcal{K}'^q \coloneqq \text{span}_\mathbbm{k}\{t_{i_1}t_{i_2} \cdots t_{i_p}t_{j_1}'t_{j_2}' \cdots t_{j_q}'\}_{i_1,\dots,i_p,j_1,\dots,j_q=1}^m
+\mathcal{K}^p\mathcal{K}'^q \coloneqq \textup{span}_\mathbbm{k}\{t_{i_1}t_{i_2} \cdots t_{i_p}t_{j_1}'t_{j_2}' \cdots t_{j_q}'\}_{i_1,\dots,i_p,j_1,\dots,j_q=1}^m
 \end{split}
 \end{align*}
 \noindent for $p, q \in \mathbb{N}$. In other words, $\mathcal{K}^p\mathcal{K}'^q \cong \mathcal{K}^{\otimes p} \otimes (\mathcal{K}')^{\otimes q}$. We will also define the projections
@@ -794,9 +849,9 @@ Thus
 U(g) = \sum_{h \in G}{\chi_h(g)s_hs_h'} + U_\mathcal{K}(g)
 \end{split}
 \end{align*}
-\noindent for $\chi_h : G \to \mathbbm{k}^\times$ and $U_\mathcal{K}(g) \in \text{span}\{t_it_j'\}_{i,j = 1}^m = \mathcal{K}\mathcal{K}'$. We remark that $\chi_h(g)$ can never be zero, otherwise $U(g)s_h = 0 = s_h'U(g)$, which is nonsense since the invertibility of $U(g)$ would imply that $s_h = 0 = s_h'$. Now, note that $\mathcal{K}\mathcal{K}' = \text{End}(\mathcal{K})$. Certainly $\mathcal{K}\mathcal{K}' \subseteq \text{End}(\mathcal{K})$, since $t_it_j'\mathcal{K} \subseteq \mathcal{K}$; the converse direction comes by comparing dimensions. Thus $U_\mathcal{K} : G \to \text{End}(\mathcal{K})$ defines a representation as the projection of $U(g)$ onto $\mathcal{K}\mathcal{K}'$.\\ %\textcolor{red}{We will later see that these $\chi_h$ are precisely the characters of $G$.}\\
+\noindent for $\chi_h : G \to \mathbbm{k}^\times$ and $U_\mathcal{K}(g) \in \textup{span}\{t_it_j'\}_{i,j = 1}^m = \mathcal{K}\mathcal{K}'$. We remark that $\chi_h(g)$ can never be zero, otherwise $U(g)s_h = 0 = s_h'U(g)$, which is nonsense since the invertibility of $U(g)$ would imply that $s_h = 0 = s_h'$. Now, note that $\mathcal{K}\mathcal{K}' = \textup{End}(\mathcal{K})$. Certainly $\mathcal{K}\mathcal{K}' \subseteq \textup{End}(\mathcal{K})$, since $t_it_j'\mathcal{K} \subseteq \mathcal{K}$; the converse direction comes by comparing dimensions. Thus $U_\mathcal{K} : G \to \textup{End}(\mathcal{K})$ defines a representation as the projection of $U(g)$ onto $\mathcal{K}\mathcal{K}'$.\\ %\textcolor{red}{We will later see that these $\chi_h$ are precisely the characters of $G$.}\\
 
-\noindent Another consequence of the definition of $\mathcal{K}$ is that $\alpha_g(x) \in \mathcal{K}$ for all $x \in \mathcal{K}$, and similarly $\alpha_g(y) \in \mathcal{K}'$ for all $y \in \mathcal{K}'$. We must therefore have an element $V(g) \in \mathcal{K}\mathcal{K}'$ satisfying $\alpha_g(x) = V(g)x$ for all $x \in \mathcal{K}$, defining a final representation $V : G \to \text{End}(\mathcal{K})$. In fact, $1 = \alpha_g(t_i't_i) = \alpha_g(t_i')V(g)t_i$ tells us that $\alpha_g(y) = yV(g)^{-1}$ for all $y \in \mathcal{K}'$, as both $V(g)$ and $t_i$ have unique left inverses.\\% In particular, $\alpha_g(U_\mathcal{K}(h)) = V(g)U_\mathcal{K}(h)V'(g)$.\\ %In particular, we have the following result.\\
+\noindent Another consequence of the definition of $\mathcal{K}$ is that $\alpha_g(x) \in \mathcal{K}$ for all $x \in \mathcal{K}$, and similarly $\alpha_g(y) \in \mathcal{K}'$ for all $y \in \mathcal{K}'$. We must therefore have an element $V(g) \in \mathcal{K}\mathcal{K}'$ satisfying $\alpha_g(x) = V(g)x$ for all $x \in \mathcal{K}$, defining a final representation $V : G \to \textup{End}(\mathcal{K})$. In fact, $1 = \alpha_g(t_i't_i) = \alpha_g(t_i')V(g)t_i$ tells us that $\alpha_g(y) = yV(g)^{-1}$ for all $y \in \mathcal{K}'$, as both $V(g)$ and $t_i$ have unique left inverses.\\% In particular, $\alpha_g(U_\mathcal{K}(h)) = V(g)U_\mathcal{K}(h)V'(g)$.\\ %In particular, we have the following result.\\
 
 \noindent We wish to show that $\rho$ and $\alpha_g$ restrict to endomorphisms of %the Leavitt algebra
 $\mathcal{L} \coloneqq \mathcal{L}_{m+n}$, with generators $s_g, s_g', t_i, t_i'$ for $g \in G$ and $i \in \{1, \dots, m\}$. Recall that $\alpha_g(s_h) = \id_{\alpha_g} \otimes (\id_{\alpha_h} \otimes s_e) = \id_{\alpha_{gh}} \otimes s_e = s_{gh}$, and similarly for $\alpha_g(s_h')$. In other words, $\alpha_g(s_h) \in \mathcal{L}$ for all $g, h \in G$. Of course, $\alpha_g(x) \in \mathcal{K}$ and $\alpha_g(y) \in \mathcal{K}'$ for all $x \in \mathcal{K}$, $y \in \mathcal{K}'$ and $g \in G$. All that remains is to show how $\rho$ acts on $\mathcal{K}$ and $\mathcal{K}'$.\\
@@ -838,7 +893,7 @@ S\rho(s_e) = \sum_{h \in G}{s_hs_h'\rho(s_e)} = \sum_{h \in G}{\alpha_h(s_es_e'\
 This completes the proof.
 \end{proof}\\
 
-%\noindent \textcolor{red}{Suppose we now let $V(g) : x \mapsto \id_{\alpha_g} \otimes x$ for all $x \in \homset_{\mathcal{E}(A)}(\rho, {\rho \otimes \rho})$, which defines another representation $V : G \to \text{End}(\homset_{\mathcal{E}(A)}(\rho, {\rho \otimes \rho}))$.}\\
+%\noindent \textcolor{red}{Suppose we now let $V(g) : x \mapsto \id_{\alpha_g} \otimes x$ for all $x \in \homset_{\mathcal{E}(A)}(\rho, {\rho \otimes \rho})$, which defines another representation $V : G \to \textup{End}(\homset_{\mathcal{E}(A)}(\rho, {\rho \otimes \rho}))$.}\\
 
 %\noindent We now wish to show that $\rho$ and $\alpha_g$ restrict to endomorphisms of the Leavitt algebra $\mathcal{L} \coloneqq \mathcal{L}_{m+n}$, with generators $s_g, s_g', t_i, t_i'$ for $g \in G$ and $i \in \{1, \dots, m\}$. \textcolor{red}{Step 1: figure out $j_1$ and $j_2$, then Lem 3.3.}\\
 
@@ -963,33 +1018,7 @@ This completes the proof.
 {}^{**}x = \frac{d^3}{\nu^3}\rho^2(s_e')\rho^3(s_e')\rho^4(s_e')\rho^3(x)\rho^2(s_e)\rho(s_e)s_e = \varphi^3(x).
 \end{split}
 \end{align*}
-\noindent Because the pivotal structure $\psi_\rho : \rho \to {}^{**}\rho$ is multiplication by $\nu$, we have that ${}^{**}x = \nu^2x\nu^{-1}$, whence $\varphi^3(x) = \nu x$. Now, using the normalization relation $U(g)^{-1}s_e = s_e$ and the definition of morphisms,
-\begin{align*}
-\begin{split}
-\varphi(\alpha_g(\varphi^{-1}(x))) &= \frac{d^2}{\nu^2}\rho^2(s_e')\rho(\alpha_g(s_e'\rho(x)\rho(s_e)))s_e = \frac{d^2}{\nu^2}\rho^2(s_e')U(g)\rho(s_e')\rho^2(x)\rho^2(s_e)U(g)^{-1}s_e\\
-&= \frac{d^2}{\nu^2}U(g)\rho^2(s_e')\rho(s_e')\rho^2(x)\rho^2(s_e)s_e = \frac{d^2}{\nu^2}U(g)\rho^2(s_e')\rho(s_e')s_e x s_e\\
-&= \frac{d}{\nu}U(g)\rho^2(s_e') x s_e = \frac{d}{\nu}U(g) x \rho(s_e')s_e = U(g)x = U_\mathcal{K}(g)x.
-\end{split}
-\end{align*}
-\noindent In order to show that $\varphi^3(x) = \nu x$, recall that the right dual to $x \in \mathcal{K}$ is given by
-\begin{align*}
-\begin{split}
-{}^*x = \frac{d^\frac{3}{2}}{\nu^2}\rho(s_e')\rho^2(s_e')\rho(x)s_e \in \mathcal{K}',
-\end{split}
-\end{align*}
-\noindent while the right dual to $y \in \mathcal{K}'$ is given by
-\begin{align*}
-\begin{split}
-{}^*y = \frac{d^\frac{3}{2}}{\nu}\rho^2(s_e')\rho^2(x)\rho(s_e)s_e \in \mathcal{K}.
-\end{split}
-\end{align*}
-\noindent Thus, for $x \in \mathcal{K}$, we have
-\begin{align*}
-\begin{split}
-{}^{**}x = \frac{d^3}{\nu^3}\rho^2(s_e')\rho^3(s_e')\rho^4(s_e')\rho^3(x)\rho^2(s_e)\rho(s_e)s_e = \varphi^3(x).
-\end{split}
-\end{align*}
-\noindent Because the pivotal structure $\psi_\rho : \rho \to {}^{**}\rho$ is multiplication by $\nu$, we have that ${}^{**}x = \nu^2x\nu^{-1}$, whence $\varphi^3(x) = \nu x$. Now, using the normalization relation $U(g)^{-1}s_e = s_e$ and the definition of morphisms,
+\noindent Because we chose the duals of $\rho$ to be equal to $\rho$, we have that ${}^{**}x = \psi_\rho^2x\psi_\rho = \nu x$, whence $\varphi^3(x) = \nu x$. Now, using the normalization relation $U(g)^{-1}s_e = s_e$ and the definition of morphisms,
 \begin{align*}
 \begin{split}
 \varphi(\alpha_g(\varphi^{-1}(x))) &= \frac{d^2}{\nu^2}\rho^2(s_e')\rho(\alpha_g(s_e'\rho(x)\rho(s_e)))s_e = \frac{d^2}{\nu^2}\rho^2(s_e')U(g)\rho(s_e')\rho^2(x)\rho^2(s_e)U(g)^{-1}s_e\\
