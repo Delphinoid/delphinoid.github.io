@@ -9,8 +9,7 @@ template_sanitize(document.head.innerHTML) +
 <link rel="icon" type="image/png" sizes="16x16" href="' + ROOT + '/shared/favicon-16x16.png"> \
 <link rel="icon" type="image/png" sizes="32x32" href="' + ROOT + '/shared/favicon-32x32.png"> \
 <link rel="stylesheet" href="' + ROOT + '/shared/styles.css"> \
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> \
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> \
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script> \
 <script src="' + ROOT + '/shared/scripts/sprite.js"></script>';
 template_run_scripts(document.head);
 
@@ -79,7 +78,7 @@ document.body.innerHTML =
 			template_sanitize(document.body.innerHTML) +
 '		</div> \
 		\
-	<div id="footer_container">Last updated: 2024/08/02</div> \
+	<div id="footer_container">Last updated: 2026/07/03</div> \
 	\
 </div> \
 \

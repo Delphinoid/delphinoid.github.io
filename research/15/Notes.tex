@@ -705,6 +705,19 @@ a(g,h,k) = b(g,h)^{-1}b(gh,k)b(g,hk)^{-1}b(g,h).
 \noindent This shows us that a side effect of taking $X$ to be self-dual is that the new pivotal structure $\overline{\psi}_X : X \to X$ becomes multiplication by the Frobenius--Schur indicator.\\
 \end{remark}
 
+\noindent\begin{theorem}\label{QuotientAlgebraObject} Let $\mathcal{C}$ be a fusion category with $\mathcal{D}$ a fusion subcategory, let $A$ be an algebra object in $\mathcal{C}$ and let $B$ be the restriction of $A$ to $\mathcal{D}$, given by throwing away simple summands not in $\mathcal{D}$. Then
+\begin{enumerate}[label=\textup{(\roman*).}, ref=\textup{(\roman*)}, leftmargin=4\parindent]
+\item $B$ is an algebra object in $\mathcal{C}$;
+\item $B$ is a subalgebra object of $A$ (in some sense);
+\item $A$ is a $(B, A)$-bimodule object by restriction;
+\item there is a factoring of bimodule objects ${_\mathbbm{1}}A_A = {_\mathbbm{1}}B_B \otimes_B {_B}A_A$;
+\item the objects ${_A}(A^*)_B \otimes_B {_B}A_A$ and ${_B}A_A \otimes_A {_A}(A^*)_B = {_B}(A^*)_B$ are algebra objects in the categories ${_A}\textcat{Mod}_A(\mathcal{C})$ and ${_B}\textcat{Mod}_B(\mathcal{C})$, respectively.\\
+\end{enumerate}
+\end{theorem}
+
+\noindent\begin{proof} Scary...
+\end{proof}\\
+
 \noindent\textcolor{red}{Add citation for Tom's notes.}\\
 
 \noindent\textcolor{red}{We should focus on the case when $G$ is finite Abelian, and possibly when $m = k\abs{G}$ for some $k \in \mathbb{N}$.}\\
@@ -802,7 +815,7 @@ s_g \coloneqq \id_{\alpha_g} \otimes s_e \in \homset_{\mathcal{E}(A)}(\alpha_g, 
 s_g' \coloneqq \id_{\alpha_g} \otimes s_e'
 \end{split}
 \end{align*}
-\noindent for $s_g$. We will now find, for each $g \in G$, isomorphisms $U(g) \in \homset_{\mathcal{E}(A)}({\rho \otimes \rho}, {\rho \otimes \rho})$ satisfying the normalization condition $U(g)s_e = s_e$. Because $\alpha_g \otimes \rho = \rho$, the space $\homset_{\mathcal{E}(A)}(\rho, \rho \otimes \alpha_g)$ is $1$-dimensional, whence there must exist a unique scalar $U_g \in \homset_{\mathcal{E}(A)}(\rho, \rho \otimes \alpha_g)$ satisfying
+\noindent for $s_g$. We will now find, for each $g \in G$, isomorphisms $U(g) \in \homset_{\mathcal{E}(A)}({\rho \otimes \rho}, {\rho \otimes \rho})$ satisfying the normalization condition $U(g)s_e = s_e$. Because $\rho \otimes \alpha_g \cong \rho$, the space $\homset_{\mathcal{E}(A)}(\rho, \rho \otimes \alpha_g)$ is $1$-dimensional, whence there must exist a unique scalar $U_g \in \homset_{\mathcal{E}(A)}(\rho, \rho \otimes \alpha_g)$ satisfying
 \begin{align*}
 \begin{split}
 (U_g \otimes \id_\rho) \circ s_e = s_e,
@@ -865,13 +878,13 @@ $\mathcal{L} \coloneqq \mathcal{L}_{m+n}$, with generators $s_g, s_g', t_i, t_i'
 \noindent\begin{lemma}\label{RhoExpansion} We have $\rho(s_g), \rho(s_g') \in \mathcal{L}$ for all $g \in G$. In particular,
 \begin{align*}
 \begin{split}
-\rho(s_e) = \sum_{h \in G}{\frac{\nu}{d}s_h} + \sum_{i=1}^m{t_it_i'\rho(s_e)}\qquad\text{and}\qquad \rho(s_e') = \sum_{h \in G}{\frac{\nu}{d}s_h'} + \sum_{i=1}^m{\rho(s_e')t_it_i'},
+\rho(s_e) = \sum_{h \in G}{\frac{\nu}{d}s_h} + \sum_{i=1}^m{t_it_i'\rho(s_e)}\qquad\text{and}\qquad \rho(s_e') = \sum_{h \in G}{\frac{\nu}{d}s_h'} + \sum_{i=1}^m{\rho(s_e')t_it_i'}
 \end{split}
 \end{align*}
 \noindent with
 \begin{align*}
 \begin{split}
-\sum_{i=1}^m \rho(s_e')t_it_i'\rho(s_e) = \frac{m}{d}.
+\rho(s_e')t_it_j'\rho(s_e) = \frac{\delta_{i,j}}{d},
 \end{split}
 \end{align*}
 \noindent where $\rho(s_g) = U(g)^{-1}\rho(s_e)U(g)$ and $\rho(s_g') = U(g)^{-1}\rho(s_e')U(g)$ for all $g \in G$.\\
@@ -895,8 +908,25 @@ S\rho(s_e) = \sum_{h \in G}{s_hs_h'\rho(s_e)} = \sum_{h \in G}{\alpha_h(s_es_e'\
 \rho(s_e')S = \sum_{h \in G}{\frac{\nu}{d}s_h'},
 \end{split}
 \end{align*}
-\noindent where $\rho(s_e')t_i \in \mathcal{K}'$ and hence $\rho(s_e')T \in (\mathcal{K}')^2$. The final equation follows directly from $\rho(s_e')\rho(s_e) = 1$.
-This completes the proof.
+\noindent where $\rho(s_e')t_i \in \mathcal{K}'$ and hence $\rho(s_e')T \in (\mathcal{K}')^2$. To prove the final relation, we first observe that
+\begin{align*}
+\begin{split}
+1 = \rho(s_e')\rho(s_e) = \frac{n}{d^2} + \sum_{i=1}^m \rho(s_e')t_it_i'\rho(s_e) \implies \sum_{i=1}^m \rho(s_e')t_it_i'\rho(s_e) = \frac{m}{d}.
+\end{split}
+\end{align*}
+\noindent Recall now that the left quantum trace of an element $x \in \homset_{\mathcal{E}(A)}({\rho \otimes \rho}, {\rho \otimes \rho})$ is given by
+\begin{align*}
+\begin{split}
+\textup{Tr}^L(x) \coloneqq \textup{ev}_\rho\rho(\textup{ev}_\rho)x\rho(\textup{coev}_\rho)\textup{coev}_\rho = d^2 s_e'\rho(s_e')x\rho(s_e)s_e =  d^2 \rho(s_e')x\rho(s_e).
+\end{split}
+\end{align*}
+\noindent The final equality follows from the fact that $\rho(s_e')x\rho(s_e) \in \mathbbm{k}$, as it is in the $1$-dimensional space $\homset_{\mathcal{E}(A)}(\rho, \rho)$, together with $s_e's_e = 1$. Because $M_m(\mathbbm{k}) \cong \mathcal{K}\mathcal{K}'$ admits a unique tracial state given by the matrix trace $\textup{Tr}$, we know it must be related to the trace $\textup{Tr}^L$ by a scalar. Since $\textup{Tr}(T) = m$ while $\textup{Tr}^L(T) = md$ by our previous observation, we have for all $x \in \mathcal{K}\mathcal{K}' \subset \homset_{\mathcal{E}(A)}({\rho \otimes \rho}, {\rho \otimes \rho})$ that
+\begin{align*}
+\begin{split}
+\rho(s_e')x\rho(s_e) = \frac{1}{d^2}\textup{Tr}^L(x) = \frac{1}{d}\textup{Tr}(x) = \frac{1}{d}\sum_{i=k}^m t_k'xt_k,
+\end{split}
+\end{align*}
+\noindent whence the result follows by considering $x = t_it_j'$. This completes the proof.
 \end{proof}\\
 
 %\noindent \textcolor{red}{Suppose we now let $V(g) : x \mapsto \id_{\alpha_g} \otimes x$ for all $x \in \homset_{\mathcal{E}(A)}(\rho, {\rho \otimes \rho})$, which defines another representation $V : G \to \textup{End}(\homset_{\mathcal{E}(A)}(\rho, {\rho \otimes \rho}))$.}\\
@@ -975,18 +1005,24 @@ This completes the proof.
 %\varphi : x &\mapsto d\rho^2(s_e')\rho(x)s_e
 \end{split}
 \end{align*}
-\noindent admits the inverse
+\noindent is invertible, admitting the inverse
 \begin{align*}
 \begin{split}
-\varphi^{-1} : x &\mapsto \frac{d}{\nu}s_e'\rho(x)\rho(s_e),
+\varphi^{-1} : x &\mapsto \frac{d}{\nu}s_e'\rho(x)\rho(s_e).
 %\varphi^{-1} : x &\mapsto d s_e'\rho(x)\rho(s_e),
 \end{split}
 \end{align*}
 %\noindent Moreover, we have
-\noindent and moreover we have
+\noindent Moreover, we have
 \begin{align*}
 \begin{split}
-\varphi^3(x) = \nu x,\qquad\varphi(\alpha_g(\varphi^{-1}(x))) = U_\mathcal{K}(g)x\qquad\text{and}\qquad\varphi^{-1}(\alpha_g(\varphi(x))) = \rho(U(g)) x U(g)^{-1}
+\varphi^3(x) = \nu x,\qquad\varphi(\alpha_g(\varphi^{-1}(x))) = \varphi(V(g)\varphi^{-1}(x)) = U_\mathcal{K}(g)x
+\end{split}
+\end{align*}
+\noindent and
+\begin{align*}
+\begin{split}
+\varphi(U_\mathcal{K}(g)\varphi^{-1}(x)) = \varphi^{-1}(V(g)\varphi(x)) = \varphi^{-1}(\alpha_g(\varphi(x))) = \rho(U(g)) x U(g)^{-1}
 \end{split}
 \end{align*}
 \noindent for all $x \in \mathcal{K}$ and $g \in G$.\\
@@ -1053,7 +1089,7 @@ This completes the proof.
 %\varphi^{-1}(\alpha_g(\varphi(x))) = \frac{d^2}{\nu^2}s_e'\rho(\alpha_g(\rho^2(s_e')\rho(x) s_e))\rho(s_e) = \cdots = \rho(U(g)) x U(g)^{-1}.
 %\end{split}
 %\end{align*}
-\noindent The final result follows. This completes the proof.
+\noindent The final result follows from the fact that $\varphi^3(x) = \nu x$. This completes the proof.
 \end{proof}\\
 
 \noindent The result $\varphi(\alpha_g(\varphi^{-1}(x))) = U_\mathcal{K}(g)x$ can be rewritten as $\varphi \circ V(g) = U_\mathcal{K}(g) \circ \varphi$. In other words, the representations $U_\mathcal{K}$ and $V$ are equivalent and intertwined by $\varphi$. This lemma also admits the following ``dual'' that is proved similarly but with left duals rather than right duals for the order $3$ condition.\\
@@ -1065,18 +1101,24 @@ This completes the proof.
 %\varphi : x &\mapsto d\rho^2(s_e')\rho(x)s_e
 \end{split}
 \end{align*}
-\noindent admits the inverse
+\noindent is invertible, admitting the inverse
 \begin{align*}
 \begin{split}
-\varphi'^{-1} : y &\mapsto \frac{d}{\nu}\rho(s_e')\rho(y)s_e,
+\varphi'^{-1} : y &\mapsto \frac{d}{\nu}\rho(s_e')\rho(y)s_e.
 %\varphi^{-1} : x &\mapsto d s_e'\rho(x)\rho(s_e),
 \end{split}
 \end{align*}
 %\noindent Moreover, we have
-\noindent and moreover we have
+\noindent Moreover, we have
 \begin{align*}
 \begin{split}
-\varphi'^3(y) = \nu y,\qquad\varphi'(\alpha_g(\varphi'^{-1}(y))) = yU_\mathcal{K}(g)^{-1}\qquad\text{and}\qquad\varphi'^{-1}(\alpha_g(\varphi'(y))) = U(g) y\rho(U(g)^{-1})
+\varphi'^3(y) = \nu y,\qquad\varphi'(\alpha_g(\varphi'^{-1}(y))) = \varphi'(\varphi'^{-1}(y)V(g)^{-1}) = yU_\mathcal{K}(g)^{-1}
+\end{split}
+\end{align*}
+\noindent and
+\begin{align*}
+\begin{split}
+\varphi'(\varphi'^{-1}(y)U_\mathcal{K}(g)^{-1}) = \varphi'^{-1}(\varphi'(y)V(g)^{-1}) = \varphi'^{-1}(\alpha_g(\varphi'(y))) = U(g) y\rho(U(g)^{-1})
 \end{split}
 \end{align*}
 \noindent for all $y \in \mathcal{K}'$ and $g \in G$.\\
@@ -1154,11 +1196,11 @@ T\rho(\varphi^{-1}(x)) &= T\rho(\varphi^{-1}(x))(S + T)\\
 \item representatives $\alpha_g$ for each $[\alpha_g]$ such that $\alpha_g \circ \rho = \rho$;
 \item a choice of projection $s_e'$ and inclusion $s_e$.
 \end{enumerate}
-\noindent Note that we only assume that $\mathcal{C}$ is pivotal so that $\nu\varphi$ is order $3$. \textcolor{red}{How do these choices affect things?}\\
+\noindent We only assume that $\mathcal{C}$ is pivotal so that $\nu\varphi$ is order $3$ and hence $\varphi \circ U_\mathcal{K}(g) \circ \varphi^{-1} = \varphi^{-1} \circ V(g) \circ \varphi$. \textcolor{red}{How do these choices affect things? I should add diagrams.}\\
 
-\noindent Recall that the Leavitt algebra $\mathcal{L}$ admits an involutive antiautomorphism $-' : \mathcal{L} \to \mathcal{L}$ that exchanges each $s_g$ and $t_i$ with their primed versions and vice versa. Note that $\rho$, $\alpha_g$ and $\varphi$ are compatible with this map; in particular, $\rho(-)' = \rho(-')$, $\alpha_g(-)' = \alpha_g(-')$ and $\varphi(-)' = \varphi'(-')$. We shall henceforth define $\varphi$ and $l$ on $\mathcal{K}'$ via $\varphi'$ and $l'$, respectively.\\
+\noindent Recall that the Leavitt algebra $\mathcal{L}$ admits an involutive antiautomorphism $-' : \mathcal{L} \to \mathcal{L}$ that exchanges each $s_g$ and $t_i$ with their primed versions and vice versa. Note that $\rho$, $\alpha_g$ and $\varphi$ are compatible with this map; in particular, $\rho(-)' = \rho(-')$, $\alpha_g(-)' = \alpha_g(-')$ and $\varphi(-)' = \varphi'(-')$. We shall henceforth define $\varphi$ and $l$ on $\mathcal{K}'$ via $\varphi'$ and $l'$, respectively. \textcolor{red}{Double-check this stuff. Maybe replace mentions of $\varphi'$ and $l'$ in what follows.}\\
 
-\noindent Our setting diverges from the unitary setting here due to the fact that $U(g)'$ is not necessarily equal to $U(g)^{-1}$, since $\overline{\chi_h(g)}$ is not necessarily equal to $\chi_h(g)^{-1}$ and $U_\mathcal{K}(g)'$ is not necessarily equal to $U_\mathcal{K}(g)^{-1}$. In fact, $\chi_h(g)$ is precisely where we will start to see issues.\\
+\noindent Our setting diverges from the unitary setting here due to the fact that $U(g)'$ is not necessarily equal to $U(g)^{-1}$, since $\overline{\chi_h(g)}$ is not necessarily equal to $\chi_h(g)^{-1}$ and $U_\mathcal{K}(g)'$ is not necessarily equal to $U_\mathcal{K}(g)^{-1}$.\\
 
 \noindent\textcolor{red}{Prove other properties. The following results follow the work of Izumi closely.}\\
 
@@ -1188,9 +1230,9 @@ U(g)\rho(x)U(g)^{-1} &= \sum_{h\in G} U(g)s_hs_h'\rho(x)U(g)^{-1} + \sum_{h\in G
 \noindent The final equation follows from \hyperref[OneClickRotation']{Lemma \ref*{OneClickRotation'}} and \hyperref[RhoK']{Lemma \ref*{RhoK'}}. This completes the proof.
 \end{proof}\\
 
-\noindent\begin{corollary} The map $\chi$ is a symmetric bicharacter. In particular,
+\noindent\begin{corollary}\label{ChiBicharacter} The map $\chi$ is a symmetric bicharacter. In particular,
 \begin{gather*}
-\textcolor{red}{\chi_{h}(g) = \chi_g(h)},\\
+\chi_{h}(g) = \chi_g(h),\\
 \alpha_h(U(g)) = \chi_h(g)^{-1} U(g)
 \end{gather*}
 \noindent for all $g, h \in G$.\\
@@ -1208,76 +1250,176 @@ U(g)\rho(x)U(g)^{-1} &= \sum_{h\in G} U(g)s_hs_h'\rho(x)U(g)^{-1} + \sum_{h\in G
 \alpha_h(U(g))s_e = \alpha_h(U(g)s_{h^{-1}}) = \chi_{h^{-1}}(g)\alpha_h(s_{h^{-1}}) = \chi_{h^{-1}}(g)s_e,
 \end{split}
 \end{align*}
-\noindent showing that $\alpha_h(U(g)) = \chi_{h^{-1}}(g)U(g)$. %Moreover,
-%\begin{align*}
-%\begin{split}
-%\alpha_h(U(g)) &= \sum_{k \in G}{\chi_{h^{-1}k}(g)s_ks_k'} + \alpha_h(U_\mathcal{K}(g))\\
-% &= \sum_{k \in G}{\chi_{h^{-1}k}(g)s_ks_k'} + V(h)U_\mathcal{K}(g)V(h)^{-1}\\
-% &= \sum_{k \in G}{\chi_{h^{-1}k}(g)s_ks_k'} + \chi_{h}(g)^{-1}U_\mathcal{K}(g),
-%\end{split}
-%\end{align*}
-%\noindent whence $\chi_{h^{-1}}(g) = \chi_{h}(g)^{-1}$.
-Suppose we now define a map
+\noindent showing that $\alpha_h(U(g)) = \chi_{h^{-1}}(g)U(g)$. To show that $\chi_h(g) = \chi_g(h)$, we first note that
 \begin{align*}
 \begin{split}
-\eta_{h,g} : z \mapsto \frac{d}{\nu}\rho(\alpha_h(s_e'))\rho(z)\alpha_g(s_e),
+p(U(g^{-1}))s_e \in \homset_{\mathcal{E}(A)}(1, \rho \otimes \rho \otimes \alpha_{g^{-1}}) = \homset_{\mathcal{E}(A)}(\alpha_g, \rho \otimes \rho).
 \end{split}
 \end{align*}
-\noindent for all $z \in \homset_{\mathcal{E}(A)}(\rho \otimes \alpha_{g^{-1}}, \alpha_h \otimes \rho)$. Note that $\alpha_h(U(g^{-1})^{-1}), U(g^{-1})^{-1} \in \homset_{\mathcal{E}(A)}(\rho \otimes \alpha_{g^{-1}}, \alpha_h \otimes \rho)$. Applying $\eta_{h,g}$, we obtain
-%\begin{align*}
-%\begin{split}
-%\eta_{h,g}(\alpha_h(U(g))) &= \frac{d}{\nu}\rho(\alpha_h(s_e'))\rho(\alpha_h(U(g)))\alpha_g(s_e)\\
-% &= \frac{d}{\nu}\rho(\alpha_h(s_e'U(g)))\alpha_g(s_e)\\
-% &= \frac{d}{\nu}\rho(\alpha_h(s_e'))\alpha_g(s_e)\\
-% &= \frac{d}{\nu}U(h)\rho(s_e')U(h^{-1})\alpha_g(s_e)\\
-% &= \frac{d}{\nu}\chi_g(h^{-1})U(h)\rho(s_e')\alpha_g(s_e)\\
-% &= \frac{d}{\nu}\chi_g(h^{-1})U(h)\alpha_g(\rho(s_e')s_e)\\
-% &= \chi_g(h^{-1})U(h).
-%\end{split}
-%\end{align*}
-%\noindent Similarly,
+\noindent In other words, $\rho(U(g^{-1}))s_e = c s_g$ for some $c \in \mathbbm{k}$. To show that $c = 1$, we see that
 \begin{align*}
 \begin{split}
-\eta_{h,g}(U(g)) &= \frac{d}{\nu}\rho(\alpha_h(s_e'))\rho(U(g))\alpha_g(s_e)\\
-&= \frac{d}{\nu}\rho(\alpha_h(s_e')U(g))\alpha_g(s_e)\\
-&= \frac{d}{\nu}\chi_{h}(g)\rho(\alpha_h(s_e'))\alpha_g(s_e)\\
-&= \frac{d}{\nu}\chi_{h}(g)U(h)\rho(s_e')U(h^{-1})\alpha_g(s_e)\\
-&= \frac{d}{\nu}\chi_{h}(g)\chi_g(h^{-1})U(h)\rho(s_e')\alpha_g(s_e)\\
-&= \chi_{h}(g)\chi_g(h)^{-1}U(h).\\
+\frac{d}{\nu}s_e'\rho(\rho(U(g^{-1}))s_e) = \frac{d}{\nu}s_e'\rho^2(U(g^{-1}))\rho(s_e) = \frac{d}{\nu}U(g^{-1})s_e'\rho(s_e) = U(g^{-1}),
 \end{split}
 \end{align*}
-\noindent\textcolor{red}{Supposedly the diagrammatics imply that $\eta_{h,g}(U(g)) = U(h)$ and hence that $\chi_h(g) = \chi_g(h)$.} This completes the proof.
+\noindent while
+\begin{align*}
+\begin{split}
+\frac{d}{\nu}s_e'\rho(c s_g) = c\frac{d}{\nu}s_e'U(g)\rho(s_e)U(g)^{-1} = c\frac{d}{\nu}s_e'\rho(s_e)U(g^{-1}) = c U(g^{-1}).
+\end{split}
+\end{align*}
+\noindent It follows that
+\begin{align*}
+\begin{split}
+\frac{d}{\nu}\rho(\alpha_h(s_e'))\rho(\alpha_h(U(g)))\rho(U(g^{-1}))s_e = \frac{d}{\nu}\rho(\alpha_h(s_e'))\rho(\alpha_h(U(g)))s_g.
+\end{split}
+\end{align*}
+\noindent But the left-hand side gives us
+\begin{align*}
+\begin{split}
+\frac{d}{\nu}\rho(\alpha_h(s_e'))\rho(\alpha_h(U(g)))\rho(U(g^{-1}))s_e &= \chi_{h^{-1}}(g)\frac{d}{\nu}\rho(\alpha_h(s_e'))\rho(U(g))\rho(U(g^{-1}))s_e\\
+&= \chi_{h^{-1}}(g)\frac{d}{\nu}\rho(\alpha_h(s_e'))s_e\\
+&= \chi_{h^{-1}}(g)\frac{d}{\nu}U(h)\rho(s_e')U(h)^{-1}s_e\\
+&= \chi_{h^{-1}}(g)U(h),
+\end{split}
+\end{align*}
+\noindent while the right-hand side gives us
+\begin{align*}
+\begin{split}
+\frac{d}{\nu}\rho(\alpha_h(s_e'))\rho(\alpha_h(U(g)))s_g &= \frac{d}{\nu}\rho(\alpha_h(s_e'U(g)))s_g\\
+&= \frac{d}{\nu}\rho(\alpha_h(s_e'))s_g\\
+&= \frac{d}{\nu}U(h)\rho(s_e')U(h)^{-1}s_g\\
+&= \chi_g(h^{-1})\frac{d}{\nu}U(h)\alpha_g(\rho(s_e')s_e)\\
+&= \chi_g(h^{-1})U(h).
+\end{split}
+\end{align*}
+\noindent The result follows. This completes the proof.
 \end{proof}\\
 
-\noindent\begin{theorem} .\\
+\noindent In what follows, we will let $\lambda$ denote the left regular representation.\\
+
+\noindent\begin{theorem} If $d$ is irrational, then
+\begin{enumerate}[label=\textup{(\roman*).}, ref=\textup{(\roman*)}, leftmargin=4\parindent]
+\item $G$ is necessarily Abelian;
+\item $m$ is a multiple of $n$;
+\item $\bigoplus_{h \in G} \chi_h \cong \lambda$;
+\item $V \cong U_\mathcal{K} \cong \frac{m}{n}\lambda$.
+\end{enumerate}
+\noindent Conversely, if $d$ is rational, there exist two natural numbers $s$ and $t$ such that $d = st$, $m = (s - 1)t$ and $n = st^2$. In particular,
+\begin{enumerate}[label=\textup{(\roman*).}, ref=\textup{(\roman*)}, leftmargin=4\parindent]
+\item there exist two natural numbers $s$ and $t$ such that $d = st$, $m = (s - 1)t$ and $n = st^2$;
+\item when $t = 1$,
+\begin{enumerate}[label=$\bullet$, leftmargin=4\parindent]
+\item $G$ is Abelian,
+\item $\chi_h$ is trivial for all $h \in G$,
+\item $1 \oplus V \cong 1 \oplus U_\mathcal{K} \cong \lambda$;
+\end{enumerate}
+\item when $t > 1$,
+\begin{enumerate}[label=$\bullet$, leftmargin=4\parindent]
+\item $G$ is non-Abelian,
+\item $\abs{\homset(G, \mathbbm{k}^\times)} = t^2$,
+\item $\oplus_{h \in G} \chi_h \cong \oplus_{\chi \in \homset(G, \mathbbm{k}^\times)} \chi^{\oplus s}$,
+\item $t$ divides $\dim(\pi)$, for all $\pi \in \hat{G}^\dagger$, where $\hat{G}^\dagger$ is the set of equivalence classes of irreducible unitary representations of $G$ with dimension greater than $1$,
+\item $V \cong U_\mathcal{K} \cong \bigoplus_{\pi\in\hat{G}^\dagger}\frac{\dim(\pi)}{t}\pi$.\\
+\end{enumerate}
+\end{enumerate}
 \end{theorem}
 
 \noindent\begin{proof} For all $g \in G$, we have $\delta_{g,e} = \rho(s_e's_g) = \rho(s_e')U(g)\rho(s_e)U(g)^{-1}$. Since $U(e) = 1$,
 \begin{align*}
 \begin{split}
-\delta_{g,e} = \rho(s_e')U(g)\rho(s_e) % &= \frac{1}{d^2}\sum_{h \in G} \chi_h(g) + \sum_{i,j=1}^m \rho(s_e')t_it_i' U_\mathcal{K}(g)t_jt_j'\rho(s_e)\\
-&= \frac{1}{d^2}\sum_{h \in G} \chi_h(g) + \rho(s_e')U_\mathcal{K}(g)\rho(s_e).
+\delta_{g,e} = \rho(s_e')U(g)\rho(s_e) &= \frac{1}{d^2}\sum_{h \in G} \chi_h(g) + \sum_{i,j=1}^m \rho(s_e')t_it_i' U_\mathcal{K}(g)t_jt_j'\rho(s_e).%\\
+% &= \frac{1}{d^2}\sum_{h \in G} \chi_h(g) + \rho(s_e')U_\mathcal{K}(g)\rho(s_e).
 \end{split}
 \end{align*}
-\noindent Now, recall that the left quantum trace of $U_\mathcal{K}(g)$ as an element of $\homset_{\mathcal{E}(A)}({\rho \otimes \rho}, {\rho \otimes \rho})$ is given by
+\noindent Observe that $t_i' U_\mathcal{K}(g)t_j \in \mathbbm{k}$, as it is in the $1$-dimensional space $\homset_{\mathcal{E}(A)}(\rho, \rho)$. It therefore follows from \hyperref[RhoExpansion]{Lemma \ref*{RhoExpansion}} that
 \begin{align*}
 \begin{split}
-\textup{Tr}^L(U_\mathcal{K}(g)) \coloneqq \textup{ev}_\rho\rho(\textup{ev}_\rho)U_\mathcal{K}(g)\rho(\textup{coev}_\rho)\textup{coev}_\rho = d^2 s_e'\rho(s_e')U_\mathcal{K}(g)\rho(s_e)s_e,
+\delta_{g,e} &= \frac{1}{d^2}\sum_{h \in G} \chi_h(g) + \sum_{i,j=1}^m \rho(s_e')t_it_i' U_\mathcal{K}(g)t_jt_j'\rho(s_e)\\
+&= \frac{1}{d^2}\sum_{h \in G} \chi_h(g) + \frac{1}{d}\sum_{i=1}^m t_i' U_\mathcal{K}(g)t_i\\
+&= \frac{1}{d^2}\sum_{h \in G} \chi_h(g) + \frac{1}{d}\textup{Tr}(U_\mathcal{K}(g)).
 \end{split}
 \end{align*}
-\noindent and similarly for $\textup{Tr}^L(U(g))$. Moreover, $\rho(s_e')U_\mathcal{K}(g)\rho(s_e) \in \mathbbm{k}$, as it is in the $1$-dimensional space $\homset_{\mathcal{E}(A)}(\rho, \rho)$. Thus, because $s_e's_e = 1$, it follows that
+\noindent Because $\textup{Tr}(\lambda(g)) = n\delta_{g,e}$, we have
 \begin{align*}
 \begin{split}
-\delta_{g,e} = \frac{1}{d^2}\textup{Tr}^L(U(g)) = \frac{1}{d^2}\sum_{h \in G} \chi_h(g) + \frac{1}{d^2}\textup{Tr}^L(U_\mathcal{K}(g)).
+\textup{Tr}(\lambda(g)) = \frac{n}{d^2}\sum_{h \in G} \chi_h(g) + \frac{n}{d}\textup{Tr}(U_\mathcal{K}(g)).
 \end{split}
 \end{align*}
-\noindent Observe that when $g = e$, multiplying through by $d^2$ recovers
+\noindent Let $\chi \in \homset(G, \mathbbm{k}^\times)$ now be a $1$-dimensional representation. Denote by $a_\chi$ and $b_\chi$ the multiplicities of $\chi$ in the representations $\bigoplus_{h \in G}\chi_h$ and $U_\mathcal{K}$, respectively. Of course, $\chi$ has multiplicity $1$ in $\lambda$. Because the character of a direct sum of representations is the direct sum of the characters of those representations, inspecting the coefficient of $\chi$ on both sides of the previous equation gives us
 \begin{align*}
 \begin{split}
-d^2 = \abs{G} + \textup{Tr}^L(T) = n + md
+d^2 = na_\chi + nd b_\chi.
 \end{split}
 \end{align*}
-\noindent by \hyperref[RhoExpansion]{Lemma \ref*{RhoExpansion}}.
+\noindent If $d$ is irrational, we have no choice but to take $a_\chi = 1$ and $n b_\chi = m$. The former implies that
+\begin{align*}
+\begin{split}
+\bigoplus_{h \in G}\chi_h \cong \bigoplus_{\chi \in \homset(G, \mathbbm{k}^\times)}\chi.
+\end{split}
+\end{align*}
+\noindent In other words, $\abs{G} = \abs{\homset(G, \mathbbm{k}^\times)}$, whence $G$ must be Abelian.\\
+
+\noindent Conversely, suppose that $d$ is rational. Then one can show that the integer $m \pm \csqrt{m^2 + 4n}$ is even and hence that $d$ is an integer. Now, any object tensored with its dual is Morita equivalent to $1$, so $\rho \otimes \rho$ is an algebra object with dimension $d^2$. The restriction of $\rho \otimes \rho$ to $\textcat{Vec}_G$, given by throwing away simple summands not in $\textcat{Vec}_G$, is $\bigoplus_{g \in G} \alpha_g$ with dimension $n$. Thus by \hyperref[QuotientAlgebraObject]{Theorem \ref*{QuotientAlgebraObject}}, there exists an algebra object with dimension $d^2/n$. Because this must be a sum of simple objects with dimensions $d$ or $1$, it follows that $d^2/n = 1 + md/n$ must be an integer. Let $s \coloneqq 1 + md/n$ and $t \coloneqq m/(s - 1)$. Note that $d^2 = n + md$ together with $n(s - 1) = md$ implies $n(s - 1)^2 = sm^2$, whence $t$ must also be an integer. In particular, $d = st$ and $n = st^2$. \textcolor{red}{This is pretty tedious. I'll finish it later.}
+\end{proof}\\
+
+\noindent\begin{lemma} We have
+\begin{align*}
+\begin{split}
+\rho(U(g)) = \sum_{h \in G} s_h s_{hg}' + \varphi U_\mathcal{K}(g)(\varphi') \otimes U(g).
+\end{split}
+\end{align*}
+\noindent for all $g \in G$.\\
+\end{lemma}
+
+\noindent\begin{proof} We have shown in the proof for \hyperref[ChiBicharacter]{Corollary \ref*{ChiBicharacter}} that $\rho(U(g))s_h = s_{hg^{-1}}$. Thus
+\begin{align*}
+\begin{split}
+\rho(U(g))S = \sum_{h \in G}\rho(U(g))s_hs_h' = \sum_{h \in G}s_{hg^{-1}}s_h'.
+\end{split}
+\end{align*}
+\noindent It follows that both $S$ and $T$ commute with $\rho(U(g))$, since
+\begin{align*}
+\begin{split}
+\rho(U(g))T = \rho(U(g))(S + T) - \rho(U(g))S = (S + T)\rho(U(g)) - S\rho(U(g)) = T\rho(U(g)).
+\end{split}
+\end{align*}
+\noindent Thus $\rho(U(g))T = \rho(U(g))T^2 = T\rho(U(g))T$ and
+\begin{align*}
+\begin{split}
+\rho(U(g))(S + T) = \sum_{h \in G}\rho(U(g))s_hs_h' + T\rho(U(g))T.
+\end{split}
+\end{align*}
+\noindent Now, $t_i'\rho(U(g))t_j \in \homset_{\mathcal{E}(A)}(\rho, \rho \otimes \alpha_g) = \mathbbm{k}U(g)$. That is, $t_i'\rho(U(g))t_j = U'(g)_{ij} U(g)$ for some $U'(g)_{ij} \in \mathbbm{k}$. Thus $T\rho(U(g))T = U'(g) \otimes U(g)$, for $U'(g) \in \textup{End}(\mathcal{K})$. Because these matrices define a representation, $U' : G \to \textup{End}(\mathcal{K})$ is also a representation of $G$ and is determined by
+\begin{align*}
+\begin{split}
+s_e't_i'\rho(U(g))t_js_e = U'(g)_{ij} = t_i'U'(g)t_j.
+\end{split}
+\end{align*}
+\noindent Substituting
+\begin{align*}
+\begin{split}
+U(g) = \sum_{h \in G}{\chi_h(g)s_hs_h'} + \sum_{p,q=1}^m{U_\mathcal{K}(g)_{pq}t_pt_q'},
+\end{split}
+\end{align*}
+\noindent we obtain
+\begin{align*}
+\begin{split}
+s_e't_i'\rho(U(g))t_js_e &= \sum_{h \in G}{\chi_h(g)s_e't_i'U(h)\rho(s_es_e')U(h)^{-1}t_js_e} + \sum_{p,q=1}^m{U_\mathcal{K}(g)_{pq}s_e't_i'\rho(t_pt_q')t_js_e}\\
+&= \sum_{p,q=1}^m{U_\mathcal{K}(g)_{pq}s_e't_i'\rho(t_pt_q')t_js_e}.
+\end{split}
+\end{align*}
+\noindent Thus
+\begin{align*}
+\begin{split}
+U'(g) &= \sum_{i,j=1}^m U'(g)_{ij}t_it_j' = \sum_{i,j=1}^m\sum_{p,q=1}^m{U_\mathcal{K}(g)_{pq}s_e't_i'\rho(t_p)(t_q')t_js_et_it_j'}\\
+&= 
+\end{split}
+\end{align*}
+
+
+
+%In other words, there exists a representation $U' : G \to \textup{End}(\mathcal{K})$.
 \end{proof}\\
 
 \newpage
