@@ -1,0 +1,519 @@
+%%%%%%%%%
+% SETUP %
+%%%%%%%%%
+
+\documentclass{beamer}
+\mode<presentation> {
+	\usetheme{Madrid}
+}
+\setbeamertemplate{frametitle continuation}[from second][]
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{knots}
+\usetikzlibrary{arrows.meta} 
+
+% Title.
+\title[Non-Unitary Near-Groups via Endomorphisms]{Non-Unitary Near-Groups via Endomorphisms}
+\author{Daniel Dunmore}
+\institute[UNSW]{
+	University of New South Wales \\
+	\medskip
+	\textit{d.dunmore@unsw.edu.au}
+}
+\date{August 10, 2026}
+
+% Bibliography.
+\usepackage[%
+	backend = biber,
+	% BibLaTeX-Math package: https://github.com/konn/biblatex-math
+	style = math-alphabetic,
+	giveninits = true,
+	dashed = false,
+	url = false,
+	doi = false,
+	sorting = none,
+	minalphanames = 3,
+	maxalphanames = 4
+]{biblatex}
+% Use the default font size for the bibliography.
+\renewcommand*{\bibfont}{\normalsize}
+% Use title case rather than sentence case for references.
+\DeclareFieldFormat{titlecase}{#1}
+% Put last names before first names.
+\DeclareNameAlias{default}{family-given}
+% Used for articles with appendices written by other authors.
+\NewBibliographyString{bywithappendix}
+\DefineBibliographyStrings{english}{
+	bywithappendix = {with an appendix by}
+}
+% Specify the bibliography data file to use.
+\addbibresource{References.bib}
+% Sort by order present in .bib file.
+\nocite{*}
+
+
+%%%%%%%%%%%%
+% NOTATION %
+%%%%%%%%%%%%
+
+\usepackage{mathrsfs}
+
+% Adds integral notation like \oiint.
+\usepackage{esint}
+% Blackboard bold symbols.
+\usepackage{bbm}
+
+\usepackage{accents}
+% Tilde notation for vectors.
+\newcommand{\ut}[1]{\underaccent{\tilde}{#1}}
+% Arrow notation for vectors.
+\usepackage{harpoon}
+% Dirac bra-ket notation for quantum states.
+\usepackage{braket}
+
+% Differential formatting.
+\usepackage{ifthen}
+\usepackage{etoolbox}
+\newcommand*{\ndiff}[1]{\mathrm{d}#1}
+\newcommand*{\sdiff}[1]{\mathop{}\!\ndiff{#1}}
+\newcommand{\rdiff}[3][]{
+	\ifthenelse{\equal{#1}{}}
+	{\frac{\mathrm{d}#2}{\mathrm{d}#3}}
+	{\frac{\mathrm{d}^{#1}#2}{\forcsvlist\ndiff{#3}}}
+}
+\newcommand*{\npiff}[1]{\mathrm{\partial}#1}
+\newcommand*{\spiff}[1]{\mathop{}\!\npiff{#1}}
+\newcommand{\rpiff}[3][]{
+	\ifthenelse{\equal{#1}{}}
+	{\frac{\mathrm{\partial}#2}{\mathrm{\partial}#3}}
+	{\frac{\mathrm{\partial}^{#1}#2}{\forcsvlist\npiff{#3}}}
+}
+% Inexact differential for physics.
+\newcommand*{\dbar}[1]{\mathop{}\!\mathrm{\dj}#1}
+
+% Metrics, inner products and norms.
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\inprod}{\langle}{\rangle}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+% This is used if we want an empty norm. 
+\newcommand{\blank}{{}\cdot{}}
+
+% Function notation.
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\coker}{\mathrm{Coker}}
+\newcommand{\im}{\mathrm{Im}}
+\newcommand{\ev}{\mathrm{ev}}
+\newcommand{\coev}{\mathrm{coev}}
+
+% Category theory notation.
+%\newcommand{\obset}{\textnormal{Ob}_{#1}\!\left(#2\right)}
+%\newcommand{\morset}[2][]{\textnormal{Mor}_{#1}\!\left(#2\right)}
+%\newcommand{\homset}[2][]{\textnormal{Hom}_{#1}\!\left(#2\right)}
+%\newcommand{\End}[2][]{\textnormal{End}_{#1}\!\left(#2\right)}
+%\newcommand{\opp}[1]{{#1}^{\textnormal{op}}}
+%\newcommand{\textcat}[1]{\textnormal{\textsf{#1}}}
+\newcommand{\obset}{\mathrm{Ob}}
+\newcommand{\morset}{\mathrm{Mor}}
+\newcommand{\homset}{\mathrm{Hom}}
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\opp}{\mathrm{op}}
+\newcommand{\textcat}[1]{\mathrm{\textsf{#1}}}
+\newcommand{\textobj}[1]{\mathrm{\texttt{#1}}}
+
+% Special notation.
+%\newcommand{\chr}{\textnormal{char}}
+%\newcommand{\Tr}{\textnormal{Tr}}
+%\newcommand{\trv}{\textnormal{tr}}
+%\newcommand{\Dim}{\textnormal{Dim}}
+%\newcommand{\FPdim}{\textnormal{FPdim}}
+\newcommand{\chr}{\mathrm{char}}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\trv}{\mathrm{tr}}
+\newcommand{\Dim}{\mathrm{Dim}}
+\newcommand{\FPdim}{\mathrm{FPdim}}
+
+% Hiragana "yo" for the Yoneda embeddings.
+\newcommand{\yo}{\text{\usefont{U}{min}{m}{n}\symbol{'210}}}
+\DeclareFontFamily{U}{min}{}
+\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
+
+% Representation theory notation.
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\Alt}{\mathrm{Alt}}
+
+\usepackage{calc}
+
+\newcommand*{\emphasis}[1]{\textcolor{structure}{\em #1}}
+
+\usefonttheme[onlymath]{serif}
+
+\DeclareCiteCommand{\aycite}
+{\boolfalse{citetracker}\boolfalse{pagetracker}}
+{\printtext[bibhyperref]{\printnames{labelname}\addcomma\addspace\printfield{year}}}
+{\multicitedelim}
+{}
+
+% Closed square root.
+\def\DHLhksqrt[#1]#2#3{
+	\setbox0=\hbox{\nhphantom{$#2\sqrt[#1]{#3\,}$}\phantom{$#2\sqrt{#3\,}$}$#2\sqrt[#1]{#3\,}$}\dimen0=\ht0
+	\advance\dimen0-0.4\ht0
+	\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}
+	{\box0\lower0.5pt\box2}
+}
+\newcommand\csqrt[2][]{\mathchoice
+	{\DHLhksqrt[#1]{\displaystyle}{#2}}
+	{\DHLhksqrt[#1]{\textstyle}{#2}}
+	{\DHLhksqrt[#1]{\scriptstyle}{#2}}
+	{\DHLhksqrt[#1]{\scriptscriptstyle}{#2}}
+}
+
+% Negative horizontal phantom.
+\newcommand{\nhphantom}[1]{\sbox0{#1}\hspace{-\the\wd0}}
+
+% Long squiggly arrow.
+\usetikzlibrary{decorations.pathmorphing}
+\newcommand\xlsquigarrow[1]{\mathrel{
+	\begin{tikzpicture}[baseline={(current bounding box.south)}]
+		\node[inner sep=.44ex,align=center] (tmp) {$\scriptstyle #1$};
+		\path[draw,<-,decorate,decoration={zigzag,amplitude=1pt,segment length=1.75mm,pre length=3.5pt}] (tmp.south west) -- (tmp.south east);
+	\end{tikzpicture}
+}}
+\newcommand\xrsquigarrow[1]{\mathrel{
+	\begin{tikzpicture}[baseline={(current bounding box.south)}]
+		\node[inner sep=.44ex,align=center] (tmp) {$\scriptstyle #1$};
+		\path[draw,<-,decorate,decoration={zigzag,amplitude=-1pt,segment length=1.75mm,pre length=3.5pt}] (tmp.south east) -- (tmp.south west);
+	\end{tikzpicture}
+}}
+\newcommand\xlrsquigarrow[1]{\mathrel{
+	\begin{tikzpicture}[baseline={(current bounding box.south)}]
+		\node[inner sep=.44ex,align=center] (tmp) {$\scriptstyle #1$};
+		\path[draw,<->,decorate,decoration={zigzag,amplitude=-1pt,segment length=1.75mm,pre length=3.5pt, post length=2.75pt}] (tmp.south east) -- (tmp.south west);
+	\end{tikzpicture}
+}}
+
+\newtheorem{theoremdefinition}{Theorem-Definition}
+
+\usepackage{stmaryrd}
+
+\renewcommand*{\bibfont}{\normalfont\footnotesize}
+
+\setlength{\leftmargini}{30pt}
+
+
+%%%%%%%%%%%%
+% DOCUMENT %
+%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%
+% Prelude %
+%%%%%%%%%%%
+
+\begin{frame}
+\noindent\\[-20pt]
+\begin{figure}[!ht]
+\titlepage
+\noindent\\[-20pt]
+\hspace{3.5cm}\hfill\includegraphics[width=2cm]{unsw-crest}\hfill\raisebox{-0.7093cm}{\includegraphics[width=3.5cm]{QR}}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Prelude}
+\begin{center}
+\begin{minipage}{\widthof{(4) The Non-Unitary Setting: Leavitt Algebras}}
+\setlength{\parskip}{4ex}
+\tableofcontents
+\end{minipage}
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% What are Fusion Categories? %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{What are Fusion Categories?}
+
+\begin{frame}
+\noindent\centerline{\LARGE\textcolor{structure}{\underline{What are Fusion Categories?}}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Motivation I}
+In the 1920s, it was proposed by Dirac that with the elimination of only one basic assumption, quantum mechanics would follow naturally from the classical theory. This assumption was \textcolor{structure}{commutativity} (\cite{Dir26}).\pause\\[2ex]
+
+Since then, non-commutative mathematics has played an important role in modern physics. In fact, ``quantum'' has become almost synonymous with ``non-commutative'' on the mathematical side.\pause\\[2ex]
+
+From this perspective, fusion categories can be viewed as a \textcolor{structure}{quantum analogue to the finite-dimensional representation theory of finite groups}.\\[2ex]
+
+This can be made quite precise as follows. For simplicity, we will always assume to be working over an \textcolor{structure}{algebraically closed field of characteristic $0$}.
+\end{frame}
+
+\begin{frame}
+\frametitle{Motivation II}
+Consider the category $\textcat{Rep}(G)$ of finite-dimensional representations of a finite group $G$. This category has the following properties.\pause\\[1.5ex]
+\begin{itemize}[<+->]
+\item \textcolor{structure}{Linear}: hom-sets are vector spaces.
+\item \textcolor{structure}{Semisimple}: every representation is a direct sum of irreducibles.
+\item \textcolor{structure}{Finite}: there are only finitely many irreducibles.
+\item \textcolor{structure}{Simple unit}: the trivial representation $\mathbbm{1}$ is irreducible.
+\item \textcolor{structure}{Monoidal}: we have linear tensor products with unit $\mathbbm{1}$.
+\item \textcolor{structure}{Rigid}: every representation $X$ has a contragredient dual $X^*$.
+\item \textcolor{structure}{Symmetric}: the braiding $c_{X,Y}(x \otimes y) \coloneqq y \otimes x$ has inverse $c_{Y,X}$.\\[2ex]
+%\item \textcolor{structure}{Positive}: every object has non-negative integer dimension.\\[2ex]
+\end{itemize}\pause[\thebeamerpauses]
+By Tannakian duality (\cite{Del90}, \cite{Del02}), every category satisfying these properties is equivalent (as a tensor category) to some $\textcat{Rep}(G)$!
+\end{frame}
+
+\begin{frame}
+\frametitle{Motivation III}
+In order to ``quantize'' $\textcat{Rep}(G)$, there are two particularly interesting ways of throwing away commutativity.\pause\\[1.5ex]
+\begin{itemize}[<+->]
+\item We can ask that the braiding be ``as non-symmetric as possible'', giving us \textcolor{structure}{modular tensor categories}.\\[2ex]
+\item More generally, we can eliminate entirely the requirement of a braiding, whence we arrive at the definition of a \textcolor{structure}{fusion category}.\\[2ex]
+\end{itemize}\pause[\thebeamerpauses]
+Modular tensor categories have applications in topological quantum computing, where they are used to model anyons, as well as $(2+1)$D topological quantum field theory and vertex operator algebras.\pause\\[2ex]
+
+Fusion categories encompass the more general theory, with applications to operator algebras and categorical representation theory.
+\end{frame}
+
+\begin{frame}
+\frametitle{Motivation IV}
+Currently, there are four ``primitive sources'' of fusion categories (\cite{EIP24}).\pause\\[1.5ex]
+\begin{itemize}[<+->]
+\item \textcolor{structure}{Finite groups}: $\textcat{Vec}_G^\omega$.%, for $G$ a finite group and $\omega$ a $3$-cocycle.
+\item \textcolor{structure}{Quantum groups}: %(semisimple quotients of) 
+$\overline{\textcat{Tilt}(U_q^L(\mathfrak{g}))}$.%, for $U_q(\mathfrak{g})$ a Drinfeld-Jimbo quantum group at a root of unity $q$.
+\item \textcolor{structure}{Quadratic extensions}: ``quadratic extensions'' of $\textcat{Vec}_G$.%finite groups; that is, $\textcat{Vec}_G$ with an additional non-invertible simple.
+\item \textcolor{structure}{Extended Haagerup}: four Morita equivalent categories not known to arise from the previous three sources.\\[2ex]
+\end{itemize}\pause[\thebeamerpauses]
+Every \textcolor{structure}{known} fusion category arises from these families under elementary constructions (such as Deligne tensor products, (de-)equivariantization, Morita equivalence and graded extensions).
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Motivation III}
+%As alluded to previously, fusion categories appear frequently in physics.\\[2ex]
+
+%1. There is a bijective correspondence between certain equivalence classes of ``sufficiently finite'' %finite index, finite depth, hyperfinite
+%subfactors and certain %Morita
+%equivalence classes of unitary fusion categories.\\[2ex]
+
+%2. There is a bijective correspondence between ``sufficiently nice'' 3D TQFTs and certain equivalence classes of non-degenerate ribbon fusion categories.\\[2ex]
+
+%3. These so-called {\em modular tensor categories} are also used to model anyons in the realm of topological quantum computing.
+%\end{frame}
+
+\begin{frame}
+\frametitle{Motivation V}
+The fusion categories coming from finite groups and quantum groups are well-understood. The extended Haagerup fusion categories form just one class. This only leaves \textcolor{structure}{quadratic categories}, which will be my focus today.\pause\\[2ex]
+
+\textcolor{structure}{Quadratic fusion categories} contain $\textcat{Vec}_G$, but have two orbits under the $G$-action rather than one. An important family of quadratic categories are the \textcolor{structure}{near-groups}:%\\[2ex]
+%A \textcolor{structure}{near-group fusion category} is one whose simple objects are elements of a finite group together with a single non-invertible simple. In other words, we take $\textcat{Vec}_G$ and add a new simple object $X$ such that
+\[
+g \otimes h \cong gh,
+\]
+\[
+g \otimes X \cong X \cong X \otimes g,
+\]
+\[
+X \otimes X \cong \bigoplus_{g \in G}g \oplus X^{\oplus m}.
+\]\pause
+%for some multiplicity parameter $m$.\\[2ex]
+
+In this talk, I would like to address the problem of classifying \textcolor{structure}{near-group fusion categories}, beginning with Izumi's work in the unitary setting.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Endomorphisms of Cuntz Algebras %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Endomorphisms of Cuntz Algebras}
+
+\begin{frame}
+\noindent\centerline{\LARGE\textcolor{structure}{\underline{Endomorphisms of Cuntz Algebras}}}
+\end{frame}
+
+%\begin{frame}
+%Upshot, what is Cuntz algebra, Izumi's Cuntz algebra realization, etc.
+%A result of Hayashi and Yamagami shows that \textcolor{structure}{every unitary fusion category} embeds into $\textup{End}(M)$, for $M$ a hyperfinite type III$_1$ factor (\cite{HY00}). Popa's famous classification theorem for subfactors (\cite{Pop95}) then provides a compatible notion of equivalence.\\[2ex]
+
+%In \cite{Izu93} and \cite{Izu01}, Izumi showed that unitary near-group categories realized in $\textup{End}(M)$ could be reconstructed from \textcolor{structure}{Cuntz algebra endomorphisms}.\\[2ex]
+
+%This led to a full classification of unitary near-groups in \cite{Izu17}.
+%\end{frame}
+
+\begin{frame}
+An important result of Hayashi and Yamagami showed that \textcolor{structure}{every unitary fusion category} embeds into $\textup{End}(M)$, for $M$ a hyperfinite type III$_1$ factor (\cite{HY00}). Popa's famous classification theorem for subfactors (\cite{Pop95}) then provides a compatible notion of equivalence.\pause\\[2ex]
+
+In \cite{Izu93} and \cite{Izu01}, Izumi showed that unitary near-group categories realized in $\textup{End}(M)$, for $M$ a hyperfinite type III$_1$ factor, could be reconstructed from \textcolor{structure}{Cuntz algebra endomorphisms}.\pause\\[2ex]
+
+A \textcolor{structure}{Cuntz algebra} is a universal $C^*$-algebra $\mathcal{O}_n$ generated by a set of isometries $\{S_i\}_{i=1}^n$ satisfying
+\[
+\sum_{i=1}^n S_iS_i^* = 1.
+\]
+Since this implies $S_i^*S_j = \delta_{i,j}$ automatically, it follows that Cuntz algebras capture exactly the notion of \textcolor{structure}{direct sums} in the unitary setting.\\[2ex]
+\end{frame}
+
+\begin{frame}
+By \cite{HY00}, given a \textcolor{structure}{type $(G, m)$ near-group} $\mathcal{C}$, there are $\rho \in \textup{End}(M)$ and $\alpha : G \to \textup{Aut}(M)$ satisfying our fusion rules:\pause
+\[\begin{array}{ccc}
+g \otimes h \cong gh&\rightsquigarrow&\alpha_g(\alpha_h(x)) = \alpha_{gh}(x);\pause\\[2ex]
+g \otimes X \cong X \cong X \otimes g&\rightsquigarrow&\begin{matrix*}[c]\alpha_g(\rho(x)) = \rho(x),\\[1ex]\rho(\alpha_g(x)) = U(g)\rho(x)U(g)^{-1};\end{matrix*}\pause\\[4ex]
+\displaystyle X \otimes X \cong \bigoplus_{g \in G}g \oplus X^{\oplus m}&\rightsquigarrow&\rho(\rho(x)) = \displaystyle\sum_{g \in G}{S_g\alpha_g(x)S_g^*} + \sum_{i=1}^m{T_i\rho(x)T_i^*}.
+\end{array}\]
+These $S_g$ and $T_i$ are the inclusion maps for the summands $\alpha_g$ and $\rho$ inside $\rho \otimes \rho$, and hence naturally generate a Cuntz subalgebra $\mathcal{O}_{\abs{G}+m}$ of $M$.
+\end{frame}
+
+\begin{frame}
+In \cite{Izu17}, Izumi showed that $\rho$ and $\alpha_g$ are \textcolor{structure}{polynomials in the Cuntz algebra generators}, and moreover that the \textcolor{structure}{$6j$-symbols} of $\mathcal{C}$ are completely determined by\\[1.5ex]
+\begin{itemize}
+\item a finite-dimensional Hilbert space $\mathcal{K} \coloneqq \textup{Hom}(\rho, \rho^2)$,\\[2ex]
+\item two antilinear isometries $j_1, j_2 \in \textup{End}(\mathcal{K})$,\\[2ex]
+\item a unitary representation $V : G \to \textup{End}(K)$,\\[2ex]
+\item a unitary representation $U_\mathcal{K} : G \to \textup{End}(K)$,\\[2ex]
+\item a symmetric bicharacter $\chi : G \times G \to \mathbb{T}$,\\[2ex]
+\item a linear map $l : \mathcal{K} \to \mathcal{B}(\mathcal{K}, \mathcal{K} \otimes \mathcal{K})$.\\[2ex]
+\end{itemize}
+He then deduced necessary and sufficient conditions for this data to reproduce $\mathcal{C}$, as well as a compatible notion of equivalence.
+\end{frame}
+
+\begin{frame}
+The end result of this approach was a system of polynomial equations such that there exists a \textcolor{structure}{bijective correspondence} between equivalence classes of solutions and equivalence classes of unitary near-group categories.\\[2ex]
+
+This classification also simplifies significantly in certain circumstances. In particular, there are strong restrictions on what $m$ can be.\pause\\[2ex]
+
+If \textcolor{structure}{$\dim(X)$ is rational}, then $\dim(X)$ is necessarily an integer. This situation is group-theoretical and fairly well-understood.\pause\\[2ex]
+
+If \textcolor{structure}{$\dim(X)$ is irrational}, then $G$ is Abelian and $m = k\abs{G}$ for $k \in \mathbb{N}$. When $k = 1$, the data needed for the classification reduces to just\\[0.5ex]
+\begin{itemize}
+\item two functions $a, b : G \to \mathbb{T}$,\\[1ex]
+\item a scalar $c \in \mathbb{T}$\\[1ex]
+\end{itemize}
+satisfying various polynomial equations.\pause\\[2ex]
+
+Let's see a couple of very simple examples.
+\end{frame}
+
+\begin{frame}
+\begin{example}
+When $G = \{0\}$,\\
+\begin{itemize}
+\item $a$ must be given by $a(0) = 1$;\\
+\item $b$ must be given by $b(0) = -1/\dim(X)$;\\
+\item $c$ must be given by $c = 1$.
+\end{itemize}
+Thus there is one unitary type $(\{0\}, 1)$ near-group. This is the \textcolor{structure}{Fibonacci category} and corresponds to the even part of the type $A_4$ subfactor.\pause
+\end{example}
+\noindent\\[-1ex]
+\begin{example}
+When $G = \mathbb{Z}/2\mathbb{Z}$,\\
+\begin{itemize}
+\item $a$ must be given by $a(0) = 1$ and $a(1) = \pm i$;\\
+\item $b$ must be given by $b(0) = -1/\dim(X)$ and $b(1) = (1 - a(1))/2$;\\
+\item $c$ must be given by $c = \frac{1 - \csqrt{3} + a(1)(1 + \csqrt{3})}{2\csqrt{2}}$.\\
+\end{itemize}
+Thus there are two unitary type $(\mathbb{Z}/2\mathbb{Z}, 2)$ near-groups. These are adjoint subcategories of exceptional quantum subgroups of Temperley--Lieb--Jones.
+\end{example}
+\end{frame}
+
+\begin{frame}
+This is a significant improvement over na\"{i}vely determining the $6j$-symbols!\\[2ex]
+
+For instance, the space $\textup{Hom}_\mathcal{C}((X \otimes X) \otimes X, X \otimes (X \otimes X))$ alone has dimension
+\[
+m^4 + 3m^2\abs{G} + \abs{G}^2.
+\]
+Meanwhile, in the $m = \abs{G}$ case, the data needed for Izumi's classification is only $2m + 1$.
+\end{frame}
+
+\begin{frame}
+There is also an interesting observation we can make about these two examples. The near-group fusion rules imply that
+\[
+\dim(X) = \frac{m \pm \csqrt{m^2 + 4n}}{2}.
+\]
+In the unitary setting, this must be positive, so there is only really one choice. In the non-unitary setting, this restriction is lifted.\pause\\[2ex]
+
+If we work with the Galois conjugates of the dimension, we will find that there {\em are} choices for $(a, b, c)$ that satisfy all but two of our polynomial equations, and these correspond to non-unitary near-groups!\\[2ex]
+
+This is the first piece of evidence that we could expect to find a non-unitary version of Izumi's classification.
+\end{frame}
+
+\begin{frame}
+The second piece of evidence comes from Evans and Gannon.\\[2ex]
+
+Izumi's approach of realizing unitary fusion categories via Cuntz algebra endomorphisms, together with the work of Phillips on non-unitary analogues of Cuntz algebras (\cite{Phi12}), inspired Evans and Gannon to devise a non-unitary version of this classification for \textcolor{structure}{Haagerup--Izumi fusion categories} (\cite{EG17}).\\[2ex]
+
+In particular, they were able to realize certain non-unitary Haagerup--Izumi categories via \textcolor{structure}{Leavitt algebra endomorphisms}.\pause\\[2ex]
+
+We would like to see if this approach can give us new examples of non-unitary near-groups. In general, the non-unitary setting is much more mysterious than the unitary setting!
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The Non-Unitary Setting: Leavitt Algebras %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The Non-Unitary Setting: Leavitt Algebras}
+
+\begin{frame}
+\noindent\centerline{\LARGE\textcolor{structure}{\underline{The Non-Unitary Setting: Leavitt Algebras}}}
+\end{frame}
+
+\begin{frame}
+For us, a \textcolor{structure}{Leavitt algebra} will be a universal $\mathbbm{k}$-algebra $\mathcal{L}_n$ with generators $\{s_i\}_{i=1}^n \sqcup \{s_i'\}_{i=1}^n$ satisfying
+\[
+\sum_{i=1}^n s_is_i' = 1\qquad\text{and}\qquad s_i's_j = \delta_{i,j}.
+\]
+This is a straightforward generalization of the Cuntz algebra to the non-unitary setting.\pause\\[2ex]
+
+It is \textcolor{structure}{not known} whether all non-unitary fusion categories may be realized as categories of endomorphisms. In the unitary setting this result comes from subfactor theory, which we no longer have access to.
+\end{frame}
+
+\begin{frame}
+So far, what we have shown is as follows. Given a type $(G, m)$ near-group that admits a realization via algebra endomorphisms, $\alpha_g$ and $\rho$ will restrict to endomorphisms of a Leavitt algebra $\mathcal{L}_{m+\abs{G}}$. Moreover, the $6j$-symbols are completely determined by\\[1.5ex]
+\begin{itemize}
+\item a finite-dimensional vector space $\mathcal{K} \coloneqq \textup{Hom}(\rho, \rho^2)$,\\[2ex]
+\item two morphisms $j_1', j_2' \in \textup{Hom}(\mathcal{K}, \mathcal{K}')$,\\[2ex]
+\item \textcolor{structure}{an automorphism $\varphi \in \textup{Aut}(\mathcal{K})$},\\[2ex]
+\item a representation $V : G \to \textup{End}(K)$,\\[2ex]
+\item a representation $U_\mathcal{K} : G \to \textup{End}(K)$,\\[2ex]
+\item a symmetric bicharacter $\chi : G \times G \to \mathbbm{k}^\times$,\\[2ex]
+\item two linear maps $l : \mathcal{K} \to \mathcal{K}^2\mathcal{K}'$ \textcolor{structure}{and $l' : \mathcal{K}' \to \mathcal{K}(\mathcal{K}')^2$}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+The group-theoretic component of the project has essentially been completed.\pause\\[2ex]
+
+The goal moving forward is to focus on the case when $\dim(X)$ is irrational, beginning with $m = \abs{G}$. Izumi's unitary classification allows us to make some educated guesses as to what the constraints on our data could look like.\pause\\[2ex]
+
+The main limitation is, of course, that there could perhaps be non-unitary near-groups that escape this kind of realization. I'm very curious about results in this direction!
+\end{frame}
+
+%%%%%%%%%%%%%%
+% References %
+%%%%%%%%%%%%%%
+
+\section*{References}
+
+\begin{frame}[allowframebreaks]
+\frametitle{References}
+\printbibliography[heading = none]
+\end{frame}
+
+%%%%%%%%%%%%%
+% Thank you %
+%%%%%%%%%%%%%
+
+\begin{frame}
+\noindent\centerline{\LARGE\textcolor{structure}{\underline{Thank you very much for your attention!}}}
+%\vspace*{2em}
+%\centerline{\LARGE Any questions?}
+\end{frame}
+
+\end{document}
