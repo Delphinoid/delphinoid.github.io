@@ -3,6 +3,7 @@ const POST_URL_PREFIX = "./research/";
 
 // Array of tags for each post, stored from newest to oldest. The last tag is the post ID.
 const POSTS = [
+	["2026/08/10", "algebras", "categories", "classification", "cuntz", "endomorphisms", "fusion", "group", "haagerup", "izumi", "leavitt", "near", "path", "quadratic", "subfactors", "18"],
 	["2026/04/24", "algorithm", "bimodules", "categorical", "categories", "category", "computational", "computing", "lusztig", "lv", "magma", "modules", "monoidal", "representations", "sbim", "soergel", "talks", "theory", "vogan", "17"],
 	["2025/11/20", "algebras", "categories", "classification", "cuntz", "endomorphisms", "fusion", "group", "haagerup", "izumi", "leavitt", "near", "path", "quadratic", "subfactors", "16"],
 	["2025/10/27", "algebras", "categories", "classification", "cuntz", "endomorphisms", "fusion", "group", "haagerup", "izumi", "leavitt", "near", "path", "quadratic", "subfactors", "15"],
