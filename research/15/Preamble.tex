@@ -332,6 +332,13 @@ $\mkern3.5mu\rightarrow$}}
 \def\ruledsection#1#2{\section{#1}\label{#2}\noindent\\[-1.75\linespacing]\rule{\linewidth}{1pt}\\[-0.75\linespacing]}
 \def\ruledsectionstar#1#2{\section*{#1}\label{#2}\noindent\\[-1.75\linespacing]\rule{\linewidth}{1pt}\\[-0.75\linespacing]}
 
+% Define starred eqref.
+\makeatletter
+\def\eqref{\@ifstar\@eqref\@@eqref}
+\def\@eqref#1{\textup{\tagform@{\ref*{#1}}}}
+\def\@@eqref#1{\textup{\tagform@{\ref{#1}}}}
+\makeatother 
+
 % Remove the ugly random spacing that LaTeX likes to add.
 \raggedbottom
 
