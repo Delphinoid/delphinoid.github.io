@@ -35,8 +35,9 @@
 		iii. Example: Yang--Lee Model\\
 		iv.  Idempotent Completion (and why it's necessary)\\
 3. Deconstruction\\
-	a. Classifying Data\\
-	b. Invariants\\
+	a. Restricting to the Leavitt Algebra\\
+	b. Classifying Data\\
+	c. Invariant Equations\\
 4. Reconstruction\\
 5. The Case of m = 0\\
 6. Examples\\
@@ -789,7 +790,8 @@ T\alpha_g(\rho(x)) = \sum_{h \in G}{\alpha_g(l_h(x)) s_{gh} s_{gh}'} + \alpha_g(
 \noindent\begin{remark} While we were not able to show that $\rho$ is rigid a priori (that is, that $a \neq 0$), \hyperref[HomDimensions]{Lemma \ref*{HomDimensions}} can show that it is at least {\em weakly} self-dual (\cite[Definition 5.3.4]{BK01}). In the unitary setting, this does happen to be enough for rigidity; see \cite[Remark 3.2]{EP26}, for instance. Even if we could show that it is self-dual, however, we will find it important to work with a pivotal structure. In principle we could define a partial pivotal structure on only the simple objects and $\rho^2$, but this too seems infeasible.\\
 \end{remark}
 
-\noindent Rather than continuing to work in $\textcat{End}(A)$, let's work instead in the monoidal subcategory $\mathcal{D}$ given by restricting $\textcat{End}(\mathcal{L})$ to the closure of $\{\rho\} \sqcup \{\alpha_g\}_{g \in G}$ under composition. Then $\mathcal{D}$ is a full monoidal subcategory of $\mathcal{C}$ by \hyperref[HomDimensions]{Lemma \ref*{HomDimensions}}. In particular, it inherits both rigidity and a pivotal structure $\psi$ from $\mathcal{C}$. Because it is rigid, the left quantum trace $\textup{Tr}^L$ is genuinely a trace by \cite[Proposition 4.7.3]{EGNO16}, and we can use the pivotal structure $\psi$ to define the quantum dimension $\textup{Dim}(-) \coloneqq \textup{Tr}^L(\psi_-)$. In particular, by \hyperref[DimensionFrobeniusSchur]{Remark \ref*{DimensionFrobeniusSchur}}, we know that $\psi_\rho \eqcolon \nu \in \{-1, 1\}$. Note that $\mathcal{D}$ is only preadditive in general; the only direct sum that we know exists is
+\noindent Rather than continuing to work in $\textcat{End}(A)$, let's work instead in the monoidal subcategory $\mathcal{D}$ given by restricting $\textcat{End}(\mathcal{L})$ to the closure of $\{\rho\} \sqcup \{\alpha_g\}_{g \in G}$ under composition. Then $\mathcal{D}$ is a monoidal subcategory of $\mathcal{C}$, and because we can always take the non-invertible to be equal to its dual in $\mathcal{C}$ by \hyperref[SelfDual]{Lemma \ref*{SelfDual}}, we have that $\mathcal{D}$ is rigid. The left quantum trace $\textup{Tr}^L$ is therefore genuinely a trace by \cite[Proposition 4.7.3]{EGNO16}. Moreover, by \hyperref[HomDimensions]{Lemma \ref*{HomDimensions}} it is at least full when restricted to simple objects and $\rho^2$, so we inherit a partial pivotal structure $\psi$ that is natural on this restriction. %This allows us to define the quantum dimension $\textup{Dim}(-) \coloneqq \textup{Tr}^L(\psi_-)$.
+By \hyperref[DimensionFrobeniusSchur]{Remark \ref*{DimensionFrobeniusSchur}}, we know that $\psi_\rho \eqcolon \nu \in \{-1, 1\}$. Note that $\mathcal{D}$ is only preadditive in general; the only direct sum that we know exists is
 \begin{align}
 \rho^2 = \bigoplus_{g \in G} \alpha_g \oplus \bigoplus_{i=1}^m \rho,
 \end{align}
