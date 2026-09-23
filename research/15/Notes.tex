@@ -706,10 +706,10 @@ r = (S + T)r = s_gs_g'r \in \mathbbm{k}s_g.
 \alpha_g(x) \in \mathcal{K},\\
 \alpha_g(y) \in \mathcal{K}',
 \end{gather}
-\noindent for all $g, h \in G$, $x \in \mathcal{K}$ and $y \in \mathcal{K}'$. In particular, there must exist an element $V(g) \in \mathcal{K}\mathcal{K}'$ satisfying $\alpha_g(x) = V(g)x$ for all $x \in \mathcal{K}$, defining a representation $V : G \to \textup{End}(\mathcal{K})$. In fact, $1 = \alpha_g(t_i't_i) = \alpha_g(t_i')V(g)t_i$ tells us that $\alpha_g(y) = yV(g)^{-1}$ for all $y \in \mathcal{K}'$, as both $V(g)$ and $t_i$ have unique left inverses. %This completes the proof.
+\noindent for all $g, h \in G$, $x \in \mathcal{K}$ and $y \in \mathcal{K}'$. In particular, there must exist an element $V(g) \in \mathcal{K}\mathcal{K}'$ satisfying $\alpha_g(x) = V(g)x$ for all $x \in \mathcal{K}$, defining a representation $V : G \to \textup{End}(\mathcal{K})$. Similarly, we must have some $\hat{V}(g) \in \mathcal{K}\mathcal{K}'$ such that $\alpha_g(y) = y\hat{V}(g)$ for all $y \in \mathcal{K}$. But because $\delta_{i,j} = \alpha_g(t_i't_j) = t_i'\hat{V}(g)V(g)t_j$, it follows that $\hat{V}(g) = V(g)^{-1}$, where $V(g)^{-1}V(g) = T = V(g)V(g)^{-1}$. %This completes the proof.
 \end{proof}\\
 
-\noindent Observe that
+\noindent Suppose we have some $U(g) \in \homset_{\textcat{End}(A)}(\rho, \rho \circ \alpha_g)$ for each $g \in G$. Then by definition,
 \begin{gather}
 U(g)U(h)\rho(x)U(h)^{-1}U(g)^{-1} = \rho(\alpha_g(\alpha_h(x))) = \rho(\alpha_{gh}(x)) = U(gh)\rho(x)U(gh)^{-1}\\
 \implies U(gh)^{-1}U(g)U(h)\rho(x) = \rho(x)U(gh)^{-1}U(g)U(h).
@@ -718,7 +718,7 @@ U(g)U(h)\rho(x)U(h)^{-1}U(g)^{-1} = \rho(\alpha_g(\alpha_h(x))) = \rho(\alpha_{g
 \begin{align}
 U(g) = \sum_{h \in G}{\chi_h(g)s_hs_h'} + U_\mathcal{K}(g)\label{RepU}
 \end{align}
-\noindent for $\chi_h : G \to \mathbbm{k}$ and $U_\mathcal{K}(g) \in \textup{span}\{t_it_j'\}_{i,j = 1}^m = \mathcal{K}\mathcal{K}'$. In particular, $U_\mathcal{K} : G \to \textup{End}(\mathcal{K})$ defines a representation as the projection of $U(g)$ onto $\mathcal{K}\mathcal{K}'$, and $\chi_h \in \homset(G, \mathbbm{k}^\times)$. Indeed, if $\chi_h(g) = 0$, then $U(g)s_h = 0 = s_h'U(g)$; this would imply $s_h = 0 = s_h'$ by the invertibility of $U(g)$, which is nonsense. Moreover, the fact that $U$ and $U_\mathcal{K}$ are group homomorphisms shows $\chi_h(g_1g_2) = \chi_h(g_1)\chi_h(g_2)$.
+\noindent for $\chi_h : G \to \mathbbm{k}$ and $U_\mathcal{K}(g) \in \textup{span}\{t_it_j'\}_{i,j = 1}^m = \mathcal{K}\mathcal{K}'$. Indeed, $U_\mathcal{K} : G \to \textup{End}(\mathcal{K})$ defines a representation as the projection of $U(g)$ onto $\mathcal{K}\mathcal{K}'$, and $\chi_h \in \homset(G, \mathbbm{k}^\times)$. Indeed, if $\chi_h(g) = 0$, then $U(g)s_h = 0 = s_h'U(g)$; this would imply $s_h = 0 = s_h'$ by the invertibility of $U(g)$, which is nonsense. Moreover, the fact that $U$ and $U_\mathcal{K}$ are group homomorphisms shows $\chi_h(g_1g_2) = \chi_h(g_1)\chi_h(g_2)$.
 %\begin{align*}
 %\begin{split}
 %\sum_{h \in G}{\chi_h(g_1 g_2)s_hs_h'} + U_\mathcal{K}(g_1 g_2) = U(g_1g_2) = U(g_1)U(g_2) = \sum_{h \in G}{\chi_h(g_1)\chi_h(g_2)s_hs_h'} + U_\mathcal{K}(g_1 g_2).
@@ -795,14 +795,47 @@ j_1 : y \mapsto \sqrt{d}y\rho(s_e)\qquad\textup{and}\qquad j_1' : x \mapsto \sqr
 \begin{align}
 j_2 : y \mapsto \sqrt{d}\rho(y)s_e\qquad\textup{and}\qquad j_2' : x \mapsto \sqrt{d}s_e'\rho(x).
 \end{align}
-\noindent From the intertwiner relations, we have
+\noindent These admit the following properties.\\
+
+\noindent\begin{lemma}\label{jMapProperties} The linear maps $j_1$, $j_1'$, $j_2$ and $j_2'$ satisfy
+\begin{gather}
+j_1'(j_1(y)) = y = j_2'(j_2(y)),\\
+j_1(j_1'(x)) = x = j_2(j_2'(x)),
+\end{gather}
+\noindent for all $x \in \mathcal{K}$ and $y \in \mathcal{K}'$. Moreover,
+\begin{gather}
+j_1(\alpha_g(y)) = \alpha_g(j_1(y)),\qquad j_1'(\alpha_g(x)) = \alpha_g(j_1'(x)),\\
+j_2(\alpha_g(y)) = U_\mathcal{K}(g)j_2(y),\qquad j_2'(\alpha_g(x)) = j_2'(x)U_\mathcal{K}(g)^{-1},
+\end{gather}
+\noindent for all $g \in G$.\\
+\end{lemma}
+
+\noindent\begin{proof} These results follow from direct computation. From the intertwiner relations,
 \begin{gather}
 j_1(j_1'(x)) = d\rho(s_e')x\rho(s_e) = d\rho(s_e')\rho^2(s_e)x = x,\\
 j_1'(j_1(y)) = d\rho(s_e')y\rho(s_e) = dy\rho^2(s_e')\rho(s_e) = y,\\
 j_2(j_2'(x)) = d\rho(s_e')\rho^2(x)s_e = d\rho(s_e')s_e x = x,\\
 j_2'(j_2(y)) = ds_e'\rho^2(y)\rho(s_e) = ds_e'\rho(s_e) y = y.
 \end{gather}
-\noindent In other words, the maps $\varphi \coloneqq j_2 \circ j_1' \in \mathcal{K}\mathcal{K}'$ and $\varphi' \coloneqq j_2' \circ j_1 \in \mathcal{K}\mathcal{K}'$ are invertible with inverses $\varphi^{-1} = j_1 \circ j_2'$ and $\varphi'^{-1} = j_1' \circ j_2$, respectively. This gives us the following result.\\
+\noindent Meanwhile, using the normalizations $U(g)^{-1}s_e = s_e$ and $s_e'U(g) = s_e'$, we obtain
+\begin{gather}
+j_1(\alpha_g(y)) = \sqrt{d}yV(g)^{-1}\rho(s_e) = \sqrt{d}\alpha_g(y\rho(s_e)) = \alpha_g(j_1(y)),\\
+j_1'(\alpha_g(x)) = \sqrt{d}\rho(s_e')V(g)x = \sqrt{d}\alpha_g(\rho(s_e')x) = \alpha_g(j_1'(x)),\\
+j_2(\alpha_g(y)) = \sqrt{d}\rho(\alpha_g(y))s_e = \sqrt{d}U(g)\rho(y)U(g)^{-1}s_e = \sqrt{d}U(g)\rho(y)s_e = U(g)j_2(y),\\
+j_2'(\alpha_g(x)) = \sqrt{d}s_e'\rho(\alpha_g(x)) = \sqrt{d}s_e'U(g)\rho(y)U(g)^{-1} = \sqrt{d}s_e'\rho(y)U(g)^{-1} = j_2'(y)U(g)^{-1}.
+\end{gather}
+\noindent The result follows.
+\end{proof}\\
+
+\noindent From the preceding lemma, it is clear that the maps $\varphi \coloneqq j_2 \circ j_1' \in \mathcal{K}\mathcal{K}'$ and $\varphi' \coloneqq j_2' \circ j_1 \in \mathcal{K}\mathcal{K}'$ admit the inverses $\varphi^{-1} = j_1 \circ j_2'$ and $\varphi'^{-1} = j_1' \circ j_2$, respectively. It follows also that both
+\begin{align}
+\varphi(\alpha_g(\varphi^{-1}(x))) = U_\mathcal{K}x
+\end{align}
+\noindent and
+\begin{align}
+\varphi'(\alpha_g(\varphi'^{-1}(y))) = yU_\mathcal{K}^{-1}
+\end{align}
+\noindent In other words, $U_\mathcal{K}$ and $V$ are equivalent, being intertwined by $\varphi$ as representations on $\textup{End}(\mathcal{K})$ and by $\varphi'$ as representations on $\textup{End}(\mathcal{K}')$.\\
 
 %\noindent Consider the linear maps $j_1 : \mathcal{K}' \to \mathcal{K}$ and $j_1' : \mathcal{K} \to \mathcal{K}'$ defined by
 %\begin{align}
@@ -934,71 +967,74 @@ T\rho(\varphi^{-1}(x))S &= T\rho(\varphi^{-1}(x))\sum_{h \in G}{s_hs_h'} = T{d}\
 \noindent\begin{lemma}\label{OneClickRotation} Recall the invertible maps $\varphi \coloneqq j_2 \circ j_1' \in \mathcal{K}\mathcal{K}'$ and $\varphi' \coloneqq j_2' \circ j_1 \in \mathcal{K}\mathcal{K}'$. We have
 \begin{gather}
 \varphi^3(x) = {}^{**}x,\\
-\varphi(\alpha_g(\varphi^{-1}(x))) = U_\mathcal{K}(g)x,\\
+%\varphi(\alpha_g(\varphi^{-1}(x))) = U_\mathcal{K}(g)x,\\
 \varphi^{-1}(\alpha_g(\varphi(x))) = \rho(U(g)) x U(g)^{-1},
 \end{gather}
 \noindent for all $x \in \mathcal{K}$ and $g \in G$, and
 \begin{gather}
 \varphi'^3(y) = y^{**},\\
-\varphi'(\alpha_g(\varphi'^{-1}(y))) = yU_\mathcal{K}(g)^{-1},\\
+%\varphi'(\alpha_g(\varphi'^{-1}(y))) = yU_\mathcal{K}(g)^{-1},\\
 \varphi'^{-1}(\alpha_g(\varphi'(y))) = U(g) y\rho(U(g)^{-1}),
 \end{gather}
 \noindent for all $y \in \mathcal{K}'$ and $g \in G$.\\
 \end{lemma}
 
 \noindent\begin{proof} In order to show that $\varphi^3(x) = x$, recall that the right dual to $x \in \mathcal{K}$ is given by
-\begin{align*}
-\begin{split}
+\begin{align}
 {}^*x = {d}^\frac{3}{2}\rho(s_e')\rho^2(s_e')\rho(x)s_e \in \mathcal{K}',
-\end{split}
-\end{align*}
+\end{align}
 \noindent while the right dual to $y \in \mathcal{K}'$ is given by
-\begin{align*}
-\begin{split}
+\begin{align}
 {}^*y = {d}^\frac{3}{2}\rho^2(s_e')\rho^2(y)\rho(s_e)s_e \in \mathcal{K}.
-\end{split}
-\end{align*}
+\end{align}
 \noindent Thus, for $x \in \mathcal{K}$, we have
-\begin{align*}
-\begin{split}
+\begin{align}
 {}^{**}x = {d}^3\rho^2(s_e')\rho^3(s_e')\rho^4(s_e')\rho^3(x)\rho^2(s_e)\rho(s_e)s_e = \varphi^3(x).
-\end{split}
-\end{align*}
-\noindent %By naturality of the pivotal structure, we then have that ${}^{**}x = \psi_\rho\rho(\psi_\rho)x\psi_\rho^{-1} = \nu x$. Thus $\varphi^3(x) = x$.
-Now, using the normalization $U(g)^{-1}s_e = s_e$ and the intertwiner relations
-\begin{align*}
-\begin{split}
-\varphi(\alpha_g(\varphi^{-1}(x))) &= {d}^2\rho^2(s_e')\rho(\alpha_g(s_e'\rho(x)\rho(s_e)))s_e = {d}^2\rho^2(s_e')U(g)\rho(s_e')\rho^2(x)\rho^2(s_e)U(g)^{-1}s_e\\
-&= {d}^2 U(g)\rho^2(s_e')\rho(s_e')\rho^2(x)\rho^2(s_e)s_e = {d}^2 U(g)\rho^2(s_e')\rho(s_e')s_e x s_e\\
-&= {d} U(g)\rho^2(s_e') x s_e = {d} U(g) x \rho(s_e')s_e = U(g)x = U_\mathcal{K}(g)x.
-\end{split}
-\end{align*}
-\noindent Finally, using the normalization relation $s_e' = s_e'U(g)$, we have
-\begin{align*}
-\begin{split}
+\end{align}
+\noindent Now, by \hyperref[jMapProperties]{Lemma \ref*{jMapProperties}}, we know that
+\begin{align}
+\varphi^{-1}(\alpha_g(\varphi(x))) &= j_1(j_2'(\alpha_g(j_2(j_1'(x))))) = j_1(j_2'(j_2(j_1'(x)))U(g)^{-1}) = d\rho(s_e')xU(g)^{-1}\rho(s_e)\\
+&= {d}\rho(s_e'U(g^{-1})^{-1})xU(g^{-1})\rho(s_e) = {d}\rho(s_e')\rho(U(g^{-1})^{-1})x\rho(\alpha_{g^{-1}}(s_e))U(g^{-1})\\
+&= {d}\rho(s_e')\rho(U(g^{-1})^{-1})\rho^2(\alpha_{g^{-1}}(s_e))xU(g^{-1})\\
+&= {d}\rho(s_e')\rho(U(g^{-1})^{-1})\rho(U(g^{-1}))\rho^2(s_e)\rho(U(g^{-1})^{-1})xU(g^{-1})\\
+&= \rho(U(g^{-1})^{-1})xU(g^{-1}).
+\end{align}
+\noindent The dual results for $\varphi'$ follow similarly.
+%\noindent %By naturality of the pivotal structure, we then have that ${}^{**}x = \psi_\rho\rho(\psi_\rho)x\psi_\rho^{-1} = \nu x$. Thus $\varphi^3(x) = x$.
+%Now, using the normalization $U(g)^{-1}s_e = s_e$ and the intertwiner relations
+%\begin{align*}
+%\begin{split}
+%\varphi(\alpha_g(\varphi^{-1}(x))) &= {d}^2\rho^2(s_e')\rho(\alpha_g(s_e'\rho(x)\rho(s_e)))s_e = {d}^2\rho^2(s_e')U(g)\rho(s_e')\rho^2(x)\rho^2(s_e)U(g)^{-1}s_e\\
+%&= {d}^2 U(g)\rho^2(s_e')\rho(s_e')\rho^2(x)\rho^2(s_e)s_e = {d}^2 U(g)\rho^2(s_e')\rho(s_e')s_e x s_e\\
+%&= {d} U(g)\rho^2(s_e') x s_e = {d} U(g) x \rho(s_e')s_e = U(g)x = U_\mathcal{K}(g)x.
+%\end{split}
+%\end{align*}
+%\noindent Finally, using the normalization relation $s_e' = s_e'U(g)$, we have
+%\begin{align*}
+%\begin{split}
 %\varphi^2(\alpha_g(\varphi^{-2}(x))) &= d^4 \rho^2(s_e')\rho^3(s_e')\rho^2(\alpha_g(s_e'\rho(s_e')\rho^2(x)\rho^2(s_e)\rho(s_e)))\rho(s_e)s_e\\
 % &= d^4 \rho^2(s_e')\rho^3(s_e')\rho(U(g))\rho^2(s_e')\rho^3(s_e')\rho^4(x)\rho^4(s_e)\rho^3(s_e)\rho(U(g)^{-1})\rho(s_e)s_e\\
 % &= 
-\varphi^{-1}(\alpha_g(\varphi(x))) &= {d}^2 s_e'\rho(\alpha_g(\rho^2(s_e')\rho(x) s_e))\rho(s_e) = {d}^2 s_e'U_g\rho^3(s_e')\rho^2(x)\rho(s_e)U_g^{-1}\rho(s_e)\\
-&= {d}^2 s_e'\rho^3(s_e')\rho^2(x)\rho(s_e)U_g^{-1}\rho(s_e) = {d}^2\rho(s_e')s_e'\rho^2(x)\rho(s_e)U_g^{-1}\rho(s_e)\\
-&= {d}^2\rho(s_e')xs_e'\rho(s_e)U_g^{-1}\rho(s_e) = {d}\rho(s_e'U_{g^{-1}}^{-1})xU_{g^{-1}}\rho(s_e)\\
-&= {d}\rho(s_e')\rho(U_{g^{-1}}^{-1})x\rho(\alpha_{g^{-1}}(s_e))U_{g^{-1}} = {d}\rho(s_e')\rho(U_{g^{-1}}^{-1})\rho^2(\alpha_{g^{-1}}(s_e))xU_{g^{-1}}\\
-&= {d}\rho(s_e')\rho(U_{g^{-1}}^{-1})\rho(U_{g^{-1}})\rho^2(s_e)\rho(U_{g^{-1}}^{-1})xU_{g^{-1}} = \rho(U_{g^{-1}}^{-1})xU_{g^{-1}}.
+%\varphi^{-1}(\alpha_g(\varphi(x))) &= {d}^2 s_e'\rho(\alpha_g(\rho^2(s_e')\rho(x) s_e))\rho(s_e) = {d}^2 s_e'U(g)\rho^3(s_e')\rho^2(x)\rho(s_e)U(g)^{-1}\rho(s_e)\\
+%&= {d}^2 s_e'\rho^3(s_e')\rho^2(x)\rho(s_e)U(g)^{-1}\rho(s_e) = {d}^2\rho(s_e')s_e'\rho^2(x)\rho(s_e)U(g)^{-1}\rho(s_e)\\
+%&= {d}^2\rho(s_e')xs_e'\rho(s_e)U(g)^{-1}\rho(s_e) = {d}\rho(s_e'U(g^{-1})^{-1})xU(g^{-1})\rho(s_e)\\
+%&= {d}\rho(s_e')\rho(U(g^{-1})^{-1})x\rho(\alpha_{g^{-1}}(s_e))U(g^{-1}) = {d}\rho(s_e')\rho(U(g^{-1})^{-1})\rho^2(\alpha_{g^{-1}}(s_e))xU(g^{-1})\\
+%&= {d}\rho(s_e')\rho(U(g^{-1})^{-1})\rho(U(g^{-1}))\rho^2(s_e)\rho(U(g^{-1})^{-1})xU(g^{-1}) = \rho(U(g^{-1})^{-1})xU(g^{-1}).
 % &= \frac{d^2}{\nu^2}\rho(s_e')xs_e'U(g)\rho(s_e)U(g)^{-1}\rho(s_e) = \frac{d^2}{\nu^2}\rho(s_e')xs_e'U(g)\rho(s_e)U(g)^{-1}\rho(s_e)
 %\rho(U(g)) x U(g)^{-1}.
-\end{split}
-\end{align*}
+%\end{split}
+%\end{align*}
 %\noindent together with
 %\begin{align*}
 %\begin{split}
 %\varphi^{-1}(\alpha_g(\varphi(x))) = \frac{d^2}{\nu^2}s_e'\rho(\alpha_g(\rho^2(s_e')\rho(x) s_e))\rho(s_e) = \cdots = \rho(U(g)) x U(g)^{-1}.
 %\end{split}
 %\end{align*}
-\noindent %The final result follows from the fact that $\varphi^3(x) = \nu x$. 
-The dual results for $\varphi'$ follow similarly. %This completes the proof.
+%\noindent %The final result follows from the fact that $\varphi^3(x) = \nu x$. 
+%The dual results for $\varphi'$ follow similarly. %This completes the proof.
 \end{proof}\\
 
-\noindent The result $\varphi V(g) \varphi^{-1}x = U_\mathcal{K}(g)x$ can be rewritten as $\varphi V(g) = U_\mathcal{K}(g) \varphi$. In other words, the representations $U_\mathcal{K}$ and $V$ are equivalent and intertwined by $\varphi$. Dually, $y\varphi'^{-1}V(g)^{-1}\varphi' = yU_\mathcal{K}(g)^{-1}$ and hence $\varphi'$ intertwines $U_\mathcal{K}$ and $V$ as representations on $\textup{End}(\mathcal{K}')$.\\
+%\noindent The result $\varphi V(g) \varphi^{-1}x = U_\mathcal{K}(g)x$ can be rewritten as $\varphi V(g) = U_\mathcal{K}(g) \varphi$. In other words, the representations $U_\mathcal{K}$ and $V$ are equivalent and intertwined by $\varphi$. Dually, $y\varphi'^{-1}V(g)^{-1}\varphi' = yU_\mathcal{K}(g)^{-1}$ and hence $\varphi'$ intertwines $U_\mathcal{K}$ and $V$ as representations on $\textup{End}(\mathcal{K}')$.\\
 
 %\noindent\begin{remark} While we were not able to show that $\rho$ is rigid a priori (that is, that $a \neq 0$), \hyperref[HomDimensions]{Lemma \ref*{HomDimensions}} can show that it is at least {\em weakly} self-dual (\cite[Definition 5.3.4]{BK01}). In the unitary setting, this does happen to be enough for rigidity; see \cite[Remark 3.2]{EP26}, for instance. Even if we could show that it is self-dual, however, we will find it important to work with a pivotal structure. In principle we could define a partial pivotal structure on only the simple objects and $\rho^2$, but this too seems infeasible.\\
 %\end{remark}
