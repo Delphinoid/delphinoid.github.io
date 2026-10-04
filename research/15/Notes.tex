@@ -851,7 +851,18 @@ j_2'(\alpha_g(x)) = \sqrt{d}s_e'\rho(\alpha_g(x)) = \sqrt{d}s_e'U(g)\rho(y)U(g)^
 \noindent Moreover, there exist linear maps $l : \mathcal{K} \to \mathcal{K}^2\mathcal{K}'$ and $l' : \mathcal{K}' \to \mathcal{K}(\mathcal{K}')^2$ such that
 \begin{align*}
 \rho(x) &= \frac{1}{\sqrt{d}}\sum_{h \in G}s_h\alpha_h(j_2'(x)) + \sum_{h \in G} \alpha_h(j_2(j_1'(x)))s_hs_h' + l(x),\\%\label{RhoT}\\
-\rho(y) &= \frac{1}{\sqrt{d}}\sum_{h \in G}\alpha_h(j_2(y))s_h' + \sum_{h \in G} s_hs_h'\alpha_h(j_2'(j_1(y))) + l'(y),%\label{Rho'T}
+\rho(y) &= \frac{1}{\sqrt{d}}\sum_{h \in G}\alpha_h(j_2(y))s_h' + \sum_{h \in G} s_hs_h'\alpha_h(j_2'(j_1(y))) + l'(y).%\label{Rho'T}
+\end{align*}
+\noindent with
+\begin{alignat*}{2}
+\rho(j_1(y)) &= \sum_{i,j=1}^m l'(y)t_it_j j_1(t_j')t_i',\qquad &\rho(j_2(y)) &=  \sum_{i=1}^m t_i l'(y) j_1(t_i');\\
+\rho(j_1'(x)) &= \sum_{i,j=1}^m t_i j_1'(t_j)t_j't_i' l(x),\qquad &\rho(j_2'(x)) &=  \sum_{i=1}^m j_1'(t_i)l(x)t_i';
+\end{alignat*}
+\begin{align*}
+\frac{1}{d\sqrt{d}}\sum_{h \in G}\alpha_h(j_2'(x)) + \frac{1}{\sqrt{d}}\sum_{i=1}^m j_1'(t_i)t_i'l(x) = 0 = \frac{1}{d\sqrt{d}}\sum_{h \in G}\alpha_h(j_2(y)) + \frac{1}{\sqrt{d}}\sum_{i=1}^m l'(y)t_ij_1(t_i');
+\end{align*}
+\begin{align*}
+\frac{1}{d}\sum_{h \in G}\alpha_h(j_2(y)j_2'(x)) + l'(y)l(x) = yxT,
 \end{align*}
 \noindent for all $x \in \mathcal{K}$ and $y \in \mathcal{K}'$.\\
 \end{lemma}
@@ -879,16 +890,20 @@ T\rho(x) = \sum_{h \in G} l_h(x)s_hs_h' + l(x).
 \begin{align*}
 \rho(y)T = \sum_{h \in G} s_hs_h'l_h'(y) + l'(y).
 \end{align*}
-\noindent Because $\alpha_g \circ \rho = \rho$ and $\alpha_g(s_h's_h) = 1$, we must have
+\noindent Because $\alpha_g \circ \rho = \rho$, we must have
 \begin{align*}
-T\alpha_g(\rho(x)) = \sum_{h \in G}{\alpha_g(l_h(x)) s_{gh} s_{gh}'} + \alpha_g(l(x)) = T\rho(x);
+\alpha_g(\rho(x)) = 
+\frac{1}{\sqrt{d}}\sum_{h \in G}s_hs_h'\rho(x) + \sum_{h \in G}{\alpha_g(l_h(x)) s_{gh} s_{gh}'} + \alpha_g(l(x)) = \rho(x);
 \end{align*}
-\noindent thus $l_g = \alpha_g \circ l_e$, $\alpha_g \circ l = l$, $l_g' = \alpha_g \circ l_e'$, $\alpha_g \circ l' = l'$. We claim that $l_e = \varphi$ and $l_e' = \varphi'$. Indeed,
+\noindent thus $l_g = \alpha_g \circ l_e$, $\alpha_g \circ l = l$, $l_g' = \alpha_g \circ l_e'$, $\alpha_g \circ l' = l'$. Now, observe that
 \begin{align*}
 \begin{split}
-T\rho(\varphi^{-1}(x))S &= T\rho(\varphi^{-1}(x))\sum_{h \in G}{s_hs_h'} = T{d}\rho(s_e')\rho^2(x)\rho^2(s_e)\sum_{h \in G}{s_hs_h'}\\
-&= T{d}\rho(s_e')\rho^2(x)\sum_{h \in G}{s_hs_hs_h'} = T{d}\rho(s_e')\sum_{h \in G}{s_h\alpha_h(x)s_hs_h'}\\
-&= T{d}\sum_{h \in G}{\alpha_h(\rho(s_e')s_ex)s_hs_h'} = T\sum_{h \in G}{\alpha_h(x)s_hs_h'} = \sum_{h \in G}{\alpha_h(x)s_hs_h'}
+\rho(j_1(y)) &= \sqrt{d}\rho(y)\rho^2(s_e) = \sqrt{d}\rho(y)\sum_{h \in G} s_hs_hs_h' + \sqrt{d}\rho(y)\sum_{i=1}^m t_i\rho(s_e)t_i'\\
+&= \sqrt{d}\sum_{h \in G} \alpha_h(\rho(y) s_e)s_hs_h' + \sqrt{d}\left(\sum_{h \in G} s_hs_h'\alpha_h(l_e'(y)) + l'(y)\right)\sum_{i=1}^m t_i\rho(s_e)t_i'\\
+&= \sum_{h \in G} \alpha_h(j_2(y))s_hs_h' + \sqrt{d} \sum_{i=1}^m\sum_{h \in G} s_hs_h'\alpha_h(l_e'(y))t_i\rho(s_e)t_i' + \sqrt{d}\sum_{i=1}^m l'(y)t_i\rho(s_e)t_i'.
+%T\rho(\varphi^{-1}(x))S &= T\rho(\varphi^{-1}(x))\sum_{h \in G}{s_hs_h'} = T{d}\rho(s_e')\rho^2(x)\rho^2(s_e)\sum_{h \in G}{s_hs_h'}\\
+%&= T{d}\rho(s_e')\rho^2(x)\sum_{h \in G}{s_hs_hs_h'} = T{d}\rho(s_e')\sum_{h \in G}{s_h\alpha_h(x)s_hs_h'}\\
+%&= T{d}\sum_{h \in G}{\alpha_h(\rho(s_e')s_ex)s_hs_h'} = T\sum_{h \in G}{\alpha_h(x)s_hs_h'} = \sum_{h \in G}{\alpha_h(x)s_hs_h'}
 %
 %T\rho(\varphi^{-1}(x)) &= T\rho(\varphi^{-1}(x))(S + T)\\
 % &= T\rho(\varphi^{-1}(x))\sum_{h \in G}{s_hs_h'} + T\rho(\varphi^{-1}(x))T\\
@@ -908,7 +923,31 @@ T\rho(\varphi^{-1}(x))S &= T\rho(\varphi^{-1}(x))\sum_{h \in G}{s_hs_h'} = T{d}\
 % &= \sum_{h \in G}{\alpha_h(x)s_hs_h'} + \frac{d}{\nu}T\rho(\varphi^{-1}(x))T.
 \end{split}
 \end{align*}
-\noindent Thus $\alpha_h(l_e(\varphi^{-1}(x))) = \alpha_h(x)$, whence composing both sides with $\alpha_{h^{-1}}$ gives us the desired result. The dual result follows similarly.%This completes the proof. %Thus
+\noindent Because $l'(y) \in \mathcal{K}(\mathcal{K}')^2$, we have $l'(y)t_is_h = 0$. We also have $\alpha_h(l_e'(y))t_i \in \homset_{\textcat{End}(A)}(\rho, \rho) = \mathbbm{k}$, and since $\alpha_h(l_e'(y)) \in \mathcal{K}'$, we know that $\alpha_h(l_e'(y))T = \alpha_h(l_e'(y))$. Hence
+\begin{align*}
+\begin{split}
+\rho(j_1(y)) &= \frac{1}{\sqrt{d}}\sum_{h \in G} s_h\alpha_h(l_e'(y)) + \sum_{h \in G} \alpha_h(j_2(y))s_hs_h' + \sum_{i,j=1}^m l'(y)t_it_j j_1(t_j')t_i'.
+\end{split}
+\end{align*}
+\noindent Thus $l_e'(y) = \sqrt{d}s_e'\rho(j_1(y)) = j_2'(j_1(y))$. The dual result, $l_e(x) = j_2(j_1'(x))$, follows from computing $\rho(j_1'(x))$. Performing an analogous computation for $\rho(j_2(y))$ yields
+\begin{align*}
+\begin{split}
+\rho(j_2(y)) &= \sqrt{d}\rho^2(y)\rho(s_e) = \sqrt{d}\sum_{h \in G}s_h\alpha_h(y)s_h'\rho(s_e) + \sqrt{d}\sum_{i=1}^m t_i\rho(y)t_i'\rho(s_e)\\
+&= \frac{1}{\sqrt{d}}\sum_{h \in G}s_h\alpha_h(y) + \sum_{i=1}^m t_i\rho(y) j_1(t_i')\\
+&= \frac{1}{\sqrt{d}}\sum_{h \in G}s_h\alpha_h(y) + \sum_{i=1}^m\sum_{h \in G} t_i s_hs_h'\alpha_h(j_2'(j_1(y)))j_1(t_i') + \sum_{i=1}^m t_i l'(y) j_1(t_i')\\
+&= \frac{1}{\sqrt{d}}\sum_{h \in G}s_h\alpha_h(y) + \sum_{i=1}^m\sum_{h \in G} t_i\alpha_h(j_2'(j_1(y)))j_1(t_i') s_hs_h' + \sum_{i=1}^m t_i l'(y) j_1(t_i').
+\end{split}
+\end{align*}
+\noindent Now, because $j_1'(t_i)t_i'\alpha_h(j_2(j_1'(x))) \in \mathcal{K}'$ and $\alpha_h(j_2'(j_1(y)))t_ij_1(t_i') \in \mathcal{K}$, we have
+\begin{align*}
+0 = \rho(s_e')\rho(x) = \frac{1}{d\sqrt{d}}\sum_{h \in G}\alpha_h(j_2'(x)) + \frac{1}{\sqrt{d}}\sum_{i=1}^m j_1'(t_i)t_i'l(x),\\
+0 = \rho(y)\rho(s_e) = \frac{1}{d\sqrt{d}}\sum_{h \in G}\alpha_h(j_2(y)) + \frac{1}{\sqrt{d}}\sum_{i=1}^m l'(y)t_ij_1(t_i').
+\end{align*}
+\noindent Finally, since $l'(y)\alpha_h(j_2(j_1'(x)))s_hs_h' = 0 = s_hs_h'\alpha_h(j_2'(j_1(y)))l(x)$,
+\begin{align*}
+yxT = \rho(y)\rho(x)T = \frac{1}{d}\sum_{h \in G}\alpha_h(j_2(y)j_2'(x)) + l'(y)l(x).
+\end{align*}
+\noindent This completes the proof. %Thus
 %\begin{align*}
 %\rho(x) &= (S + T)\rho(x) = \sum_{h \in G}s_h\alpha_h(j_2'(x)) + \sum_{h \in G} \alpha_h(l_e(x))s_hs_h' + l(x) \in \mathcal{L},\label{PartialRhoT}\\
 %\rho(y) &= \rho(y)(S + T) = \sum_{h \in G}\alpha_h(j_2(y))s_h' + \sum_{h \in G} s_hs_h'\alpha_h(l_e'(y)) + l'(y) \in \mathcal{L},\label{PartialRho'T}
@@ -1369,7 +1408,7 @@ p(U(g^{-1}))s_e \in \homset_\mathcal{D}(1, \rho^2 \circ \alpha_{g^{-1}}) = \homs
 \end{enumerate}
 \noindent Conversely, if ${d}$ is rational, then
 \begin{enumerate}[label=\textup{(\roman*).}, ref=\textup{(\roman*)}, leftmargin=4\parindent]
-\item there exist $s, t \in \mathbb{N}$ such that $d_+ = st$, $d_- = -t$, $m = (s - 1)t$ and $n = st^2$;
+\item there exist $s, t \in \mathbb{N}$ such that $d_- = -t$, $d_+ = st$, $m = (s - 1)t$ and $n = st^2$;
 \item when $t = 1$,
 \begin{enumerate}[label=$\bullet$, leftmargin=4\parindent]
 \item $G$ is Abelian,
@@ -1417,6 +1456,10 @@ p(U(g^{-1}))s_e \in \homset_\mathcal{D}(1, \rho^2 \circ \alpha_{g^{-1}}) = \homs
 \noindent Conversely, suppose that ${d}$ is rational. Then one can show that the integer $m \pm \sqrt{m^2 + 4n}$ is even and hence that ${d}$ is an integer. Recall that $d_+ \coloneqq (m + \sqrt{m^2 + 4n})/2$ is the Frobenius--Perron dimension of $\rho$. Any object tensored with its dual is Morita equivalent to $1$, so $\rho \otimes \rho$ is an algebra object with dimension $d_+^2$. The restriction of $\rho \otimes \rho$ to $\textcat{Vec}_G$, given by throwing away simple summands not in $\textcat{Vec}_G$, is $\bigoplus_{g \in G} \alpha_g$ with dimension $n$. Thus by \hyperref[QuotientAlgebraObject]{Theorem \ref*{QuotientAlgebraObject}}, there exists an algebra object with dimension $d_+^2/n$. Because this must be a sum of simple objects with dimensions $d_+$ or $1$, it follows that $d_+^2/n = 1 + md_+/n$ must be an integer. Let $s \coloneqq 1 + md_+/n$ and $t \coloneqq m/(s - 1)$. Note that $d_+^2 = n + md_+$ together with $n(s - 1) = md_+$ implies $n(s - 1)^2 = sm^2$, whence $t$ must also be an integer. In particular, $d_+ = st$ and $n = st^2$. Suppose we consider $u \coloneqq d_+/d$. If $d = d_-$, then $u = d_+^2/d_-d_+ = -d_+^2/n = -s$, otherwise $u = 1$. This gives us
 \begin{align*}
 \textup{Tr}(\lambda(g)) = \frac{u^2}{s}\sum_{h \in G} \chi_h(g) + ut\textup{Tr}(U_\mathcal{K}(g)).
+\end{align*}
+\noindent We once again know that any $1$-dimensional representation $\chi \in \homset(G, \mathbbm{k}^\times)$ must have multiplicity $1$ in $\lambda$, hence
+\begin{align*}
+s = u^2a_\chi + utsb_\chi.
 \end{align*}
 \textcolor{red}{This is pretty tedious. I'll finish it later. Need to adapt the category theory parts, since we no longer have a category and moreover \hyperref[QuotientAlgebraObject]{Theorem \ref*{QuotientAlgebraObject}} uses the Frobenius--Perron dimension, not the quantum dimension. I suspect the way forward is to use $(d_-/d_+)\textup{Tr}^\textup{FP} = \textup{Tr}^L$, where $d_-/d_+ = d_-d_+/d_+^2 = -n/d_+^2 = -1/s$.}
 \end{proof}\\
@@ -1687,9 +1730,8 @@ j_2 : y \mapsto \rho(y)s_e,\qquad j_2' : x \mapsto s_e'\rho(x).
 \end{align*}
 \noindent for all $x \in \mathcal{K}$, and computing $\rho(j_1(y))$ we have
 \begin{align*}
-T\rho(j_1(y))S &= T\rho(y)\rho^2(s_e)S = T\rho(y) \sum_{h \in G} s_hs_hs_h'
-= T\rho(y) \sum_{h \in G} s_hs_hs_h' = T \sum_{h \in G} \alpha_h(\rho(y) s_e)s_hs_h'\\
-&= T \sum_{h \in G} \alpha_h(j_2(y))s_hs_h'.
+T\rho(j_1(y))S &= T\rho(y)\rho^2(s_e)S
+= T\rho(y) \sum_{h \in G} s_hs_hs_h' = T \sum_{h \in G} \alpha_h(\rho(y) s_e)s_hs_h' = T \sum_{h \in G} \alpha_h(j_2(y))s_hs_h'.
 \end{align*}
 \noindent In other words,
 \begin{align*}
