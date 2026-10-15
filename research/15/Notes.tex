@@ -854,6 +854,9 @@ j_2'(\alpha_g(x)) = \sqrt{d}s_e'\rho(\alpha_g(x)) = \sqrt{d}s_e'U(g)\rho(y)U(g)^
 \rho(y) &= \frac{1}{\sqrt{d}}\sum_{h \in G}\alpha_h(j_2(y))s_h' + \sum_{h \in G} s_hs_h'\alpha_h(j_2'(j_1(y))) + l'(y),%\label{Rho'T}
 \end{align*}
 \noindent with
+\begin{align*}
+\alpha_g(l(x)) = l(x),\qquad \alpha_g(l'(y)) = l'(y);
+\end{align*}
 \begin{alignat*}{2}
 \rho(j_1(y)) &= \sum_{i,j=1}^m l'(y)t_it_j j_1(t_j')t_i',\qquad &\rho(j_2(y)) &=  \sum_{i=1}^m t_i l'(y) j_1(t_i');\\
 \rho(j_1'(x)) &= \sum_{i,j=1}^m t_i j_1'(t_j)t_j't_i' l(x),\qquad &\rho(j_2'(x)) &=  \sum_{i=1}^m j_1'(t_i)l(x)t_i';
@@ -1831,7 +1834,7 @@ T\alpha_h(j_2(j_1'(j_2(y))))s_h &= T\alpha_h(\rho^2(s_e')\rho^2(y)\rho(s_e)s_e)s
 
 \noindent\textcolor{red}{Set everything up / define everything.}\\
 
-\noindent First need to show that $\rho$ preserves the Leavitt algebra relations. By \textcolor{red}{Equation (..)} (\hyperref[ProjectionThing]{Lemma \ref*{ProjectionThing}}) and the constraints from \hyperref[GroupProperties]{Theorem \ref*{GroupProperties}},
+\noindent Need to show that $\rho$ preserves the Leavitt algebra relations. By \textcolor{red}{Equation (..)} (\hyperref[ProjectionThing]{Lemma \ref*{ProjectionThing}}) and the constraints from \hyperref[GroupProperties]{Theorem \ref*{GroupProperties}},
 \begin{align*}
 \rho(s_{g_1}')\rho(s_{g_2}) &= U({g_1})\left(\frac{1}{d^2}\sum_{h_1,h_2 \in G}s_{h_1}'U({g_1}^{-1}{g_2})s_{h_2} + \frac{1}{d}\sum_{i,j=1}^m j_1'(t_i)t_i'U({g_1}^{-1}{g_2})t_j j_1(t_j')\right)U({g_2}^{-1})\\
 %&= U({g_1})\left(\frac{1}{d^2}\sum_{h \in G}\chi_h(g_1^{-1}g_2) + \frac{1}{d}\sum_{i,j=1}^m (t_i'U_\mathcal{K}({g_1}^{-1}{g_2})t_j) j_1'(t_i) j_1(t_j')\right)U({g_2}^{-1})\\
@@ -1854,7 +1857,19 @@ T\alpha_h(j_2(j_1'(j_2(y))))s_h &= T\alpha_h(\rho^2(s_e')\rho^2(y)\rho(s_e)s_e)s
 &&=\ &\frac{1}{d}\sum_{h \in G}\alpha_h(j_2(t_i')j_2'(t_j)) + l'(t_i')l(t_j)\\
 &&=\ &\delta_{i,j}.
 \end{alignat*}
-\noindent It follows that $\rho$ is an endomorphism of $\mathcal{L}$.
+\noindent It follows that $\rho$ is an endomorphism of $\mathcal{L}$.\\
+
+\noindent Let us now show that our endomorphisms satisfy the fusion rules. By \textcolor{red}{Equations (..)} (\hyperref[xVU]{Lemma \ref*{xVU}}),
+\begin{align*}
+\rho(\alpha_g(x)) &= \frac{1}{\sqrt{d}}\sum_{h \in G}s_hj_2'(\alpha_g(x))V(h) + \sum_{h \in G} V(h)j_2(j_1'(\alpha_g(x)))s_hs_h' + l(\alpha_g(x))\\
+&= \frac{1}{\sqrt{d}}\sum_{h \in G}s_hj_2'(x)U_\mathcal{K}(g^{-1})V(h)^{-1} + \sum_{h \in G} V(h)U_\mathcal{K}(g)j_2(j_1'(x))s_hs_h' + l(\alpha_g(x))\\
+&= \frac{1}{\sqrt{d}}\sum_{h \in G}\chi_h(g)s_h\alpha_h(j_2'(x))U_\mathcal{K}(g^{-1}) + \sum_{h \in G} \chi_h(g)^{-1}U_\mathcal{K}(g)\alpha_h(j_2(j_1'(x)))s_hs_h' + l(\alpha_g(x))\\
+&= U(g)\rho(x)U(g)^{-1},
+\end{align*}
+\noindent and similarly $\rho(\alpha_g(y)) = U(g)\rho(y)U(g)^{-1}$. It is easily verified that $\alpha_g \circ \rho = \rho$ using \textcolor{red}{Equations (..)} (\hyperref[Rho]{Lemma \ref*{Rho}}).\\
+
+\noindent All that is left is to recover the fusion rule for $\rho^2$.
+
 
 \newpage
 
