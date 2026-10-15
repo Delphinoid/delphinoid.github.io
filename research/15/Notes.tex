@@ -642,7 +642,7 @@ A(0) = \frac{1}{d-1}\begin{pmatrix}d & 1\\ 1 & 1\end{pmatrix}\qquad\text{and}\qq
 \begin{align*}
 \sum_{g \in G}{s_gs_g'} + \sum_{i=1}^m{t_it_i'} = 1,\qquad s_g's_h = \delta_{g,h},\qquad t_i't_j = \delta_{i,j}\qquad\text{and}\qquad s_g't_i = 0 = t_i's_g,
 \end{align*}
-\noindent for all $g, h \in G$ and $i, j \in \{1, \dots, m\}$.  For $\{\alpha_g\}_{g \in G}$ and $\rho$ to be (absolutely) simple, we also that
+\noindent for all $g, h \in G$ and $i, j \in \{1, \dots, m\}$.  For $\{\alpha_g\}_{g \in G}$ and $\rho$ to be (absolutely) simple, we ask that
 \begin{gather*}
 \homset_{\textcat{End}(A)}(\alpha_g, \alpha_h) = \delta_{g,h}\mathbbm{k},\\
 \homset_{\textcat{End}(A)}(\alpha_g, \rho), = \{0\} = \homset_{\textcat{End}(A)}(\rho, \alpha_g)\\
@@ -851,7 +851,7 @@ j_2'(\alpha_g(x)) = \sqrt{d}s_e'\rho(\alpha_g(x)) = \sqrt{d}s_e'U(g)\rho(y)U(g)^
 \noindent Moreover, there exist linear maps $l : \mathcal{K} \to \mathcal{K}^2\mathcal{K}'$ and $l' : \mathcal{K}' \to \mathcal{K}(\mathcal{K}')^2$ such that
 \begin{align*}
 \rho(x) &= \frac{1}{\sqrt{d}}\sum_{h \in G}s_h\alpha_h(j_2'(x)) + \sum_{h \in G} \alpha_h(j_2(j_1'(x)))s_hs_h' + l(x),\\%\label{RhoT}\\
-\rho(y) &= \frac{1}{\sqrt{d}}\sum_{h \in G}\alpha_h(j_2(y))s_h' + \sum_{h \in G} s_hs_h'\alpha_h(j_2'(j_1(y))) + l'(y).%\label{Rho'T}
+\rho(y) &= \frac{1}{\sqrt{d}}\sum_{h \in G}\alpha_h(j_2(y))s_h' + \sum_{h \in G} s_hs_h'\alpha_h(j_2'(j_1(y))) + l'(y),%\label{Rho'T}
 \end{align*}
 \noindent with
 \begin{alignat*}{2}
@@ -862,7 +862,7 @@ j_2'(\alpha_g(x)) = \sqrt{d}s_e'\rho(\alpha_g(x)) = \sqrt{d}s_e'U(g)\rho(y)U(g)^
 \frac{1}{d\sqrt{d}}\sum_{h \in G}\alpha_h(j_2'(x)) + \frac{1}{\sqrt{d}}\sum_{i=1}^m j_1'(t_i)t_i'l(x) = 0 = \frac{1}{d\sqrt{d}}\sum_{h \in G}\alpha_h(j_2(y)) + \frac{1}{\sqrt{d}}\sum_{i=1}^m l'(y)t_ij_1(t_i');
 \end{align*}
 \begin{align*}
-\frac{1}{d}\sum_{h \in G}\alpha_h(j_2(y)j_2'(x)) + l'(y)l(x) = yxT,
+yxT = \frac{1}{d}\sum_{h \in G}\alpha_h(j_2(y)j_2'(x)) + l'(y)l(x) = Tyx,
 \end{align*}
 \noindent for all $x \in \mathcal{K}$ and $y \in \mathcal{K}'$.\\
 \end{lemma}
@@ -938,14 +938,14 @@ T\rho(x) = \sum_{h \in G} l_h(x)s_hs_h' + l(x).
 &= \frac{1}{\sqrt{d}}\sum_{h \in G}s_h\alpha_h(y) + \sum_{i=1}^m\sum_{h \in G} t_i\alpha_h(j_2'(j_1(y)))j_1(t_i') s_hs_h' + \sum_{i=1}^m t_i l'(y) j_1(t_i').
 \end{split}
 \end{align*}
-\noindent Now, because $j_1'(t_i)t_i'\alpha_h(j_2(j_1'(x))) \in \mathcal{K}'$ and $\alpha_h(j_2'(j_1(y)))t_ij_1(t_i') \in \mathcal{K}$, we have
+\noindent Since $j_1'(t_i)t_i'\alpha_h(j_2(j_1'(x))) \in \mathcal{K}'$ and $\alpha_h(j_2'(j_1(y)))t_ij_1(t_i') \in \mathcal{K}$, we have
 \begin{align*}
 0 = \rho(s_e')\rho(x) = \frac{1}{d\sqrt{d}}\sum_{h \in G}\alpha_h(j_2'(x)) + \frac{1}{\sqrt{d}}\sum_{i=1}^m j_1'(t_i)t_i'l(x),\\
 0 = \rho(y)\rho(s_e) = \frac{1}{d\sqrt{d}}\sum_{h \in G}\alpha_h(j_2(y)) + \frac{1}{\sqrt{d}}\sum_{i=1}^m l'(y)t_ij_1(t_i').
 \end{align*}
 \noindent Finally, since $l'(y)\alpha_h(j_2(j_1'(x)))s_hs_h' = 0 = s_hs_h'\alpha_h(j_2'(j_1(y)))l(x)$,
 \begin{align*}
-yxT = \rho(y)\rho(x)T = \frac{1}{d}\sum_{h \in G}\alpha_h(j_2(y)j_2'(x)) + l'(y)l(x).
+yxT = \rho(y)\rho(x)T = \frac{1}{d}\sum_{h \in G}\alpha_h(j_2(y)j_2'(x)) + l'(y)l(x) = Tyx.
 \end{align*}
 \noindent This completes the proof. %Thus
 %\begin{align*}
@@ -1017,7 +1017,7 @@ B^{k, k'}_{g,g'} = \left\{s_hb_{S,S}s_h',\ t_ib_{S,T}s_h',\ s_hb_{T,S}t_j',\ t_i
 
 \noindent\begin{lemma}\label{ProjectionThing} We have
 \begin{align*}
-\rho(s_e')t_it_j'\rho(s_e) = \frac{\delta_{i,j}}{{d}},
+j_1'(t_i)j_1(t_j') = d\rho(s_e')t_it_j'\rho(s_e) = \delta_{i,j},
 \end{align*}
 \noindent for all $i, j \in \{1, \dots, m\}$.\\
 \end{lemma}
@@ -1457,10 +1457,17 @@ p(U(g^{-1}))s_e \in \homset_\mathcal{D}(1, \rho^2 \circ \alpha_{g^{-1}}) = \homs
 \begin{align*}
 \textup{Tr}(\lambda(g)) = \frac{u^2}{s}\sum_{h \in G} \chi_h(g) + ut\textup{Tr}(U_\mathcal{K}(g)).
 \end{align*}
-\noindent We once again know that any $1$-dimensional representation $\chi \in \homset(G, \mathbbm{k}^\times)$ must have multiplicity $1$ in $\lambda$, hence
+\noindent Suppose $t = 1$. Then $d_+ = s = n$, $d_- = -1$ and $m = s-1$. We once again know that any $1$-dimensional representation $\chi \in \homset(G, \mathbbm{k}^\times)$ must have multiplicity $1$ in $\lambda$, hence
 \begin{align*}
-s = u^2a_\chi + utsb_\chi.
+1 = \begin{cases}n(a_\chi - b_\chi),&d = d_-;\\\frac{1}{n}a_\chi + b_\chi,&d = d_+.\end{cases}
 \end{align*}
+\noindent When $d = d_+$, either $a_\chi = 0$ and $b_\chi = 1$ or $a_\chi = n$ and $b_\chi = 0$. Since $\chi_e = 1$, we know that the trivial character appears at least once in  $\bigoplus_{h \in G}\chi_h$. Thus $a_1 = n$, implying $\chi_h = 1$ for all $h \in G$. It follows that $\textup{Tr}(\lambda(g)) = 1 + \textup{Tr}(U_\mathcal{K}(g))$ and hence
+\begin{align*}
+1 \oplus V \cong 1 \oplus U_\mathcal{K} \cong \lambda.
+\end{align*}
+\noindent\textcolor{red}{Show that $G$ is Abelian.} \\
+\noindent When $d = d_-$, we only have solutions when $n = 1$, in which case $a_\chi = 1 = n$ and $b_\chi = 0$, aligning with the $d = d_+$ case. Finally, suppose $t > 1$.
+
 \textcolor{red}{This is pretty tedious. I'll finish it later. Need to adapt the category theory parts, since we no longer have a category and moreover \hyperref[QuotientAlgebraObject]{Theorem \ref*{QuotientAlgebraObject}} uses the Frobenius--Perron dimension, not the quantum dimension. I suspect the way forward is to use $(d_-/d_+)\textup{Tr}^\textup{FP} = \textup{Tr}^L$, where $d_-/d_+ = d_-d_+/d_+^2 = -n/d_+^2 = -1/s$.}
 \end{proof}\\
 
@@ -1529,51 +1536,51 @@ U'(g) &= \sum_{i,j=1}^m{t_iU'(g)_{ij}t_j'} = \sum_{p,q=1}^m{T \varphi(t_p)U_\mat
 %\end{split}
 %\end{align*}
 
-\noindent\begin{lemma}\label{Schur} Let $\pi : G \to \textup{End}(A)$ and $\sigma : G \to \textup{End}(B)$ be irreducible representations of $G$. Then
-\begin{align*}
-\sum_{g \in G} \pi(g) \circ \gamma \circ \sigma(g)^{-1} = n\delta_{\pi,\sigma}
-\end{align*}
-\noindent for any $\gamma : B \to A$.\\
-\end{lemma}
-
-\noindent\begin{proof} Define
-\begin{align*}
-\psi \coloneqq \sum_{g \in G} \pi(g) \circ \gamma \circ \sigma(g)^{-1}.
-\end{align*}
-\noindent Then for any $h \in G$, we have that
-\begin{align*}
-\pi(h) \circ \psi \circ \sigma(h)^{-1} = \sum_{g \in G} \pi(hg) \circ \gamma \circ \sigma(hg)^{-1} = \psi.
-\end{align*}
-\noindent Thus $\psi$ intertwines $\pi$ and $\sigma$. Provided $\mathbbm{k}$ is algebraically closed, it follows that
-\begin{align*}
-\sum_{g \in G} \pi(g) \circ \gamma \circ \sigma(g)^{-1} = n\delta_{\pi,\sigma}
-\end{align*}
-%\noindent Let $\gamma(g) \coloneqq \pi(g)\sigma(g)^{-1}$. If $\gamma(g) = 1$ for all $g \in G$, then
+%\noindent\begin{lemma}\label{Schur} Let $\pi : G \to \textup{End}(A)$ and $\sigma : G \to \textup{End}(B)$ be irreducible representations of a finite group $G$ over an algebraically closed field $\mathbbm{k}$ with $\textup{char}(\mathbbm{k}) \nmid \abs{G}$. Then
 %\begin{align*}
-%\begin{split}
-%\sum_{g \in G} \pi(g)\sigma(g)^{-1} = \sum_{g \in G} \gamma(g) = n,
-%\end{split}
+%\sum_{g \in G} \pi(g) \circ \gamma \circ \sigma(g)^{-1} = n\delta_{\pi,\sigma}
 %\end{align*}
-%\noindent and moreover $\gamma(g) = 1$ if and only if $\pi = \sigma$. Suppose instead that there exists some $x \in G$ for which $\gamma(x) \neq 1$. Then
+%\noindent for any linear map $\gamma : B \to A$, where $\delta_{\pi,\sigma}$ detects equivalence.\\
+%\end{lemma}
+%
+%\noindent\begin{proof} Define
 %\begin{align*}
-%\begin{split}
-%\gamma(x)\sum_{g \in G}\gamma(g) = \sum_{g \in G}\gamma(xg) = \sum_{g \in G} \gamma_{h,k}(g),
-%\end{split}
+%\psi \coloneqq \sum_{g \in G} \pi(g) \circ \gamma \circ \sigma(g)^{-1}.
 %\end{align*}
-%\noindent whence
+%\noindent Then for any $h \in G$, we have that
 %\begin{align*}
-%\begin{split}
-%(\gamma_{h,k}(x) - 1)\sum_{g \in G}\gamma_{h,k}(g) = 0.
-%\end{split}
+%\pi(h) \circ \psi \circ \sigma(h)^{-1} = \sum_{g \in G} \pi(hg) \circ \gamma \circ \sigma(hg)^{-1} = \psi.
 %\end{align*}
-%\noindent Since $\gamma_{h,k}(x) \neq 1$, and assuming that $\gamma_{h,k}(x) - 1$ is invertible in $\mathbbm{k}$, the sum must be zero. Thus
+%\noindent Thus $\psi$ intertwines $\pi$ and $\sigma$. Provided $\mathbbm{k}$ is algebraically closed, it follows that
 %\begin{align*}
-%\begin{split}
-%\sum_{g \in G}\chi_h(g)\chi_k(g)^{-1} = n\delta_{\chi_h,\chi_k}.
-%\end{split}
+%\sum_{g \in G} \pi(g) \circ \gamma \circ \sigma(g)^{-1} = n\delta_{\pi,\sigma}
 %\end{align*}
-\noindent from Schur's lemma. %This completes the proof.
-\end{proof}\\
+%%\noindent Let $\gamma(g) \coloneqq \pi(g)\sigma(g)^{-1}$. If $\gamma(g) = 1$ for all $g \in G$, then
+%%\begin{align*}
+%%\begin{split}
+%%\sum_{g \in G} \pi(g)\sigma(g)^{-1} = \sum_{g \in G} \gamma(g) = n,
+%%\end{split}
+%%\end{align*}
+%%\noindent and moreover $\gamma(g) = 1$ if and only if $\pi = \sigma$. Suppose instead that there exists some $x \in G$ for which $\gamma(x) \neq 1$. Then
+%%\begin{align*}
+%%\begin{split}
+%%\gamma(x)\sum_{g \in G}\gamma(g) = \sum_{g \in G}\gamma(xg) = \sum_{g \in G} \gamma_{h,k}(g),
+%%\end{split}
+%%\end{align*}
+%%\noindent whence
+%%\begin{align*}
+%%\begin{split}
+%%(\gamma_{h,k}(x) - 1)\sum_{g \in G}\gamma_{h,k}(g) = 0.
+%%\end{split}
+%%\end{align*}
+%%\noindent Since $\gamma_{h,k}(x) \neq 1$, and assuming that $\gamma_{h,k}(x) - 1$ is invertible in $\mathbbm{k}$, the sum must be zero. Thus
+%%\begin{align*}
+%%\begin{split}
+%%\sum_{g \in G}\chi_h(g)\chi_k(g)^{-1} = n\delta_{\chi_h,\chi_k}.
+%%\end{split}
+%%\end{align*}
+%\noindent from Schur's lemma. %This completes the proof.
+%\end{proof}\\
 
 \noindent\begin{lemma} Let $\hat{G}^V$ be the set of irreducible summands of $V$ and let
 \begin{align*}
@@ -1601,7 +1608,7 @@ U_\mathcal{K}(g) = \sum_{\pi \in \hat{G}^V}\sum_{a=1}^{m_\pi}\pi(g) t_{\pi}^a {t
 &\sum_{g \in G}\sum_{\pi,a,i,j}\sum_{\sigma,b,p,q} \pi(g)_{ij}\sigma(g)_{pq}^{-1} t_{\pi,i}^a{t_{\pi,j}^a}'\rho(s_e)\rho(s_e')t_{\sigma,p}^b{t_{\sigma,q}^b}'.
 \end{split}
 \end{align*}
-\noindent By \hyperref[Schur]{Lemma \ref*{Schur}}, this becomes \textcolor{red}{check $1/\dim(\pi)$}
+\noindent Because $\mathbbm{k}$ is algebraically closed with $\textup{char}(\mathbbm{k}) \nmid n$, Schur's lemma implies that %\hyperref[Schur]{Lemma \ref*{Schur}}, this becomes \textcolor{red}{check $1/\dim(\pi)$}
 \begin{align*}
 \begin{split}
 \sum_{g \in G}\rho(s_g)\rho(s_g') =\ &\frac{n}{d^2}\sum_{h,k \in G} \delta_{\chi_h,\chi_k} s_hs_k'\ +\\
@@ -1811,7 +1818,43 @@ T\alpha_h(j_2(j_1'(j_2(y))))s_h &= T\alpha_h(\rho^2(s_e')\rho^2(y)\rho(s_e)s_e)s
 \newpage
 
 \ruledsection{General Reconstruction}{5}
-\noindent\\ In 
+\noindent\\ Suppose we have a fusion category $\mathcal{C}$ together with a set of algebra endomorphisms realizing its fusion rules. We showed previously that, with simplicity and rigidity assumptions, we obtain
+\begin{enumerate}[label=\textup{(\roman*).}, ref=\textup{(\roman*)}, leftmargin=4\parindent]
+\item two finite-dimensional vector spaces $\mathcal{K}$ and $\mathcal{K}'$;
+\item four linear maps $j_1, j_2 \in \homset(\mathcal{K}, \mathcal{K}')$ and $j_1', j_2' \in \homset(\mathcal{K}', \mathcal{K})$;
+%\item two invertible linear maps $\varphi \in \textup{Aut}(\mathcal{K})$ and $\varphi' \in \textup{Aut}(\mathcal{K}')$;
+\item two representations $U_\mathcal{K}, V : G \to \textup{Aut}(\mathcal{K})$;
+\item a symmetric bicharacter $\chi : G \times G \to \mathbbm{k}^\times$;
+\item two linear maps $l \in \homset(\mathcal{K}, \mathcal{K} \otimes \mathcal{K})$ and $l' \in \homset(\mathcal{K}', \mathcal{K}' \otimes \mathcal{K}')$.
+\end{enumerate}
+\noindent This data completely encoded the structure of $\mathcal{C}$. What we would now like to do is find necessary and sufficient conditions for a tuple $(\mathcal{K}, \mathcal{K}', j_1, j_2, j_1', j_2', U_\mathcal{K}, V, \chi, l, l')$ to recover $\mathcal{C}$.\\
+
+\noindent\textcolor{red}{Set everything up / define everything.}\\
+
+\noindent First need to show that $\rho$ preserves the Leavitt algebra relations. By \textcolor{red}{Equation (..)} (\hyperref[ProjectionThing]{Lemma \ref*{ProjectionThing}}) and the constraints from \hyperref[GroupProperties]{Theorem \ref*{GroupProperties}},
+\begin{align*}
+\rho(s_{g_1}')\rho(s_{g_2}) &= U({g_1})\left(\frac{1}{d^2}\sum_{h_1,h_2 \in G}s_{h_1}'U({g_1}^{-1}{g_2})s_{h_2} + \frac{1}{d}\sum_{i,j=1}^m j_1'(t_i)t_i'U({g_1}^{-1}{g_2})t_j j_1(t_j')\right)U({g_2}^{-1})\\
+%&= U({g_1})\left(\frac{1}{d^2}\sum_{h \in G}\chi_h(g_1^{-1}g_2) + \frac{1}{d}\sum_{i,j=1}^m (t_i'U_\mathcal{K}({g_1}^{-1}{g_2})t_j) j_1'(t_i) j_1(t_j')\right)U({g_2}^{-1})\\
+&= U({g_1})\left(\frac{1}{d^2}\sum_{h \in G}\chi_h(g_1^{-1}g_2) + \frac{1}{d}\textup{Tr}(U_\mathcal{K}({g_1}^{-1}{g_2}))\right)U({g_2}^{-1}) = \delta_{g_1,g_2}.
+%&= U({g_1})\left(\frac{1}{d^2}\sum_{h \in G}\chi_{g_2}(h)\chi_{g_1}(h)^{-1} + \frac{1}{d}\sum_{i,j=1}^m (t_i'U_\mathcal{K}({g_1}^{-1}{g_2})t_j) j_1'(t_i) j_1(t_j')\right)U({g_2}^{-1})\\
+%&= U({g_1})\left(\frac{n}{d^2}\delta_{g_1,g_2} + \frac{1}{d}\textup{Tr}(U_\mathcal{K}({g_1}^{-1}{g_2}))\right)U({g_2}^{-1})\\
+\end{align*}
+\noindent By \textcolor{red}{Equation (..)} (\hyperref[Rho]{Lemma \ref*{Rho}}), we have \textcolor{red}{check equation with $U(g)$'s inserted}
+\begin{alignat*}{2}
+\rho(s_g')\rho(t_i)\ &&=\ &\frac{1}{d\sqrt{d}}\sum_{h \in G}U(g) s_h'U(g^{-1})s_h\alpha_h(j_2'(t_i))\ +\\
+&&&\frac{1}{\sqrt{d}}\sum_{i=1}^m\sum_{h \in G} U(g)j_1'(t_i)t_i'U_K(g^{-1})\alpha_h(j_2(j_1'(x)))s_hs_h'\ +\\
+&&&\frac{1}{\sqrt{d}}\sum_{i=1}^m U(g)j_1'(t_i)t_i'U_K(g^{-1})l(t_i)\\
+&&=\ &\frac{1}{d\sqrt{d}}\sum_{h \in G}U(g)\chi_h(g^{-1})\alpha_h(j_2'(t_i)) + \frac{1}{\sqrt{d}}\sum_{i=1}^m U(g)j_1'(t_i)t_i'U_K(g^{-1})l(t_i)\\
+&&=\ &0.
+\end{alignat*}
+\noindent Similarly, $\rho(t_i')\rho(s_g) = 0$. Finally,
+\begin{alignat*}{2}
+\rho(t_i')\rho(t_j)\ &&=\ &\frac{1}{d}\sum_{h \in G}\alpha_h(j_2(t_i')j_2'(t_j)) + \sum_{{h_1},{h_2} \in G} s_{h_1}s_{h_1}'\alpha_{h_1}(j_2'(j_1(t_i')))\alpha_{h_2}(j_2(j_1'(t_j)))s_{h_2}s_{h_2}'\ +\\
+&&&\sum_{h \in G} s_hs_h'\alpha_h(j_2'(j_1(t_i')))l(t_j) + \sum_{h \in G} l'(y)\alpha_h(j_2(j_1'(x)))s_hs_h' + l'(t_i')l(t_j)\\
+&&=\ &\frac{1}{d}\sum_{h \in G}\alpha_h(j_2(t_i')j_2'(t_j)) + l'(t_i')l(t_j)\\
+&&=\ &\delta_{i,j}.
+\end{alignat*}
+\noindent It follows that $\rho$ is an endomorphism of $\mathcal{L}$.
 
 \newpage
 
