@@ -1020,11 +1020,20 @@ B^{k, k'}_{g,g'} = \left\{s_hb_{S,S}s_h',\ t_ib_{S,T}s_h',\ s_hb_{T,S}t_j',\ t_i
 \end{enumerate}
 \noindent The next stage of our deconstruction is to deduce a system of polynomial equations in these objects. The upshot is that it will be verified, in the next section, that these equations describe necessary constraints for these objects to realize a valid fusion category.\\
 
-\noindent\begin{lemma}\label{ProjectionThing} We have
+\noindent\begin{definition}\label{DualBasis1} Suppose we have $\{u_i\}_{i=1}^m \subset \mathcal{K}$ and $\{v_j\}_{j=1}^m \subset \mathcal{K}'$ such that $v_ju_i = \delta_{ij}$, for all $i, j \in \{1, \dots, m\}$. We call these {\em dual bases} for $\mathcal{K}$ and $\mathcal{K}'$.\\
+\end{definition}
+
+\noindent We already have one pair of dual bases; namely, $\{t_i\}_{i=1}^m$ and $\{t_j'\}_{j=1}^m$. Note that, given a pair of dual bases $\{u_i\}_{i=1}^m \subset \mathcal{K}$ and $\{v_j\}_{j=1}^m \subset \mathcal{K}'$, we have by definition that
+\begin{align*}
+\left(\sum_{k=1}^m u_kv_k\right)u_i = u_i\qquad\text{and}\qquad v_j\left(\sum_{k=1}^m u_kv_k\right) = v_j
+\end{align*}
+\noindent for all $i, j$. In other words, the sum acts as identity in $\textup{End}(\mathcal{K}) = \mathcal{K}\mathcal{K}' = \textup{End}(\mathcal{K}')$ and hence is $T$.\\
+
+\noindent\begin{lemma}\label{DualBasis2} For all $i, j \in \{1, \dots, m\}$, we have
 \begin{align}
-j_1'(t_i)j_1(t_j') = \delta_{i,j} = j_2'(t_i)j_2(t_j'),\label{DualBasis}
+j_1'(t_i)j_1(t_j') = \delta_{i,j} = j_2'(t_i)j_2(t_j').\label{DualBasisIdentity}
 \end{align}
-\noindent for all $i, j \in \{1, \dots, m\}$. In other words $\{j_1(t_j')\}_{j=1}^m$ and $\{j_2(t_j')\}_{j=1}^m$ are bases for $\mathcal{K}$ with ``dual'' bases $\{j_1'(t_i)\}_{i=1}^m$ and $\{j_2'(t_i)\}_{i=1}^m$, respectively, for $\mathcal{K}'$.\\
+\noindent In other words, the pairs $(\{j_1(t_i')\}_{i=1}^m, \{j_1'(t_j)\}_{j=1}^m)$ and $(\{j_2(t_i')\}_{i=1}^m, \{j_2'(t_j)\}_{j=1}^m)$ are dual bases.\\
 \end{lemma}
 
 \noindent\begin{proof} By \hyperref[Rho]{Lemma \ref*{Rho}}, together with the definition of ${d}$, we have
@@ -1041,6 +1050,9 @@ j_1'(t_i)j_1(t_j') = \delta_{i,j} = j_2'(t_i)j_2(t_j'),\label{DualBasis}
 \end{align*}
 \noindent whence $j_1'(t_i)j_1(t_j') = \delta_{i,j}$ follows by considering $x = t_it_j'$. The equality $j_2'(t_i)j_2(t_j') = \delta_{i,j}$ follows similarly by considering the right quantum trace. %This completes the proof.
 \end{proof}\\
+
+\noindent\begin{remark}\label{PhiDualBasis} An immediate corollary of \hyperref[DualBasis2]{Lemma \ref*{DualBasis2}} is that $\{\varphi(t_i)\}_{i=1}^m$ and $\{\varphi'(t_j')\}_{j=1}^m$ are dual bases for $\mathcal{K}$ and $\mathcal{K}'$, together with their inverses.\\
+\end{remark}
 
 \noindent\begin{lemma}\label{OneClickRotation} Recall the invertible maps $\varphi \coloneqq j_2 \circ j_1' \in \mathcal{K}\mathcal{K}'$ and $\varphi' \coloneqq j_2' \circ j_1 \in \mathcal{K}\mathcal{K}'$. We have
 \begin{gather*}
@@ -1436,7 +1448,7 @@ p(U(g^{-1}))s_e \in \homset_\mathcal{D}(1, \rho^2 \circ \alpha_{g^{-1}}) = \homs
 \delta_{g,e} = \rho(s_e')U(g)\rho(s_e) &= \frac{1}{{d}^2}\sum_{h \in G} \chi_h(g) + \sum_{i,j=1}^m \rho(s_e')t_it_i' U_\mathcal{K}(g)t_jt_j'\rho(s_e).%\\
 % &= \frac{1}{d^2}\sum_{h \in G} \chi_h(g) + \rho(s_e')U_\mathcal{K}(g)\rho(s_e).
 \end{align*}
-\noindent Observe that $t_i' U_\mathcal{K}(g)t_j \in \mathbbm{k}$, as it is in the $1$-dimensional space $\homset_\mathcal{D}(\rho, \rho)$. Thus, by \hyperref[ProjectionThing]{Lemma \ref*{ProjectionThing}},
+\noindent Observe that $t_i' U_\mathcal{K}(g)t_j \in \mathbbm{k}$, as it is in the $1$-dimensional space $\homset_\mathcal{D}(\rho, \rho)$. Thus, by \hyperref[DualBasis1]{Lemma \ref*{DualBasis1}},
 \begin{align*}
 \begin{split}
 \delta_{g,e} &= \frac{1}{{d}^2}\sum_{h \in G} \chi_h(g) + \sum_{i,j=1}^m \rho(s_e')t_it_i' U_\mathcal{K}(g)t_jt_j'\rho(s_e)\\
@@ -1601,7 +1613,7 @@ U_\mathcal{K}(g) = \sum_{\pi \in \hat{G}^V}\sum_{a=1}^{m_\pi}\pi(g) t_{\pi}^a {t
 \end{align*}
 \noindent by \cite[Theorem VIII.2.2]{Mac13}. Then
 \begin{gather}
-\frac{n}{d}\sum_{\pi,a,b,i,j}\frac{1}{\dim(\pi)}t_{\pi,i}^a j_1({t_{\pi,j}^a}')j_1'(t_{\pi,i}^b){t_{\pi,j}^b}' + \sum_{i=1}^m l(t_i)l'(t_i) = T \otimes T,\label{IrreducibleResult1}\\
+\frac{n}{d}\sum_{\pi,a,b,i,j}\frac{1}{\dim(\pi)}t_{\pi,i}^a j_1({t_{\pi,j}^a}')j_1'(t_{\pi,j}^b){t_{\pi,i}^b}' + \sum_{i=1}^m l(t_i)l'(t_i) = T \otimes T,\label{IrreducibleResult1}\\
 \frac{n}{d} \sum_{\pi,a}\delta_{\chi_h,\pi} t_\pi^a j_1({t_\pi^a}') + \sum_{i=1}^m l(t_i)V(h)j_2(t_i') = 0.\label{IrreducibleResult2}
 \end{gather}
 \noindent\\
@@ -1614,7 +1626,7 @@ U_\mathcal{K}(g) = \sum_{\pi \in \hat{G}^V}\sum_{a=1}^{m_\pi}\pi(g) t_{\pi}^a {t
 =\ &\frac{1}{d^2}\sum_{g,h,k \in G} \chi_h(g)\chi_k(g)^{-1} s_hs_k'\ +\\
 &\frac{1}{d}\sum_{g,h \in G}\sum_{\pi,a,i,j} \chi_h(g)\pi(g)_{ij}^{-1} s_h\rho(s_e')t_{\pi,i}^a{t_{\pi,j}^a}'\ +\\
 &\frac{1}{d}\sum_{g,k \in G}\sum_{\pi,a,i,j} \pi(g)_{ij}\chi_k(g)^{-1} t_{\pi,i}^a{t_{\pi,j}^a}'\rho(s_e)s_k'\ +\\
-&\sum_{g \in G}\sum_{\pi,a,i,j}\sum_{\sigma,b,p,q} \pi(g)_{ij}\sigma(g)_{pq}^{-1} t_{\pi,i}^a{t_{\pi,j}^a}'\rho(s_e)\rho(s_e')t_{\sigma,p}^b{t_{\sigma,q}^b}'.
+&\sum_{g \in G}\sum_{\pi,a,i,j}\sum_{\sigma,b,p,q} \pi(g)_{ij}\sigma(g)_{qp}^{-1} t_{\pi,i}^a{t_{\pi,j}^a}'\rho(s_e)\rho(s_e')t_{\sigma,p}^b{t_{\sigma,q}^b}'.
 \end{split}
 \end{align*}
 \noindent Because $\mathbbm{k}$ is algebraically closed with $\textup{char}(\mathbbm{k}) \nmid n$, Schur's lemma implies that %\hyperref[Schur]{Lemma \ref*{Schur}}, this becomes \textcolor{red}{check $1/\dim(\pi)$}
@@ -1623,7 +1635,7 @@ U_\mathcal{K}(g) = \sum_{\pi \in \hat{G}^V}\sum_{a=1}^{m_\pi}\pi(g) t_{\pi}^a {t
 \sum_{g \in G}\rho(s_g)\rho(s_g') =\ &\frac{n}{d^2}\sum_{h,k \in G} \delta_{\chi_h,\chi_k} s_hs_k'\ +\\
 &\frac{n}{d\sqrt{d}}\sum_{h \in G}\sum_{\pi,a} \delta_{\chi_h,\pi} s_hj_1'(t_{\pi}^a){t_{\pi}^a}'\ +\\
 &\frac{n}{d\sqrt{d}}\sum_{k \in G}\sum_{\pi,a} \delta_{\pi,\chi_k} t_{\pi}^aj_1({t_{\pi}^a}')s_k'\ +\\
-&\frac{n}{d}\sum_{g \in G}\sum_{\pi,a,i,j} \frac{1}{\dim(\pi)}t_{\pi,i}^aj_1({t_{\pi,j}^a}')j_1'(t_{\pi,i}^b){t_{\pi,j}^b}'.
+&\frac{n}{d}\sum_{\pi,a,i,j} \frac{1}{\dim(\pi)}t_{\pi,i}^aj_1({t_{\pi,j}^a}')j_1'(t_{\pi,j}^b){t_{\pi,i}^b}'.
 \end{split}
 \end{align*}
 \noindent Meanwhile, by \hyperref[Rho]{Lemma \ref*{Rho}},
@@ -1649,7 +1661,7 @@ U_\mathcal{K}(g) = \sum_{\pi \in \hat{G}^V}\sum_{a=1}^{m_\pi}\pi(g) t_{\pi}^a {t
 \noindent\begin{lemma} \hyperref[RhoU]{Lemma \ref*{RhoU}} is equivalent to
 \begin{align*}
 \begin{split}
-\varphi U_\mathcal{K}(g) \varphi' \otimes U_\mathcal{K}(g) =\ &\sum_{\pi,\sigma,a,b,i,j,p,q}\sum_{h \in G}\chi_g(h)\pi(h)_{ij}\sigma(h)_{pq}^{-1}t_{\pi,i}^a j_1({t_{\pi,j}^a}')j_1'(t_{\sigma,q}^b){t_{\sigma,p}^b}'\ +\\
+\varphi U_\mathcal{K}(g) \varphi' \otimes U_\mathcal{K}(g) =\ &\sum_{\pi,\sigma,a,b,i,j,p,q}\sum_{h \in G}\chi_g(h)\pi(h)_{ij}\sigma(h)_{qp}^{-1}t_{\pi,i}^a j_1({t_{\pi,j}^a}')j_1'(t_{\sigma,p}^b){t_{\sigma,q}^b}'\ +\\
 &\sum_{\pi,a,i,j}\pi(g)_{ij}l(t_{\pi,i}^a)l'({t_{\pi,j}^a}')
 \end{split}
 \end{align*}
@@ -1679,7 +1691,7 @@ T\rho(U(g))T = \sum_{h \in G}\chi_h(g)TU(h)\rho(s_e)\rho(s_e')U(h)^{-1}T + \sum_
 \noindent The first term is simply
 \begin{align*}
 \sum_{h \in G}\chi_h(g)TU(h)\rho(s_es_e')U(h)^{-1}T
-= \sum_{\pi,\sigma,a,b,i,j,p,q}\sum_{h \in G}\chi_g(h)\pi(h)_{ij}\sigma(h)_{pq}^{-1}t_{\pi,i}^a {t_{\pi,j}^a}'\rho(s_es_e')t_{\sigma,q}^b{t_{\sigma,p}^b}'.
+= \sum_{\pi,\sigma,a,b,i,j,p,q}\sum_{h \in G}\chi_g(h)\pi(h)_{ij}\sigma(h)_{qp}^{-1}t_{\pi,i}^a {t_{\pi,j}^a}'\rho(s_es_e')t_{\sigma,p}^b{t_{\sigma,q}^b}'.
 \end{align*}
 \noindent As for the second, \textcolor{red}{check this, period 3 condition?}
 \begin{align*}
@@ -1840,7 +1852,7 @@ T\alpha_h(j_2(j_1'(j_2(y))))s_h &= T\alpha_h(\rho^2(s_e')\rho^2(y)\rho(s_e)s_e)s
 
 \noindent\textcolor{red}{Set everything up / define everything.}\\
 
-\noindent Need to show that $\rho$ preserves the Leavitt algebra relations. By \hyperref[DualBasis]{Equation \eqref*{DualBasis}} and the constraints from \hyperref[GroupProperties]{Theorem \ref*{GroupProperties}} \textcolor{red}{(are you sure? how can you get $\textup{Tr}(U_\mathcal{K})$?)},
+\noindent Need to show that $\rho$ preserves the Leavitt algebra relations. By \hyperref[DualBasisIdentity]{Equation \eqref*{DualBasisIdentity}} and the constraints from \hyperref[GroupProperties]{Theorem \ref*{GroupProperties}},
 \begin{align*}
 \rho(s_{g_1}')\rho(s_{g_2}) &= U({g_1})\left(\frac{1}{d^2}\sum_{h_1,h_2 \in G}s_{h_1}'U({g_1}^{-1}{g_2})s_{h_2} + \frac{1}{d}\sum_{i,j=1}^m j_1'(t_i)t_i'U({g_1}^{-1}{g_2})t_j j_1(t_j')\right)U({g_2}^{-1})\\
 %&= U({g_1})\left(\frac{1}{d^2}\sum_{h \in G}\chi_h(g_1^{-1}g_2) + \frac{1}{d}\sum_{i,j=1}^m (t_i'U_\mathcal{K}({g_1}^{-1}{g_2})t_j) j_1'(t_i) j_1(t_j')\right)U({g_2}^{-1})\\
@@ -1900,10 +1912,10 @@ T\alpha_h(j_2(j_1'(j_2(y))))s_h &= T\alpha_h(\rho^2(s_e')\rho^2(y)\rho(s_e)s_e)s
 \begin{align*}
 \begin{split}
 s_e'\rho^2(s_e) %&= \frac{1}{d^2}\sum_{h \in G} U(h^{-1}) + \frac{1}{d}\sum_{i=1}^m j_2'(t_i)\rho(j_1(t_i'))\\
-&= \frac{1}{d^2}\sum_{h \in G} U(h) + \frac{1}{d}\sum_{g \in G}\sum_{i=1}^m j_2'(t_i)\alpha_g(j_2(t_i'))s_gs_g' + \frac{1}{d}\sum_{i=1}^m j_2'(t_i)l(j_1(t_i')).
+&= \frac{1}{d^2}\sum_{h \in G} U(h^{-1}) + \frac{1}{d}\sum_{g \in G}\sum_{i=1}^m j_2'(t_i)\alpha_g(j_2(t_i'))s_gs_g' + \frac{1}{d}\sum_{i=1}^m j_2'(t_i)l(j_1(t_i')).
 \end{split}
 \end{align*}
-\noindent Now, by \hyperref[DualBasis]{Equation \eqref*{DualBasis}} and the constraints from \hyperref[GroupProperties]{Theorem \ref*{GroupProperties}},
+\noindent Now, by \hyperref[DualBasisIdentity]{Equation \eqref*{DualBasisIdentity}} and the constraints from \hyperref[GroupProperties]{Theorem \ref*{GroupProperties}},
 \begin{align*}
 \begin{split}
 s_e'\rho^2(s_e)S &= \sum_{g \in G}\left(\frac{1}{d^2}\sum_{h \in G} \chi_g(h) + \frac{1}{d}\sum_{i=1}^m j_2'(t_i)V(g)j_2(t_i')\right)s_gs_g'\\
@@ -1925,7 +1937,7 @@ s_e'\rho^2(s_e)t &= \frac{1}{d^2}\sum_{h \in G} U_\mathcal{K}(h)j_2(j_2'(t)) + \
 \end{align*}
 \noindent Need to show that $\sum_{i=1}^m  j_2'(t_i)l(j_1(t_i'))t = \sum_{i=1}^m j_2(j_1'(t_i)t_i'l(t))$. Might need to include this as a new equation.\\
 
-\noindent Thus $s_h'\rho^2(s_e) = s_hs_h'$. We also have
+\noindent Thus $s_h'\rho^2(s_e) = s_hs_h'$. Next, consider
 \begin{align*}
 \begin{split}
 t_i'\rho^2(s_e) %=\ &\frac{1}{d\sqrt{d}}\sum_{h \in G}\sum_{j=1}^m t_i'U_\mathcal{K}(h)t_jj_1(t_j')U(h^{-1})\ +\\
@@ -1934,10 +1946,10 @@ t_i'\rho^2(s_e) %=\ &\frac{1}{d\sqrt{d}}\sum_{h \in G}\sum_{j=1}^m t_i'U_\mathca
 %=\ &\frac{1}{d\sqrt{d}}\sum_{h \in G}\sum_{j=1}^m t_i'U_\mathcal{K}(h)t_jj_1(t_j')U(h^{-1}) + \frac{1}{d}\sum_{j=1}^m\sum_{h \in G} t_i'\alpha_h(j_2(j_1'(t_j)))s_h\alpha_h(j_2'(j_1(t_j')))\ +\\
 %&\frac{1}{\sqrt{d}}\sum_{j=1}^m\sum_{h \in G} t_i'l(t_j)\alpha_h(j_2(t_j'))s_hs_h' + \frac{1}{\sqrt{d}}\sum_{j,k,l=1}^m t_i'l(t_j)l'(t_j')t_kt_lj_1(t_l')t_k'
 =\ &\frac{1}{d\sqrt{d}}\sum_{h \in G}\sum_{k=1}^m t_i'U_\mathcal{K}(h)t_kj_1(t_k')U(h^{-1}) + \frac{1}{d}\sum_{k=1}^m\sum_{h \in G} t_i'\alpha_h(j_2(j_1'(t_k)))s_h\alpha_h(j_2'(j_1(t_k')))\ +\\
-&\frac{1}{\sqrt{d}}\sum_{k=1}^m\sum_{h \in G} t_i'l(t_k)\alpha_h(j_2(t_k'))s_hs_h' + \frac{1}{\sqrt{d}}\sum_{j,k,l=1}^m t_i'l(t_k)l'(t_k')t_jt_lj_1(t_l')t_j',
+&\frac{1}{\sqrt{d}}\sum_{k=1}^m\sum_{h \in G} t_i'l(t_k)\alpha_h(j_2(t_k'))s_hs_h' + \frac{1}{\sqrt{d}}\sum_{j,k,l=1}^m t_i'l(t_l)l'(t_l')t_jt_kj_1(t_k')t_j'.
 \end{split}
 \end{align*}
-\noindent whence
+\noindent Multiplying by $s_g$, we obtain
 \begin{align*}
 \begin{split}
 t_i'\rho^2(s_e)s_g = t_i'\left(\frac{1}{d\sqrt{d}}\sum_{h \in G}\sum_{k=1}^m\chi_g(h^{-1})U_\mathcal{K}(h)t_kj_1(t_k') + \frac{1}{\sqrt{d}}\sum_{k=1}^m l(t_k)V(g)j_2(t_k')\right)s_g.
@@ -1975,16 +1987,43 @@ t_i'\rho^2(s_e)s_g &= t_i'\left(\frac{1}{d\sqrt{d}}\sum_{h \in G}\sum_{\pi,a}\su
 t_i'\rho^2(s_e)s_g = t_i'\left(\frac{n}{d\sqrt{d}}\sum_{\pi,a}\delta_{\chi_g,\pi}t_{\pi}^a j_1({t_{\pi}^a}') + \frac{1}{\sqrt{d}}\sum_{k=1}^m l(t_k)V(g)j_2(t_k')\right)s_g = 0.
 \end{split}
 \end{align*}
-\noindent Meanwhile,
+\noindent Meanwhile, consider
 \begin{align*}
 \begin{split}
-t_i'\rho^2(s_e)t_j =\ &\frac{1}{d\sqrt{d}}\sum_{h \in G}\sum_{k=1}^m t_i'U_\mathcal{K}(h)t_kj_1(t_k')U_\mathcal{K}(h^{-1})t_j\ +\\
-&\frac{1}{d}\sum_{k=1}^m\sum_{h \in G} t_i'\alpha_h(j_2(j_1'(t_k)))s_h\alpha_h(j_2'(j_1(t_k')))t_j + \frac{1}{\sqrt{d}}\sum_{k,l=1}^m t_i'l(t_k)l'(t_k')t_jt_lj_1(t_l')\\
-&= ...\\
-&= \delta_{i,j}\rho(x).
+t_i'\rho^2(s_e)t_j =\ &\frac{1}{d\sqrt{d}}\sum_{h \in G}\sum_{k=1}^m t_i'U_\mathcal{K}(h)t_kj_1(t_k')U_\mathcal{K}(h)^{-1}t_j\ +\\
+&\frac{1}{d}\sum_{k=1}^m\sum_{h \in G} t_i'\alpha_h(j_2(j_1'(t_k)))s_h\alpha_h(j_2'(j_1(t_k')))t_j + \frac{1}{\sqrt{d}}\sum_{k,l=1}^m t_i'l(t_l)l'(t_l')t_jt_kj_1(t_k').
 \end{split}
 \end{align*}
-\noindent Combining these results shows that
+\noindent First, observe that $j_1'(t)t_k \in \mathbbm{k}$ for all $t \in \mathcal{K}$, whence \textcolor{red}{Equation (..)} (\hyperref[jMapProperties]{Lemma \ref*{jMapProperties}}) gives us
+\begin{align*}
+\begin{split}
+j_1'(t)\sum_{k=1}^m t_kj_1(t_k') = \sum_{k=1}^m j_1(j_1'(t)t_kt_k') = j_1(j_1'(t)T) = j_1(j_1'(t)) = t.
+\end{split}
+\end{align*}
+\noindent Therefore, by \hyperref[IrreducibleBasis]{Equation \eqref*{IrreducibleBasis}}, Schur's lemma and the fact that ${t_{\pi,q}^a}'t_k, {t_{\pi,p}^b}'t_j \in \mathbbm{k}$,
+\begin{align*}
+\begin{split}
+\sum_{k=1}^m t_i'U_\mathcal{K}(h)t_kj_1(t_k')U_\mathcal{K}(h)^{-1}t_j &= \sum_{\pi,\sigma,a,b,p,q,s,r,k} \pi(h)_{pq}\sigma(h)_{sr}t_i't_{\pi,p}^a{t_{\pi,q}^a}'t_kj_1(t_k')t_{\sigma,r}^b{t_{\sigma,s}^b}'t_j\\
+&= \sum_{\pi,a,b,p,q,k} \frac{1}{\dim(\pi)}t_i't_{\pi,p}^a{t_{\pi,q}^a}'t_kj_1(t_k')t_{\pi,q}^b{t_{\pi,p}^b}'t_j\\
+&= \sum_{\pi,a,b,p,q,k} \frac{1}{\dim(\pi)}t_i't_{\pi,p}^aj_1({t_{\pi,q}^a}'t_kt_k')t_{\pi,q}^b{t_{\pi,p}^b}'t_j\\
+&= \sum_{\pi,a,b,p,q} \frac{1}{\dim(\pi)}t_i't_{\pi,p}^aj_1({t_{\pi,q}^a}')t_{\pi,q}^b{t_{\pi,p}^b}'t_j\\
+&= \sum_{\pi,a,b,p,q}\sum_{k=1}^m \frac{1}{\dim(\pi)}t_i't_{\pi,p}^aj_1({t_{\pi,q}^a}')j_1'(t_{\pi,q}^b)t_kj_1(t_k'){t_{\pi,p}^b}'t_j\\
+&= \sum_{\pi,a,b,p,q}\sum_{k=1}^m \frac{1}{\dim(\pi)}t_i't_{\pi,p}^aj_1({t_{\pi,q}^a}')j_1'(t_{\pi,q}^b){t_{\pi,p}^b}'t_jt_kj_1(t_k').
+\end{split}
+\end{align*}
+\noindent Moreover, from \hyperref[DualBasisIdentity]{Equation \eqref*{DualBasisIdentity}}, we have \hyperref[PhiDualBasis]{Remark \ref*{PhiDualBasis}} and hence
+\begin{align*}
+\begin{split}
+\sum_{k=1}^m t_i'\alpha_h(j_2(j_1'(t_k)))s_h\alpha_h(j_2'(j_1(t_k')))t_j = \sum_{k=1}^m t_i'\alpha_h(j_2(j_1'(t_k))j_2'(j_1(t_k')))t_js_h = \delta_{i,j}s_h.
+\end{split}
+\end{align*}
+\noindent Thus by \hyperref[IrreducibleResult1]{Equation \eqref*{IrreducibleResult1}},
+\begin{align*}
+\begin{split}
+t_i'\rho^2(s_e)t_j = \left(\frac{1}{d}\sum_{h \in G} \delta_{i,j}s_h + \frac{1}{\sqrt{d}}t_i'(T \otimes T)t_j\sum_{k=1}^m t_kj_1(t_k')\right) = \delta_{i,j}\rho(s_e).
+\end{split}
+\end{align*}
+\noindent Combining all of these results shows that
 \begin{align*}
 \begin{split}
 \rho^2(s_e) = \sum_{h \in G}s_h\alpha_h(s_e)s_h' + \sum_{i=1}^m t_i\rho(s_e)t_i'.
@@ -1996,7 +2035,7 @@ t_i'\rho^2(s_e)t_j =\ &\frac{1}{d\sqrt{d}}\sum_{h \in G}\sum_{k=1}^m t_i'U_\math
 \rho^2(s_g) = \rho(U(g))\rho^2(s_e)\rho(U(g^{-1})) = \sum_{h \in G}s_h\alpha_h(s_g)s_h' + \textcolor{red}{\rho(U(g))T\rho(s_e)T\rho(U(g^{-1}))}
 \end{split}
 \end{align*}
-\noindent We may need to add proofs for the dual versions of certain results, such as \hyperref[UKDecomp]{Lemma \ref*{UKDecomp}}.
+\noindent We may need to add proofs for the dual versions of certain results, such as \hyperref[UKDecomp]{Lemma \ref*{UKDecomp}}, in order to do $\rho^2(s_e')$.
 \end{proof}\\
 
 \noindent\begin{lemma} We have
