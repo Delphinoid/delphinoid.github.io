@@ -1861,7 +1861,7 @@ T\alpha_h(j_2(j_1'(j_2(y))))s_h &= T\alpha_h(\rho^2(s_e')\rho^2(y)\rho(s_e)s_e)s
 \begin{align*}
 \rho(s_{g_1}')\rho(s_{g_2}) &= U({g_1})\left(\frac{1}{d^2}\sum_{h_1,h_2 \in G}s_{h_1}'U({g_1}^{-1}{g_2})s_{h_2} + \frac{1}{d}\sum_{i,j=1}^m j_1'(t_i)t_i'U({g_1}^{-1}{g_2})t_j j_1(t_j')\right)U({g_2}^{-1})\\
 %&= U({g_1})\left(\frac{1}{d^2}\sum_{h \in G}\chi_h(g_1^{-1}g_2) + \frac{1}{d}\sum_{i,j=1}^m (t_i'U_\mathcal{K}({g_1}^{-1}{g_2})t_j) j_1'(t_i) j_1(t_j')\right)U({g_2}^{-1})\\
-&\textcolor{red}{=}\ U({g_1})\left(\frac{1}{d^2}\sum_{h \in G}\chi_h(g_1^{-1}g_2) + \frac{1}{d}\textup{Tr}(U_\mathcal{K}({g_1}^{-1}{g_2}))\right)U({g_2}^{-1}) = \delta_{g_1,g_2}.
+&= U({g_1})\left(\frac{1}{d^2}\sum_{h \in G}\chi_h(g_1^{-1}g_2) + \frac{1}{d}\textup{Tr}(U_\mathcal{K}({g_1}^{-1}{g_2}))\right)U({g_2}^{-1}) = \delta_{g_1,g_2}.
 %&= U({g_1})\left(\frac{1}{d^2}\sum_{h \in G}\chi_{g_2}(h)\chi_{g_1}(h)^{-1} + \frac{1}{d}\sum_{i,j=1}^m (t_i'U_\mathcal{K}({g_1}^{-1}{g_2})t_j) j_1'(t_i) j_1(t_j')\right)U({g_2}^{-1})\\
 %&= U({g_1})\left(\frac{n}{d^2}\delta_{g_1,g_2} + \frac{1}{d}\textup{Tr}(U_\mathcal{K}({g_1}^{-1}{g_2}))\right)U({g_2}^{-1})\\
 \end{align*}
@@ -1875,12 +1875,12 @@ T\alpha_h(j_2(j_1'(j_2(y))))s_h &= T\alpha_h(\rho^2(s_e')\rho^2(y)\rho(s_e)s_e)s
 &&=\ &U(g)\left(\frac{1}{d\sqrt{d}}\sum_{h \in G}\alpha_h(j_2'(\alpha_{g^{-1}}(t))) + \frac{1}{\sqrt{d}}\sum_{i=1}^m j_1'(t_i)t_i'l(\alpha_{g^{-1}}(t))\right)U(g)^{-1}\\
 &&=\ &0.
 \end{alignat*}
-\noindent Similarly, $\rho(t_i')\rho(s_g) = 0$. Finally,
+\noindent Similarly, $\rho(t_i')\rho(s_g) = 0$. Finally, by \hyperref[PhiDualBasis]{Remark \ref*{PhiDualBasis}} and \hyperref[TIdentity]{Equation \eqref*{TIdentity}},
 \begin{alignat*}{2}
 \rho(t_i')\rho(t_j)\ &&=\ &\frac{1}{d}\sum_{h \in G}\alpha_h(j_2(t_i')j_2'(t_j)) + \sum_{{h_1},{h_2} \in G} s_{h_1}s_{h_1}'\alpha_{h_1}(j_2'(j_1(t_i')))\alpha_{h_2}(j_2(j_1'(t_j)))s_{h_2}s_{h_2}'\ +\\
 &&&\sum_{h \in G} s_hs_h'\alpha_h(j_2'(j_1(t_i')))l(t_j) + \sum_{h \in G} l'(y)\alpha_h(j_2(j_1'(x)))s_hs_h' + l'(t_i')l(t_j)\\
-&&=\ &\frac{1}{d}\sum_{h \in G}\alpha_h(j_2(t_i')j_2'(t_j)) + l'(t_i')l(t_j)\\
-&&=\ &\delta_{i,j}.
+&&=\ &\frac{1}{d}\sum_{h \in G}\alpha_h(j_2(t_i')j_2'(t_j)) + \sum_{h \in G} \alpha_h(j_2'(j_1(t_i'))j_2(j_1'(t_j)))s_hs_h' + l'(t_i')l(t_j)\\
+&&=\ &\delta_{i,j}(S + T).
 \end{alignat*}
 \noindent It follows that $\rho$ is an endomorphism of $\mathcal{L}$.\\
 
@@ -1942,7 +1942,15 @@ s_e'\rho^2(s_e)t &= \frac{1}{d^2}\sum_{h \in G} U_\mathcal{K}(h)j_2(j_2'(t)) + \
 &= 0.
 \end{split}
 \end{align*}
-\noindent Need to show that $\sum_{i=1}^m  j_2'(t_i)l(j_1(t_i'))t = \sum_{i=1}^m j_2(j_1'(t_i)t_i'l(t))$. Might need to include this as a new equation.\\
+\noindent\textcolor{red}{Need to show that $\sum_{i=1}^m  j_2'(t_i)l(j_1(t_i'))t = \sum_{i=1}^m j_2(j_1'(t_i)t_i'l(t))$. Might need to include this as a new equation. Suppose instead we define a linear map $\psi : \mathcal{K}^2 \to \mathcal{K}\mathcal{K}'$ by $uv \mapsto uj_1'(v)$. Applying this to \hyperref[IrreducibleResult2]{Equation \eqref*{IrreducibleResult2}} with $h = e$, Schur's lemma gives us}\\
+\begin{align*}
+\begin{split}
+\psi\left(\sum_{i=1}^m l(t_i)j_2(t_i')\right) &= -\frac{n}{d}\sum_{\pi,a}\delta_{\chi_e,\pi}t_\pi^a{t_\pi^a}'\\
+&= -\frac{n}{d}\sum_{\pi,a}\left(\sum_{h \in G}\pi(h)\right)t_{\pi}^a{t_{\pi}^a}'\\
+&= -\frac{1}{d}\sum_{h \in G} U_\mathcal{K}(h).
+\end{split}
+\end{align*}
+\noindent\textcolor{red}{So we could also show that $\psi(\sum_{i=1}^m l(t_i)j_2(t_i')) = \sum_{i=1}^m j_2'(t_i)l(j_1(t_i'))$.}\\
 
 \noindent Thus $s_h'\rho^2(s_e) = s_hs_h'$. Next, consider
 \begin{align*}
@@ -2062,7 +2070,28 @@ t_i'\rho^2(s_e)t_j = \left(\frac{1}{d}\sum_{h \in G} \delta_{i,j}s_h + \frac{1}{
 \noindent for all $x \in \{t_i, t_i'\}_{i=1}^m$.\\
 \end{lemma}
 
-\noindent\begin{proof} .
+\noindent\begin{proof} We proceed just as in the previous lemma. Observe that
+\begin{align*}
+\begin{split}
+\rho^2(t) &= \sum_{h \in G}U(h)\left(\frac{1}{\sqrt{d}}\rho(s_e)\rho(j_2'(t)) + \rho(j_2(j_1'(t)))\rho(s_e)\rho(s_e')\right)U(h)^{-1} + \rho(l(t))
+\end{split}
+\end{align*}
+\noindent First, we have
+\begin{align*}
+\begin{split}
+s_e'\rho^2(t) &= \sum_{h \in G}\left(\frac{1}{d\sqrt{d}}\rho(j_2'(t)) + \frac{1}{\sqrt{d}}j_1'(t)\rho(s_e)\rho(s_e')\right)U(h)^{-1} + s_e'\rho(l(t))\\
+&= \sum_{h \in G}\left(\frac{1}{d\sqrt{d}}\rho(j_2'(t)) + \frac{1}{d}\sum_{k=1}^m j_1'(t)t_k j_1(t_k')\rho(s_e')\right)U(h)^{-1} + s_e'\rho(l(t))\\
+&= \sum_{h \in G}\left(\frac{1}{d\sqrt{d}}\rho(j_2'(t)) + \frac{1}{d}\sum_{k=1}^m j_1(j_1'(t)t_kt_k')\rho(s_e')\right)U(h)^{-1} + s_e'\rho(l(t))\\
+&= \sum_{h \in G}\left(\frac{1}{d\sqrt{d}}\rho(j_2'(t)) + \frac{1}{d}\sum_{k=1}^m t\rho(s_e')\right)U(h)^{-1} + s_e'\rho(l(t)).
+\end{split}
+\end{align*}
+\noindent Thus
+\begin{align*}
+\begin{split}
+s_e'\rho^2(t)s_e &= \frac{2n}{d^2}t + s_e'\rho(l(t))s_e.
+\end{split}
+\end{align*}
+\noindent \textcolor{red}{Need to show that $s_e'\rho(l(t))s_e = (1 - 2n/d^2)t$. It looks like $\rho(l(t))$ is going to be a problem for all of these computations...}
 \end{proof}\\
 
 \newpage
