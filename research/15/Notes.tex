@@ -860,8 +860,8 @@ t' \varphi'^{-1} V(g)^{-1} \varphi' = \varphi'(\alpha_g(\varphi'^{-1}(t'))) = t'
 \alpha_g(l(t)) = l(t),\qquad \alpha_g(l'(t')) = l'(t');\label{lInvariance}
 \end{align}
 \begin{alignat}{2}
-l(j_1(t')) &= \sum_{i,j=1}^m l'(t')t_it_j j_1(t_j')t_i',\qquad &l(j_2(t')) &= \sum_{i=1}^m t_i l'(t') j_1(t_i');\\
-l(j_1'(t)) &= \sum_{i,j=1}^m t_i j_1'(t_j)t_j't_i' l(t),\qquad &l(j_2'(t)) &= \sum_{i=1}^m j_1'(t_i)l(t)t_i';
+l(j_1(t')) &= \sum_{i,j=1}^m l'(t')t_it_j j_1(t_j')t_i',\qquad &l(j_2(t')) &= \sum_{i=1}^m t_i l'(t') j_1(t_i');\label{ljMaps}\\
+l'(j_1'(t)) &= \sum_{i,j=1}^m t_i j_1'(t_j)t_j't_i' l(t),\qquad &l'(j_2'(t)) &= \sum_{i=1}^m j_1'(t_i)l(t)t_i';\label{l'jMaps}
 \end{alignat}
 \begin{align}
 \frac{1}{d\sqrt{d}}\sum_{h \in G}\alpha_h(j_2'(t)) + \frac{1}{\sqrt{d}}\sum_{i=1}^m j_1'(t_i)t_i'l(t) = 0 = \frac{1}{d\sqrt{d}}\sum_{h \in G}\alpha_h(j_2(t')) + \frac{1}{\sqrt{d}}\sum_{i=1}^m l'(t')t_ij_1(t_i');\label{GroupMultiplicityZero}
@@ -1012,13 +1012,13 @@ B^{k, k'}_{g,g'} = \left\{s_hb_{S,S}s_h',\ t_ib_{S,T}s_h',\ s_hb_{T,S}t_j',\ t_i
 \noindent At this point, we have shown that the structure of $\mathcal{C}$ is determined completely by
 \begin{enumerate}[label=\textup{(\roman*).}, ref=\textup{(\roman*)}, leftmargin=4\parindent]
 \item two finite-dimensional vector spaces $\mathcal{K}$ and $\mathcal{K}'$;
-\item four linear maps $j_1, j_2 \in \homset(\mathcal{K}, \mathcal{K}')$ and $j_1', j_2' \in \homset(\mathcal{K}', \mathcal{K})$;
+\item two linear maps $j_1, j_2 \in \homset(\mathcal{K}, \mathcal{K}')$;
 %\item two invertible linear maps $\varphi \in \textup{Aut}(\mathcal{K})$ and $\varphi' \in \textup{Aut}(\mathcal{K}')$;
 \item two representations $U_\mathcal{K}, V : G \to \textup{Aut}(\mathcal{K})$;
 \item a symmetric bicharacter $\chi : G \times G \to \mathbbm{k}^\times$;
-\item two linear maps $l \in \homset(\mathcal{K}, \mathcal{K} \otimes \mathcal{K})$ and $l' \in \homset(\mathcal{K}', \mathcal{K}' \otimes \mathcal{K}')$.
+\item a linear map $l \in \homset(\mathcal{K}, \mathcal{K} \otimes \mathcal{K})$.
 \end{enumerate}
-\noindent The next stage of our deconstruction is to deduce a system of polynomial equations in these objects. The upshot is that it will be verified, in the next section, that these equations describe necessary constraints for these objects to realize a valid fusion category.\\
+\noindent We can in fact recover $j_1'$ from $j_1$ and $j_2'$ from $j_2$, since these maps are inverses to each other. We can also recover $l'$ from $l$ using results from \hyperref[l'jMaps]{Equation \eqref*{l'jMaps}}. The next stage of our deconstruction is to deduce a system of polynomial equations in these objects. The upshot is that it will be verified, in the next section, that these equations describe necessary constraints for these objects to realize a valid fusion category.\\
 
 \noindent\begin{definition}\label{DualBasis1} Suppose we have bases $\{u_i\}_{i=1}^m \subset \mathcal{K}$ and $\{v_j\}_{j=1}^m \subset \mathcal{K}'$ such that $v_ju_i = \delta_{ij}$, for all $i, j \in \{1, \dots, m\}$. We call these {\em dual bases} for $\mathcal{K}$ and $\mathcal{K}'$.\\
 \end{definition}
@@ -1847,13 +1847,13 @@ T\alpha_h(j_2(j_1'(j_2(y))))s_h &= T\alpha_h(\rho^2(s_e')\rho^2(y)\rho(s_e)s_e)s
 \noindent\\ Suppose we have a fusion category $\mathcal{C}$ together with a set of algebra endomorphisms realizing its fusion rules. We showed previously that, with simplicity and rigidity assumptions, we obtain
 \begin{enumerate}[label=\textup{(\roman*).}, ref=\textup{(\roman*)}, leftmargin=4\parindent]
 \item two finite-dimensional vector spaces $\mathcal{K}$ and $\mathcal{K}'$;
-\item four linear maps $j_1, j_2 \in \homset(\mathcal{K}, \mathcal{K}')$ and $j_1', j_2' \in \homset(\mathcal{K}', \mathcal{K})$;
+\item two linear maps $j_1, j_2 \in \homset(\mathcal{K}, \mathcal{K}')$;
 %\item two invertible linear maps $\varphi \in \textup{Aut}(\mathcal{K})$ and $\varphi' \in \textup{Aut}(\mathcal{K}')$;
 \item two representations $U_\mathcal{K}, V : G \to \textup{Aut}(\mathcal{K})$;
 \item a symmetric bicharacter $\chi : G \times G \to \mathbbm{k}^\times$;
-\item two linear maps $l \in \homset(\mathcal{K}, \mathcal{K} \otimes \mathcal{K})$ and $l' \in \homset(\mathcal{K}', \mathcal{K}' \otimes \mathcal{K}')$.
+\item a linear map $l \in \homset(\mathcal{K}, \mathcal{K} \otimes \mathcal{K})$.
 \end{enumerate}
-\noindent This data completely encoded the structure of $\mathcal{C}$. What we would now like to do is find necessary and sufficient conditions for a tuple $(\mathcal{K}, \mathcal{K}', j_1, j_2, j_1', j_2', U_\mathcal{K}, V, \chi, l, l')$ to recover $\mathcal{C}$.\\
+\noindent This data completely encoded the structure of $\mathcal{C}$. What we would now like to do is find necessary and sufficient conditions for a tuple $(\mathcal{K}, \mathcal{K}', j_1, j_2, U_\mathcal{K}, V, \chi, l)$ to recover $\mathcal{C}$.\\
 
 \noindent\textcolor{red}{Set everything up / define everything.}\\
 
@@ -1895,7 +1895,7 @@ T\alpha_h(j_2(j_1'(j_2(y))))s_h &= T\alpha_h(\rho^2(s_e')\rho^2(y)\rho(s_e)s_e)s
 
 \noindent All that remains is to recover the fusion rule for $\rho^2$ \textcolor{red}{(check rigidity and simplicity)}.\\
 
-\noindent Suppose we define $\{t_{\pi,i}^a\}_{i=1}^{\dim(\pi)}$ and $\{{t_{\pi,i}^a}'\}_{i=1}^{\dim(\pi)}$ as in \hyperref[UKDecomp]{Lemma \ref*{UKDecomp}}. For the remainder of this section, let $A_\pi^a \in M_{m,\dim(\pi)}(\mathbbm{k})$ and $B_\pi^a \in M_{\dim(\pi),m}(\mathbbm{k})$ be change of basis matrices such that
+\noindent Suppose we define $\{t_{\pi,i}^a\}_{i=1}^{\dim(\pi)}$ and $\{{t_{\pi,i}^a}'\}_{i=1}^{\dim(\pi)}$ as in \hyperref[UKDecomp]{Lemma \ref*{UKDecomp}}. Let $A_\pi^a \in M_{m,\dim(\pi)}(\mathbbm{k})$ and $B_\pi^a \in M_{\dim(\pi),m}(\mathbbm{k})$ be change of basis matrices such that
 \begin{align*}
 \begin{split}
 t_{\pi,k}^a = \sum_{i=1}^m (A_\pi^a)_{ik}t_i\qquad\text{and}\qquad {t_{\pi,k}^a}' = \sum_{j=1}^m (B_\pi^a)_{kj}t_j',
@@ -1907,24 +1907,24 @@ t_{\pi,k}^a = \sum_{i=1}^m (A_\pi^a)_{ik}t_i\qquad\text{and}\qquad {t_{\pi,k}^a}
 T = \sum_{\pi,a}\sum_{k=1}^{\dim(\pi)} t_{\pi,k}^a {t_{\pi,k}^a}' = \sum_{\pi,a}\sum_{i,j=1}^m\sum_{k=1}^{\dim(\pi)} (A_\pi^a)_{ik}(B_\pi^a)_{kj} t_i t_j' = \sum_{i,j=1}^m (\sum_{\pi,a} A_\pi^a B_\pi^a)_{ij} t_i t_j'.
 \end{split}
 \end{align*}
-\noindent This implies, for instance, that
-\begin{align}
+\noindent This implies that
+\begin{align*}
 \begin{split}
-\sum_{\pi,a}\sum_{k=1}^{\dim(\pi)} t_{\pi,k}^a j_1({t_{\pi,k}^a}') = \sum_{i,j=1}^m (\sum_{\pi,a} A_\pi^a B_\pi^a)_{ij}t_i j_1(t_j') = \sum_{i=1}^m t_i j_1(t_i').\label{ABIdentity}
+\sum_{\pi,a}\sum_{k=1}^{\dim(\pi)} t_{\pi,k}^a j_1({t_{\pi,k}^a}') = \sum_{i,j=1}^m (\sum_{\pi,a} A_\pi^a B_\pi^a)_{ij}t_i j_1(t_j') = \sum_{i=1}^m t_i j_1(t_i').
 \end{split}
-\end{align}
+\end{align*}
 \noindent We will also define matrices $J_1, J_1', J_2, J_2' \in M_m(\mathbbm{k})$ such that
 \begin{alignat*}{4}
 j_1(t_j') &= J_1t_j &&= \sum_{i=1}^m (J_1)_{ij} t_i,\qquad j_1'(t_i) &&= t_i'J_1' &&= \sum_{j=1}^m (J_1')_{ij} t_j',\\
 j_2(t_j') &= J_2t_j &&= \sum_{i=1}^m (J_2)_{ij} t_i, \qquad j_2'(t_i) &&= t_i'J_2' &&= \sum_{j=1}^m (J_2')_{ij} t_j'.
 \end{alignat*}
-\noindent By \hyperref[DualBasisIdentity]{Equation \eqref*{DualBasisIdentity}}, we know that $J_1'J_1 = T = J_2'J_2$, and \hyperref[jMapIdentity]{Equation \eqref*{jMapIdentity}} tells us that these matrices are all symmetric. Finally, let $L_{p,q,r}$ and $L'_{p,q,r}$ be linear functionals satisfying
+\noindent By \hyperref[DualBasisIdentity]{Equation \eqref*{DualBasisIdentity}}, we know that $J_1'J_1 = T = J_2'J_2$. Moreover, these matrices are symmetric, since $J_1'J_1^T = T = J_2'J_2^T$ by \hyperref[jMapIdentity]{Equation \eqref*{jMapIdentity}}. Finally, let $L_{p,q,r}$ and $L'_{p,q,r}$ be linear functionals satisfying
 \begin{align*}
 \begin{split}
 l(t) = \sum_{p,q,r=1}^m L_{p,q,r}(t) t_pt_qt_r'\qquad\text{and}\qquad l'(t') = \sum_{p,q,r=1}^m L'_{p,q,r}(t') t_pt_q't_r'.
 \end{split}
 \end{align*}
-\noindent\textcolor{red}{Write $L'_{p,q,r}$ in terms of $L_{p,q,r}$. Using both equations from the lemma let us have $L_{p,q,r}(j_1(t'))$ in terms of $L_{p,q,r}(j_2(t'))$. Then we can show that $\sum_{i=1}^m j_2'(t_i)l(j_1(t_i')) = \psi(\sum_{i=1}^m l(t_i)j_2(t_i'))$.}\\
+\noindent We shall use these expansions extensively in the following proof.\\
 
 \noindent\begin{lemma} We have
 \begin{align}
@@ -1983,9 +1983,48 @@ s_e'\rho^2(s_e)t &= \frac{1}{d}\left(\frac{1}{d}\sum_{h \in G} U_\mathcal{K}(h) 
 &= \frac{1}{d}\left(-\psi\left(\sum_{i=1}^m l(t_i)j_2(t_i')\right) + \sum_{i=1}^m j_2'(t_i)l(j_1(t_i'))\right)t.
 \end{split}
 \end{align*}
-\noindent 
-
-\noindent Thus $s_h'\rho^2(s_e) = s_hs_h'$. Next, consider
+\noindent Now,
+\begin{align*}
+\begin{split}
+\psi\left(\sum_{i=1}^m l(t_i)j_2(t_i')\right) &= \psi\left(\sum_{i,p,q,r} (J_2)_{ri}L_{p,q,r}(t_i) t_pt_q\right)\\
+&= \sum_{i,p,q,r} (J_2)_{ri}L_{p,q,r}(t_i) t_pj_1'(t_q)\\
+&= \sum_{i,j,p,q,r} (J_1')_{qj}(J_2)_{ri}L_{p,q,r}(t_i) t_pt_j'.
+\end{split}
+\end{align*}
+\noindent On the other hand, using equations for $l$ and $l'$ from \hyperref[Rho]{Lemma \ref*{Rho}},
+\begin{align*}
+\begin{split}
+\sum_{i=1}^m j_2'(t_i)l(j_1(t_i')) &= \sum_{i,j,k} j_2'(t_i)l'(t_i')t_jt_k j_1(t_k')t_j'\\
+&= \sum_{i,j,k} j_2'(t_i)j_1'(t_j)l(j_2(t_i'))t_k j_1(t_k')t_j'\\
+&= \sum_{i,j,k,p,q,r} (J_1)_{kr}(J_1')_{jp}(J_2')_{iq}L_{p,q,r}(j_2(t_i'))t_kt_j'\\
+&= \sum_{i,j,k,p,q,r,u} (J_1)_{kr}(J_1')_{jp}(J_2)_{ui}(J_2')_{iq}L_{p,q,r}(t_u)t_kt_j'\\
+&= \sum_{j,k,p,q,r} (J_1)_{kr}(J_1')_{jp}L_{p,q,r}(t_q)t_kt_j'.
+\end{split}
+\end{align*}
+\noindent Recall now that $J_1' = J_1^{-1}$ and $J_2' = J_2^{-1}$ are symmetric. Observe that
+\begin{align*}
+\begin{split}
+l(j_1(j_1'(t_k))) &= \sum_{i,j} l'(j_1'(t_k))t_it_j j_1(t_j')t_i'\\
+&= \sum_{i,j} j_1'(t_i)l(j_2(j_1'(t_k)))t_j j_1(t_j')t_i'\\
+&= \sum_{i,j,p,q,r} (J_1)_{jr} (J_1')_{ip} L_{p,q,r}(j_2(j_1'(t_k))) t_qt_jt_i'\\
+&= \sum_{i,j,p,q,r,u,v} (J_1)_{jr} (J_1')_{ip} (J_1')_{kv} (J_2)_{uv} L_{p,q,r}(t_u) t_qt_jt_i',
+\end{split}
+\end{align*}
+\begin{align*}
+\begin{split}
+\implies L_{p,q,r}(t_q) &= \sum_{p,r,u,v,w} (J_1')_{rw} (J_2)_{uv} L_{w,p,v}(t_u).
+\end{split}
+\end{align*}
+\noindent It follows that
+\begin{align*}
+\begin{split}
+\sum_{i=1}^m j_2'(t_i)l(j_1(t_i')) &= \sum_{j,k,p,q,r} (J_1)_{kr}(J_1')_{jp}L_{p,q,r}(t_q)t_kt_j'\\
+&= \sum_{j,k,p,r,u,v,w} (J_1)_{kr}(J_1')_{jp}(J_1')_{rw} (J_2)_{uv} L_{w,p,v}(t_u)t_kt_j'\\
+&= \sum_{j,k,p,u,v} (J_1')_{jp} (J_2)_{uv}, L_{k,p,v}(t_u)t_kt_j'\\
+&= \psi\left(\sum_{i=1}^m l(t_i)j_2(t_i')\right).
+\end{split}
+\end{align*}
+\noindent Thus $s_h'\rho^2(s_e) = s_hs_h'$ by \hyperref[IrreducibleResult2]{Equation \eqref*{IrreducibleResult2}}. Next, consider
 \begin{align*}
 \begin{split}
 t_i'\rho^2(s_e) %=\ &\frac{1}{d\sqrt{d}}\sum_{h \in G}\sum_{j=1}^m t_i'U_\mathcal{K}(h)t_jj_1(t_j')U(h^{-1})\ +\\
@@ -2003,7 +2042,24 @@ t_i'\rho^2(s_e) %=\ &\frac{1}{d\sqrt{d}}\sum_{h \in G}\sum_{j=1}^m t_i'U_\mathca
 t_i'\rho^2(s_e)s_g = t_i'\left(\frac{1}{d\sqrt{d}}\sum_{h \in G}\sum_{k=1}^m\chi_g(h^{-1})U_\mathcal{K}(h)t_kj_1(t_k') + \frac{1}{\sqrt{d}}\sum_{k=1}^m l(t_k)V(g)j_2(t_k')\right)s_g.
 \end{split}
 \end{align*}
-\noindent By \hyperref[ABIdentity]{Equation \eqref*{ABIdentity}}, \hyperref[IrreducibleBasis]{Equation \eqref*{IrreducibleBasis}} and Schur's lemma, we have
+\noindent Now, suppose we define $\{t_{\pi,i}^a\}_{i=1}^{\dim(\pi)}$ and $\{{t_{\pi,i}^a}'\}_{i=1}^{\dim(\pi)}$ as in \hyperref[UKDecomp]{Lemma \ref*{UKDecomp}}. Let $A_\pi^a \in M_{m,\dim(\pi)}(\mathbbm{k})$ and $B_\pi^a \in M_{\dim(\pi),m}(\mathbbm{k})$ be change of basis matrices such that
+\begin{align*}
+\begin{split}
+t_{\pi,k}^a = \sum_{i=1}^m (A_\pi^a)_{ik}t_i\qquad\text{and}\qquad {t_{\pi,k}^a}' = \sum_{j=1}^m (B_\pi^a)_{kj}t_j',
+\end{split}
+\end{align*}
+\noindent where the horizontal concatenation $A \coloneqq (A_\pi^a)_{\pi,a}$ lies in $\textup{GL}_m(\mathbbm{k})$ and $A^{-1}$ is the vertical concatenation of the $B_\pi^a$. In particular, $(\sum_{\pi,a} A_\pi^a B_\pi^a)_{ij} = \delta_{i,j}$, since
+\begin{align*}
+\begin{split}
+T = \sum_{\pi,a}\sum_{k=1}^{\dim(\pi)} t_{\pi,k}^a {t_{\pi,k}^a}' = \sum_{\pi,a}\sum_{i,j=1}^m\sum_{k=1}^{\dim(\pi)} (A_\pi^a)_{ik}(B_\pi^a)_{kj} t_i t_j' = \sum_{i,j=1}^m (\sum_{\pi,a} A_\pi^a B_\pi^a)_{ij} t_i t_j'.
+\end{split}
+\end{align*}
+\noindent This implies that
+\begin{align*}
+\begin{split}
+\sum_{\pi,a}\sum_{k=1}^{\dim(\pi)} t_{\pi,k}^a j_1({t_{\pi,k}^a}') = \sum_{i,j=1}^m (\sum_{\pi,a} A_\pi^a B_\pi^a)_{ij}t_i j_1(t_j') = \sum_{i=1}^m t_i j_1(t_i').
+\end{split}
+\end{align*} Thus, by \hyperref[IrreducibleBasis]{Equation \eqref*{IrreducibleBasis}} and Schur's lemma, we have
 \begin{align*}
 \begin{split}
 t_i'\rho^2(s_e)s_g &= t_i'\left(\frac{1}{d\sqrt{d}}\sum_{h \in G}\sum_{\pi,a}\sum_{k=1}^{\dim(\pi)}\chi_g(h^{-1})U_\mathcal{K}(h)t_{\pi,k}^a j_1({t_{\pi,k}^a}') + \frac{1}{\sqrt{d}}\sum_{k=1}^m l(t_k)V(g)j_2(t_k')\right)s_g\\
